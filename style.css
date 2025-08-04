@@ -267,6 +267,32 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* Left-align and justify content for policy pages */
+.container.page-content {
+  max-width: 800px;
+  width: 90%;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 3rem 2rem;
+}
+
+.container.page-content p,
+.container.page-content li,
+.container.page-content h1,
+.container.page-content h2 {
+  text-align: justify;
+  line-height: 1.6;
+  color: #003c3c;
+}
+
+body.dark-mode .container.page-content p,
+body.dark-mode .container.page-content li,
+body.dark-mode .container.page-content h1,
+body.dark-mode .container.page-content h2 {
+  color: #e2e8f0;
+}
+
   justify-content: center;
 }
 
