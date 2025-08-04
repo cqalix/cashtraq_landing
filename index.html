@@ -7,32 +7,35 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 🌙 Dark mode toggle button -->
-  <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
+  <div class="page-wrapper">
+    <!-- 🌙 Dark mode toggle button -->
+    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
 
-  <div class="container welcome">
-    <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" style="height: 80px;" />
-    
-    <nav class="nav-links">
-      <a href="dashboard.html" class="btn secondary">Dashboard</a>
-      <a href="retailers.html" class="btn secondary">Retailers</a>
-      <a href="profile.html" class="btn secondary">Profile</a>
-    </nav>
+    <div class="container welcome">
+      <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" style="height: 80px;" />
+      
+      <nav class="nav-links">
+        <a href="dashboard.html" class="btn secondary">Dashboard</a>
+        <a href="retailers.html" class="btn secondary">Retailers</a>
+        <a href="profile.html" class="btn secondary">Profile</a>
+      </nav>
 
-    <h1>Welcome to Cashtraq</h1>
-    <h3 style="color: #008080; margin-top: 0; font-weight: 600;">Track it. Stack it. Cashtraq it.</h3>
-    <p>Track your cashback. Maximise your savings. All in one place.</p>
-    <div class="button-group">
-      <a href="login.html" class="btn">Log In</a>
-      <a href="signup.html" class="btn secondary">Sign Up</a>
+      <h1>Welcome to Cashtraq</h1>
+      <h3 style="color: #008080; margin-top: 0; font-weight: 600;">Track it. Stack it. Cashtraq it.</h3>
+      <p>Track your cashback. Maximise your savings. All in one place.</p>
+
+      <div class="button-group">
+        <a href="login.html" class="btn">Log In</a>
+        <a href="signup.html" class="btn secondary">Sign Up</a>
+      </div>
     </div>
-  </div>
 
-  <!-- Footer with Privacy & Terms links -->
-  <footer>
-  <a href="privacy.html">Privacy Policy</a> |
-  <a href="terms.html">Terms & Conditions</a>
-</footer>
+    <!-- ✅ Footer inside wrapper -->
+    <footer>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms & Conditions</a>
+    </footer>
+  </div>
 
   <!-- Cookie Consent Banner -->
   <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
