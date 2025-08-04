@@ -6,7 +6,6 @@
   <title>Retailers - Cashtraq</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Retailer card style */
     .retailer-card {
       display: flex;
       align-items: center;
@@ -36,7 +35,6 @@
     .favourite-btn.active {
       color: #004d40;
     }
-    /* Responsive container max-width for larger screens */
     @media (min-width: 600px) {
       .container {
         max-width: 600px;
@@ -45,55 +43,73 @@
   </style>
 </head>
 <body>
-  <!-- Dark mode toggle -->
-  <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
+  <div class="page-wrapper">
+    <!-- Dark mode toggle -->
+    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
 
-  <div class="container">
-    <div class="logo">
-      <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" style="height: 60px;" />
+    <div class="container">
+      <div class="logo">
+        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" style="height: 60px;" />
+      </div>
+
+      <nav class="nav-links">
+        <a href="dashboard.html" class="btn secondary">Dashboard</a>
+        <a href="retailers.html" class="btn secondary">Retailers</a>
+        <a href="profile.html" class="btn secondary">Profile</a>
+      </nav>
+
+      <h2>Retailers & Offers</h2>
+      <input type="search" id="searchRetailers" placeholder="Search retailers..." style="margin-bottom:1rem; padding:0.5rem; width: 100%; border-radius: 0.5rem; border: 1px solid #ccc;"/>
+
+      <div id="retailersList">
+        <div class="retailer-card">
+          <img src="assets/retailer-logo1.png" alt="Supermart" />
+          <div>
+            <h3>Supermart</h3>
+            <p>Cashback: 10%</p>
+          </div>
+          <button class="btn favourite-btn" aria-label="Add to favourites">☆</button>
+        </div>
+
+        <div class="retailer-card">
+          <img src="assets/retailer-logo2.png" alt="ShopEasy" />
+          <div>
+            <h3>ShopEasy</h3>
+            <p>Cashback: 5%</p>
+          </div>
+          <button class="btn favourite-btn" aria-label="Add to favourites">☆</button>
+        </div>
+
+        <div class="retailer-card">
+          <img src="assets/retailer-logo3.png" alt="FreshFoods" />
+          <div>
+            <h3>FreshFoods</h3>
+            <p>Cashback: 15%</p>
+          </div>
+          <button class="btn favourite-btn" aria-label="Add to favourites">☆</button>
+        </div>
+      </div>
     </div>
 
-    <nav class="nav-links">
-      <a href="dashboard.html" class="btn secondary">Dashboard</a>
-      <a href="retailers.html" class="btn secondary">Retailers</a>
-      <a href="profile.html" class="btn secondary">Profile</a>
-    </nav>
-
-    <h2>Retailers & Offers</h2>
-    <input type="search" id="searchRetailers" placeholder="Search retailers..." style="margin-bottom:1rem; padding:0.5rem; width: 100%; border-radius: 0.5rem; border: 1px solid #ccc;"/>
-
-    <div id="retailersList">
-      <div class="retailer-card">
-        <img src="assets/retailer-logo1.png" alt="Supermart" />
-        <div>
-          <h3>Supermart</h3>
-          <p>Cashback: 10%</p>
-        </div>
-        <button class="btn favourite-btn" aria-label="Add to favourites">☆</button>
-      </div>
-
-      <div class="retailer-card">
-        <img src="assets/retailer-logo2.png" alt="ShopEasy" />
-        <div>
-          <h3>ShopEasy</h3>
-          <p>Cashback: 5%</p>
-        </div>
-        <button class="btn favourite-btn" aria-label="Add to favourites">☆</button>
-      </div>
-
-      <div class="retailer-card">
-        <img src="assets/retailer-logo3.png" alt="FreshFoods" />
-        <div>
-          <h3>FreshFoods</h3>
-          <p>Cashback: 15%</p>
-        </div>
-        <button class="btn favourite-btn" aria-label="Add to favourites">☆</button>
-      </div>
-    </div>
+    <!-- Footer -->
+    <footer>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms & Conditions</a>
+    </footer>
   </div>
 
+  <!-- Cookie Consent -->
+  <div id="cookieConsent">
+    <span>
+      We use cookies to improve your experience. By using our site, you accept our 
+      <a href="privacy.html">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies">Accept</button>
+  </div>
+
+  <!-- Scripts -->
   <script>
-    // Dark mode toggle script
+    // Dark mode toggle
     const toggleBtn = document.getElementById('darkModeToggle');
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
@@ -103,7 +119,7 @@
       document.body.classList.add('dark-mode');
     }
 
-    // Favourite toggle button functionality
+    // Favourites
     document.querySelectorAll('.favourite-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.classList.toggle('active');
@@ -111,7 +127,7 @@
       });
     });
 
-    // Simple search filter
+    // Search filter
     const searchInput = document.getElementById('searchRetailers');
     const retailersList = document.getElementById('retailersList');
     searchInput.addEventListener('input', () => {
@@ -122,20 +138,8 @@
         card.style.display = name.includes(filter) ? '' : 'none';
       });
     });
-  </script>
 
-  <!-- Footer links -->
-  <footer style="text-align:center; padding: 1rem 0; font-size:0.9rem; color:#666;">
-    <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a>
-  </footer>
-
-  <!-- Cookie Consent Banner -->
-  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.</span>
-    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
-  </div>
-
-  <script>
+    // Cookie consent logic
     const cookieConsent = document.getElementById('cookieConsent');
     const acceptBtn = document.getElementById('acceptCookies');
 
