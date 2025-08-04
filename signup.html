@@ -7,36 +7,51 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 🌙 Dark mode toggle button -->
-  <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
+  <div class="page-wrapper">
+    <!-- 🌙 Dark mode toggle button -->
+    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
 
-  <div class="container">
-    <div class="logo">
-      <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" style="height: 60px;" />
+    <div class="container">
+      <div class="logo">
+        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" style="height: 60px;" />
+      </div>
+
+      <nav class="nav-links">
+        <a href="dashboard.html" class="btn secondary">Dashboard</a>
+        <a href="retailers.html" class="btn secondary">Retailers</a>
+        <a href="profile.html" class="btn secondary">Profile</a>
+      </nav>
+
+      <h2>Create Your Account</h2>
+      <form onsubmit="handleSignup(event)">
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+
+        <label style="font-size: 0.9rem; margin-top: 1rem; display: block; text-align: left;">
+          <input type="checkbox" id="agreeTerms" required />
+          I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a> and <a href="terms.html" target="_blank">Terms & Conditions</a>.
+        </label>
+
+        <button type="submit" class="btn">Create Account</button>
+      </form>
+      <p>Already have an account? <a href="login.html">Log In</a></p>
     </div>
 
-    <nav class="nav-links">
-      <a href="dashboard.html" class="btn secondary">Dashboard</a>
-      <a href="retailers.html" class="btn secondary">Retailers</a>
-      <a href="profile.html" class="btn secondary">Profile</a>
-    </nav>
-
-    <h2>Create Your Account</h2>
-    <form onsubmit="handleSignup(event)">
-      <input type="text" placeholder="Full Name" required />
-      <input type="email" placeholder="Email" required />
-      <input type="password" placeholder="Password" required />
-
-      <label style="font-size: 0.9rem; margin-top: 1rem; display: block; text-align: left;">
-        <input type="checkbox" id="agreeTerms" required />
-        I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a> and <a href="terms.html" target="_blank">Terms & Conditions</a>.
-      </label>
-
-      <button type="submit" class="btn">Create Account</button>
-    </form>
-    <p>Already have an account? <a href="login.html">Log In</a></p>
+    <!-- Footer -->
+    <footer>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms & Conditions</a>
+    </footer>
   </div>
 
+  <!-- Cookie Consent Banner -->
+  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
+    <span>We use cookies to improve your experience. By using our site, you accept our <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.</span>
+    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
+  </div>
+
+  <!-- Scripts -->
   <script>
     // Dark mode toggle
     document.getElementById('darkModeToggle').addEventListener('click', function () {
@@ -47,7 +62,7 @@
       document.body.classList.add('dark-mode');
     }
 
-    // Simulated signup with consent check
+    // Signup logic
     function handleSignup(e) {
       e.preventDefault();
       const consentCheckbox = document.getElementById('agreeTerms');
@@ -58,15 +73,8 @@
       localStorage.setItem('isLoggedIn', 'true');
       window.location.href = 'dashboard.html';
     }
-  </script>
 
-  <!-- Cookie Consent Banner -->
-  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.</span>
-    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
-  </div>
-
-  <script>
+    // Cookie consent logic
     const cookieConsent = document.getElementById('cookieConsent');
     const acceptBtn = document.getElementById('acceptCookies');
 
