@@ -7,28 +7,46 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Dark mode toggle -->
-  <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
+  <div class="page-wrapper">
+    <!-- Dark mode toggle -->
+    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
 
-  <div class="container">
-    <div class="logo">
-      <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" style="height: 60px;" />
+    <div class="container">
+      <div class="logo">
+        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" style="height: 60px;" />
+      </div>
+
+      <nav class="nav-links">
+        <a href="dashboard.html" class="btn secondary">Dashboard</a>
+        <a href="retailers.html" class="btn secondary">Retailers</a>
+        <a href="profile.html" class="btn secondary">Profile</a>
+      </nav>
+
+      <h2>Your Profile</h2>
+      <p><strong>Name:</strong> Alex</p>
+      <p><strong>Email:</strong> alex@example.com</p>
+      <p><strong>Total Cashback Earned:</strong> £12.40</p>
+      <p><strong>Loyalty Tier:</strong> Bronze</p>
+      <a href="#" onclick="logout()" class="btn">Log Out</a>
     </div>
 
-    <nav class="nav-links">
-      <a href="dashboard.html" class="btn secondary">Dashboard</a>
-      <a href="retailers.html" class="btn secondary">Retailers</a>
-      <a href="profile.html" class="btn secondary">Profile</a>
-    </nav>
-
-    <h2>Your Profile</h2>
-    <p><strong>Name:</strong> Alex</p>
-    <p><strong>Email:</strong> alex@example.com</p>
-    <p><strong>Total Cashback Earned:</strong> £12.40</p>
-    <p><strong>Loyalty Tier:</strong> Bronze</p>
-    <a href="#" onclick="logout()" class="btn">Log Out</a>
+    <!-- ✅ Footer inside page-wrapper -->
+    <footer>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms & Conditions</a>
+    </footer>
   </div>
 
+  <!-- ✅ Cookie Consent Banner outside wrapper -->
+  <div id="cookieConsent">
+    <span>
+      We use cookies to improve your experience. By using our site, you accept our 
+      <a href="privacy.html">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies">Accept</button>
+  </div>
+
+  <!-- ✅ Scripts -->
   <script>
     // Dark mode toggle
     const toggleBtn = document.getElementById('darkModeToggle');
@@ -45,15 +63,8 @@
       localStorage.removeItem('isLoggedIn');
       window.location.href = 'login.html';
     }
-  </script>
 
-  <!-- Cookie Consent Banner -->
-  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.</span>
-    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
-  </div>
-
-  <script>
+    // Cookie consent
     const cookieConsent = document.getElementById('cookieConsent');
     const acceptBtn = document.getElementById('acceptCookies');
 
