@@ -7,35 +7,80 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Privacy Policy</h1>
-    <p>Last updated: August 2025</p>
+  <div class="page-wrapper">
+    <!-- 🌙 Dark mode toggle (optional on static pages, but included for consistency) -->
+    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
 
-    <p>At Cashtraq, we value your privacy and are committed to protecting your personal information.</p>
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p>Last updated: August 2025</p>
 
-    <h2>Information We Collect</h2>
-    <p>We collect only the information you provide us, such as your name, email address, and account details to offer our cashback and loyalty services.</p>
+      <p>At Cashtraq, we value your privacy and are committed to protecting your personal information.</p>
 
-    <h2>How We Use Your Information</h2>
-    <ul>
-      <li>To provide and improve our services.</li>
-      <li>To communicate with you, including sending important updates.</li>
-      <li>To comply with legal obligations.</li>
-    </ul>
+      <h2>Information We Collect</h2>
+      <p>We collect only the information you provide us, such as your name, email address, and account details to offer our cashback and loyalty services.</p>
 
-    <h2>Cookies and Tracking</h2>
-    <p>We use cookies to enhance your experience, remember preferences, and analyze site usage. You can control cookie preferences via the cookie banner and your browser settings.</p>
+      <h2>How We Use Your Information</h2>
+      <ul>
+        <li>To provide and improve our services.</li>
+        <li>To communicate with you, including sending important updates.</li>
+        <li>To comply with legal obligations.</li>
+      </ul>
 
-    <h2>Data Security</h2>
-    <p>We implement industry-standard measures to protect your data, but please remember no system is completely secure.</p>
+      <h2>Cookies and Tracking</h2>
+      <p>We use cookies to enhance your experience, remember preferences, and analyze site usage. You can control cookie preferences via the cookie banner and your browser settings.</p>
 
-    <h2>Your Rights</h2>
-    <p>You have the right to access, update, or delete your personal information. Contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a> for requests.</p>
+      <h2>Data Security</h2>
+      <p>We implement industry-standard measures to protect your data, but please remember no system is completely secure.</p>
 
-    <h2>Changes to This Policy</h2>
-    <p>We may update this policy occasionally. We will notify you of significant changes through the app or website.</p>
+      <h2>Your Rights</h2>
+      <p>You have the right to access, update, or delete your personal information. Contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a> for requests.</p>
 
-    <p>If you have any questions, please contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</p>
+      <h2>Changes to This Policy</h2>
+      <p>We may update this policy occasionally. We will notify you of significant changes through the app or website.</p>
+
+      <p>If you have any questions, please contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</p>
+    </div>
+
+    <footer>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms & Conditions</a>
+    </footer>
   </div>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookieConsent">
+    <span>
+      We use cookies to improve your experience. By using our site, you accept our 
+      <a href="privacy.html">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies">Accept</button>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Dark mode toggle
+    document.getElementById('darkModeToggle').addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+
+    // Cookie consent logic
+    const cookieConsent = document.getElementById('cookieConsent');
+    const acceptBtn = document.getElementById('acceptCookies');
+
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+      cookieConsent.style.display = 'none';
+    }
+
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      cookieConsent.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
