@@ -295,4 +295,13 @@ body.dark-mode .container.page-content h2 {
 
   justify-content: center;
 }
+.page-content {
+  text-align: justify;
+  align-items: flex-start;
+}
+.page-content h1,
+.page-content h2,
+.page-content h3 {
+  text-align: left;
+}
 
