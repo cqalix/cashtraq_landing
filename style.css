@@ -130,3 +130,37 @@ body.dark-mode .btn.secondary {
 body.dark-mode .btn.secondary:hover {
   background: #64748b; /* Slate 500 */
 }
+.dashboard-widgets {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.widget {
+  background: #e0f2f1;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  flex: 1 1 200px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.widget h3 {
+  margin-bottom: 0.75rem;
+  color: #00796b;
+}
+
+.widget p, .widget ul {
+  font-size: 1.1rem;
+  color: #004d40;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.widget ul li {
+  margin: 0.5rem 0;
+}
+
