@@ -92,3 +92,41 @@ input {
   gap: 1rem;
   flex-wrap: wrap;
 }
+/* 🔥 DARK MODE (Slate 800 + Slate 700 Theme) */
+body.dark-mode {
+  background: #1e293b; /* Slate 800 */
+  color: #f1f5f9;       /* Light text */
+}
+
+body.dark-mode .container {
+  background: #334155; /* Slate 700 */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode input {
+  background: #475569; /* Slate 600 */
+  color: #f1f5f9;
+  border: 1px solid #64748b; /* Slate 500 */
+}
+
+body.dark-mode input::placeholder {
+  color: #cbd5e1; /* Slate 300 */
+}
+
+body.dark-mode .btn {
+  background: #0f172a; /* Deep Slate/Navy */
+  color: #f1f5f9;
+}
+
+body.dark-mode .btn:hover {
+  background: #1e293b; /* Slate 800 */
+}
+
+body.dark-mode .btn.secondary {
+  background: #475569; /* Slate 600 */
+  color: #e2e8f0;
+}
+
+body.dark-mode .btn.secondary:hover {
+  background: #64748b; /* Slate 500 */
+}
