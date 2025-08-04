@@ -16,8 +16,23 @@
     </div>
     <h2>Welcome to Cashtraq!</h2>
     <p>This is your dashboard. Soon, you’ll see your cashback stats, loyalty tier, and top deals here.</p>
-    <a href="login.html" class="btn">Log Out</a>
+    <!-- Change the logout link to a button with a JS click handler -->
+    <a href="#" onclick="logout()" class="btn">Log Out</a>
   </div>
+
+  <!-- Auth persistence and logout scripts -->
+  <script>
+    // Redirect to login if not logged in
+    if (!localStorage.getItem("isLoggedIn")) {
+      window.location.href = "login.html";
+    }
+
+    // Logout function clears localStorage and redirects
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "login.html";
+    }
+  </script>
 
   <!-- 🌙 Dark mode script -->
   <script>
