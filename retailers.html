@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Retailers - Cashtraq</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Dark mode toggle -->
+  <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
+
+  <div class="container">
+    <h2>Retailers & Offers</h2>
+    <input type="search" id="searchRetailers" placeholder="Search retailers..." />
+    <div id="retailersList">
+      <!-- Retailer cards will go here -->
+      <div class="retailer-card">
+        <img src="assets/retailer-logo1.png" alt="Retailer Name" />
+        <div>
+          <h3>Retailer Name</h3>
+          <p>Cashback: 5%</p>
+        </div>
+        <button class="btn favourite-btn" aria-label="Add to favourites">☆</button>
+      </div>
+      <!-- Repeat for other retailers -->
+    </div>
+  </div>
+
+  <script>
+    // Dark mode toggle script here (same as before)
+
+    // Sample script for favouriting (simple toggle UI only)
+    document.querySelectorAll('.favourite-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.textContent = btn.textContent === '☆' ? '★' : '☆';
+      });
+    });
+  </script>
+</body>
+</html>
