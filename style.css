@@ -250,3 +250,23 @@ body.dark-mode #cookieConsent a {
 body.dark-mode #acceptCookies {
   background: #334155;
 }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
