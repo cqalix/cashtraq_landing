@@ -173,40 +173,12 @@ body.dark-mode .retailer-card p {
   color: #f0f9ff; /* very light for headings and text */
 }
 
-/* Cookie Consent Banner */
-#cookieConsent {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
-  background: #008080; /* Cashtraq teal */
-  color: white;
-  padding: 1rem;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  font-size: 0.95rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-#cookieConsent a {
-  color: #d1eaea;
+/* Dark mode footer links */
+body.dark-mode footer a {
+  color: #a3c9c9; /* Lighter teal-ish color for better contrast */
   text-decoration: underline;
 }
 
-#cookieConsent button {
-  background: #004d40;
-  border: none;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-
-#cookieConsent button:hover {
-  background: #00332a;
+body.dark-mode footer a:hover {
+  color: #7bb4b4; /* Slightly darker on hover */
 }
