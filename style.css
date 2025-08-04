@@ -7,7 +7,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .container {
@@ -18,6 +18,10 @@ body {
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+
+.container.welcome {
+  padding: 3rem 2rem;
 }
 
 .logo {
@@ -35,6 +39,8 @@ h1, h2 {
 
 p {
   margin: 1rem 0;
+  font-size: 1rem;
+  color: #333;
 }
 
 form {
@@ -47,22 +53,39 @@ input {
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
+  font-size: 1rem;
 }
 
 .btn {
   background: #008080;
   color: white;
-  padding: 0.75rem;
+  padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 0.5rem;
-  text-decoration: none;
   font-size: 1rem;
+  text-decoration: none;
   display: inline-block;
   margin: 0.5rem 0;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #006666;
 }
 
 .btn.secondary {
-  background: #ccc;
+  background: #e0e0e0;
   color: #003c3c;
+}
+
+.btn.secondary:hover {
+  background: #ccc;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
