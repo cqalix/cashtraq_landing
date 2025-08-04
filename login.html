@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- 🌙 Dark mode toggle button -->
+  <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
+
   <div class="container">
     <div class="logo">
       <img src="assets/cashtraq_logo.png" alt="Cashtraq Logo" class="logo small" />
@@ -19,5 +22,17 @@
     </form>
     <p>Don’t have an account? <a href="signup.html">Sign Up</a></p>
   </div>
+
+  <!-- 🌙 Dark mode script -->
+  <script>
+    document.getElementById('darkModeToggle').addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
 </body>
 </html>
