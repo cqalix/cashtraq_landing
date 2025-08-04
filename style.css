@@ -112,38 +112,7 @@ input {
   margin: 1.5rem 0;
 }
 
-/* Retailer card style */
-.retailer-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #e0f2f1;
-  border-radius: 1rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-.retailer-card img {
-  width: 60px;
-  border-radius: 0.5rem;
-  margin-right: 1rem;
-}
-.retailer-card div {
-  flex-grow: 1;
-}
-.favourite-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #008080;
-  user-select: none;
-}
-.favourite-btn.active {
-  color: #004d40;
-}
-
-/* 🔥 DARK MODE (Slate 800 + Slate 700 Theme) */
+/* 🔥 DARK MODE (Slate 800 + Slate 600 Theme) */
 body.dark-mode {
   background: #1e293b; /* Slate 800 */
   color: #f1f5f9;       /* Light text for body */
@@ -195,7 +164,7 @@ body.dark-mode .btn.secondary:hover {
 
 /* Dark mode adjustments for retailer cards */
 body.dark-mode .retailer-card {
-  background: #334155; /* Darker Slate 700 */
+  background: #475569; /* Lighter Slate 600 */
   color: #e0e6f0; /* lighter text for readability */
 }
 
