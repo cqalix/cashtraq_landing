@@ -202,3 +202,51 @@ footer a:hover {
   color: #005f5f;
 }
 
+/* Cookie consent styles */
+#cookieConsent {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: #008080;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+#cookieConsent a {
+  color: #d1eaea;
+  text-decoration: underline;
+}
+
+#acceptCookies {
+  background: #004d40;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#acceptCookies:hover {
+  background: #006666;
+}
+
+/* Dark mode cookie banner */
+body.dark-mode #cookieConsent {
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+body.dark-mode #cookieConsent a {
+  color: #cbd5e1;
+}
+
+body.dark-mode #acceptCookies {
+  background: #334155;
+}
