@@ -5,6 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Retailers - Cashtraq</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Retailer card style */
+    .retailer-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #e0f2f1;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .retailer-card img {
+      width: 60px;
+      border-radius: 0.5rem;
+      margin-right: 1rem;
+    }
+    .retailer-card div {
+      flex-grow: 1;
+    }
+    .favourite-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #008080;
+      user-select: none;
+    }
+    .favourite-btn.active {
+      color: #004d40;
+    }
+    /* Responsive container max-width for larger screens */
+    @media (min-width: 600px) {
+      .container {
+        max-width: 600px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Dark mode toggle -->
@@ -12,28 +50,66 @@
 
   <div class="container">
     <h2>Retailers & Offers</h2>
-    <input type="search" id="searchRetailers" placeholder="Search retailers..." />
+    <input type="search" id="searchRetailers" placeholder="Search retailers..." style="margin-bottom:1rem; padding:0.5rem; width: 100%; border-radius: 0.5rem; border: 1px solid #ccc;"/>
+
     <div id="retailersList">
-      <!-- Retailer cards will go here -->
       <div class="retailer-card">
-        <img src="assets/retailer-logo1.png" alt="Retailer Name" />
+        <img src="assets/retailer-logo1.png" alt="Supermart" />
         <div>
-          <h3>Retailer Name</h3>
+          <h3>Supermart</h3>
+          <p>Cashback: 10%</p>
+        </div>
+        <button class="btn favourite-btn" aria-label="Add to favourites">☆</button>
+      </div>
+
+      <div class="retailer-card">
+        <img src="assets/retailer-logo2.png" alt="ShopEasy" />
+        <div>
+          <h3>ShopEasy</h3>
           <p>Cashback: 5%</p>
         </div>
         <button class="btn favourite-btn" aria-label="Add to favourites">☆</button>
       </div>
-      <!-- Repeat for other retailers -->
+
+      <div class="retailer-card">
+        <img src="assets/retailer-logo3.png" alt="FreshFoods" />
+        <div>
+          <h3>FreshFoods</h3>
+          <p>Cashback: 15%</p>
+        </div>
+        <button class="btn favourite-btn" aria-label="Add to favourites">☆</button>
+      </div>
     </div>
   </div>
 
   <script>
-    // Dark mode toggle script here (same as before)
+    // Dark mode toggle script
+    const toggleBtn = document.getElementById('darkModeToggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+    if(localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
 
-    // Sample script for favouriting (simple toggle UI only)
+    // Favourite toggle button functionality
     document.querySelectorAll('.favourite-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        btn.textContent = btn.textContent === '☆' ? '★' : '☆';
+        btn.classList.toggle('active');
+        btn.textContent = btn.classList.contains('active') ? '★' : '☆';
+      });
+    });
+
+    // Simple search filter
+    const searchInput = document.getElementById('searchRetailers');
+    const retailersList = document.getElementById('retailersList');
+    searchInput.addEventListener('input', () => {
+      const filter = searchInput.value.toLowerCase();
+      const cards = retailersList.getElementsByClassName('retailer-card');
+      Array.from(cards).forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        card.style.display = name.includes(filter) ? '' : 'none';
       });
     });
   </script>
