@@ -142,3 +142,10 @@ body.dark-mode .btn.secondary {
 body.dark-mode .btn.secondary:hover {
   background: #64748b; /* Slate 500 */
 }
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
