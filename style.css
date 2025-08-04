@@ -182,3 +182,23 @@ body.dark-mode footer a {
 body.dark-mode footer a:hover {
   color: #7bb4b4; /* Slightly darker on hover */
 }
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #00796b;
+  background: transparent;
+  margin-top: 2rem;
+}
+
+footer a {
+  text-decoration: none;
+  margin: 0 0.5rem;
+  color: #00796b;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #005f5f;
+}
+
