@@ -16,18 +16,35 @@
     </div>
     <h2>Welcome to Cashtraq!</h2>
     <p>This is your dashboard. Soon, you’ll see your cashback stats, loyalty tier, and top deals here.</p>
-    <!-- Change the logout link to a button with a JS click handler -->
+
+    <div class="dashboard-widgets">
+      <div class="widget">
+        <h3>Cashback Total</h3>
+        <p>£0.00</p>
+      </div>
+      <div class="widget">
+        <h3>Loyalty Tier</h3>
+        <p>Bronze</p>
+      </div>
+      <div class="widget">
+        <h3>Top Deals</h3>
+        <ul>
+          <li>10% cashback at Supermart</li>
+          <li>5% cashback at ShopEasy</li>
+          <li>15% cashback at FreshFoods</li>
+        </ul>
+      </div>
+    </div>
+
     <a href="#" onclick="logout()" class="btn">Log Out</a>
   </div>
 
   <!-- Auth persistence and logout scripts -->
   <script>
-    // Redirect to login if not logged in
     if (!localStorage.getItem("isLoggedIn")) {
       window.location.href = "login.html";
     }
 
-    // Logout function clears localStorage and redirects
     function logout() {
       localStorage.removeItem("isLoggedIn");
       window.location.href = "login.html";
