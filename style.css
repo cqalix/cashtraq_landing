@@ -305,3 +305,7 @@ body.dark-mode .container.page-content h2 {
   text-align: left;
 }
 
+.page-content p {
+  text-align: justify;
+  text-align-last: left; /* This makes the final line of justified text left-aligned */
+}
