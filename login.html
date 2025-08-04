@@ -30,6 +30,22 @@
     <p>Don’t have an account? <a href="signup.html">Sign Up</a></p>
   </div>
 
+  <!-- ✅ Footer -->
+  <footer>
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms & Conditions</a>
+  </footer>
+
+  <!-- ✅ Cookie Consent Banner -->
+  <div id="cookieConsent">
+    <span>
+      We use cookies to improve your experience. By using our site, you accept our 
+      <a href="privacy.html">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies">Accept</button>
+  </div>
+
+  <!-- ✅ Scripts -->
   <script>
     // Dark mode toggle
     document.getElementById('darkModeToggle').addEventListener('click', function () {
@@ -46,18 +62,8 @@
       localStorage.setItem('isLoggedIn', 'true');
       window.location.href = 'dashboard.html';
     }
-  </script>
 
-  <!-- Cookie Consent Banner -->
- <div id="cookieConsent">
-  <span>
-    We use cookies to improve your experience. By using our site, you accept our 
-    <a href="privacy.html">Privacy Policy</a>.
-  </span>
-  <button id="acceptCookies">Accept</button>
-</div>
-
-  <script>
+    // Cookie consent logic
     const cookieConsent = document.getElementById('cookieConsent');
     const acceptBtn = document.getElementById('acceptCookies');
 
