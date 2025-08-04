@@ -15,12 +15,13 @@
       <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" style="height: 60px;" />
     </div>
     <h2>Create Your Account</h2>
-    <form method="post" action="#">
-      <input type="text" placeholder="Full Name" required />
-      <input type="email" placeholder="Email" required />
-      <input type="password" placeholder="Password" required />
-      <button type="submit" class="btn">Create Account</button>
-    </form>
+    <script>
+  function handleSignup(e) {
+    e.preventDefault();
+    localStorage.setItem("isLoggedIn", "true");
+    window.location.href = "dashboard.html";
+  }
+</script>
     <p>Already have an account? <a href="login.html">Log In</a></p>
   </div>
 
