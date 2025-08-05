@@ -281,14 +281,22 @@ footer a:hover {
   bottom: 20px;
   right: 20px;
   background-color: #008080;
-  color: white;
   border: none;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 28px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   z-index: 1000;
+  padding: 0;
+}
+
+#chatbotToggle img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 #chatbox {
