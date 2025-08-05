@@ -255,6 +255,7 @@
     document.getElementById('chatbotToggle').addEventListener('click', function () {
       const chatbox = document.getElementById('chatbox');
       chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
+console.log('Chatbot toggled on retailers page. Current state:', chatbox.style.display);
     });
 
     const questions = document.querySelectorAll('.faq-question');
