@@ -140,10 +140,11 @@
   <!-- ✅ Scripts -->
   <script>
     // Dark mode toggle
-    document.getElementById('darkModeToggle').addEventListener('click', function () {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    });
+    document.getElementById('chatbotToggle').addEventListener('click', function () {
+  const chatbox = document.getElementById('chatbox');
+  chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
+  console.log('Chatbot toggled on login page. Current state:', chatbox.style.display);
+});
 
     if (localStorage.getItem('darkMode') === 'true') {
       document.body.classList.add('dark-mode');
