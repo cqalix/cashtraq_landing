@@ -89,27 +89,38 @@ html, body {
 }
 
 /* DARK MODE */
+/* 🔥 Dark Mode Styling for Privacy, Terms, FAQ pages */
 body.dark-mode .container.page-content {
-  background: #334155;
-  color: #e2e8f0;
+  background: #1e293b; /* Consistent dark background */
+  color: #e2e8f0;       /* Light readable text */
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  padding: 3rem 2rem;
+}
+
+body.dark-mode .container.page-content h1,
+body.dark-mode .container.page-content h2,
+body.dark-mode .container.page-content h3 {
+  color: #f8fafc;
+  margin-bottom: 1rem;
 }
 
 body.dark-mode .container.page-content p,
-body.dark-mode .container.page-content li,
-body.dark-mode .container.page-content h1,
-body.dark-mode .container.page-content h2,
-body.dark-mode .container.page-content h3,
-body.dark-mode .container.page-content strong {
-  color: #e2e8f0;
+body.dark-mode .container.page-content li {
+  color: #cbd5e1;
+  line-height: 1.7;
+  text-align: justify;
+  text-align-last: left;
+  margin-bottom: 1rem;
 }
 
 body.dark-mode .container.page-content a {
-  color: #7dd3fc;
+  color: #38bdf8;
   text-decoration: underline;
 }
 
 body.dark-mode .container.page-content a:hover {
-  color: #38bdf8;
+  color: #7dd3fc;
 }
 
 /* Forms */
