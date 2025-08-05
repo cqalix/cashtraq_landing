@@ -284,8 +284,8 @@ footer a:hover {
   color: white;
   border: none;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 32px;
+  height: 32px;
   font-size: 28px;
   cursor: pointer;
   z-index: 1000;
