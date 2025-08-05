@@ -156,53 +156,55 @@
 
   <!-- ✅ JS Scripts -->
   <script>
-    // Chatbot toggle
-    document.getElementById('chatbotToggle').addEventListener('click', function () {
-      const chatbox = document.getElementById('chatbox');
-      chatbox.style.display = chatbox.style.display === 'block' ? 'none' : 'block';
+  // ✅ Chatbot toggle (fixed to use 'flex') with console log
+  document.getElementById('chatbotToggle').addEventListener('click', function () {
+    const chatbox = document.getElementById('chatbox');
+    const isVisible = chatbox.style.display === 'flex';
+    chatbox.style.display = isVisible ? 'none' : 'flex';
+    console.log('Toggled chatbox:', chatbox.style.display); // ✅ Debug log
+  });
+
+  // FAQ toggles
+  const questions = document.querySelectorAll('.faq-question');
+  questions.forEach(q => {
+    q.addEventListener('click', () => {
+      q.classList.toggle('open');
     });
+  });
 
-    // FAQ toggles
-    const questions = document.querySelectorAll('.faq-question');
-    questions.forEach(q => {
-      q.addEventListener('click', () => {
-        q.classList.toggle('open');
-      });
-    });
+  // Dark mode toggle
+  document.getElementById('darkModeToggle').addEventListener('click', function () {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+  });
 
-    // Dark mode
-    document.getElementById('darkModeToggle').addEventListener('click', function () {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    });
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+  }
 
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
-    }
+  // Auth check
+  if (!localStorage.getItem("isLoggedIn")) {
+    window.location.href = "login.html";
+  }
 
-    // Auth check
-    if (!localStorage.getItem("isLoggedIn")) {
-      window.location.href = "login.html";
-    }
+  function logout() {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "login.html";
+  }
 
-    function logout() {
-      localStorage.removeItem("isLoggedIn");
-      window.location.href = "login.html";
-    }
+  // Cookie Consent
+  const cookieConsent = document.getElementById('cookieConsent');
+  const acceptBtn = document.getElementById('acceptCookies');
 
-    // Cookie Consent
-    const cookieConsent = document.getElementById('cookieConsent');
-    const acceptBtn = document.getElementById('acceptCookies');
+  if (localStorage.getItem('cookiesAccepted') === 'true') {
+    cookieConsent.style.display = 'none';
+  }
 
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-      cookieConsent.style.display = 'none';
-    }
-
-    acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookiesAccepted', 'true');
-      cookieConsent.style.display = 'none';
-    });
-  </script>
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    cookieConsent.style.display = 'none';
+  });
+</script>
 
   <!-- ✅ Cookie Consent Banner -->
   <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
