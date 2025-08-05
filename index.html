@@ -70,5 +70,142 @@
       cookieConsent.style.display = 'none';
     });
   </script>
+  <!-- Chatbot Styles -->
+<style>
+  #chatbotToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #008080;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  #chatbox {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    max-height: 400px;
+    background: white;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    display: none;
+    flex-direction: column;
+    z-index: 1001;
+    overflow-y: auto;
+  }
+
+  #chatbox h4 {
+    margin-top: 0;
+    color: #008080;
+  }
+
+  .faq-question {
+    margin: 10px 0;
+    font-weight: 600;
+    cursor: pointer;
+    color: #006666;
+  }
+
+  .faq-answer {
+    font-size: 14px;
+    margin-bottom: 12px;
+    display: none;
+  }
+
+  .faq-question.open + .faq-answer {
+    display: block;
+  }
+
+  body.dark-mode #chatbox {
+    background: #1e293b;
+    color: #f1f5f9;
+  }
+
+  body.dark-mode .faq-question {
+    color: #38b2ac;
+  }
+
+  body.dark-mode .faq-answer {
+    color: #cbd5e1;
+  }
+</style>
+
+<!-- Floating Button -->
+<button id="chatbotToggle">💬</button>
+
+<!-- Chatbox -->
+<div id="chatbox">
+  <h4>Help / FAQ</h4>
+
+  <div class="faq-item">
+    <div class="faq-question">Where is my cashback?</div>
+    <div class="faq-answer">Cashback may take 1 to 3 months to appear depending on retailer confirmation cycles.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Why is cashback delayed?</div>
+    <div class="faq-answer">Retailers confirm cashback after returns windows close or transaction validation. This is standard across platforms.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How do loyalty tiers work?</div>
+    <div class="faq-answer">You earn Bronze, Silver or Gold status based on total cashback accumulated. Higher tiers may offer future perks.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Why is there a fee?</div>
+    <div class="faq-answer">We charge a small fee to combine all your cashback apps in one place, saving you time and effort tracking multiple platforms.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Why consolidate cashback?</div>
+    <div class="faq-answer">Many users lose out on cashback due to forgotten apps or login issues. Cashtraq solves this by centralising everything.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">How do I sign up?</div>
+    <div class="faq-answer">Use your email and a secure password to register. Make sure your email is accessible for account recovery.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">I can't log in – help!</div>
+    <div class="faq-answer">Try resetting your password. If needed, email support@cashtraq.co.uk for help regaining access.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Why is profile info important?</div>
+    <div class="faq-answer">It helps us track cashback correctly and keep you updated. Update your details anytime in your profile tab.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">Is my data secure?</div>
+    <div class="faq-answer">Yes — we use encryption and never sell your information. Your data is safe with us.</div>
+  </div>
+</div>
+
+<!-- Chatbot JavaScript -->
+<script>
+  document.getElementById('chatbotToggle').addEventListener('click', function () {
+    const chatbox = document.getElementById('chatbox');
+    chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  const questions = document.querySelectorAll('.faq-question');
+  questions.forEach(q => {
+    q.addEventListener('click', () => {
+      q.classList.toggle('open');
+    });
+  });
+</script>
 </body>
 </html>
