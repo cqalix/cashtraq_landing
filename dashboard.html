@@ -79,7 +79,7 @@
 
 <body>
   <div class="page-wrapper">
-    <!-- 🌙 Dark mode toggle button -->
+    <!-- 🌙 Dark mode toggle -->
     <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
 
     <div class="container">
@@ -126,7 +126,7 @@
     </footer>
   </div>
 
-  <!-- ✅ Floating Chatbot Button -->
+  <!-- ✅ Chatbot Button -->
   <button id="chatbotToggle">💬</button>
 
   <!-- ✅ Chatbox -->
@@ -154,35 +154,23 @@
     <div class="faq-item"><div class="faq-question">Is my data secure?</div><div class="faq-answer">Yes. We use secure storage, encryption, and never sell your data to third parties.</div></div>
   </div>
 
-  <!-- ✅ Chatbot JS -->
+  <!-- ✅ JS Scripts -->
   <script>
+    // Chatbot toggle
     document.getElementById('chatbotToggle').addEventListener('click', function () {
       const chatbox = document.getElementById('chatbox');
       chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
     });
 
+    // FAQ toggles
     const questions = document.querySelectorAll('.faq-question');
     questions.forEach(q => {
       q.addEventListener('click', () => {
         q.classList.toggle('open');
       });
     });
-  </script>
 
-  <!-- ✅ Auth persistence -->
-  <script>
-    if (!localStorage.getItem("isLoggedIn")) {
-      window.location.href = "login.html";
-    }
-
-    function logout() {
-      localStorage.removeItem("isLoggedIn");
-      window.location.href = "login.html";
-    }
-  </script>
-
-  <!-- ✅ Dark mode script -->
-  <script>
+    // Dark mode
     document.getElementById('darkModeToggle').addEventListener('click', function () {
       document.body.classList.toggle('dark-mode');
       localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
@@ -191,17 +179,18 @@
     if (localStorage.getItem('darkMode') === 'true') {
       document.body.classList.add('dark-mode');
     }
-  </script>
 
-  <!-- ✅ Cookie Consent -->
-  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our 
-      <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.
-    </span>
-    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
-  </div>
+    // Auth check
+    if (!localStorage.getItem("isLoggedIn")) {
+      window.location.href = "login.html";
+    }
 
-  <script>
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "login.html";
+    }
+
+    // Cookie Consent
     const cookieConsent = document.getElementById('cookieConsent');
     const acceptBtn = document.getElementById('acceptCookies');
 
@@ -214,5 +203,13 @@
       cookieConsent.style.display = 'none';
     });
   </script>
+
+  <!-- ✅ Cookie Consent Banner -->
+  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
+    <span>We use cookies to improve your experience. By using our site, you accept our 
+      <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
+  </div>
 </body>
 </html>
