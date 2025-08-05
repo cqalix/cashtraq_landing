@@ -49,52 +49,67 @@ html, body {
 }
 
 /* For policy pages */
+/* 🛠 Style matching for policy pages (privacy + terms) */
+
+/* LIGHT MODE */
 .container.page-content {
   max-width: 800px;
   width: 90%;
+  padding: 3rem 2rem;
   text-align: left;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 3rem 2rem;
+  background: white;
+  color: #003c3c;
+}
+
+.container.page-content h1,
+.container.page-content h2,
+.container.page-content h3,
+.container.page-content strong {
+  color: #003c3c;
+  text-align: left;
 }
 
 .container.page-content p,
-.container.page-content li,
-.container.page-content h1,
-.container.page-content h2 {
-  text-align: justify;
-  line-height: 1.6;
-  color: #003c3c;
-  margin-bottom: 1rem;
-}
-
-.page-content {
-  text-align: justify;
-  align-items: flex-start;
-}
-
-.page-content h1,
-.page-content h2,
-.page-content h3 {
-  text-align: left;
-  margin-bottom: 1rem;
-}
-
-.page-content p {
+.container.page-content li {
   text-align: justify;
   text-align-last: left;
-}
-
-/* Typography */
-h1, h2 {
-  color: #008080;
-  margin-bottom: 1rem;
-}
-
-p {
-  margin: 1rem 0;
-  font-size: 1rem;
+  line-height: 1.6;
   color: #333;
+}
+
+.container.page-content a {
+  color: #00796b;
+  text-decoration: underline;
+}
+
+.container.page-content a:hover {
+  color: #004d40;
+}
+
+/* DARK MODE */
+body.dark-mode .container.page-content {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+body.dark-mode .container.page-content p,
+body.dark-mode .container.page-content li,
+body.dark-mode .container.page-content h1,
+body.dark-mode .container.page-content h2,
+body.dark-mode .container.page-content h3,
+body.dark-mode .container.page-content strong {
+  color: #e2e8f0;
+}
+
+body.dark-mode .container.page-content a {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
+body.dark-mode .container.page-content a:hover {
+  color: #38bdf8;
 }
 
 /* Forms */
