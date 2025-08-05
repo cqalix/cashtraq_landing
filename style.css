@@ -423,3 +423,29 @@ body.dark-mode .faq-question {
 body.dark-mode .faq-answer {
   color: #cbd5e1;
 }
+/* ✅ Privacy Page Specific Fix */
+.privacy-page {
+  padding: 5rem 2rem 3rem !important;
+  margin-top: 3rem !important;
+}
+
+/* Dark mode fix for Privacy page */
+body.dark-mode .privacy-page {
+  padding: 5rem 2rem 3rem !important;
+  margin-top: 3rem !important;
+  background: #1e293b;
+  color: #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .privacy-page h1,
+body.dark-mode .privacy-page h2,
+body.dark-mode .privacy-page h3 {
+  color: #f8fafc;
+}
+
+body.dark-mode .privacy-page p,
+body.dark-mode .privacy-page li {
+  color: #cbd5e1;
+}
