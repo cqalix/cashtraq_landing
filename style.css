@@ -1,3 +1,4 @@
+/* Base styles */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -10,7 +11,20 @@ body {
   min-height: 100vh;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .container {
+  flex: 1;
   text-align: center;
   max-width: 400px;
   width: 90%;
@@ -18,6 +32,10 @@ body {
   padding: 2.5rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (min-width: 600px) {
@@ -30,16 +48,44 @@ body {
   padding: 3rem 2rem;
 }
 
-.logo img,
-.logo {
-  width: 160px;
+/* For policy pages */
+.container.page-content {
+  max-width: 800px;
+  width: 90%;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 3rem 2rem;
+}
+
+.container.page-content p,
+.container.page-content li,
+.container.page-content h1,
+.container.page-content h2 {
+  text-align: justify;
+  line-height: 1.6;
+  color: #003c3c;
   margin-bottom: 1rem;
 }
 
-.logo.small {
-  width: 120px;
+.page-content {
+  text-align: justify;
+  align-items: flex-start;
 }
 
+.page-content h1,
+.page-content h2,
+.page-content h3 {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.page-content p {
+  text-align: justify;
+  text-align-last: left;
+}
+
+/* Typography */
 h1, h2 {
   color: #008080;
   margin-bottom: 1rem;
@@ -51,6 +97,7 @@ p {
   color: #333;
 }
 
+/* Forms */
 form {
   display: flex;
   flex-direction: column;
@@ -65,6 +112,11 @@ input {
   font-size: 1rem;
 }
 
+input::placeholder {
+  color: #888;
+}
+
+/* Buttons */
 .btn {
   background: #008080;
   color: white;
@@ -112,76 +164,7 @@ input {
   margin: 1.5rem 0;
 }
 
-/* 🔥 DARK MODE (Slate 800 + Slate 600 Theme) */
-body.dark-mode {
-  background: #1e293b; /* Slate 800 */
-  color: #f1f5f9;       /* Light text for body */
-}
-
-body.dark-mode .container {
-  background: #334155; /* Slate 700 */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  color: #e0e6f0; /* lighter text for container */
-}
-
-body.dark-mode p {
-  color: #cbd5e1; /* lighter gray for paragraphs */
-}
-
-body.dark-mode h1, 
-body.dark-mode h2, 
-body.dark-mode h3 {
-  color: #f0f9ff; /* very light for headings */
-}
-
-body.dark-mode input {
-  background: #475569; /* Slate 600 */
-  color: #f1f5f9;
-  border: 1px solid #64748b; /* Slate 500 */
-}
-
-body.dark-mode input::placeholder {
-  color: #cbd5e1; /* Slate 300 */
-}
-
-body.dark-mode .btn {
-  background: #0f172a; /* Deep Slate/Navy */
-  color: #f1f5f9;
-}
-
-body.dark-mode .btn:hover {
-  background: #1e293b; /* Slate 800 */
-}
-
-body.dark-mode .btn.secondary {
-  background: #475569; /* Slate 600 */
-  color: #e2e8f0;
-}
-
-body.dark-mode .btn.secondary:hover {
-  background: #64748b; /* Slate 500 */
-}
-
-/* Dark mode adjustments for retailer cards */
-body.dark-mode .retailer-card {
-  background: #475569; /* Lighter Slate 600 */
-  color: #e0e6f0; /* lighter text for readability */
-}
-
-body.dark-mode .retailer-card h3,
-body.dark-mode .retailer-card p {
-  color: #f0f9ff; /* very light for headings and text */
-}
-
-/* Dark mode footer links */
-body.dark-mode footer a {
-  color: #a3c9c9; /* Lighter teal-ish color for better contrast */
-  text-decoration: underline;
-}
-
-body.dark-mode footer a:hover {
-  color: #7bb4b4; /* Slightly darker on hover */
-}
+/* Footer */
 footer {
   text-align: center;
   padding: 1rem;
@@ -202,7 +185,7 @@ footer a:hover {
   color: #005f5f;
 }
 
-/* Cookie consent styles */
+/* Cookie consent */
 #cookieConsent {
   position: fixed;
   bottom: 1rem;
@@ -237,82 +220,29 @@ footer a:hover {
   background: #006666;
 }
 
-/* Dark mode cookie banner */
-body.dark-mode #cookieConsent {
-  background: #1e293b;
-  color: #f1f5f9;
-}
-
-body.dark-mode #cookieConsent a {
-  color: #cbd5e1;
-}
-
-body.dark-mode #acceptCookies {
-  background: #334155;
-}
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.page-wrapper {
+/* Retailer cards */
+.retailer-card {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  /* Left-align and justify content for policy pages */
-.container.page-content {
-  max-width: 800px;
-  width: 90%;
-  text-align: left;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 3rem 2rem;
+  justify-content: space-between;
+  background: #e0f2f1;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.container.page-content p,
-.container.page-content li,
-.container.page-content h1,
-.container.page-content h2 {
-  text-align: justify;
-  line-height: 1.6;
-  color: #003c3c;
+.retailer-card img {
+  width: 60px;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
 }
 
-body.dark-mode .container.page-content p,
-body.dark-mode .container.page-content li,
-body.dark-mode .container.page-content h1,
-body.dark-mode .container.page-content h2 {
-  color: #e2e8f0;
+.retailer-card div {
+  flex-grow: 1;
 }
 
-  justify-content: center;
-}
-.page-content {
-  text-align: justify;
-  align-items: flex-start;
-}
-.page-content h1,
-.page-content h2,
-.page-content h3 {
-  text-align: left;
-}
-
-.page-content p {
-  text-align: justify;
-  text-align-last: left; /* This makes the final line of justified text left-aligned */
-}
-
-
-
-/* ✅ Chatbot Styles */
+/* Chatbot */
 #chatbotToggle {
   position: fixed;
   bottom: 20px;
@@ -365,6 +295,87 @@ body.dark-mode .container.page-content h2 {
 
 .faq-question.open + .faq-answer {
   display: block;
+}
+
+/* 🌙 Dark Mode Styles */
+body.dark-mode {
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+body.dark-mode .container {
+  background: #334155;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  color: #e0e6f0;
+}
+
+body.dark-mode p {
+  color: #cbd5e1;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #f0f9ff;
+}
+
+body.dark-mode input {
+  background: #475569;
+  color: #f1f5f9;
+  border: 1px solid #64748b;
+}
+
+body.dark-mode input::placeholder {
+  color: #cbd5e1;
+}
+
+body.dark-mode .btn {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+body.dark-mode .btn:hover {
+  background: #1e293b;
+}
+
+body.dark-mode .btn.secondary {
+  background: #475569;
+  color: #e2e8f0;
+}
+
+body.dark-mode .btn.secondary:hover {
+  background: #64748b;
+}
+
+body.dark-mode .retailer-card {
+  background: #475569;
+  color: #e0e6f0;
+}
+
+body.dark-mode .retailer-card h3,
+body.dark-mode .retailer-card p {
+  color: #f0f9ff;
+}
+
+body.dark-mode footer a {
+  color: #a3c9c9;
+}
+
+body.dark-mode footer a:hover {
+  color: #7bb4b4;
+}
+
+body.dark-mode #cookieConsent {
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+body.dark-mode #cookieConsent a {
+  color: #cbd5e1;
+}
+
+body.dark-mode #acceptCookies {
+  background: #334155;
 }
 
 body.dark-mode #chatbox {
