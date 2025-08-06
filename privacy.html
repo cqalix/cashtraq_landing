@@ -120,8 +120,10 @@
     </footer>
   </div>
 
-  <!-- ✅ Floating Chatbot Button -->
-  <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
+  <!-- ✅ Chatbot Toggle Button -->
+  <button id="chatbotToggle">
+    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" style="width: 32px; height: 32px;" />
+  </button>
 
   <!-- ✅ Chatbot -->
   <div id="chatbox">
@@ -185,18 +187,18 @@
 
     // Cookie Consent
     document.addEventListener("DOMContentLoaded", function () {
-  const cookieConsent = document.getElementById('cookieConsent');
-  const acceptBtn = document.getElementById('acceptCookies');
+      const cookieConsent = document.getElementById('cookieConsent');
+      const acceptBtn = document.getElementById('acceptCookies');
 
-  if (localStorage.getItem('cookiesAccepted') === 'true') {
-    cookieConsent.style.display = 'none';
-  }
+      if (localStorage.getItem('cookiesAccepted') === 'true') {
+        cookieConsent.style.display = 'none';
+      }
 
-  acceptBtn.addEventListener('click', () => {
-    localStorage.setItem('cookiesAccepted', 'true');
-    cookieConsent.style.display = 'none';
-  });
-});
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookiesAccepted', 'true');
+        cookieConsent.style.display = 'none';
+      });
+    });
   </script>
 </body>
 </html>
