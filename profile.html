@@ -151,7 +151,10 @@
 
   <!-- Scripts -->
  <script>
-  // 🌙 Dark mode toggle
+if (!localStorage.getItem("isLoggedIn")) {
+    window.location.href = "login.html";
+  }
+   // 🌙 Dark mode toggle
   const toggleBtn = document.getElementById('darkModeToggle');
   toggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
@@ -169,6 +172,7 @@
   }
 
   // 🍪 Cookie consent
+  document.addEventListener("DOMContentLoaded", function () {
   const cookieConsent = document.getElementById('cookieConsent');
   const acceptBtn = document.getElementById('acceptCookies');
 
@@ -180,6 +184,7 @@
     localStorage.setItem('cookiesAccepted', 'true');
     cookieConsent.style.display = 'none';
   });
+});
 
   // 💬 Chatbot toggle with logging
   document.getElementById('chatbotToggle').addEventListener('click', function () {
