@@ -78,7 +78,7 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- 🌙 Dark mode toggle button -->
+    <!-- 🌙 Dark mode toggle -->
     <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
 
     <div class="container">
@@ -144,9 +144,17 @@
     <div class="faq-item"><div class="faq-question">Is my data secure?</div><div class="faq-answer">Yes. We use secure storage, encryption, and never sell your data to third parties.</div></div>
   </div>
 
+  <!-- ✅ Cookie Consent Banner -->
+  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
+    <span>We use cookies to improve your experience. By using our site, you accept our 
+      <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
+  </div>
+
   <!-- ✅ Scripts -->
   <script>
-    // Dark mode toggle
+    // Dark mode
     document.getElementById('darkModeToggle').addEventListener('click', function () {
       document.body.classList.toggle('dark-mode');
       localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
@@ -156,7 +164,7 @@
       document.body.classList.add('dark-mode');
     }
 
-    // Signup logic
+    // Signup handler
     function handleSignup(e) {
       e.preventDefault();
       const consentCheckbox = document.getElementById('agreeTerms');
@@ -168,13 +176,13 @@
       window.location.href = 'dashboard.html';
     }
 
-    // Chatbot logic
+    // Chatbot toggle
     document.getElementById('chatbotToggle').addEventListener('click', function () {
       const chatbox = document.getElementById('chatbox');
       chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
-console.log('Chatbot toggled on signup page. Current state:', chatbox.style.display);
     });
 
+    // FAQ toggles
     const questions = document.querySelectorAll('.faq-question');
     questions.forEach(q => {
       q.addEventListener('click', () => {
@@ -182,7 +190,7 @@ console.log('Chatbot toggled on signup page. Current state:', chatbox.style.disp
       });
     });
 
-    // Cookie consent logic
+    // Cookie banner
     const cookieConsent = document.getElementById('cookieConsent');
     const acceptBtn = document.getElementById('acceptCookies');
 
@@ -195,13 +203,5 @@ console.log('Chatbot toggled on signup page. Current state:', chatbox.style.disp
       cookieConsent.style.display = 'none';
     });
   </script>
-
-  <!-- ✅ Cookie Consent Banner -->
-  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our 
-      <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.
-    </span>
-    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
-  </div>
 </body>
 </html>
