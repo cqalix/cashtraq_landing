@@ -49,14 +49,11 @@ html, body {
 }
 
 /* For policy pages */
-/* 🛠 Style matching for policy pages (privacy + terms) */
-
-/* LIGHT MODE */
 .container.page-content {
   max-width: 800px;
   width: 90%;
-  padding: 4rem 2rem 3rem;  /* 🟢 Added more top padding */
-  margin-top: 2rem;         /* 🟢 Added spacing from top of page */
+  padding: 4rem 2rem 3rem;
+  margin-top: 2rem;
   text-align: left;
   align-items: flex-start;
   justify-content: flex-start;
@@ -95,11 +92,11 @@ html, body {
 
 /* DARK MODE */
 body.dark-mode .container.page-content {
-  background: #1e293b; /* Dark background */
-  color: #e2e8f0;       /* Light text */
+  background: #1e293b;
+  color: #e2e8f0;
   border-radius: 1rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  padding: 4rem 2rem 3rem; /* 🟢 Match spacing in dark mode */
+  padding: 4rem 2rem 3rem;
   margin-top: 2rem;
 }
 
@@ -433,16 +430,6 @@ body.dark-mode .btn.secondary:hover {
   background: #64748b;
 }
 
-body.dark-mode .retailer-card {
-  background: #475569;
-  color: #e0e6f0;
-}
-
-body.dark-mode .retailer-card h3,
-body.dark-mode .retailer-card p {
-  color: #f0f9ff;
-}
-
 body.dark-mode footer a {
   color: #a3c9c9;
 }
@@ -476,13 +463,13 @@ body.dark-mode .faq-question {
 body.dark-mode .faq-answer {
   color: #cbd5e1;
 }
+
 /* ✅ Privacy Page Specific Fix */
 .privacy-page {
   padding: 5rem 2rem 3rem !important;
   margin-top: 3rem !important;
 }
 
-/* Dark mode fix for Privacy page */
 body.dark-mode .privacy-page {
   padding: 5rem 2rem 3rem !important;
   margin-top: 3rem !important;
@@ -500,71 +487,5 @@ body.dark-mode .privacy-page h3 {
 
 body.dark-mode .privacy-page p,
 body.dark-mode .privacy-page li {
-  color: #cbd5e1;
-}
-/* ✅ Updated Retailer Cards (Matching Home/Dashboard Style) */
-.retailer-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #334155;
-  border-radius: 1rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: background 0.3s ease;
-}
-
-.retailer-card:hover {
-  background: #3b4759;
-}
-
-.retailer-info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.retailer-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: contain;
-  background: white;
-  padding: 4px;
-}
-
-.retailer-info h4 {
-  margin: 0;
-  color: #ffffff;
-}
-
-.retailer-info p {
-  margin: 0;
-  color: #cbd5e1;
-  font-size: 0.9rem;
-}
-
-.favourite-btn {
-  background: #0f172a;
-  border: none;
-  color: white;
-  font-size: 20px;
-  border-radius: 10px;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-}
-
-/* Dark mode updates (fallback fix if needed) */
-body.dark-mode .retailer-card {
-  background: #475569;
-}
-
-body.dark-mode .retailer-info h4 {
-  color: #f0f9ff;
-}
-
-body.dark-mode .retailer-info p {
   color: #cbd5e1;
 }
