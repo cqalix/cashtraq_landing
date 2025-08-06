@@ -141,15 +141,19 @@
     });
 
     // Cookie consent logic
-    const cookieConsent = document.getElementById('cookieConsent');
-    const acceptBtn = document.getElementById('acceptCookies');
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-      cookieConsent.style.display = 'none';
-    }
-    acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookiesAccepted', 'true');
-      cookieConsent.style.display = 'none';
-    });
+    document.addEventListener("DOMContentLoaded", function () {
+  const cookieConsent = document.getElementById('cookieConsent');
+  const acceptBtn = document.getElementById('acceptCookies');
+
+  if (localStorage.getItem('cookiesAccepted') === 'true') {
+    cookieConsent.style.display = 'none';
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    cookieConsent.style.display = 'none';
+  });
+});
   </script>
 
   <!-- Chatbot Styles -->
