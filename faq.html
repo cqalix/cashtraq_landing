@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Help / FAQ - Cashtraq</title>
   <link rel="stylesheet" href="style.css" />
-
   <style>
     #chatbotToggle {
       position: fixed;
@@ -88,48 +87,51 @@
   <!-- 🌙 Dark Mode Toggle -->
   <button id="darkModeToggle" class="btn" style="position: fixed; top: 1rem; right: 1rem;">🌓</button>
 
-  <div class="container page-content">
-    <h1>Cashtraq Help Assistant</h1>
+  <!-- ✅ Wrapper -->
+  <div class="page-wrapper">
+    <div class="container page-content">
+      <h1>Cashtraq Help Assistant</h1>
 
-    <h2>Where is my cashback?</h2>
-    <p>Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</p>
+      <h2>Where is my cashback?</h2>
+      <p>Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</p>
 
-    <h2>Why hasn’t my cashback tracked?</h2>
-    <p>Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer.</p>
+      <h2>Why hasn’t my cashback tracked?</h2>
+      <p>Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer.</p>
 
-    <h2>How long does cashback take to confirm?</h2>
-    <p>Retailers confirm cashback within a few days to 3 months, depending on return policies and transaction types.</p>
+      <h2>How long does cashback take to confirm?</h2>
+      <p>Retailers confirm cashback within a few days to 3 months, depending on return policies and transaction types.</p>
 
-    <h2>How do loyalty tiers work?</h2>
-    <p>We offer Bronze, Silver, and Gold tiers based on total cashback earned. More cashback = higher tier and better perks in the future.</p>
+      <h2>How do loyalty tiers work?</h2>
+      <p>We offer Bronze, Silver, and Gold tiers based on total cashback earned. More cashback = higher tier and better perks in the future.</p>
 
-    <h2>Why is there a fee to use Cashtraq?</h2>
-    <p>We charge a small fee to consolidate cashback from multiple platforms into one app, saving you time and avoiding missed earnings.</p>
+      <h2>Why is there a fee to use Cashtraq?</h2>
+      <p>We charge a small fee to consolidate cashback from multiple platforms into one app, saving you time and avoiding missed earnings.</p>
 
-    <h2>Why consolidate cashback in one app?</h2>
-    <p>Studies show users lose cashback by forgetting logins or not checking multiple apps. Cashtraq keeps it all in one place.</p>
+      <h2>Why consolidate cashback in one app?</h2>
+      <p>Studies show users lose cashback by forgetting logins or not checking multiple apps. Cashtraq keeps it all in one place.</p>
 
-    <h2>How do I sign up?</h2>
-    <p>Just enter your email and a password. Use a valid email so we can send updates and help you recover your account.</p>
+      <h2>How do I sign up?</h2>
+      <p>Just enter your email and a password. Use a valid email so we can send updates and help you recover your account.</p>
 
-    <h2>I can’t log in – what should I do?</h2>
-    <p>Reset your password. Still stuck? Contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</p>
+      <h2>I can’t log in – what should I do?</h2>
+      <p>Reset your password. Still stuck? Contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</p>
 
-    <h2>Why is profile info important?</h2>
-    <p>Your profile lets us match cashback and keep your details up to date. You can update these in the app any time.</p>
+      <h2>Why is profile info important?</h2>
+      <p>Your profile lets us match cashback and keep your details up to date. You can update these in the app any time.</p>
 
-    <h2>Is my data secure?</h2>
-    <p>Yes. We use secure storage, encryption, and never sell your data to third parties.</p>
+      <h2>Is my data secure?</h2>
+      <p>Yes. We use secure storage, encryption, and never sell your data to third parties.</p>
 
-    <p><strong>Still need help?</strong> <a href="mailto:support@cashtraq.co.uk">Contact support@cashtraq.co.uk</a></p>
+      <p><strong>Still need help?</strong> <a href="mailto:support@cashtraq.co.uk">Contact support@cashtraq.co.uk</a></p>
+    </div>
+
+    <!-- ✅ Footer -->
+    <footer style="text-align: center; margin-top: 2rem;">
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms & Conditions</a> |
+      <a href="faq.html">Help / FAQ</a>
+    </footer>
   </div>
-
-  <!-- ✅ Footer -->
-  <footer style="text-align: center; margin-top: 2rem;">
-    <a href="privacy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms & Conditions</a> |
-    <a href="faq.html">Help / FAQ</a>
-  </footer>
 
   <!-- ✅ Cookie Consent Banner -->
   <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
@@ -169,7 +171,7 @@
     <div class="faq-item"><div class="faq-question">Is my data secure?</div><div class="faq-answer">Yes. We use secure storage, encryption, and never sell your data to third parties.</div></div>
   </div>
 
-  <!-- ✅ JavaScript -->
+  <!-- ✅ Scripts -->
   <script>
     // 🌙 Dark Mode
     document.getElementById('darkModeToggle').addEventListener('click', () => {
