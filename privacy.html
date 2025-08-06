@@ -184,17 +184,19 @@
     });
 
     // Cookie Consent
-    const cookieConsent = document.getElementById('cookieConsent');
-    const acceptBtn = document.getElementById('acceptCookies');
+    document.addEventListener("DOMContentLoaded", function () {
+  const cookieConsent = document.getElementById('cookieConsent');
+  const acceptBtn = document.getElementById('acceptCookies');
 
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-      cookieConsent.style.display = 'none';
-    }
+  if (localStorage.getItem('cookiesAccepted') === 'true') {
+    cookieConsent.style.display = 'none';
+  }
 
-    acceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookiesAccepted', 'true');
-      cookieConsent.style.display = 'none';
-    });
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    cookieConsent.style.display = 'none';
+  });
+});
   </script>
 </body>
 </html>
