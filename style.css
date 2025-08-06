@@ -457,3 +457,69 @@ body.dark-mode .privacy-page p,
 body.dark-mode .privacy-page li {
   color: #cbd5e1;
 }
+/* ✅ Updated Retailer Cards (Matching Home/Dashboard Style) */
+.retailer-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #334155;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
+
+.retailer-card:hover {
+  background: #3b4759;
+}
+
+.retailer-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.retailer-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: white;
+  padding: 4px;
+}
+
+.retailer-info h4 {
+  margin: 0;
+  color: #ffffff;
+}
+
+.retailer-info p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+}
+
+.favourite-btn {
+  background: #0f172a;
+  border: none;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+/* Dark mode updates (fallback fix if needed) */
+body.dark-mode .retailer-card {
+  background: #475569;
+}
+
+body.dark-mode .retailer-info h4 {
+  color: #f0f9ff;
+}
+
+body.dark-mode .retailer-info p {
+  color: #cbd5e1;
+}
