@@ -5,9 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Help / FAQ - Cashtraq</title>
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    #chatbotToggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #008080;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    #chatbox {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      max-height: 450px;
+      background: white;
+      color: #333;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      padding: 16px;
+      display: none;
+      flex-direction: column;
+      z-index: 1001;
+      overflow-y: auto;
+    }
+
+    #chatbox h4 {
+      margin-top: 0;
+      color: #008080;
+    }
+
+    .faq-question {
+      margin: 10px 0;
+      font-weight: 600;
+      cursor: pointer;
+      color: #006666;
+    }
+
+    .faq-answer {
+      font-size: 14px;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    .faq-question.open + .faq-answer {
+      display: block;
+    }
+
+    body.dark-mode #chatbox {
+      background: #1e293b;
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .faq-question {
+      color: #38b2ac;
+    }
+
+    body.dark-mode .faq-answer {
+      color: #cbd5e1;
+    }
+  </style>
 </head>
+
 <body>
-  <!-- ✅ Dark mode toggle button -->
+  <!-- 🌙 Dark Mode Toggle -->
   <button id="darkModeToggle" class="btn" style="position: fixed; top: 1rem; right: 1rem;">🌓</button>
 
   <div class="container page-content">
@@ -46,8 +116,25 @@
     <p><strong>Still need help?</strong> <a href="mailto:support@cashtraq.co.uk">Contact support@cashtraq.co.uk</a></p>
   </div>
 
-  <!-- ✅ Chatbot Toggle Button -->
-  <button id="chatbotToggle">💬</button>
+  <!-- ✅ Footer -->
+  <footer style="text-align: center; margin-top: 2rem;">
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms & Conditions</a> |
+    <a href="faq.html">Help / FAQ</a>
+  </footer>
+
+  <!-- ✅ Cookie Consent Banner -->
+  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
+    <span>We use cookies to improve your experience. By using our site, you accept our 
+      <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
+  </div>
+
+  <!-- ✅ Floating Chatbot Button -->
+  <button id="chatbotToggle" aria-label="Open Chatbot">
+    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
+  </button>
 
   <!-- ✅ Floating Chatbox -->
   <div id="chatbox">
@@ -61,28 +148,42 @@
     <div class="faq-item"><div class="faq-question">How do I sign up?</div><div class="faq-answer">Use your email and a password. Simple.</div></div>
   </div>
 
-  <!-- ✅ JavaScript for dark mode + chatbot toggle -->
+  <!-- ✅ Scripts -->
   <script>
-    // ✅ Dark mode toggle
+    // 🌙 Dark mode
     const toggleBtn = document.getElementById('darkModeToggle');
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
     });
-
     if (localStorage.getItem('darkMode') === 'true') {
       document.body.classList.add('dark-mode');
     }
 
-    // ✅ Chatbot toggle
+    // 💬 Chatbot toggle
     document.getElementById('chatbotToggle').addEventListener('click', function () {
       const chatbox = document.getElementById('chatbox');
       chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
     });
 
-    // FAQ toggles
+    // ❓ Expand/collapse FAQ
     document.querySelectorAll('.faq-question').forEach(q => {
       q.addEventListener('click', () => q.classList.toggle('open'));
+    });
+
+    // 🍪 Cookie Consent
+    document.addEventListener("DOMContentLoaded", function () {
+      const cookieConsent = document.getElementById('cookieConsent');
+      const acceptBtn = document.getElementById('acceptCookies');
+
+      if (localStorage.getItem('cookiesAccepted') === 'true') {
+        cookieConsent.style.display = 'none';
+      }
+
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookiesAccepted', 'true');
+        cookieConsent.style.display = 'none';
+      });
     });
   </script>
 </body>
