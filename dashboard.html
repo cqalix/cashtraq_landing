@@ -150,20 +150,49 @@
 
   <!-- ✅ JS Scripts -->
   <script>
-  // ✅ Chatbot toggle (fixed to use 'flex') with console log
-  document.getElementById('chatbotToggle').addEventListener('click', function () {
-    const chatbox = document.getElementById('chatbox');
-    const isVisible = chatbox.style.display === 'flex';
-    chatbox.style.display = isVisible ? 'none' : 'flex';
-    console.log('Toggled chatbox:', chatbox.style.display); // ✅ Debug log
+  // ✅ Load reusable components (navbar, footer, chatbot)
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("components/navbar.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("navbar").innerHTML = data);
+
+    fetch("components/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer").innerHTML = data);
+
+    fetch("components/chatbot.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("chatbot").innerHTML = data);
+
+    // ✅ Cookie Consent
+    const cookieConsent = document.getElementById('cookieConsent');
+    const acceptBtn = document.getElementById('acceptCookies');
+
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+      cookieConsent.style.display = 'none';
+    }
+
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      cookieConsent.style.display = 'none';
+    });
   });
 
-  // FAQ toggles
-  const questions = document.querySelectorAll('.faq-question');
-  questions.forEach(q => {
-    q.addEventListener('click', () => {
-      q.classList.toggle('open');
-    });
+  // ✅ Chatbot toggle (fixed to use 'flex') with console log
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.id === "chatbotToggle") {
+      const chatbox = document.getElementById('chatbox');
+      const isVisible = chatbox.style.display === 'flex';
+      chatbox.style.display = isVisible ? 'none' : 'flex';
+      console.log('Toggled chatbox:', chatbox.style.display); // ✅ Debug log
+    }
+  });
+
+  // FAQ toggles (delegated for dynamic content)
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList.contains('faq-question')) {
+      e.target.classList.toggle('open');
+    }
   });
 
   // Dark mode toggle
@@ -185,19 +214,6 @@
     localStorage.removeItem("isLoggedIn");
     window.location.href = "login.html";
   }
-
-  // Cookie Consent
-  const cookieConsent = document.getElementById('cookieConsent');
-  const acceptBtn = document.getElementById('acceptCookies');
-
-  if (localStorage.getItem('cookiesAccepted') === 'true') {
-    cookieConsent.style.display = 'none';
-  }
-
-  acceptBtn.addEventListener('click', () => {
-    localStorage.setItem('cookiesAccepted', 'true');
-    cookieConsent.style.display = 'none';
-  });
 </script>
 
   <!-- ✅ Cookie Consent Banner -->
