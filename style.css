@@ -150,6 +150,66 @@ body.dark-mode .container.page-content a:hover {
   background: #bfbfbf;
 }
 
+/* FORMS */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+.btn {
+  background: #008080;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: #006666;
+}
+
+.btn:focus {
+  outline: 3px solid #008080;
+  outline-offset: 2px;
+}
+
+.btn.secondary {
+  background: #e0e0e0;
+  color: #003c3c;
+}
+
+.btn.secondary:hover {
+  background: #ccc;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 /* Retailer Card Fixes */
 .retailer-card {
   display: flex;
@@ -250,4 +310,80 @@ body.dark-mode .retailer-card {
 body.dark-mode .retailer-info h4,
 body.dark-mode .retailer-info p {
   color: #f0f9ff;
+}
+
+/* Chatbot Button */
+#chatbotToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #008080;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  padding: 0;
+}
+
+#chatbotToggle img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+#chatbox {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  max-height: 450px;
+  background: white;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  display: none;
+  flex-direction: column;
+  z-index: 1001;
+  overflow-y: auto;
+}
+
+#chatbox h4 {
+  margin-top: 0;
+  color: #008080;
+}
+
+.faq-question {
+  margin: 10px 0;
+  font-weight: 600;
+  cursor: pointer;
+  color: #006666;
+}
+
+.faq-answer {
+  font-size: 14px;
+  margin-bottom: 12px;
+  display: none;
+}
+
+.faq-question.open + .faq-answer {
+  display: block;
+}
+
+body.dark-mode #chatbox {
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+body.dark-mode .faq-question {
+  color: #38b2ac;
+}
+
+body.dark-mode .faq-answer {
+  color: #cbd5e1;
 }
