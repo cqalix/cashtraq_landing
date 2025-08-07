@@ -500,16 +500,11 @@ body.dark-mode .privacy-page li {
 }
 
 .logo-img {
-  width: 80px;
+  width: 100px;
   height: auto;
   margin-bottom: 0.5rem;
 }
 
-.app-title {
-  font-size: 1.5rem;
-  color: #008080;
-  margin: 0;
-}
 
 .tagline {
   color: #008080;
@@ -531,13 +526,8 @@ body.dark-mode .privacy-page li {
   }
 
   .logo-img {
-    width: 100px;
+    width: 120px;
     margin-bottom: 0;
-  }
-
-  .app-title {
-    font-size: 2rem;
-    text-align: left;
   }
 
   .tagline {
