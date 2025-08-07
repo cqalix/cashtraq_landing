@@ -492,15 +492,16 @@ body.dark-mode .privacy-page li {
 /* ✅ Logo + Heading (Mobile-Friendly Layout) */
 .logo-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* stacked on mobile */
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
   text-align: center;
+  gap: 0.5rem; /* adds space between logo and h1 */
 }
 
 .logo-img {
-  width: 100px;
+  width: 150px;
   height: auto;
   margin-bottom: 0.5rem;
 }
@@ -526,10 +527,15 @@ body.dark-mode .privacy-page li {
   }
 
   .logo-img {
-    width: 120px;
+    width: 150px;
     margin-bottom: 0;
   }
-
+  
+.app-title {
+    font-size: 2rem;
+    text-align: left;
+  }
+}
   .tagline {
     font-size: 1.25rem;
   }
