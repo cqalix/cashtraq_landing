@@ -1,3 +1,4 @@
+
 /* Base styles */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -36,6 +37,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 2rem;
 }
 
 @media (min-width: 600px) {
@@ -194,63 +196,7 @@ input::placeholder {
   margin: 1.5rem 0;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.875rem;
-  color: #00796b;
-  background: transparent;
-  margin-top: 2rem;
-}
-
-footer a {
-  text-decoration: none;
-  margin: 0 0.5rem;
-  color: #00796b;
-}
-
-footer a:hover {
-  text-decoration: underline;
-  color: #005f5f;
-}
-
-/* Cookie consent */
-#cookieConsent {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
-  background: #008080;
-  color: white;
-  padding: 1rem;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-}
-
-#cookieConsent a {
-  color: #d1eaea;
-  text-decoration: underline;
-}
-
-#acceptCookies {
-  background: #004d40;
-  border: none;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-#acceptCookies:hover {
-  background: #006666;
-}
-
-/* ✅ Updated Retailer Cards (Matching Home/Dashboard Style) */
+/* Retailer Card Fixes */
 .retailer-card {
   display: flex;
   justify-content: space-between;
@@ -261,286 +207,39 @@ footer a:hover {
   margin-bottom: 1rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: background 0.3s ease;
-}
-
-.retailer-card:hover {
-  background: #3b4759;
+  flex-wrap: nowrap;
 }
 
 .retailer-info {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex: 1;
 }
 
 .retailer-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
   object-fit: contain;
   background: white;
   padding: 4px;
 }
 
-.retailer-info h4 {
-  margin: 0;
-  color: #ffffff;
-}
-
-.retailer-info p {
-  margin: 0;
-  color: #cbd5e1;
-  font-size: 0.9rem;
-}
-
-.favourite-btn {
-  background: #0f172a;
-  border: none;
-  color: white;
-  font-size: 20px;
-  border-radius: 10px;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-}
-
-/* Dark mode updates (fallback fix if needed) */
-body.dark-mode .retailer-card {
-  background: #475569;
-}
-
-body.dark-mode .retailer-info h4 {
-  color: #f0f9ff;
-}
-
-body.dark-mode .retailer-info p {
-  color: #cbd5e1;
-}
-
-/* Chatbot */
-#chatbotToggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #008080;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1000;
-  padding: 0;
-}
-
-#chatbotToggle img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
-
-#chatbox {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 320px;
-  max-height: 450px;
-  background: white;
-  color: #333;
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  display: none;
-  flex-direction: column;
-  z-index: 1001;
-  overflow-y: auto;
-}
-
-#chatbox h4 {
-  margin-top: 0;
-  color: #008080;
-}
-
-.faq-question {
-  margin: 10px 0;
-  font-weight: 600;
-  cursor: pointer;
-  color: #006666;
-}
-
-.faq-answer {
-  font-size: 14px;
-  margin-bottom: 12px;
-  display: none;
-}
-
-.faq-question.open + .faq-answer {
-  display: block;
-}
-
-/* 🌙 Dark Mode Styles */
-body.dark-mode {
-  background: #1e293b;
-  color: #f1f5f9;
-}
-
-body.dark-mode .container {
-  background: #334155;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  color: #e0e6f0;
-}
-
-body.dark-mode p {
-  color: #cbd5e1;
-}
-
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3 {
-  color: #f0f9ff;
-}
-
-body.dark-mode input {
-  background: #475569;
-  color: #f1f5f9;
-  border: 1px solid #64748b;
-}
-
-body.dark-mode input::placeholder {
-  color: #cbd5e1;
-}
-
-body.dark-mode .btn {
-  background: #0f172a;
-  color: #f1f5f9;
-}
-
-body.dark-mode .btn:hover {
-  background: #1e293b;
-}
-
-body.dark-mode .btn.secondary {
-  background: #475569;
-  color: #e2e8f0;
-}
-
-body.dark-mode .btn.secondary:hover {
-  background: #64748b;
-}
-
-body.dark-mode footer a {
-  color: #a3c9c9;
-}
-
-body.dark-mode footer a:hover {
-  color: #7bb4b4;
-}
-
-body.dark-mode #cookieConsent {
-  background: #1e293b;
-  color: #f1f5f9;
-}
-
-body.dark-mode #cookieConsent a {
-  color: #cbd5e1;
-}
-
-body.dark-mode #acceptCookies {
-  background: #334155;
-}
-
-body.dark-mode #chatbox {
-  background: #1e293b;
-  color: #f1f5f9;
-}
-
-body.dark-mode .faq-question {
-  color: #38b2ac;
-}
-
-body.dark-mode .faq-answer {
-  color: #cbd5e1;
-}
-
-/* ✅ Privacy Page Specific Fix */
-.privacy-page {
-  padding: 5rem 2rem 3rem !important;
-  margin-top: 3rem !important;
-}
-
-body.dark-mode .privacy-page {
-  padding: 5rem 2rem 3rem !important;
-  margin-top: 3rem !important;
-  background: #1e293b;
-  color: #e2e8f0;
-  border-radius: 1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-body.dark-mode .privacy-page h1,
-body.dark-mode .privacy-page h2,
-body.dark-mode .privacy-page h3 {
-  color: #f8fafc;
-}
-
-body.dark-mode .privacy-page p,
-body.dark-mode .privacy-page li {
-  color: #cbd5e1;
-}
-/* ✅ Logo + Heading (Mobile-Friendly Layout) */
-.logo-container {
-  display: flex;
-  flex-direction: column; /* stacked on mobile */
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  text-align: center;
-  gap: 0.5rem; /* adds space between logo and h1 */
-}
-
-.logo-img {
-  width: 400px;
-  height: auto;
-  margin-bottom: 0.75rem;
-}
-
-
-.tagline {
-  color: #008080;
-  font-weight: 600;
-  margin-top: 0;
-  text-align: center;
-}
-
-.intro-text {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-/* ✅ Tablet/Desktop Enhancements */
-@media (min-width: 600px) {
-  .logo-container {
+/* Mobile Optimization */
+@media (max-width: 600px) {
+  .retailer-card {
     flex-direction: row;
-    gap: 1rem;
+    align-items: center;
   }
 
-  .logo-img {
-    width: 400px;
-    margin-bottom: 0;
-  }
-  
-.app-title {
-    font-size: 2rem;
-    text-align: left;
-  }
-}
-  .tagline {
-    font-size: 1.25rem;
+  .retailer-info {
+    flex-direction: row;
+    align-items: center;
   }
 
-  .intro-text {
-    font-size: 1rem;
+  .retailer-logo {
+    width: 48px;
+    height: 48px;
   }
 }
