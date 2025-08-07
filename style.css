@@ -129,6 +129,13 @@ body.dark-mode .container.page-content a:hover {
   color: #7dd3fc;
 }
 
+.logo-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 0.75rem;
+}
+
 /* Forms */
 form {
   display: flex;
