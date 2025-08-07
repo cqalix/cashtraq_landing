@@ -106,7 +106,7 @@
     <div class="container retailers">
       <!-- ✅ Logo -->
       <div class="logo-container centered">
-        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" style="height: 60px;" />
       </div>
 
       <!-- ✅ Navigation Tabs -->
@@ -157,7 +157,58 @@
           </div>
         </div>
       </div>
+
+      <!-- ✅ Log Out Button -->
+      <div style="text-align: center; margin-top: 2rem;">
+        <button onclick="logout()" class="btn secondary">Log Out</button>
+      </div>
+
+      <!-- ✅ Footer Links -->
+      <div class="footer-links" style="margin-top: 2rem; text-align: center;">
+        <a href="privacy.html">Privacy Policy</a> |
+        <a href="terms.html">Terms & Conditions</a> |
+        <a href="faq.html">Help / FAQ</a>
+      </div>
+    </div>
+
+    <!-- ✅ Chatbot Button -->
+    <button id="chatbotToggle" aria-label="Open Chatbot" style="position: fixed; bottom: 20px; right: 20px; background-color: #008080; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 28px; cursor: pointer; z-index: 1000;">
+      💬
+    </button>
+
+    <!-- ✅ Chatbox Content -->
+    <div id="chatbox" style="position: fixed; bottom: 90px; right: 20px; width: 320px; max-height: 450px; background: white; color: #333; border-radius: 10px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); padding: 16px; display: none; flex-direction: column; z-index: 1001; overflow-y: auto;">
+      <h4 style="margin-top: 0; color: #008080;">Cashtraq Help Assistant</h4>
+      <div class="faq-item"><div class="faq-question">Where is my cashback?</div><div class="faq-answer">Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</div></div>
+      <div class="faq-item"><div class="faq-question">Why hasn’t my cashback tracked?</div><div class="faq-answer">Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer.</div></div>
+      <div class="faq-item"><div class="faq-question">How long does cashback take to confirm?</div><div class="faq-answer">Retailers confirm cashback in a few days to 3 months depending on return policies.</div></div>
+      <div class="faq-item"><div class="faq-question">How do loyalty tiers work?</div><div class="faq-answer">We offer Bronze, Silver, and Gold tiers based on cashback earned.</div></div>
+      <div class="faq-item"><div class="faq-question">Why is there a fee?</div><div class="faq-answer">We charge a small fee to consolidate cashback platforms into one app, saving you time and money.</div></div>
     </div>
   </div>
+
+  <!-- ✅ Logout Script & Chatbot Toggle -->
+  <script>
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "login.html";
+    }
+
+    document.getElementById('chatbotToggle').addEventListener('click', () => {
+      const chatbox = document.getElementById('chatbox');
+      chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        q.classList.toggle('open');
+      });
+    });
+
+    // Optional: Persist dark mode
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
 </body>
 </html>
