@@ -1,3 +1,4 @@
+<!-- ✅ Retailers Page (Updated) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +6,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <title>Retailers & Offers - Cashtraq</title>
+  <style>
+    .retailer-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .retailer-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 1rem 1.5rem;
+      transition: transform 0.2s;
+    }
+
+    .retailer-card:hover {
+      transform: scale(1.01);
+    }
+
+    .retailer-logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-right: 1.25rem;
+    }
+
+    .retailer-details {
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .retailer-details strong {
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .retailer-details span {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .retailer-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .icon-button {
+      font-size: 1.25rem;
+      background: #f0f0f0;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .icon-button:hover {
+      background: #e0e0e0;
+    }
+
+    .container.retailers {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .logo-container.centered {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo-img {
+      max-width: 150px;
+      height: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-top: 1.5rem;
+    }
+  </style>
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- 🌙 Dark Mode Toggle -->
-    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
-
     <div class="container retailers">
       <!-- ✅ Logo -->
       <div class="logo-container centered">
@@ -27,11 +119,8 @@
       <!-- ✅ Heading -->
       <h2 class="section-heading">Retailers & Offers</h2>
 
-      <!-- ✅ Search Bar -->
-      <input type="text" placeholder="Search retailers..." class="input-field search-retailers" id="searchRetailers" />
-
       <!-- ✅ Retailer Cards -->
-      <div class="retailer-list" id="retailersList">
+      <div class="retailer-list">
         <div class="retailer-card">
           <img src="assets/asda.png" alt="Asda Logo" class="retailer-logo" />
           <div class="retailer-details">
@@ -39,8 +128,8 @@
             <span>Cashback: 5.0%</span>
           </div>
           <div class="retailer-actions">
-            <button class="icon-button favourite-btn">♡</button>
-            <button class="icon-button add-btn">＋</button>
+            <button class="icon-button">&#10084;</button>
+            <button class="icon-button">&#43;</button>
           </div>
         </div>
 
@@ -51,8 +140,8 @@
             <span>Cashback: 3.5%</span>
           </div>
           <div class="retailer-actions">
-            <button class="icon-button favourite-btn">♡</button>
-            <button class="icon-button add-btn">＋</button>
+            <button class="icon-button">&#10084;</button>
+            <button class="icon-button">&#43;</button>
           </div>
         </div>
 
@@ -63,92 +152,12 @@
             <span>Cashback: 2.0%</span>
           </div>
           <div class="retailer-actions">
-            <button class="icon-button favourite-btn">♡</button>
-            <button class="icon-button add-btn">＋</button>
+            <button class="icon-button">&#10084;</button>
+            <button class="icon-button">&#43;</button>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- ✅ Footer -->
-    <footer>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms & Conditions</a> |
-      <a href="faq.html">Help / FAQ</a>
-    </footer>
-
-    <!-- ✅ Cookie Consent -->
-    <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-      <span>We use cookies to improve your experience. By using our site, you accept our 
-        <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.
-      </span>
-      <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
-    </div>
-
-    <!-- ✅ Floating Chatbot -->
-    <div id="chatbot">
-      <button id="chatbotToggle" aria-label="Open Chatbot">
-        <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
-      </button>
-      <div id="chatbox" style="display:none;">
-        <h4>Cashtraq Help Assistant</h4>
-        <!-- FAQ content goes here -->
-      </div>
-    </div>
   </div>
-
-  <!-- ✅ Scripts -->
-  <script>
-    // 🌙 Dark Mode
-    const toggleBtn = document.getElementById('darkModeToggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    });
-    if(localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
-    }
-
-    // ✅ Favourites toggle
-    document.querySelectorAll('.favourite-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.classList.toggle('active');
-        btn.textContent = btn.classList.contains('active') ? '★' : '♡';
-      });
-    });
-
-    // ✅ Search filter
-    const searchInput = document.getElementById('searchRetailers');
-    const retailersList = document.getElementById('retailersList');
-    searchInput.addEventListener('input', () => {
-      const filter = searchInput.value.toLowerCase();
-      const cards = retailersList.getElementsByClassName('retailer-card');
-      Array.from(cards).forEach(card => {
-        const name = card.querySelector('strong').textContent.toLowerCase();
-        card.style.display = name.includes(filter) ? '' : 'none';
-      });
-    });
-
-    // ✅ Cookie Consent
-    document.addEventListener("DOMContentLoaded", () => {
-      const cookieConsent = document.getElementById('cookieConsent');
-      const acceptBtn = document.getElementById('acceptCookies');
-
-      if (localStorage.getItem('cookiesAccepted') === 'true') {
-        cookieConsent.style.display = 'none';
-      }
-
-      acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookieConsent.style.display = 'none';
-      });
-    });
-
-    // ✅ Chatbot
-    document.getElementById('chatbotToggle').addEventListener('click', () => {
-      const chatbox = document.getElementById('chatbox');
-      chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
-    });
-  </script>
 </body>
 </html>
