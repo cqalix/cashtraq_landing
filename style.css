@@ -741,3 +741,12 @@ form .btn {
     display: inline-block;
   }
 }
+/* Mobile: shrink non-form buttons (Home/Profile menu + dark mode toggle if it uses .btn) */
+@media (max-width: 640px) {
+  .container .btn {
+    width: auto;
+    max-width: 90%;
+    min-width: 200px;
+    display: inline-block;
+  }
+}
