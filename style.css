@@ -750,3 +750,15 @@ form .btn {
     display: inline-block;
   }
 }
+/* Mobile: shrink dark mode toggle */
+@media (max-width: 640px) {
+  #darkModeToggle, 
+  .theme-toggle { /* keep both in case of different names */
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    width: auto;
+    min-width: 40px;
+    height: auto;
+  }
+}
