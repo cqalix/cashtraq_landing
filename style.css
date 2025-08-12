@@ -720,3 +720,12 @@ form {
   border: none;
   cursor: pointer;
 }
+/* Mobile optimisation for homepage + profile buttons */
+@media (max-width: 640px) {
+  .btn {
+    width: auto;
+    min-width: 200px;      /* still big enough for a tap target */
+    max-width: 90%;
+    display: inline-block;
+  }
+}
