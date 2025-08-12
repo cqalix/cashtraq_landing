@@ -699,8 +699,8 @@ form {
   width: 100%;
 }
 
-.input-field,
-.btn {
+/* keep inputs as-is */
+.input-field {
   width: 90%;
   max-width: 320px;
   padding: 0.75rem 1rem;
@@ -709,6 +709,18 @@ form {
   font-size: 1rem;
   box-sizing: border-box;
 }
+
+/* only make buttons wide inside forms (e.g., login/signup) */
+form .btn {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
 
 .input-field {
   border: 1px solid #ccc;
