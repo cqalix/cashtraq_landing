@@ -7,72 +7,15 @@
 
   <!-- ✅ Chatbot Styles -->
   <style>
-    #chatbotToggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #008080;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    #chatbox {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 320px;
-      max-height: 450px;
-      background: white;
-      color: #333;
-      border-radius: 10px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      padding: 16px;
-      display: none;
-      flex-direction: column;
-      z-index: 1001;
-      overflow-y: auto;
-    }
-
-    #chatbox h4 {
-      margin-top: 0;
-      color: #008080;
-    }
-
-    .faq-question {
-      margin: 10px 0;
-      font-weight: 600;
-      cursor: pointer;
-      color: #006666;
-    }
-
-    .faq-answer {
-      font-size: 14px;
-      margin-bottom: 12px;
-      display: none;
-    }
-
-    .faq-question.open + .faq-answer {
-      display: block;
-    }
-
-    body.dark-mode #chatbox {
-      background: #1e293b;
-      color: #f1f5f9;
-    }
-
-    body.dark-mode .faq-question {
-      color: #38b2ac;
-    }
-
-    body.dark-mode .faq-answer {
-      color: #cbd5e1;
-    }
+    #chatbotToggle{position:fixed;bottom:20px;right:20px;background-color:#008080;color:#fff;border:none;border-radius:50%;width:60px;height:60px;font-size:28px;cursor:pointer;z-index:1000}
+    #chatbox{position:fixed;bottom:90px;right:20px;width:320px;max-height:450px;background:#fff;color:#333;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.2);padding:16px;display:none;flex-direction:column;z-index:1001;overflow-y:auto}
+    #chatbox h4{margin-top:0;color:#008080}
+    .faq-question{margin:10px 0;font-weight:600;cursor:pointer;color:#006666}
+    .faq-answer{font-size:14px;margin-bottom:12px;display:none}
+    .faq-question.open + .faq-answer{display:block}
+    body.dark-mode #chatbox{background:#1e293b;color:#f1f5f9}
+    body.dark-mode .faq-question{color:#38b2ac}
+    body.dark-mode .faq-answer{color:#cbd5e1}
   </style>
 </head>
 <body>
@@ -80,29 +23,28 @@
     <!-- 🌙 Dark mode toggle -->
     <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
 
-    
     <!-- ✅ Page Content -->
-<div class="container welcome">
-  <div class="logo-container">
-    <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
-  </div>
+    <div class="container welcome">
+      <div class="logo-container">
+        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+      </div>
 
-  <h3 class="tagline">Track it. Stack it. Cashtraq it.</h3>
-  <p class="intro-text">Track your cashback. Maximise your savings. All in one place.</p>
+      <h3 class="tagline">Track it. Stack it. Cashtraq it.</h3>
+      <p class="intro-text">Track your cashback. Maximise your savings. All in one place.</p>
 
-  <!-- ✅ Nav links moved inside container -->
-  <div class="nav-links" style="margin-top: 1.5rem;">
-    <a href="dashboard.html" class="btn secondary">Dashboard</a>
-    <a href="retailers.html" class="btn secondary">Retailers</a>
-    <a href="profile.html" class="btn secondary">Profile</a>
-  </div>
+      <!-- ✅ Nav links moved inside container -->
+      <div class="nav-links" style="margin-top: 1.5rem;">
+        <a href="dashboard.html" class="btn secondary">Dashboard</a>
+        <a href="retailers.html" class="btn secondary">Retailers</a>
+        <a href="profile.html" class="btn secondary">Profile</a>
+      </div>
 
-  <!-- ✅ Auth buttons -->
-  <div class="button-group">
-    <a href="login.html" class="btn">Log In</a>
-    <a href="signup.html" class="btn secondary">Sign Up</a>
-  </div>
-</div>
+      <!-- ✅ Auth buttons -->
+      <div class="button-group">
+        <a href="login.html" class="btn">Log In</a>
+        <a href="signup.html" class="btn secondary">Sign Up</a>
+      </div>
+    </div>
 
     <!-- ✅ Dynamic Footer -->
     <div id="footer"></div>
@@ -117,13 +59,34 @@
   <!-- ✅ Dynamic Chatbot -->
   <div id="chatbot"></div>
 
+  <!-- 🔌 Supabase client (add your URL + anon key) -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script>
+    // Replace with your actual values
+    const SUPABASE_URL = "https://xyxfqdpotxoaptwdhbfp.supabase.co";
+    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5eGZxZHBvdHhvYXB0d2RoYmZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5ODg3MTcsImV4cCI6MjA3MDU2NDcxN30.j_tkI5CMb_vtOx_LEtj0Odo7b4GiahTGsbFCHSbNxcM";
+
+    window.supabase = window.supabase || {};
+    window.supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+    // TEMP: sign in anonymously so you can test right away (remove once email login is wired)
+    (async () => {
+      const { data: { user } } = await window.supabaseClient.auth.getUser();
+      if (!user) { await window.supabaseClient.auth.signInAnonymously(); }
+      console.log("Supabase ready. User:", (await window.supabaseClient.auth.getUser()).data.user?.id);
+    })();
+  </script>
+
   <!-- ✅ Combined Script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       // Load navbar, footer, and chatbot dynamically
       fetch("components/navbar.html")
         .then(res => res.text())
-        .then(data => document.getElementById("navbar").innerHTML = data);
+        .then(data => {
+          const el = document.getElementById("navbar");
+          if (el) el.innerHTML = data;
+        });
 
       fetch("components/footer.html")
         .then(res => res.text())
