@@ -4,16 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- ✅ Page Title -->
   <title>Profile - Cashtraq</title>
-
-  <!-- ✅ Favicon -->
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-
-  <!-- ✅ Styles -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- ✅ Chatbot Styles -->
   <style>
     #chatbotToggle{
       position:fixed; bottom:20px; right:20px; background:#008080; color:#fff;
@@ -47,17 +41,17 @@
         <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
       </div>
 
-      <!-- ✅ Nav (includes Contact) -->
-      <nav class="nav-links" style="text-align:center; margin-bottom:1rem;">
-        <a href="dashboard.html" class="btn secondary">Dashboard</a>
-        <a href="retailers.html" class="btn secondary">Retailers</a>
-        <a href="profile.html" class="btn secondary">Profile</a>
-        <a href="contact.html" class="btn secondary">Contact</a>
+      <!-- ✅ Nav -->
+      <nav class="nav-links" role="navigation" style="text-align:center; margin-bottom:1rem;">
+        <a href="./dashboard.html" class="btn secondary">Dashboard</a>
+        <a href="./retailers.html" class="btn secondary">Retailers</a>
+        <a href="./profile.html" class="btn secondary" aria-current="page">Profile</a>
+        <a href="./contact.html" class="btn secondary">Contact</a>
       </nav>
 
       <h2>Your Profile</h2>
 
-      <!-- ✅ Example profile details (static for now) -->
+      <!-- ✅ Example profile details -->
       <div class="profile-card" style="max-width:520px; margin:0 auto; background:#f0fdfa; padding:1.25rem; border-radius:0.75rem;">
         <p><strong>Name:</strong> Alex</p>
         <p><strong>Email:</strong> alex@example.com</p>
@@ -73,17 +67,17 @@
 
     <!-- ✅ Footer -->
     <footer style="text-align:center; margin-top:2rem;">
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms &amp; Conditions</a> |
-      <a href="faq.html">Help / FAQ</a> |
-      <a href="contact.html">Contact</a>
+      <a href="./privacy.html">Privacy Policy</a> |
+      <a href="./terms.html">Terms &amp; Conditions</a> |
+      <a href="./faq.html">Help / FAQ</a> |
+      <a href="./contact.html">Contact</a>
     </footer>
   </div>
 
   <!-- ✅ Cookie Consent Banner -->
   <div id="cookieConsent" style="position:fixed; bottom:1rem; left:1rem; right:1rem; background:#008080; color:#fff; padding:1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; z-index:1000;">
     <span>We use cookies to improve your experience. By using our site, you accept our 
-      <a href="privacy.html" style="color:#d1eaea; text-decoration:underline;">Privacy Policy</a>.
+      <a href="./privacy.html" style="color:#d1eaea; text-decoration:underline;">Privacy Policy</a>.
     </span>
     <button id="acceptCookies" style="background:#004d40; border:none; color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">Accept</button>
   </div>
@@ -106,9 +100,14 @@
   <!-- ✅ Scripts -->
   <script>
     // 🔐 Auth guard
-    if (!localStorage.getItem("isLoggedIn")) {
-      window.location.href = "login.html";
-    }
+    (function(){
+      const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+      if (!loggedIn) {
+        console.log("[profile] Not logged in → redirect to login.html");
+        window.location.replace("login.html");
+        return;
+      }
+    })();
 
     // 🌙 Dark mode
     document.getElementById('darkModeToggle').addEventListener('click', () => {
