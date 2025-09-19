@@ -4,8 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- ✅ Page Title -->
   <title>Retailers & Offers - Cashtraq</title>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <!-- ✅ Styles -->
+  <link rel="stylesheet" href="style.css" />
+
   <style>
     .retailer-list {
       display: flex;
@@ -25,9 +33,7 @@
       transition: transform 0.2s;
     }
 
-    .retailer-card:hover {
-      transform: scale(1.01);
-    }
+    .retailer-card:hover { transform: scale(1.01); }
 
     .retailer-logo {
       width: 50px;
@@ -36,26 +42,11 @@
       margin-right: 1.25rem;
     }
 
-    .retailer-details {
-      flex-grow: 1;
-      text-align: left;
-    }
+    .retailer-details { flex-grow: 1; text-align: left; }
+    .retailer-details strong { font-size: 1.2rem; display: block; margin-bottom: 0.25rem; }
+    .retailer-details span { font-size: 0.95rem; color: #555; }
 
-    .retailer-details strong {
-      font-size: 1.2rem;
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-
-    .retailer-details span {
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    .retailer-actions {
-      display: flex;
-      gap: 0.5rem;
-    }
+    .retailer-actions { display: flex; gap: 0.5rem; }
 
     .icon-button {
       font-size: 1.25rem;
@@ -67,9 +58,7 @@
       transition: background 0.2s;
     }
 
-    .icon-button:hover {
-      background: #e0e0e0;
-    }
+    .icon-button:hover { background: #e0e0e0; }
 
     .container.retailers {
       max-width: 600px;
@@ -84,21 +73,10 @@
       margin-top: 1.5rem;
     }
 
-    .logo-container.centered {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+    .logo-container.centered { text-align: center; margin-bottom: 1rem; }
+    .logo-img { max-width: 400px; height: auto; }
 
-    .logo-img {
-      max-width: 400px;
-      height: auto;
-    }
-
-    .section-heading {
-      text-align: center;
-      font-size: 1.6rem;
-      margin-top: 1.5rem;
-    }
+    .section-heading { text-align: center; font-size: 1.6rem; margin-top: 1.5rem; }
   </style>
 </head>
 <body>
@@ -172,10 +150,9 @@
     </div>
 
     <!-- ✅ Chatbot Button -->
-    <!-- ✅ Chatbot Button -->
-<button id="chatbotToggle" aria-label="Open Chatbot">
-  <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
-</button>
+    <button id="chatbotToggle" aria-label="Open Chatbot">
+      <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
+    </button>
 
     <!-- ✅ Chatbox Content -->
     <div id="chatbox" style="position: fixed; bottom: 90px; right: 20px; width: 320px; max-height: 450px; background: white; color: #333; border-radius: 10px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); padding: 16px; display: none; flex-direction: column; z-index: 1001; overflow-y: auto;">
