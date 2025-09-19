@@ -15,133 +15,102 @@
 
   <!-- ✅ Chatbot Styles -->
   <style>
-    #chatbotToggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #008080;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
-      cursor: pointer;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    #chatbotToggle{
+      position:fixed; bottom:20px; right:20px; background:#008080; color:#fff;
+      border:none; border-radius:50%; width:60px; height:60px; font-size:28px;
+      cursor:pointer; z-index:1000; display:flex; align-items:center; justify-content:center;
     }
-
-    #chatbox {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 320px;
-      max-height: 450px;
-      background: white;
-      color: #333;
-      border-radius: 10px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      padding: 16px;
-      display: none;
-      flex-direction: column;
-      z-index: 1001;
-      overflow-y: auto;
+    #chatbotToggle img{ width:28px; height:28px; }
+    #chatbox{
+      position:fixed; bottom:90px; right:20px; width:320px; max-height:450px;
+      background:#fff; color:#333; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.2);
+      padding:16px; display:none; flex-direction:column; z-index:1001; overflow-y:auto;
     }
-
-    #chatbox h4 { margin-top: 0; color: #008080; }
-    .faq-question { margin: 10px 0; font-weight: 600; cursor: pointer; color: #006666; }
-    .faq-answer { font-size: 14px; margin-bottom: 12px; display: none; }
-    .faq-question.open + .faq-answer { display: block; }
-
-    body.dark-mode #chatbox { background: #1e293b; color: #f1f5f9; }
-    body.dark-mode .faq-question { color: #38b2ac; }
-    body.dark-mode .faq-answer { color: #cbd5e1; }
+    #chatbox h4{ margin-top:0; color:#008080; }
+    .faq-question{ margin:10px 0; font-weight:600; cursor:pointer; color:#006666; }
+    .faq-answer{ font-size:14px; margin-bottom:12px; display:none; }
+    .faq-question.open + .faq-answer{ display:block; }
+    body.dark-mode #chatbox{ background:#1e293b; color:#f1f5f9; }
+    body.dark-mode .faq-question{ color:#38b2ac; }
+    body.dark-mode .faq-answer{ color:#cbd5e1; }
   </style>
 </head>
 
 <body>
   <div class="page-wrapper">
     <!-- 🌙 Dark mode toggle -->
-    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
+    <button id="darkModeToggle" class="btn secondary" style="position:absolute; top:1rem; right:1rem;">🌓</button>
 
     <div class="container">
-      <div class="logo-container centered">
+      <!-- ✅ Logo -->
+      <div class="logo-container centered" style="text-align:center;">
         <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
       </div>
 
-      <nav class="nav-links">
+      <!-- ✅ Nav (includes Contact) -->
+      <nav class="nav-links" style="text-align:center; margin-bottom:1rem;">
         <a href="dashboard.html" class="btn secondary">Dashboard</a>
         <a href="retailers.html" class="btn secondary">Retailers</a>
         <a href="profile.html" class="btn secondary">Profile</a>
+        <a href="contact.html" class="btn secondary">Contact</a>
       </nav>
 
       <h2>Your Profile</h2>
-      <p><strong>Name:</strong> Alex</p>
-      <p><strong>Email:</strong> alex@example.com</p>
-      <p><strong>Total Cashback Earned:</strong> £12.40</p>
-      <p><strong>Loyalty Tier:</strong> Bronze</p>
-      <div style="text-align: center; margin-top: 2rem;">
+
+      <!-- ✅ Example profile details (static for now) -->
+      <div class="profile-card" style="max-width:520px; margin:0 auto; background:#f0fdfa; padding:1.25rem; border-radius:0.75rem;">
+        <p><strong>Name:</strong> Alex</p>
+        <p><strong>Email:</strong> alex@example.com</p>
+        <p><strong>Total Cashback Earned:</strong> £12.40</p>
+        <p><strong>Loyalty Tier:</strong> Bronze</p>
+      </div>
+
+      <!-- ✅ Log Out -->
+      <div style="text-align:center; margin-top:2rem;">
         <button onclick="logout()" class="btn secondary">Log Out</button>
       </div>
     </div>
 
     <!-- ✅ Footer -->
-    <footer>
+    <footer style="text-align:center; margin-top:2rem;">
       <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms & Conditions</a> |
-      <a href="faq.html">Help / FAQ</a>
+      <a href="terms.html">Terms &amp; Conditions</a> |
+      <a href="faq.html">Help / FAQ</a> |
+      <a href="contact.html">Contact</a>
     </footer>
   </div>
 
   <!-- ✅ Cookie Consent Banner -->
-  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-    <span>
-      We use cookies to improve your experience. By using our site, you accept our 
-      <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.
+  <div id="cookieConsent" style="position:fixed; bottom:1rem; left:1rem; right:1rem; background:#008080; color:#fff; padding:1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; z-index:1000;">
+    <span>We use cookies to improve your experience. By using our site, you accept our 
+      <a href="privacy.html" style="color:#d1eaea; text-decoration:underline;">Privacy Policy</a>.
     </span>
-    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
+    <button id="acceptCookies" style="background:#004d40; border:none; color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">Accept</button>
   </div>
 
-  <!-- ✅ Floating Chatbot Button -->
+  <!-- 💬 Chatbot Button -->
   <button id="chatbotToggle" aria-label="Open Chatbot">
     <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
   </button>
 
-  <!-- ✅ Chatbox -->
+  <!-- 💬 Chatbox -->
   <div id="chatbox">
     <h4>Cashtraq Help Assistant</h4>
-
     <div class="faq-item"><div class="faq-question">Where is my cashback?</div><div class="faq-answer">Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</div></div>
-
     <div class="faq-item"><div class="faq-question">Why hasn’t my cashback tracked?</div><div class="faq-answer">Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer. This is normal for some merchants.</div></div>
-
     <div class="faq-item"><div class="faq-question">How long does cashback take to confirm?</div><div class="faq-answer">Retailers confirm cashback within a few days to 3 months, depending on return policies and transaction types.</div></div>
-
     <div class="faq-item"><div class="faq-question">How do loyalty tiers work?</div><div class="faq-answer">We offer Bronze, Silver, and Gold tiers based on total cashback earned. More cashback = higher tier and better perks in the future.</div></div>
-
-    <div class="faq-item"><div class="faq-question">Why is there a fee to use Cashtraq?</div><div class="faq-answer">We charge a small fee to consolidate cashback from multiple platforms into one app, saving you time and avoiding missed earnings.</div></div>
-
-    <div class="faq-item"><div class="faq-question">Why consolidate cashback in one app?</div><div class="faq-answer">Studies show users lose cashback by forgetting logins or not checking multiple apps. Cashtraq keeps it all in one place.</div></div>
-
-    <div class="faq-item"><div class="faq-question">How do I sign up?</div><div class="faq-answer">Just enter your email and a password. Use a valid email so we can send updates and help you recover your account.</div></div>
-
-    <div class="faq-item"><div class="faq-question">I can’t log in – what should I do?</div><div class="faq-answer">Reset your password. Still stuck? Contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</div></div>
-
-    <div class="faq-item"><div class="faq-question">Why is profile info important?</div><div class="faq-answer">Your profile lets us match cashback and keep your details up to date. You can update these in the app any time.</div></div>
-
     <div class="faq-item"><div class="faq-question">Is my data secure?</div><div class="faq-answer">Yes. We use secure storage, encryption, and never sell your data to third parties.</div></div>
   </div>
 
   <!-- ✅ Scripts -->
   <script>
-    // Redirect if not logged in
+    // 🔐 Auth guard
     if (!localStorage.getItem("isLoggedIn")) {
       window.location.href = "login.html";
     }
 
-    // 🌙 Dark mode toggle
+    // 🌙 Dark mode
     document.getElementById('darkModeToggle').addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
@@ -150,14 +119,8 @@
       document.body.classList.add('dark-mode');
     }
 
-    // 🔐 Logout
-    function logout() {
-      localStorage.removeItem('isLoggedIn');
-      window.location.href = 'login.html';
-    }
-
-    // 🍪 Cookie consent
-    document.addEventListener("DOMContentLoaded", function () {
+    // 🍪 Cookie Consent
+    (function(){
       const cookieConsent = document.getElementById('cookieConsent');
       const acceptBtn = document.getElementById('acceptCookies');
       if (localStorage.getItem('cookiesAccepted') === 'true') {
@@ -167,7 +130,7 @@
         localStorage.setItem('cookiesAccepted', 'true');
         cookieConsent.style.display = 'none';
       });
-    });
+    })();
 
     // 💬 Chatbot toggle
     document.getElementById('chatbotToggle').addEventListener('click', function () {
@@ -175,10 +138,16 @@
       chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
     });
 
-    // ❓ Expand/collapse FAQ
+    // ❓ FAQ toggles
     document.querySelectorAll('.faq-question').forEach(q => {
       q.addEventListener('click', () => q.classList.toggle('open'));
     });
+
+    // 🚪 Logout
+    function logout() {
+      localStorage.removeItem('isLoggedIn');
+      window.location.href = 'login.html';
+    }
   </script>
 </body>
 </html>
