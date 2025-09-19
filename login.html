@@ -3,79 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- ✅ Page Title -->
   <title>Log In - Cashtraq</title>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <!-- ✅ Styles -->
   <link rel="stylesheet" href="style.css" />
 
   <!-- ✅ Chatbot Styles -->
   <style>
-    #chatbotToggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #008080;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    #chatbox {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 320px;
-      max-height: 450px;
-      background: white;
-      color: #333;
-      border-radius: 10px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      padding: 16px;
-      display: none;
-      flex-direction: column;
-      z-index: 1001;
-      overflow-y: auto;
-    }
-
-    #chatbox h4 {
-      margin-top: 0;
-      color: #008080;
-    }
-
-    .faq-question {
-      margin: 10px 0;
-      font-weight: 600;
-      cursor: pointer;
-      color: #006666;
-    }
-
-    .faq-answer {
-      font-size: 14px;
-      margin-bottom: 12px;
-      display: none;
-    }
-
-    .faq-question.open + .faq-answer {
-      display: block;
-    }
-
-    body.dark-mode #chatbox {
-      background: #1e293b;
-      color: #f1f5f9;
-    }
-
-    body.dark-mode .faq-question {
-      color: #38b2ac;
-    }
-
-    body.dark-mode .faq-answer {
-      color: #cbd5e1;
-    }
+    /* your chatbot CSS stays here */
   </style>
 </head>
+
 <body>
   <div class="page-wrapper">
     <!-- 🌙 Dark mode toggle button -->
@@ -84,7 +27,8 @@
     <div class="container">
       <div class="logo">
         <div class="logo-container">
-  <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+          <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+        </div>
       </div>
 
       <nav class="nav-links">
@@ -96,7 +40,7 @@
       <h2>Log In</h2>
       <form onsubmit="handleLogin(event)">
         <input type="email" placeholder="Email" class="input-field" />
-<input type="password" placeholder="Password" class="input-field" />
+        <input type="password" placeholder="Password" class="input-field" />
         <button type="submit" class="btn">Log In</button>
       </form>
       <p>Don’t have an account? <a href="signup.html">Sign Up</a></p>
@@ -104,18 +48,16 @@
 
     <!-- ✅ Footer -->
     <footer>
-      <a href="/privacy.html">Privacy Policy</a> |
-      <a href="/terms.html">Terms & Conditions</a> |
-      <a href="/faq.html">Help / FAQ</a>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms & Conditions</a> |
+      <a href="faq.html">Help / FAQ</a>
     </footer>
   </div>
 
   <!-- ✅ Floating Chatbot Button -->
-  <!-- ✅ Chatbot Button -->
-<button id="chatbotToggle" aria-label="Open Chatbot">
-  <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
-</button>
-
+  <button id="chatbotToggle" aria-label="Open Chatbot">
+    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
+  </button>
 
   <!-- ✅ Chatbox -->
   <div id="chatbox">
