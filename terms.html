@@ -15,99 +15,116 @@
 
   <!-- ✅ Chatbot Styles -->
   <style>
-    #chatbotToggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #008080;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
-      cursor: pointer;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    #chatbotToggle{
+      position:fixed; bottom:20px; right:20px; background:#008080; color:#fff;
+      border:none; border-radius:50%; width:60px; height:60px; font-size:28px;
+      cursor:pointer; z-index:1000; display:flex; align-items:center; justify-content:center;
     }
-    #chatbox {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 320px;
-      max-height: 450px;
-      background: white;
-      color: #333;
-      border-radius: 10px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      padding: 16px;
-      display: none;
-      flex-direction: column;
-      z-index: 1001;
-      overflow-y: auto;
+    #chatbotToggle img{ width:28px; height:28px; }
+    #chatbox{
+      position:fixed; bottom:90px; right:20px; width:320px; max-height:450px;
+      background:#fff; color:#333; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.2);
+      padding:16px; display:none; flex-direction:column; z-index:1001; overflow-y:auto;
     }
-    #chatbox h4 { margin-top: 0; color: #008080; }
-    .faq-question { margin: 10px 0; font-weight: 600; cursor: pointer; color: #006666; }
-    .faq-answer { font-size: 14px; margin-bottom: 12px; display: none; }
-    .faq-question.open + .faq-answer { display: block; }
-    body.dark-mode #chatbox { background: #1e293b; color: #f1f5f9; }
-    body.dark-mode .faq-question { color: #38b2ac; }
-    body.dark-mode .faq-answer { color: #cbd5e1; }
+    #chatbox h4{ margin-top:0; color:#008080; }
+    .faq-question{ margin:10px 0; font-weight:600; cursor:pointer; color:#006666; }
+    .faq-answer{ font-size:14px; margin-bottom:12px; display:none; }
+    .faq-question.open + .faq-answer{ display:block; }
+    body.dark-mode #chatbox{ background:#1e293b; color:#f1f5f9; }
+    body.dark-mode .faq-question{ color:#38b2ac; }
+    body.dark-mode .faq-answer{ color:#cbd5e1; }
   </style>
 </head>
 <body>
   <div class="page-wrapper">
     <!-- 🌙 Dark mode toggle -->
-    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
+    <button id="darkModeToggle" class="btn secondary" style="position:absolute; top:1rem; right:1rem;">🌓</button>
 
     <div class="container page-content">
-      <h1>Terms &amp; Conditions</h1>
-      <p>Last updated: August 2025</p>
+      <!-- ✅ Logo -->
+      <div class="logo-container" style="text-align:center; margin-bottom:1rem;">
+        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+      </div>
 
-      <h2>1. Introduction</h2>
-      <p>These Terms govern your use of Cashtraq’s website and services.</p>
+      <!-- ✅ Nav (includes Contact) -->
+      <nav class="nav-links" style="text-align:center; margin-bottom:1rem;">
+        <a href="dashboard.html" class="btn secondary">Dashboard</a>
+        <a href="retailers.html" class="btn secondary">Retailers</a>
+        <a href="profile.html" class="btn secondary">Profile</a>
+        <a href="contact.html" class="btn secondary">Contact</a>
+      </nav>
 
-      <h2>2. Account</h2>
-      <p>You’re responsible for keeping your login credentials safe and accurate.</p>
+      <h1>Terms & Conditions</h1>
+      <p><em>Last updated: August 2025</em></p>
 
-      <h2>3. Cashback &amp; Offers</h2>
-      <p>Cashback rates and eligibility are set by retailers/partners and may change. Tracking and confirmation can take time.</p>
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing or using Cashtraq, you agree to these Terms & Conditions and our Privacy Policy.</p>
 
-      <h2>4. Fees</h2>
-      <p>We may charge small fees for consolidating multiple cashback platforms into one experience.</p>
+      <h2>2. Service Description</h2>
+      <p>Cashtraq helps you track cashback across participating retailers and programs. Cashback rates and eligibility are subject to change by retailers at any time.</p>
 
-      <h2>5. Acceptable Use</h2>
-      <p>No misuse, scraping, reverse engineering, or unlawful activity.</p>
+      <h2>3. Accounts</h2>
+      <ul>
+        <li>You are responsible for maintaining the confidentiality of your login credentials.</li>
+        <li>You must provide accurate information and notify us of any changes.</li>
+        <li>We may suspend or terminate accounts for misuse or policy violations.</li>
+      </ul>
 
-      <h2>6. Liability</h2>
-      <p>Services are provided “as is.” We’re not liable for indirect or consequential losses.</p>
+      <h2>4. Cashback Tracking & Limitations</h2>
+      <ul>
+        <li>Tracking depends on retailer systems, cookies, and third-party attribution.</li>
+        <li>Some transactions may not track due to ad blockers, cookie settings, or retailer exclusions.</li>
+        <li>Confirmation times vary (often from a few days up to 90 days or more).</li>
+      </ul>
 
-      <h2>7. Privacy</h2>
-      <p>See our <a href="privacy.html">Privacy Policy</a> for how we process your data.</p>
+      <h2>5. Fees</h2>
+      <p>We may charge a small fee for consolidating and maintaining your cashback data. Any changes to fees will be communicated in advance where required.</p>
 
-      <h2>8. Changes</h2>
-      <p>We may update these Terms; continued use means you accept the changes.</p>
+      <h2>6. Acceptable Use</h2>
+      <ul>
+        <li>Do not attempt to manipulate tracking, abuse promotional offers, or engage in fraud.</li>
+        <li>Do not reverse-engineer, scrape, or disrupt our services.</li>
+      </ul>
 
-      <h2>9. Contact</h2>
+      <h2>7. Intellectual Property</h2>
+      <p>All trademarks, logos, and content are the property of their respective owners. You receive a limited, non-transferable license to use the service.</p>
+
+      <h2>8. Third-Party Links</h2>
+      <p>We are not responsible for third-party websites, content, or policies. Review retailer terms before purchasing.</p>
+
+      <h2>9. Disclaimers & Liability</h2>
+      <p>Cashtraq is provided “as is” without warranties. We are not liable for indirect or consequential losses to the fullest extent permitted by law.</p>
+
+      <h2>10. Changes to These Terms</h2>
+      <p>We may update these terms from time to time. Continued use after changes means you accept the updated terms.</p>
+
+      <h2>11. Contact</h2>
       <p>Questions? Email <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</p>
     </div>
 
     <!-- ✅ Footer -->
-    <footer>
+    <footer style="text-align:center; margin-top:2rem;">
       <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms & Conditions</a> |
-      <a href="faq.html">Help / FAQ</a>
+      <a href="terms.html">Terms &amp; Conditions</a> |
+      <a href="faq.html">Help / FAQ</a> |
+      <a href="contact.html">Contact</a>
     </footer>
   </div>
 
-  <!-- ✅ Chatbot Toggle -->
+  <!-- ✅ Cookie Consent Banner -->
+  <div id="cookieConsent" style="position:fixed; bottom:1rem; left:1rem; right:1rem; background:#008080; color:#fff; padding:1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; z-index:1000;">
+    <span>We use cookies to improve your experience. By using our site, you accept our 
+      <a href="privacy.html" style="color:#d1eaea; text-decoration:underline;">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies" style="background:#004d40; border:none; color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">Accept</button>
+  </div>
+
+  <!-- 💬 Chatbot Button -->
   <button id="chatbotToggle" aria-label="Open Chatbot">
-    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" style="width: 32px; height: 32px;" />
+    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
   </button>
 
-  <!-- ✅ Chatbox -->
+  <!-- 💬 Chatbox -->
   <div id="chatbox">
     <h4>Cashtraq Help Assistant</h4>
     <div class="faq-item"><div class="faq-question">Where is my cashback?</div><div class="faq-answer">Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</div></div>
@@ -117,15 +134,7 @@
     <div class="faq-item"><div class="faq-question">Why is there a fee?</div><div class="faq-answer">We charge a small fee to consolidate cashback platforms into one app, saving you time and money.</div></div>
   </div>
 
-  <!-- ✅ Cookie Consent Banner -->
-  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our 
-      <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.
-    </span>
-    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
-  </div>
-
-  <!-- ✅ Scripts -->
+  <!-- ✅ JavaScript -->
   <script>
     // 🌙 Dark Mode
     document.getElementById('darkModeToggle').addEventListener('click', function () {
@@ -148,7 +157,7 @@
     });
 
     // 🍪 Cookie Consent
-    document.addEventListener("DOMContentLoaded", function () {
+    (function(){
       const cookieConsent = document.getElementById('cookieConsent');
       const acceptBtn = document.getElementById('acceptCookies');
       if (localStorage.getItem('cookiesAccepted') === 'true') {
@@ -158,7 +167,7 @@
         localStorage.setItem('cookiesAccepted', 'true');
         cookieConsent.style.display = 'none';
       });
-    });
+    })();
   </script>
 </body>
 </html>
