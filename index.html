@@ -29,6 +29,7 @@
       cursor: pointer;
       z-index: 1000;
     }
+    #chatbotToggle img { width: 28px; height: 28px; }
     #chatbox {
       position: fixed;
       bottom: 90px;
@@ -98,9 +99,6 @@
     <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
   </div>
 
-  <!-- ✅ Chatbot Container -->
-  <div id="chatbot"></div>
-
   <!-- 🔌 Supabase client (add your URL + anon key) -->
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script>
@@ -115,6 +113,46 @@
       console.log("Supabase ready. User:", (await window.supabaseClient.auth.getUser()).data.user?.id);
     })();
   </script>
+
+  <!-- 💬 Chatbot Button -->
+  <button id="chatbotToggle" aria-label="Open Chatbot">
+    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
+  </button>
+
+  <!-- 💬 Chatbox -->
+  <div id="chatbox">
+    <h4>Cashtraq Help Assistant</h4>
+
+    <div class="faq-item">
+      <div class="faq-question">Where is my cashback?</div>
+      <div class="faq-answer">Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Why hasn’t my cashback tracked?</div>
+      <div class="faq-answer">Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">How long does cashback take to confirm?</div>
+      <div class="faq-answer">Retailers confirm cashback within a few days to 3 months, depending on return policies and transaction types.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">How do loyalty tiers work?</div>
+      <div class="faq-answer">We offer Bronze, Silver, and Gold tiers based on total cashback earned.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Why is there a fee?</div>
+      <div class="faq-answer">We charge a small fee to consolidate cashback platforms into one app, saving you time and money.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">I can’t log in – what should I do?</div>
+      <div class="faq-answer">Reset your password. Still stuck? Contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</div>
+    </div>
+  </div>
 
   <!-- ✅ Combined Script -->
   <script>
