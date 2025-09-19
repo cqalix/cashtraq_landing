@@ -15,22 +15,47 @@
 
   <!-- ✅ Chatbot Styles -->
   <style>
-    #chatbotToggle{position:fixed;bottom:20px;right:20px;background-color:#008080;color:#fff;border:none;border-radius:50%;width:60px;height:60px;font-size:28px;cursor:pointer;z-index:1000}
-    #chatbox{position:fixed;bottom:90px;right:20px;width:320px;max-height:450px;background:#fff;color:#333;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.2);padding:16px;display:none;flex-direction:column;z-index:1001;overflow-y:auto}
-    #chatbox h4{margin-top:0;color:#008080}
-    .faq-question{margin:10px 0;font-weight:600;cursor:pointer;color:#006666}
-    .faq-answer{font-size:14px;margin-bottom:12px;display:none}
-    .faq-question.open + .faq-answer{display:block}
-    body.dark-mode #chatbox{background:#1e293b;color:#f1f5f9}
-    body.dark-mode .faq-question{color:#38b2ac}
-    body.dark-mode .faq-answer{color:#cbd5e1}
+    #chatbotToggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #008080;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    #chatbox {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      max-height: 450px;
+      background: #fff;
+      color: #333;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+      padding: 16px;
+      display: none;
+      flex-direction: column;
+      z-index: 1001;
+      overflow-y: auto;
+    }
+    #chatbox h4 { margin-top:0; color:#008080 }
+    .faq-question { margin:10px 0; font-weight:600; cursor:pointer; color:#006666 }
+    .faq-answer { font-size:14px; margin-bottom:12px; display:none }
+    .faq-question.open + .faq-answer { display:block }
+    body.dark-mode #chatbox { background:#1e293b; color:#f1f5f9 }
+    body.dark-mode .faq-question { color:#38b2ac }
+    body.dark-mode .faq-answer { color:#cbd5e1 }
   </style>
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- 🔗 Navbar mount point (for components/navbar.html) -->
-    <div id="navbar"></div>
-
     <!-- 🌙 Dark mode toggle -->
     <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
 
@@ -58,8 +83,13 @@
       </div>
     </div>
 
-    <!-- ✅ Dynamic Footer -->
-    <div id="footer"></div>
+    <!-- ✅ Footer -->
+    <footer style="text-align:center; margin-top:2rem;">
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms &amp; Conditions</a> |
+      <a href="faq.html">Help / FAQ</a> |
+      <a href="contact.html">Contact</a>
+    </footer>
   </div>
 
   <!-- ✅ Cookie Consent Banner -->
@@ -68,20 +98,17 @@
     <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
   </div>
 
-  <!-- ✅ Dynamic Chatbot -->
+  <!-- ✅ Chatbot Container -->
   <div id="chatbot"></div>
 
   <!-- 🔌 Supabase client (add your URL + anon key) -->
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script>
-    // Replace with your actual values
     const SUPABASE_URL = "https://xyxfqdpotxoaptwdhbfp.supabase.co";
     const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5eGZxZHBvdHhvYXB0d2RoYmZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5ODg3MTcsImV4cCI6MjA3MDU2NDcxN30.j_tkI5CMb_vtOx_LEtj0Odo7b4GiahTGsbFCHSbNxcM";
 
-    window.supabase = window.supabase || {};
     window.supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
-    // TEMP: sign in anonymously (remove once email login is wired)
     (async () => {
       const { data: { user } } = await window.supabaseClient.auth.getUser();
       if (!user) { await window.supabaseClient.auth.signInAnonymously(); }
@@ -92,22 +119,6 @@
   <!-- ✅ Combined Script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Load navbar, footer, and chatbot dynamically
-      fetch("components/navbar.html")
-        .then(res => res.text())
-        .then(data => {
-          const el = document.getElementById("navbar");
-          if (el) el.innerHTML = data;
-        });
-
-      fetch("components/footer.html")
-        .then(res => res.text())
-        .then(data => document.getElementById("footer").innerHTML = data);
-
-      fetch("components/chatbot.html")
-        .then(res => res.text())
-        .then(data => document.getElementById("chatbot").innerHTML = data);
-
       // Cookie Consent
       const cookieConsent = document.getElementById('cookieConsent');
       const acceptBtn = document.getElementById('acceptCookies');
