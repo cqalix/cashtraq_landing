@@ -1,4 +1,4 @@
-<!-- ✅ Retailers Page (Updated) -->
+<!-- ✅ Retailers Page (Updated & Standardized) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +21,6 @@
       gap: 1rem;
       margin-top: 2rem;
     }
-
     .retailer-card {
       display: flex;
       align-items: center;
@@ -32,22 +31,17 @@
       padding: 1rem 1.5rem;
       transition: transform 0.2s;
     }
-
     .retailer-card:hover { transform: scale(1.01); }
-
     .retailer-logo {
       width: 50px;
       height: 50px;
       object-fit: contain;
       margin-right: 1.25rem;
     }
-
     .retailer-details { flex-grow: 1; text-align: left; }
     .retailer-details strong { font-size: 1.2rem; display: block; margin-bottom: 0.25rem; }
     .retailer-details span { font-size: 0.95rem; color: #555; }
-
     .retailer-actions { display: flex; gap: 0.5rem; }
-
     .icon-button {
       font-size: 1.25rem;
       background: #f0f0f0;
@@ -57,42 +51,35 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-
     .icon-button:hover { background: #e0e0e0; }
-
     .container.retailers {
       max-width: 600px;
       margin: 0 auto;
       padding: 2rem;
     }
-
-    .nav-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
     .logo-container.centered { text-align: center; margin-bottom: 1rem; }
     .logo-img { max-width: 400px; height: auto; }
-
     .section-heading { text-align: center; font-size: 1.6rem; margin-top: 1.5rem; }
   </style>
 </head>
 <body>
   <div class="page-wrapper">
+    <!-- 🌙 Dark mode toggle -->
+    <button id="darkModeToggle" class="btn secondary" style="position:absolute; top:1rem; right:1rem;">🌓</button>
+
     <div class="container retailers">
       <!-- ✅ Logo -->
       <div class="logo-container centered">
         <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" style="height: 60px;" />
       </div>
 
-      <!-- ✅ Navigation Tabs -->
-      <div class="nav-tabs">
-        <a href="dashboard.html" class="btn secondary">Dashboard</a>
-        <a href="retailers.html" class="btn secondary active">Retailers</a>
-        <a href="profile.html" class="btn secondary">Profile</a>
-      </div>
+      <!-- ✅ Navigation Tabs (standardized) -->
+      <nav class="nav-links" role="navigation" style="text-align:center; margin-bottom:1rem;">
+        <a href="./dashboard.html" class="btn secondary">Dashboard</a>
+        <a href="./retailers.html" class="btn secondary active" aria-current="page">Retailers</a>
+        <a href="./profile.html"   class="btn secondary">Profile</a>
+        <a href="./contact.html"   class="btn secondary">Contact</a>
+      </nav>
 
       <!-- ✅ Heading -->
       <h2 class="section-heading">Retailers & Offers</h2>
@@ -106,8 +93,8 @@
             <span>Cashback: 5.0%</span>
           </div>
           <div class="retailer-actions">
-            <button class="icon-button">&#10084;</button>
-            <button class="icon-button">&#43;</button>
+            <button class="icon-button" aria-label="Favourite">&#10084;</button>
+            <button class="icon-button" aria-label="Add">&#43;</button>
           </div>
         </div>
 
@@ -118,8 +105,8 @@
             <span>Cashback: 3.5%</span>
           </div>
           <div class="retailer-actions">
-            <button class="icon-button">&#10084;</button>
-            <button class="icon-button">&#43;</button>
+            <button class="icon-button" aria-label="Favourite">&#10084;</button>
+            <button class="icon-button" aria-label="Add">&#43;</button>
           </div>
         </div>
 
@@ -130,8 +117,8 @@
             <span>Cashback: 2.0%</span>
           </div>
           <div class="retailer-actions">
-            <button class="icon-button">&#10084;</button>
-            <button class="icon-button">&#43;</button>
+            <button class="icon-button" aria-label="Favourite">&#10084;</button>
+            <button class="icon-button" aria-label="Add">&#43;</button>
           </div>
         </div>
       </div>
@@ -141,17 +128,18 @@
         <button onclick="logout()" class="btn secondary">Log Out</button>
       </div>
 
-      <!-- ✅ Footer Links -->
-      <div class="footer-links" style="margin-top: 2rem; text-align: center;">
-        <a href="privacy.html">Privacy Policy</a> |
-        <a href="terms.html">Terms & Conditions</a> |
-        <a href="faq.html">Help / FAQ</a>
-      </div>
+      <!-- ✅ Footer Links (standardized) -->
+      <footer style="text-align:center; margin-top:2rem;">
+        <a href="./privacy.html">Privacy Policy</a> |
+        <a href="./terms.html">Terms &amp; Conditions</a> |
+        <a href="./faq.html">Help / FAQ</a> |
+        <a href="./contact.html">Contact</a>
+      </footer>
     </div>
 
     <!-- ✅ Chatbot Button -->
-    <button id="chatbotToggle" aria-label="Open Chatbot">
-      <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
+    <button id="chatbotToggle" aria-label="Open Chatbot" style="position: fixed; bottom: 20px; right: 20px; background: #008080; color: #fff; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 28px; cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center;">
+      <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" style="width: 28px; height: 28px;" />
     </button>
 
     <!-- ✅ Chatbox Content -->
@@ -165,27 +153,55 @@
     </div>
   </div>
 
-  <!-- ✅ Logout Script & Chatbot Toggle -->
+  <!-- ✅ Cookie Consent Banner -->
+  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
+    <span>We use cookies to improve your experience. By using our site, you accept our 
+      <a href="./privacy.html" style="color:#d1eaea; text-decoration:underline;">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies" style="background:#004d40; border:none; color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">Accept</button>
+  </div>
+
+  <!-- ✅ Scripts -->
   <script>
-    function logout() {
-      localStorage.removeItem("isLoggedIn");
-      window.location.href = "login.html";
+    // 🌙 Dark mode
+    document.getElementById('darkModeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
     }
 
-    document.getElementById('chatbotToggle').addEventListener('click', () => {
+    // 🍪 Cookie Consent
+    (function(){
+      const cookieConsent = document.getElementById('cookieConsent');
+      const acceptBtn = document.getElementById('acceptCookies');
+      if (localStorage.getItem('cookiesAccepted') === 'true') {
+        cookieConsent.style.display = 'none';
+      }
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookiesAccepted', 'true');
+        cookieConsent.style.display = 'none';
+      });
+    })();
+
+    // 💬 Chatbot toggle
+    document.getElementById('chatbotToggle').addEventListener('click', function () {
       const chatbox = document.getElementById('chatbox');
       chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
     });
 
+    // ❓ FAQ toggles
     document.querySelectorAll('.faq-question').forEach(q => {
       q.addEventListener('click', () => {
         q.classList.toggle('open');
       });
     });
 
-    // Optional: Persist dark mode
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
+    // 🚪 Logout
+    function logout() {
+      localStorage.removeItem('isLoggedIn');
+      window.location.href = 'login.html';
     }
   </script>
 </body>
