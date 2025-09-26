@@ -5,13 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <!-- ✅ Page Title -->
-  <title>Dashboard - Cashtraq</title>
+  <title>Dashboard – Cashtraq</title>
+
+  <!-- ✅ Meta Description -->
+  <meta name="description" content="Access your Cashtraq dashboard: view cashback totals, loyalty tier, and discover top deals all in one place." />
+
+  <!-- ✅ Canonical -->
+  <link rel="canonical" href="https://cashtraq.co.uk/dashboard.html" />
 
   <!-- ✅ Favicon -->
   <link rel="icon" type="image/png" href="assets/favicon.png" />
 
+  <!-- ✅ Open Graph / Social -->
+  <meta property="og:title" content="Dashboard – Cashtraq" />
+  <meta property="og:description" content="Track your cashback totals, loyalty tier, and see the latest top deals with Cashtraq." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cashtraq.co.uk/dashboard.html" />
+  <meta property="og:image" content="https://cashtraq.co.uk/assets/og-image.png" />
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dashboard – Cashtraq" />
+  <meta name="twitter:description" content="Track your cashback totals, loyalty tier, and see the latest top deals with Cashtraq." />
+  <meta name="twitter:image" content="https://cashtraq.co.uk/assets/og-image.png" />
+
   <!-- ✅ Styles -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- ✅ JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Cashtraq Dashboard",
+    "url":"https://cashtraq.co.uk/dashboard.html",
+    "description":"Access your Cashtraq dashboard to view cashback totals, loyalty tier, and top deals.",
+    "isPartOf": {
+      "@type":"WebSite",
+      "url":"https://cashtraq.co.uk/"
+    }
+  }
+  </script>
 
   <!-- ✅ Chatbot Styles -->
   <style>
@@ -48,9 +82,9 @@
         <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
       </div>
 
-      <!-- ✅ Nav (includes Contact) -->
+      <!-- ✅ Nav -->
       <nav class="nav-links" style="margin-bottom:1rem;">
-        <a href="dashboard.html" class="btn secondary">Dashboard</a>
+        <a href="dashboard.html" class="btn secondary" aria-current="page">Dashboard</a>
         <a href="retailers.html" class="btn secondary">Retailers</a>
         <a href="profile.html" class="btn secondary">Profile</a>
         <a href="contact.html" class="btn secondary">Contact</a>
@@ -79,7 +113,7 @@
         </div>
       </div>
 
-      <!-- ✅ Log Out Button -->
+      <!-- ✅ Log Out -->
       <div style="text-align:center; margin-top:2rem;">
         <button onclick="logout()" class="btn secondary">Log Out</button>
       </div>
@@ -94,7 +128,7 @@
     </footer>
   </div>
 
-  <!-- ✅ Cookie Consent Banner -->
+  <!-- ✅ Cookie Consent -->
   <div id="cookieConsent" style="position:fixed; bottom:1rem; left:1rem; right:1rem; background:#008080; color:#fff; padding:1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; z-index:1000;">
     <span>We use cookies to improve your experience. By using our site, you accept our 
       <a href="privacy.html" style="color:#d1eaea; text-decoration:underline;">Privacy Policy</a>.
