@@ -5,13 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ✅ Page Title -->
-  <title>Retailers & Offers - Cashtraq</title>
+  <title>Retailers &amp; Offers – Cashtraq</title>
 
-  <!-- ✅ Favicon -->
+  <!-- ✅ Meta Description -->
+  <meta name="description" content="Browse retailers and current cashback offers on Cashtraq. See percentages at a glance and favourite your top stores." />
+
+  <!-- ✅ Canonical -->
+  <link rel="canonical" href="https://cashtraq.co.uk/retailers.html" />
+
+  <!-- ✅ Theme color -->
+  <meta name="theme-color" content="#008080">
+
+  <!-- ✅ Open Graph / Twitter -->
+  <meta property="og:title" content="Retailers &amp; Offers – Cashtraq" />
+  <meta property="og:description" content="Browse retailers and current cashback offers on Cashtraq. See percentages at a glance and favourite your top stores." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cashtraq.co.uk/retailers.html" />
+  <meta property="og:image" content="https://cashtraq.co.uk/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Retailers &amp; Offers – Cashtraq" />
+  <meta name="twitter:description" content="Browse retailers and current cashback offers on Cashtraq. See percentages at a glance and favourite your top stores." />
+  <meta name="twitter:image" content="https://cashtraq.co.uk/assets/og-image.png" />
+
+  <!-- ✅ Favicon & Styles -->
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-
-  <!-- ✅ Styles -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- ✅ JSON-LD: CollectionPage + ItemList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Cashtraq Retailers & Offers",
+    "url": "https://cashtraq.co.uk/retailers.html",
+    "isPartOf": { "@type": "WebSite", "url": "https://cashtraq.co.uk/" },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@type": "Organization", "name": "Asda", "description": "Cashback: 5.0%" } },
+        { "@type": "ListItem", "position": 2, "item": { "@type": "Organization", "name": "Tesco", "description": "Cashback: 3.5%" } },
+        { "@type": "ListItem", "position": 3, "item": { "@type": "Organization", "name": "Ocado", "description": "Cashback: 2.0%" } }
+      ]
+    }
+  }
+  </script>
 
   <!-- ✅ Chatbot Styles -->
   <style>
@@ -59,71 +96,76 @@
   </style>
 </head>
 <body>
+  <!-- ♿ Skip to main content -->
+  <a href="#main" class="sr-only sr-only-focusable" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+
   <div class="page-wrapper">
     <!-- 🌙 Dark mode toggle -->
     <button id="darkModeToggle" class="btn secondary" style="position:absolute; top:1rem; right:1rem;">🌓</button>
 
-    <div class="container retailers">
-      <!-- ✅ Logo -->
-      <div class="logo-container centered">
-        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" style="height:60px;" />
-      </div>
+    <main id="main" class="main">
+      <div class="container retailers">
+        <!-- ✅ Logo -->
+        <div class="logo-container centered">
+          <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" style="height:60px;" width="400" height="60" decoding="async" />
+        </div>
 
-      <!-- ✅ Nav (includes Contact) -->
-      <nav class="nav-links" style="text-align:center; margin-top:1rem;">
-        <a href="dashboard.html" class="btn secondary">Dashboard</a>
-        <a href="retailers.html" class="btn secondary active">Retailers</a>
-        <a href="profile.html" class="btn secondary">Profile</a>
-        <a href="contact.html" class="btn secondary">Contact</a>
-      </nav>
+        <!-- ✅ Nav (includes Contact) -->
+        <nav class="nav-links" style="text-align:center; margin-top:1rem;">
+          <a href="dashboard.html" class="btn secondary">Dashboard</a>
+          <a href="retailers.html" class="btn secondary active" aria-current="page">Retailers</a>
+          <a href="profile.html" class="btn secondary">Profile</a>
+          <a href="contact.html" class="btn secondary">Contact</a>
+        </nav>
 
-      <!-- ✅ Heading -->
-      <h2 class="section-heading">Retailers & Offers</h2>
+        <!-- ✅ Heading -->
+        <h2 class="section-heading">Retailers &amp; Offers</h2>
 
-      <!-- ✅ Retailer Cards -->
-      <div class="retailer-list">
-        <div class="retailer-card">
-          <img src="assets/asda.png" alt="Asda Logo" class="retailer-logo" />
-          <div class="retailer-details">
-            <strong>Asda</strong>
-            <span>Cashback: 5.0%</span>
+        <!-- ✅ Retailer Cards -->
+        <div class="retailer-list">
+          <div class="retailer-card">
+            <img src="assets/asda.png" alt="Asda Logo" class="retailer-logo" loading="lazy" decoding="async" width="50" height="50" />
+            <div class="retailer-details">
+              <strong>Asda</strong>
+              <span>Cashback: 5.0%</span>
+            </div>
+            <div class="retailer-actions">
+              <button class="icon-button" title="Favourite" aria-label="Favourite Asda">&#10084;</button>
+              <button class="icon-button" title="Add" aria-label="Add Asda">&#43;</button>
+            </div>
           </div>
-          <div class="retailer-actions">
-            <button class="icon-button" title="Favourite">&#10084;</button>
-            <button class="icon-button" title="Add">&#43;</button>
+
+          <div class="retailer-card">
+            <img src="assets/tesco.png" alt="Tesco Logo" class="retailer-logo" loading="lazy" decoding="async" width="50" height="50" />
+            <div class="retailer-details">
+              <strong>Tesco</strong>
+              <span>Cashback: 3.5%</span>
+            </div>
+            <div class="retailer-actions">
+              <button class="icon-button" title="Favourite" aria-label="Favourite Tesco">&#10084;</button>
+              <button class="icon-button" title="Add" aria-label="Add Tesco">&#43;</button>
+            </div>
+          </div>
+
+          <div class="retailer-card">
+            <img src="assets/ocado.png" alt="Ocado Logo" class="retailer-logo" loading="lazy" decoding="async" width="50" height="50" />
+            <div class="retailer-details">
+              <strong>Ocado</strong>
+              <span>Cashback: 2.0%</span>
+            </div>
+            <div class="retailer-actions">
+              <button class="icon-button" title="Favourite" aria-label="Favourite Ocado">&#10084;</button>
+              <button class="icon-button" title="Add" aria-label="Add Ocado">&#43;</button>
+            </div>
           </div>
         </div>
 
-        <div class="retailer-card">
-          <img src="assets/tesco.png" alt="Tesco Logo" class="retailer-logo" />
-          <div class="retailer-details">
-            <strong>Tesco</strong>
-            <span>Cashback: 3.5%</span>
-          </div>
-          <div class="retailer-actions">
-            <button class="icon-button" title="Favourite">&#10084;</button>
-            <button class="icon-button" title="Add">&#43;</button>
-          </div>
-        </div>
-
-        <div class="retailer-card">
-          <img src="assets/ocado.png" alt="Ocado Logo" class="retailer-logo" />
-          <div class="retailer-details">
-            <strong>Ocado</strong>
-            <span>Cashback: 2.0%</span>
-          </div>
-          <div class="retailer-actions">
-            <button class="icon-button" title="Favourite">&#10084;</button>
-            <button class="icon-button" title="Add">&#43;</button>
-          </div>
+        <!-- ✅ Log Out Button -->
+        <div style="text-align:center; margin-top:2rem;">
+          <button onclick="logout()" class="btn secondary">Log Out</button>
         </div>
       </div>
-
-      <!-- ✅ Log Out Button -->
-      <div style="text-align:center; margin-top:2rem;">
-        <button onclick="logout()" class="btn secondary">Log Out</button>
-      </div>
-    </div>
+    </main>
 
     <!-- ✅ Footer -->
     <footer style="text-align:center; margin-top:2rem;">
@@ -135,7 +177,7 @@
   </div>
 
   <!-- ✅ Cookie Consent Banner -->
-  <div id="cookieConsent" style="position:fixed; bottom:1rem; left:1rem; right:1rem; background:#008080; color:#fff; padding:1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; z-index:1000;">
+  <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position:fixed; bottom:1rem; left:1rem; right:1rem; background:#008080; color:#fff; padding:1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; z-index:1000;">
     <span>We use cookies to improve your experience. By using our site, you accept our 
       <a href="privacy.html" style="color:#d1eaea; text-decoration:underline;">Privacy Policy</a>.
     </span>
@@ -148,7 +190,7 @@
   </button>
 
   <!-- 💬 Chatbox -->
-  <div id="chatbox">
+  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant">
     <h4>Cashtraq Help Assistant</h4>
     <div class="faq-item"><div class="faq-question">Where is my cashback?</div><div class="faq-answer">Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</div></div>
     <div class="faq-item"><div class="faq-question">Why hasn’t my cashback tracked?</div><div class="faq-answer">Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer.</div></div>
