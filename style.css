@@ -14,15 +14,25 @@ body {
   min-height: 100vh;
 }
 
+/* Page structure wrapper you already use */
 .page-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Centered card/panel */
+/* NEW: main wrapper to center the hero card safely */
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;        /* vertical centering */
+  justify-content: center;    /* horizontal centering */
+  padding: 2rem 1rem;
+}
+
+/* Your card/panel */
 .container {
-  /* removed: flex: 1;  */
+  /* CHANGED: was flex: 1; which made it stretch oddly */
   flex: 0 1 auto;
   text-align: center;
   max-width: 400px;
@@ -36,16 +46,12 @@ body {
   align-items: center;
   justify-content: center;
 
-  /* center horizontally on all pages */
+  /* NEW: safe horizontal centering on every page */
   margin: 2rem auto;
 }
 
-/* Home/welcome card: perfect center on the page */
-.container.welcome {
-  padding: 3rem 2rem;
-  /* equal free space above & below inside flex column parent => vertical center */
-  margin: auto;
-}
+/* Optional extra space for home card */
+.container.welcome { padding: 3rem 2rem; }
 
 @media (min-width: 600px) {
   .container { max-width: 600px; }
@@ -56,8 +62,7 @@ body {
   max-width: 800px;
   width: 90%;
   padding: 4rem 2rem 3rem;
-  /* horizontally centered, but not vertically */
-  margin: 2rem auto;
+  margin: 2rem auto;               /* horizontally centered */
   text-align: left;
   align-items: flex-start;
   justify-content: flex-start;
@@ -314,8 +319,6 @@ footer {
   color: #00796b;
   background: transparent;
   margin-top: 2rem;
-  /* keep footer at the bottom of the page-wrapper */
-  margin-bottom: 0;
 }
 
 footer a {
@@ -394,7 +397,6 @@ body.dark-mode .faq-answer { color: #cbd5e1; }
 
 /* ===========================
    Page Enter Animations (Home only)
-   Add .animate to elements and JS will add body.enter on first visit
    =========================== */
 @keyframes slideInUp {
   from { transform: translateY(24px) scale(0.98); opacity: 0; }
