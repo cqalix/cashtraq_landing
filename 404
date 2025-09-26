@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Not Found - Cashtraq</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-wrapper" style="text-align:center; padding:3rem 1rem;">
+    <div class="logo-container" style="margin-bottom:1rem;">
+      <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" style="height:60px;" />
+    </div>
+
+    <h1>404 — Page Not Found</h1>
+    <p>Hmm, that page doesn’t exist. Let’s get you back on track.</p>
+
+    <div style="margin:1.5rem 0;">
+      <a class="btn" href="./index.html">Go to Home</a>
+      <a class="btn secondary" href="./retailers.html">Retailers</a>
+      <a class="btn secondary" href="./profile.html">Profile</a>
+    </div>
+
+    <footer style="margin-top:2rem;">
+      <a href="./privacy.html">Privacy Policy</a> |
+      <a href="./terms.html">Terms &amp; Conditions</a> |
+      <a href="./faq.html">Help / FAQ</a> |
+      <a href="./contact.html">Contact</a>
+    </footer>
+  </div>
+</body>
+</html>
