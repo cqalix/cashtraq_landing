@@ -2,90 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
-  <!-- ✅ Page Title -->
-  <title>Cashtraq Retailers – Find Cashback Offers</title>
-
-  <!-- ✅ Meta Description -->
-  <meta name="description" content="Browse all partnered retailers on Cashtraq. Compare cashback offers and maximise your rewards in one place." />
-
-  <!-- ✅ Canonical -->
-  <link rel="canonical" href="https://cashtraq.co.uk/retailers.html" />
-
-  <!-- ✅ Favicon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retailers & Offers – Cashtraq</title>
+  <meta name="description" content="Browse retailers and current cashback offers on Cashtraq." />
+  <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-
-  <!-- ✅ Open Graph / Social -->
-  <meta property="og:title" content="Cashtraq Retailers – Find Cashback Offers" />
-  <meta property="og:description" content="Browse all partnered retailers on Cashtraq. Compare cashback offers and maximise your rewards in one place." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://cashtraq.co.uk/retailers.html" />
-  <meta property="og:image" content="https://cashtraq.co.uk/assets/og-image.png" />
-
-  <!-- ✅ Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Cashtraq Retailers – Find Cashback Offers" />
-  <meta name="twitter:description" content="Browse all partnered retailers on Cashtraq. Compare cashback offers and maximise your rewards in one place." />
-  <meta name="twitter:image" content="https://cashtraq.co.uk/assets/og-image.png" />
-
-  <!-- ✅ Styles -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- ✅ JSON-LD Schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"CollectionPage",
-    "name":"Cashtraq Retailers",
-    "url":"https://cashtraq.co.uk/retailers.html",
-    "isPartOf": {
-      "@type":"WebSite",
-      "url":"https://cashtraq.co.uk/"
-    }
-  }
-  </script>
+  <link rel="stylesheet" href="style.css?v=10" />
 </head>
-
 <body>
   <div class="page-wrapper">
-    <!-- Dark mode toggle -->
-    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
+    <button id="darkModeToggle" class="btn secondary" style="position:absolute;top:1rem;right:1rem">🌓</button>
 
-    <!-- Page Content -->
     <main class="main">
-      <section class="container page-content">
-        <h1>Our Retailers</h1>
-        <p>Browse and discover cashback offers from top UK retailers. Click a retailer to view details and track cashback opportunities.</p>
+      <div class="container retailers" style="max-width:600px">
+        <div class="logo-container centered"><img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" style="height:60px" /></div>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="dashboard.html" class="btn secondary">Dashboard</a>
+          <a href="retailers.html" class="btn secondary" aria-current="page">Retailers</a>
+          <a href="profile.html" class="btn secondary">Profile</a>
+          <a href="contact.html" class="btn secondary">Contact</a>
+        </nav>
 
-        <!-- Example retailer cards -->
-        <div class="retailer-card">
-          <div class="retailer-info">
-            <img src="assets/retailer1.png" alt="Retailer 1" class="retailer-logo" />
-            <div>
-              <h4>Retailer 1</h4>
-              <p>Up to 5% cashback</p>
-            </div>
+        <h2 class="section-heading">Retailers & Offers</h2>
+
+        <div class="retailer-list">
+          <div class="retailer-card">
+            <img src="assets/asda.png" alt="Asda Logo" class="retailer-logo" loading="lazy" width="50" height="50" />
+            <div class="retailer-info"><h4>Asda</h4><p>Cashback: 5.0%</p></div>
+            <button class="favourite-btn" aria-label="Favourite Asda">❤</button>
           </div>
-          <button class="favourite-btn">♡</button>
+
+          <div class="retailer-card">
+            <img src="assets/tesco.png" alt="Tesco Logo" class="retailer-logo" loading="lazy" width="50" height="50" />
+            <div class="retailer-info"><h4>Tesco</h4><p>Cashback: 3.5%</p></div>
+            <button class="favourite-btn" aria-label="Favourite Tesco">❤</button>
+          </div>
+
+          <div class="retailer-card">
+            <img src="assets/ocado.png" alt="Ocado Logo" class="retailer-logo" loading="lazy" width="50" height="50" />
+            <div class="retailer-info"><h4>Ocado</h4><p>Cashback: 2.0%</p></div>
+            <button class="favourite-btn" aria-label="Favourite Ocado">❤</button>
+          </div>
         </div>
 
-        <div class="retailer-card">
-          <div class="retailer-info">
-            <img src="assets/retailer2.png" alt="Retailer 2" class="retailer-logo" />
-            <div>
-              <h4>Retailer 2</h4>
-              <p>Exclusive 8% cashback</p>
-            </div>
-          </div>
-          <button class="favourite-btn">♡</button>
-        </div>
-
-        <!-- Add more retailer cards dynamically later -->
-      </section>
+        <button class="btn secondary" onclick="localStorage.removeItem('isLoggedIn');location.href='login.html'">Log Out</button>
+      </div>
     </main>
 
-    <!-- Footer -->
     <footer>
       <a href="privacy.html">Privacy Policy</a> |
       <a href="terms.html">Terms &amp; Conditions</a> |
@@ -94,84 +57,17 @@
     </footer>
   </div>
 
-  <!-- Cookie Consent Banner -->
-  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.</span>
-    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
-  </div>
-
-  <!-- Supabase client -->
-  <script src="https://unpkg.com/@supabase/supabase-js@2" defer></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-      // 🍪 Cookie Consent
-      const cookieConsent = document.getElementById('cookieConsent');
-      const acceptBtn = document.getElementById('acceptCookies');
-      if (localStorage.getItem('cookiesAccepted') === 'true') {
-        cookieConsent.style.display = 'none';
-      }
-      acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookieConsent.style.display = 'none';
-      });
-
-      // 🌙 Dark Mode Toggle
-      document.getElementById('darkModeToggle').addEventListener('click', function () {
-        document.body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-      });
-      if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-      });
-    });
-  </script>
-
-  <!-- Chatbot Button -->
-  <button id="chatbotToggle" aria-label="Open Chatbot">
-    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
-  </button>
-
-  <!-- Chatbox -->
-  <div id="chatbox">
+  <!-- shared widgets -->
+  <button id="chatbotToggle" aria-label="Open Chatbot"><img src="assets/chatbot-icon.svg" alt="Chatbot" /></button>
+  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant">
     <h4>Cashtraq Help Assistant</h4>
-
-    <div class="faq-item">
-      <div class="faq-question">Where is my cashback?</div>
-      <div class="faq-answer">Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">Why hasn’t my cashback tracked?</div>
-      <div class="faq-answer">Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">How long does cashback take to confirm?</div>
-      <div class="faq-answer">Retailers confirm cashback within a few days to 3 months, depending on return policies and transaction types.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">How do loyalty tiers work?</div>
-      <div class="faq-answer">We offer Bronze, Silver, and Gold tiers based on total cashback earned.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">Why is there a fee?</div>
-      <div class="faq-answer">We charge a small fee to consolidate cashback platforms into one app, saving you time and money.</div>
-    </div>
+    <div class="faq-item"><div class="faq-question">How to favourite?</div><div class="faq-answer">Tap the heart; your favourites will be pinned soon.</div></div>
+  </div>
+  <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position:fixed;bottom:1rem;left:1rem;right:1rem;padding:1rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;z-index:1000;">
+    <span>We use cookies to improve your experience. See our <a href="privacy.html">Privacy Policy</a>.</span>
+    <button id="acceptCookies" class="btn" style="margin:0">Accept</button>
   </div>
 
-  <!-- Chatbot Script -->
-  <script>
-    document.addEventListener("click", function (e) {
-      if (e.target && (e.target.id === "chatbotToggle" || e.target.closest("#chatbotToggle"))) {
-        const chatbox = document.getElementById('chatbox');
-        chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
-      }
-      if (e.target && e.target.classList.contains('faq-question')) {
-        e.target.classList.toggle('open');
-      }
-    });
-  </script>
+  <script src="app.js?v=1" defer></script>
 </body>
 </html>
