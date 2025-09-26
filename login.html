@@ -50,7 +50,7 @@
   }
   </script>
 
-  <!-- ✅ Chatbot Styles -->
+  <!-- ✅ Chatbot + page-local styles -->
   <style>
     #chatbotToggle{
       position:fixed; bottom:20px; right:20px; background:#008080; color:#fff;
@@ -89,6 +89,9 @@
       padding:.5rem .75rem; cursor:pointer; transition:background .2s;
     }
     .icon-button:hover{ background:#e0e0e0; }
+
+    /* Favourites visual state (optional) */
+    .icon-button.is-fav { background:#ffe8ec; }
     .container.retailers{ max-width:600px; margin:0 auto; padding:2rem; }
     .logo-container.centered{ text-align:center; margin-bottom:1rem; }
     .logo-img{ max-width:400px; height:auto; }
@@ -130,8 +133,8 @@
               <span>Cashback: 5.0%</span>
             </div>
             <div class="retailer-actions">
-              <button class="icon-button" title="Favourite" aria-label="Favourite Asda">&#10084;</button>
-              <button class="icon-button" title="Add" aria-label="Add Asda">&#43;</button>
+              <button class="icon-button" title="Favourite" aria-label="Favourite Asda">♡</button>
+              <button class="icon-button" title="Add" aria-label="Add Asda">+</button>
             </div>
           </div>
 
@@ -142,8 +145,8 @@
               <span>Cashback: 3.5%</span>
             </div>
             <div class="retailer-actions">
-              <button class="icon-button" title="Favourite" aria-label="Favourite Tesco">&#10084;</button>
-              <button class="icon-button" title="Add" aria-label="Add Tesco">&#43;</button>
+              <button class="icon-button" title="Favourite" aria-label="Favourite Tesco">♡</button>
+              <button class="icon-button" title="Add" aria-label="Add Tesco">+</button>
             </div>
           </div>
 
@@ -154,8 +157,8 @@
               <span>Cashback: 2.0%</span>
             </div>
             <div class="retailer-actions">
-              <button class="icon-button" title="Favourite" aria-label="Favourite Ocado">&#10084;</button>
-              <button class="icon-button" title="Add" aria-label="Add Ocado">&#43;</button>
+              <button class="icon-button" title="Favourite" aria-label="Favourite Ocado">♡</button>
+              <button class="icon-button" title="Add" aria-label="Add Ocado">+</button>
             </div>
           </div>
         </div>
@@ -179,7 +182,7 @@
   <!-- ✅ Cookie Consent Banner -->
   <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position:fixed; bottom:1rem; left:1rem; right:1rem; background:#008080; color:#fff; padding:1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; z-index:1000;">
     <span>We use cookies to improve your experience. By using our site, you accept our 
-      <a href="privacy.html" style="color:#d1eaea; text-decoration:underline;">Privacy Policy</a>.
+      <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.
     </span>
     <button id="acceptCookies" style="background:#004d40; border:none; color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">Accept</button>
   </div>
@@ -200,9 +203,19 @@
   </div>
 
   <!-- ✅ Scripts -->
+  <!-- Supabase client -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script>
-    // (Optional) Auth guard, enable if you want this page locked behind login:
-    // if (!localStorage.getItem("isLoggedIn")) { window.location.href = "login.html"; }
+    // 🔌 Supabase init
+    const SUPABASE_URL = "https://xyxfqdpotxoaptwdhbfp.supabase.co";
+    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5eGZxZHBvdHhvYXB0d2RoYmZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5ODg3MTcsImV4cCI6MjA3MDU2NDcxN30.j_tkI5CMb_vtOx_LEtj0Odo7b4GiahTGsbFCHSbNxcM";
+    window.supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+    // 🔒 OPTIONAL: lock this page behind login (uncomment to enforce)
+    // (async () => {
+    //   const { data: { session } } = await window.supabaseClient.auth.getSession();
+    //   if (!session) window.location.replace('login.html');
+    // })();
 
     // 🌙 Dark mode
     document.getElementById('darkModeToggle').addEventListener('click', () => {
@@ -237,11 +250,51 @@
       q.addEventListener('click', () => q.classList.toggle('open'));
     });
 
-    // 🚪 Logout
-    function logout() {
-      localStorage.removeItem("isLoggedIn");
-      window.location.href = "login.html";
+    // ❤️ Favourites (local persistence)
+    (function () {
+      const favs = JSON.parse(localStorage.getItem('favs') || '{}');
+      document.querySelectorAll('.retailer-card').forEach(card => {
+        const name = card.querySelector('.retailer-details strong')?.textContent.trim();
+        if (!name) return;
+        const btn = card.querySelector('.icon-button[aria-label^="Favourite"]');
+        if (favs[name] && btn) {
+          btn.classList.add('is-fav');
+          btn.setAttribute('aria-pressed', 'true');
+          btn.textContent = '❤';
+        }
+      });
+    })();
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.icon-button[aria-label^="Favourite"]');
+      if (!btn) return;
+      const card = btn.closest('.retailer-card');
+      const name = card?.querySelector('.retailer-details strong')?.textContent.trim();
+      if (!name) return;
+
+      const favs = JSON.parse(localStorage.getItem('favs') || '{}');
+      const isFav = !!favs[name];
+      favs[name] = !isFav;
+      localStorage.setItem('favs', JSON.stringify(favs));
+
+      btn.classList.toggle('is-fav', !isFav);
+      btn.setAttribute('aria-pressed', String(!isFav));
+      btn.textContent = !isFav ? '❤' : '♡';
+    });
+
+    // 🚪 Proper Supabase logout
+    async function logout() {
+      try {
+        await window.supabaseClient.auth.signOut();
+      } catch (e) {
+        console.warn('Sign out error', e);
+      } finally {
+        localStorage.removeItem('isLoggedIn');
+        window.location.href = 'login.html';
+      }
     }
+    // make available globally (in case inline onclick calls it)
+    window.logout = logout;
   </script>
 </body>
 </html>
