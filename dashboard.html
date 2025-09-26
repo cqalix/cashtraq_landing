@@ -2,125 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- ✅ Page Title -->
-  <title>Dashboard – Cashtraq</title>
-
-  <!-- ✅ Meta Description -->
-  <meta name="description" content="Access your Cashtraq dashboard: view cashback totals, loyalty tier, and discover top deals all in one place." />
-
-  <!-- ✅ Canonical -->
-  <link rel="canonical" href="https://cashtraq.co.uk/dashboard.html" />
-
-  <!-- ✅ Favicon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Cashtraq</title>
+  <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-
-  <!-- ✅ Open Graph / Social -->
-  <meta property="og:title" content="Dashboard – Cashtraq" />
-  <meta property="og:description" content="Track your cashback totals, loyalty tier, and see the latest top deals with Cashtraq." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://cashtraq.co.uk/dashboard.html" />
-  <meta property="og:image" content="https://cashtraq.co.uk/assets/og-image.png" />
-
-  <!-- ✅ Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Dashboard – Cashtraq" />
-  <meta name="twitter:description" content="Track your cashback totals, loyalty tier, and see the latest top deals with Cashtraq." />
-  <meta name="twitter:image" content="https://cashtraq.co.uk/assets/og-image.png" />
-
-  <!-- ✅ Styles -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- ✅ JSON-LD Schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebPage",
-    "name":"Cashtraq Dashboard",
-    "url":"https://cashtraq.co.uk/dashboard.html",
-    "description":"Access your Cashtraq dashboard to view cashback totals, loyalty tier, and top deals.",
-    "isPartOf": {
-      "@type":"WebSite",
-      "url":"https://cashtraq.co.uk/"
+  <link rel="stylesheet" href="style.css?v=10" />
+  <script>
+    // Simple guard
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      window.location.replace("login.html");
     }
-  }
   </script>
-
-  <!-- ✅ Chatbot Styles -->
-  <style>
-    #chatbotToggle{
-      position:fixed; bottom:20px; right:20px; background:#008080; color:#fff;
-      border:none; border-radius:50%; width:60px; height:60px; font-size:28px;
-      cursor:pointer; z-index:1000; display:flex; align-items:center; justify-content:center;
-    }
-    #chatbotToggle img{ width:28px; height:28px; }
-    #chatbox{
-      position:fixed; bottom:90px; right:20px; width:320px; max-height:450px;
-      background:#fff; color:#333; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.2);
-      padding:16px; display:none; flex-direction:column; z-index:1001; overflow-y:auto;
-    }
-    #chatbox h4{ margin-top:0; color:#008080; }
-    .faq-question{ margin:10px 0; font-weight:600; cursor:pointer; color:#006666; }
-    .faq-answer{ font-size:14px; margin-bottom:12px; display:none; }
-    .faq-question.open + .faq-answer{ display:block; }
-    body.dark-mode #chatbox{ background:#1e293b; color:#f1f5f9; }
-    body.dark-mode .faq-question{ color:#38b2ac; }
-    body.dark-mode .faq-answer{ color:#cbd5e1; }
-  </style>
 </head>
-
 <body>
   <div class="page-wrapper">
-    <!-- 🌙 Dark mode toggle -->
-    <button id="darkModeToggle" class="btn secondary" style="position:absolute; top:1rem; right:1rem;">🌓</button>
+    <button id="darkModeToggle" class="btn secondary" style="position:absolute;top:1rem;right:1rem">🌓</button>
 
-    <!-- ✅ Main Container -->
-    <div class="container">
-      <!-- ✅ Logo -->
-      <div class="logo-container">
-        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
-      </div>
+    <main class="main">
+      <div class="container">
+        <div class="logo-container"><img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" /></div>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="dashboard.html" class="btn secondary" aria-current="page">Dashboard</a>
+          <a href="retailers.html" class="btn secondary">Retailers</a>
+          <a href="profile.html" class="btn secondary">Profile</a>
+          <a href="contact.html" class="btn secondary">Contact</a>
+        </nav>
 
-      <!-- ✅ Nav -->
-      <nav class="nav-links" style="margin-bottom:1rem;">
-        <a href="dashboard.html" class="btn secondary" aria-current="page">Dashboard</a>
-        <a href="retailers.html" class="btn secondary">Retailers</a>
-        <a href="profile.html" class="btn secondary">Profile</a>
-        <a href="contact.html" class="btn secondary">Contact</a>
-      </nav>
+        <p>Welcome back! Your stats will appear here soon.</p>
 
-      <!-- ✅ Dashboard Text -->
-      <p>This is your dashboard. Soon, you’ll see your cashback stats, loyalty tier, and top deals here.</p>
-
-      <!-- ✅ Dashboard Widgets -->
-      <div class="dashboard-widgets">
-        <div class="widget">
-          <h3>Cashback Total</h3>
-          <p>£0.00</p>
+        <div class="dashboard-widgets" style="display:grid;gap:1rem;max-width:600px;margin:1rem auto">
+          <div class="container" style="padding:1rem"><h3>Cashback Total</h3><p>£0.00</p></div>
+          <div class="container" style="padding:1rem"><h3>Loyalty Tier</h3><p>Bronze</p></div>
+          <div class="container" style="padding:1rem"><h3>Top Deals</h3><ul style="text-align:left;max-width:320px;margin:0 auto">
+            <li>10% at Supermart</li><li>5% at ShopEasy</li><li>15% at FreshFoods</li></ul></div>
         </div>
-        <div class="widget">
-          <h3>Loyalty Tier</h3>
-          <p>Bronze</p>
-        </div>
-        <div class="widget">
-          <h3>Top Deals</h3>
-          <ul>
-            <li>10% cashback at Supermart</li>
-            <li>5% cashback at ShopEasy</li>
-            <li>15% cashback at FreshFoods</li>
-          </ul>
-        </div>
-      </div>
 
-      <!-- ✅ Log Out -->
-      <div style="text-align:center; margin-top:2rem;">
-        <button onclick="logout()" class="btn secondary">Log Out</button>
+        <button class="btn secondary" onclick="localStorage.removeItem('isLoggedIn');location.href='login.html'">Log Out</button>
       </div>
-    </div>
+    </main>
 
-    <!-- ✅ Footer -->
-    <footer style="text-align:center; margin-top:2rem;">
+    <footer>
       <a href="privacy.html">Privacy Policy</a> |
       <a href="terms.html">Terms &amp; Conditions</a> |
       <a href="faq.html">Help / FAQ</a> |
@@ -128,74 +49,17 @@
     </footer>
   </div>
 
-  <!-- ✅ Cookie Consent -->
-  <div id="cookieConsent" style="position:fixed; bottom:1rem; left:1rem; right:1rem; background:#008080; color:#fff; padding:1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; z-index:1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our 
-      <a href="privacy.html" style="color:#d1eaea; text-decoration:underline;">Privacy Policy</a>.
-    </span>
-    <button id="acceptCookies" style="background:#004d40; border:none; color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">Accept</button>
-  </div>
-
-  <!-- 💬 Chatbot Button -->
-  <button id="chatbotToggle" aria-label="Open Chatbot">
-    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
-  </button>
-
-  <!-- 💬 Chatbox -->
-  <div id="chatbox">
+  <!-- shared widgets -->
+  <button id="chatbotToggle" aria-label="Open Chatbot"><img src="assets/chatbot-icon.svg" alt="Chatbot" /></button>
+  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant">
     <h4>Cashtraq Help Assistant</h4>
-    <div class="faq-item"><div class="faq-question">Where is my cashback?</div><div class="faq-answer">Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</div></div>
-    <div class="faq-item"><div class="faq-question">Why hasn’t my cashback tracked?</div><div class="faq-answer">Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer.</div></div>
-    <div class="faq-item"><div class="faq-question">How long does cashback take to confirm?</div><div class="faq-answer">Retailers confirm cashback within a few days to 3 months, depending on return policies and transaction types.</div></div>
-    <div class="faq-item"><div class="faq-question">How do loyalty tiers work?</div><div class="faq-answer">We offer Bronze, Silver, and Gold tiers based on total cashback earned.</div></div>
-    <div class="faq-item"><div class="faq-question">Why is there a fee?</div><div class="faq-answer">We charge a small fee to consolidate cashback platforms into one app, saving you time and money.</div></div>
+    <div class="faq-item"><div class="faq-question">When do stats update?</div><div class="faq-answer">We’ll surface your tracked cashback and confirmations as data becomes available.</div></div>
+  </div>
+  <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position:fixed;bottom:1rem;left:1rem;right:1rem;padding:1rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;z-index:1000;">
+    <span>We use cookies to improve your experience. See our <a href="privacy.html">Privacy Policy</a>.</span>
+    <button id="acceptCookies" class="btn" style="margin:0">Accept</button>
   </div>
 
-  <!-- ✅ Scripts -->
-  <script>
-    // 🔐 Auth guard
-    if (!localStorage.getItem("isLoggedIn")) {
-      window.location.href = "login.html";
-    }
-
-    // 🌙 Dark mode
-    document.getElementById('darkModeToggle').addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    });
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
-    }
-
-    // 🍪 Cookie Consent
-    (function(){
-      const cookieConsent = document.getElementById('cookieConsent');
-      const acceptBtn = document.getElementById('acceptCookies');
-      if (localStorage.getItem('cookiesAccepted') === 'true') {
-        cookieConsent.style.display = 'none';
-      }
-      acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookieConsent.style.display = 'none';
-      });
-    })();
-
-    // 💬 Chatbot toggle
-    document.getElementById('chatbotToggle').addEventListener('click', function () {
-      const chatbox = document.getElementById('chatbox');
-      chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
-    });
-
-    // ❓ FAQ toggles
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => q.classList.toggle('open'));
-    });
-
-    // 🚪 Logout
-    function logout() {
-      localStorage.removeItem("isLoggedIn");
-      window.location.href = "login.html";
-    }
-  </script>
+  <script src="app.js?v=1" defer></script>
 </body>
 </html>
