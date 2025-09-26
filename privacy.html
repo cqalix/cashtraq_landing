@@ -7,13 +7,31 @@
   <!-- ✅ Page Title -->
   <title>Privacy Policy - Cashtraq</title>
 
-  <!-- ✅ Favicon -->
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <!-- ✅ Meta Description (lightweight for legal pages) -->
+  <meta name="description" content="How Cashtraq collects, uses, and protects your data, including cookies, security, and your rights." />
 
-  <!-- ✅ Styles -->
+  <!-- ✅ Canonical -->
+  <link rel="canonical" href="https://cashtraq.co.uk/privacy.html" />
+
+  <!-- ✅ Favicon & Styles -->
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="stylesheet" href="style.css" />
 
-  <!-- ✅ Chatbot Styles -->
+  <!-- ✅ JSON-LD: Privacy Policy -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PrivacyPolicy",
+    "name": "Cashtraq Privacy Policy",
+    "url": "https://cashtraq.co.uk/privacy.html",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://cashtraq.co.uk/"
+    }
+  }
+  </script>
+
+  <!-- (Keeps your page-local chatbot styles) -->
   <style>
     #chatbotToggle{
       position:fixed; bottom:20px; right:20px; background:#008080; color:#fff;
@@ -40,53 +58,55 @@
     <!-- 🌙 Dark mode toggle -->
     <button id="darkModeToggle" class="btn secondary" style="position:absolute; top:1rem; right:1rem;">🌓</button>
 
-    <div class="container page-content privacy-page">
-      <!-- ✅ Logo -->
-      <div class="logo-container" style="text-align:center; margin-bottom:1rem;">
-        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+    <main class="main">
+      <div class="container page-content privacy-page">
+        <!-- ✅ Logo -->
+        <div class="logo-container" style="text-align:center; margin-bottom:1rem;">
+          <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+        </div>
+
+        <!-- ✅ Nav -->
+        <nav class="nav-links" style="text-align:center; margin-bottom:1rem;">
+          <a href="dashboard.html" class="btn secondary">Dashboard</a>
+          <a href="retailers.html" class="btn secondary">Retailers</a>
+          <a href="profile.html" class="btn secondary">Profile</a>
+          <a href="contact.html" class="btn secondary">Contact</a>
+        </nav>
+
+        <h1>Privacy Policy</h1>
+        <p><em>Last updated: August 2025</em></p>
+
+        <p>At Cashtraq, we value your privacy and are committed to protecting your personal information.</p>
+
+        <h2>Information We Collect</h2>
+        <p>We collect information you provide to us, such as your name, email address, and account details, to offer our cashback and loyalty services.</p>
+
+        <h2>How We Use Your Information</h2>
+        <ul>
+          <li>To provide and improve our services.</li>
+          <li>To communicate with you, including sending important updates.</li>
+          <li>To comply with legal obligations.</li>
+        </ul>
+
+        <h2>Cookies and Tracking</h2>
+        <p>We use cookies to enhance your experience, remember preferences, and analyse site usage. You can control cookie preferences via the cookie banner and your browser settings.</p>
+
+        <h2>Data Security</h2>
+        <p>We implement industry-standard measures to protect your data, but no system is completely secure.</p>
+
+        <h2>Your Rights</h2>
+        <p>You have the right to access, update, or delete your personal information. Contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a> for requests.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>We may update this policy occasionally. We’ll notify you of significant changes through the app or website.</p>
+
+        <p>If you have any questions, please contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</p>
       </div>
-
-      <!-- ✅ Nav (includes Contact) -->
-      <nav class="nav-links" style="text-align:center; margin-bottom:1rem;">
-        <a href="dashboard.html" class="btn secondary">Dashboard</a>
-        <a href="retailers.html" class="btn secondary">Retailers</a>
-        <a href="profile.html" class="btn secondary">Profile</a>
-        <a href="contact.html" class="btn secondary">Contact</a>
-      </nav>
-
-      <h1>Privacy Policy</h1>
-      <p><em>Last updated: August 2025</em></p>
-
-      <p>At Cashtraq, we value your privacy and are committed to protecting your personal information.</p>
-
-      <h2>Information We Collect</h2>
-      <p>We collect the information you provide us, such as your name, email address, and account details to offer our cashback and loyalty services.</p>
-
-      <h2>How We Use Your Information</h2>
-      <ul>
-        <li>To provide and improve our services.</li>
-        <li>To communicate with you, including sending important updates.</li>
-        <li>To comply with legal obligations.</li>
-      </ul>
-
-      <h2>Cookies and Tracking</h2>
-      <p>We use cookies to enhance your experience, remember preferences, and analyze site usage. You can control cookie preferences via the cookie banner and your browser settings.</p>
-
-      <h2>Data Security</h2>
-      <p>We implement industry-standard measures to protect your data, but no system is completely secure.</p>
-
-      <h2>Your Rights</h2>
-      <p>You have the right to access, update, or delete your personal information. Contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a> for requests.</p>
-
-      <h2>Changes to This Policy</h2>
-      <p>We may update this policy occasionally. We’ll notify you of significant changes through the app or website.</p>
-
-      <p>If you have any questions, please contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</p>
-    </div>
+    </main>
 
     <!-- ✅ Footer -->
     <footer style="text-align:center; margin-top:2rem;">
-      <a href="privacy.html">Privacy Policy</a> |
+      <a href="privacy.html" aria-current="page">Privacy Policy</a> |
       <a href="terms.html">Terms &amp; Conditions</a> |
       <a href="faq.html">Help / FAQ</a> |
       <a href="contact.html">Contact</a>
@@ -131,7 +151,6 @@
     document.getElementById('chatbotToggle').addEventListener('click', function () {
       const chatbox = document.getElementById('chatbox');
       chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
-      console.log('Chatbot toggled on privacy page. Current state:', chatbox.style.display);
     });
 
     // ❓ FAQ toggle
