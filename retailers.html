@@ -1,179 +1,110 @@
-<!-- ✅ Retailers Page (Updated & Standardized) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
   <!-- ✅ Page Title -->
-  <title>Retailers & Offers - Cashtraq</title>
+  <title>Cashtraq Retailers – Find Cashback Offers</title>
+
+  <!-- ✅ Meta Description -->
+  <meta name="description" content="Browse all partnered retailers on Cashtraq. Compare cashback offers and maximise your rewards in one place." />
+
+  <!-- ✅ Canonical -->
+  <link rel="canonical" href="https://cashtraq.co.uk/retailers.html" />
 
   <!-- ✅ Favicon -->
   <link rel="icon" type="image/png" href="assets/favicon.png" />
 
+  <!-- ✅ Open Graph / Social -->
+  <meta property="og:title" content="Cashtraq Retailers – Find Cashback Offers" />
+  <meta property="og:description" content="Browse all partnered retailers on Cashtraq. Compare cashback offers and maximise your rewards in one place." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cashtraq.co.uk/retailers.html" />
+  <meta property="og:image" content="https://cashtraq.co.uk/assets/og-image.png" />
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cashtraq Retailers – Find Cashback Offers" />
+  <meta name="twitter:description" content="Browse all partnered retailers on Cashtraq. Compare cashback offers and maximise your rewards in one place." />
+  <meta name="twitter:image" content="https://cashtraq.co.uk/assets/og-image.png" />
+
   <!-- ✅ Styles -->
   <link rel="stylesheet" href="style.css" />
 
-  <style>
-    .retailer-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 2rem;
+  <!-- ✅ JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "name":"Cashtraq Retailers",
+    "url":"https://cashtraq.co.uk/retailers.html",
+    "isPartOf": {
+      "@type":"WebSite",
+      "url":"https://cashtraq.co.uk/"
     }
-    .retailer-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      padding: 1rem 1.5rem;
-      transition: transform 0.2s;
-    }
-    .retailer-card:hover { transform: scale(1.01); }
-    .retailer-logo {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      margin-right: 1.25rem;
-    }
-    .retailer-details { flex-grow: 1; text-align: left; }
-    .retailer-details strong { font-size: 1.2rem; display: block; margin-bottom: 0.25rem; }
-    .retailer-details span { font-size: 0.95rem; color: #555; }
-    .retailer-actions { display: flex; gap: 0.5rem; }
-    .icon-button {
-      font-size: 1.25rem;
-      background: #f0f0f0;
-      border: none;
-      border-radius: 8px;
-      padding: 0.5rem 0.75rem;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .icon-button:hover { background: #e0e0e0; }
-    .container.retailers {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-    .logo-container.centered { text-align: center; margin-bottom: 1rem; }
-    .logo-img { max-width: 400px; height: auto; }
-    .section-heading { text-align: center; font-size: 1.6rem; margin-top: 1.5rem; }
-  </style>
+  }
+  </script>
 </head>
+
 <body>
   <div class="page-wrapper">
-    <!-- 🌙 Dark mode toggle -->
-    <button id="darkModeToggle" class="btn secondary" style="position:absolute; top:1rem; right:1rem;">🌓</button>
+    <!-- Dark mode toggle -->
+    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
 
-    <div class="container retailers">
-      <!-- ✅ Logo -->
-      <div class="logo-container centered">
-        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" style="height: 60px;" />
-      </div>
+    <!-- Page Content -->
+    <main class="main">
+      <section class="container page-content">
+        <h1>Our Retailers</h1>
+        <p>Browse and discover cashback offers from top UK retailers. Click a retailer to view details and track cashback opportunities.</p>
 
-      <!-- ✅ Navigation Tabs (standardized) -->
-      <nav class="nav-links" role="navigation" style="text-align:center; margin-bottom:1rem;">
-        <a href="./dashboard.html" class="btn secondary">Dashboard</a>
-        <a href="./retailers.html" class="btn secondary active" aria-current="page">Retailers</a>
-        <a href="./profile.html"   class="btn secondary">Profile</a>
-        <a href="./contact.html"   class="btn secondary">Contact</a>
-      </nav>
-
-      <!-- ✅ Heading -->
-      <h2 class="section-heading">Retailers & Offers</h2>
-
-      <!-- ✅ Retailer Cards -->
-      <div class="retailer-list">
+        <!-- Example retailer cards -->
         <div class="retailer-card">
-          <img src="assets/asda.png" alt="Asda Logo" class="retailer-logo" />
-          <div class="retailer-details">
-            <strong>Asda</strong>
-            <span>Cashback: 5.0%</span>
+          <div class="retailer-info">
+            <img src="assets/retailer1.png" alt="Retailer 1" class="retailer-logo" />
+            <div>
+              <h4>Retailer 1</h4>
+              <p>Up to 5% cashback</p>
+            </div>
           </div>
-          <div class="retailer-actions">
-            <button class="icon-button" aria-label="Favourite">&#10084;</button>
-            <button class="icon-button" aria-label="Add">&#43;</button>
-          </div>
+          <button class="favourite-btn">♡</button>
         </div>
 
         <div class="retailer-card">
-          <img src="assets/tesco.png" alt="Tesco Logo" class="retailer-logo" />
-          <div class="retailer-details">
-            <strong>Tesco</strong>
-            <span>Cashback: 3.5%</span>
+          <div class="retailer-info">
+            <img src="assets/retailer2.png" alt="Retailer 2" class="retailer-logo" />
+            <div>
+              <h4>Retailer 2</h4>
+              <p>Exclusive 8% cashback</p>
+            </div>
           </div>
-          <div class="retailer-actions">
-            <button class="icon-button" aria-label="Favourite">&#10084;</button>
-            <button class="icon-button" aria-label="Add">&#43;</button>
-          </div>
+          <button class="favourite-btn">♡</button>
         </div>
 
-        <div class="retailer-card">
-          <img src="assets/ocado.png" alt="Ocado Logo" class="retailer-logo" />
-          <div class="retailer-details">
-            <strong>Ocado</strong>
-            <span>Cashback: 2.0%</span>
-          </div>
-          <div class="retailer-actions">
-            <button class="icon-button" aria-label="Favourite">&#10084;</button>
-            <button class="icon-button" aria-label="Add">&#43;</button>
-          </div>
-        </div>
-      </div>
+        <!-- Add more retailer cards dynamically later -->
+      </section>
+    </main>
 
-      <!-- ✅ Log Out Button -->
-      <div style="text-align: center; margin-top: 2rem;">
-        <button onclick="logout()" class="btn secondary">Log Out</button>
-      </div>
-
-      <!-- ✅ Footer Links (standardized) -->
-      <footer style="text-align:center; margin-top:2rem;">
-        <a href="./privacy.html">Privacy Policy</a> |
-        <a href="./terms.html">Terms &amp; Conditions</a> |
-        <a href="./faq.html">Help / FAQ</a> |
-        <a href="./contact.html">Contact</a>
-      </footer>
-    </div>
-
-    <!-- ✅ Chatbot Button -->
-    <button id="chatbotToggle" aria-label="Open Chatbot" style="position: fixed; bottom: 20px; right: 20px; background: #008080; color: #fff; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 28px; cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center;">
-      <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" style="width: 28px; height: 28px;" />
-    </button>
-
-    <!-- ✅ Chatbox Content -->
-    <div id="chatbox" style="position: fixed; bottom: 90px; right: 20px; width: 320px; max-height: 450px; background: white; color: #333; border-radius: 10px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); padding: 16px; display: none; flex-direction: column; z-index: 1001; overflow-y: auto;">
-      <h4 style="margin-top: 0; color: #008080;">Cashtraq Help Assistant</h4>
-      <div class="faq-item"><div class="faq-question">Where is my cashback?</div><div class="faq-answer">Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</div></div>
-      <div class="faq-item"><div class="faq-question">Why hasn’t my cashback tracked?</div><div class="faq-answer">Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer.</div></div>
-      <div class="faq-item"><div class="faq-question">How long does cashback take to confirm?</div><div class="faq-answer">Retailers confirm cashback in a few days to 3 months depending on return policies.</div></div>
-      <div class="faq-item"><div class="faq-question">How do loyalty tiers work?</div><div class="faq-answer">We offer Bronze, Silver, and Gold tiers based on cashback earned.</div></div>
-      <div class="faq-item"><div class="faq-question">Why is there a fee?</div><div class="faq-answer">We charge a small fee to consolidate cashback platforms into one app, saving you time and money.</div></div>
-    </div>
+    <!-- Footer -->
+    <footer>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms &amp; Conditions</a> |
+      <a href="faq.html">Help / FAQ</a> |
+      <a href="contact.html">Contact</a>
+    </footer>
   </div>
 
-  <!-- ✅ Cookie Consent Banner -->
+  <!-- Cookie Consent Banner -->
   <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our 
-      <a href="./privacy.html" style="color:#d1eaea; text-decoration:underline;">Privacy Policy</a>.
-    </span>
-    <button id="acceptCookies" style="background:#004d40; border:none; color:#fff; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer;">Accept</button>
+    <span>We use cookies to improve your experience. By using our site, you accept our <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.</span>
+    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
   </div>
 
-  <!-- ✅ Scripts -->
+  <!-- Supabase client -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2" defer></script>
   <script>
-    // 🌙 Dark mode
-    document.getElementById('darkModeToggle').addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    });
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
-    }
-
-    // 🍪 Cookie Consent
-    (function(){
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 🍪 Cookie Consent
       const cookieConsent = document.getElementById('cookieConsent');
       const acceptBtn = document.getElementById('acceptCookies');
       if (localStorage.getItem('cookiesAccepted') === 'true') {
@@ -183,26 +114,64 @@
         localStorage.setItem('cookiesAccepted', 'true');
         cookieConsent.style.display = 'none';
       });
-    })();
 
-    // 💬 Chatbot toggle
-    document.getElementById('chatbotToggle').addEventListener('click', function () {
-      const chatbox = document.getElementById('chatbox');
-      chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
-    });
-
-    // ❓ FAQ toggles
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => {
-        q.classList.toggle('open');
+      // 🌙 Dark Mode Toggle
+      document.getElementById('darkModeToggle').addEventListener('click', function () {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+      });
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
       });
     });
+  </script>
 
-    // 🚪 Logout
-    function logout() {
-      localStorage.removeItem('isLoggedIn');
-      window.location.href = 'login.html';
-    }
+  <!-- Chatbot Button -->
+  <button id="chatbotToggle" aria-label="Open Chatbot">
+    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
+  </button>
+
+  <!-- Chatbox -->
+  <div id="chatbox">
+    <h4>Cashtraq Help Assistant</h4>
+
+    <div class="faq-item">
+      <div class="faq-question">Where is my cashback?</div>
+      <div class="faq-answer">Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Why hasn’t my cashback tracked?</div>
+      <div class="faq-answer">Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">How long does cashback take to confirm?</div>
+      <div class="faq-answer">Retailers confirm cashback within a few days to 3 months, depending on return policies and transaction types.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">How do loyalty tiers work?</div>
+      <div class="faq-answer">We offer Bronze, Silver, and Gold tiers based on total cashback earned.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Why is there a fee?</div>
+      <div class="faq-answer">We charge a small fee to consolidate cashback platforms into one app, saving you time and money.</div>
+    </div>
+  </div>
+
+  <!-- Chatbot Script -->
+  <script>
+    document.addEventListener("click", function (e) {
+      if (e.target && (e.target.id === "chatbotToggle" || e.target.closest("#chatbotToggle"))) {
+        const chatbox = document.getElementById('chatbox');
+        chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
+      }
+      if (e.target && e.target.classList.contains('faq-question')) {
+        e.target.classList.toggle('open');
+      }
+    });
   </script>
 </body>
 </html>
