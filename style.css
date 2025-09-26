@@ -1,20 +1,17 @@
-/* Base styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f4fdfc;
-  color: #003c3c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
+/* ===========================
+   Base / Layout
+   =========================== */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4fdfc;
+  color: #003c3c;
+  min-height: 100vh;
 }
 
 .page-wrapper {
@@ -28,7 +25,7 @@ html, body {
   text-align: center;
   max-width: 400px;
   width: 90%;
-  background: white;
+  background: #fff;
   padding: 2.5rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
@@ -36,19 +33,15 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 2rem;
 }
+
+.container.welcome { padding: 3rem 2rem; }
 
 @media (min-width: 600px) {
-  .container {
-    max-width: 600px;
-  }
+  .container { max-width: 600px; }
 }
 
-.container.welcome {
-  padding: 3rem 2rem;
-}
-
+/* Page-content variant (FAQ/Privacy/Terms) */
 .container.page-content {
   max-width: 800px;
   width: 90%;
@@ -57,7 +50,7 @@ html, body {
   text-align: left;
   align-items: flex-start;
   justify-content: flex-start;
-  background: white;
+  background: #fff;
   color: #003c3c;
   border-radius: 1rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -68,66 +61,60 @@ html, body {
 .container.page-content h3,
 .container.page-content strong {
   color: #003c3c;
-  text-align: left;
   margin-bottom: 1rem;
 }
 
 .container.page-content p,
 .container.page-content li {
-  text-align: justify;
-  text-align-last: left;
   line-height: 1.6;
   color: #333;
   margin-bottom: 1rem;
+  text-align: justify;
+  text-align-last: left;
 }
 
 .container.page-content a {
   color: #00796b;
   text-decoration: underline;
 }
+.container.page-content a:hover { color: #004d40; }
 
-.container.page-content a:hover {
-  color: #004d40;
+
+/* ===========================
+   Dark Mode
+   =========================== */
+body.dark-mode {
+  background: #1e293b;
+  color: #f1f5f9;
 }
 
-/* DARK MODE */
+body.dark-mode .container {
+  background: #334155;
+  color: #e2e8f0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
 body.dark-mode .container.page-content {
   background: #1e293b;
   color: #e2e8f0;
-  border-radius: 1rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  padding: 4rem 2rem 3rem;
-  margin-top: 2rem;
 }
 
 body.dark-mode .container.page-content h1,
 body.dark-mode .container.page-content h2,
 body.dark-mode .container.page-content h3,
-body.dark-mode .container.page-content strong {
-  color: #f8fafc;
-  margin-bottom: 1rem;
-  text-align: left;
-}
+body.dark-mode .container.page-content strong { color: #f8fafc; }
 
 body.dark-mode .container.page-content p,
-body.dark-mode .container.page-content li {
-  color: #cbd5e1;
-  line-height: 1.7;
-  text-align: justify;
-  text-align-last: left;
-  margin-bottom: 1rem;
-}
+body.dark-mode .container.page-content li { color: #cbd5e1; }
 
-body.dark-mode .container.page-content a {
-  color: #38bdf8;
-  text-decoration: underline;
-}
+body.dark-mode .container.page-content a { color: #38bdf8; }
+body.dark-mode .container.page-content a:hover { color: #7dd3fc; }
 
-body.dark-mode .container.page-content a:hover {
-  color: #7dd3fc;
-}
 
-/* NAVIGATION */
+/* ===========================
+   Navigation
+   =========================== */
 .nav-links {
   display: flex;
   justify-content: center;
@@ -145,35 +132,43 @@ body.dark-mode .container.page-content a:hover {
   font-weight: 500;
   transition: background 0.3s ease;
 }
+.nav-links a:hover { background: #bfbfbf; }
 
-.nav-links a:hover {
-  background: #bfbfbf;
+body.dark-mode .nav-links a {
+  background: #475569;
+  color: #f1f5f9;
 }
+body.dark-mode .nav-links a:hover { background: #64748b; }
 
-/* FORMS */
+
+/* ===========================
+   Forms & Buttons
+   =========================== */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
   width: 100%;
+  align-items: center;
 }
 
+.input-field,
 input {
-  padding: 0.75rem;
+  width: 100%;
+  max-width: 320px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   font-size: 1rem;
-  width: 100%;
+  box-sizing: border-box;
 }
-
-input::placeholder {
-  color: #888;
-}
+input::placeholder { color: #888; }
 
 .btn {
   background: #008080;
-  color: white;
+  color: #fff;
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 0.5rem;
@@ -184,33 +179,39 @@ input::placeholder {
   cursor: pointer;
   transition: background 0.2s ease;
 }
-
-.btn:hover {
-  background: #006666;
-}
-
-.btn:focus {
-  outline: 3px solid #008080;
-  outline-offset: 2px;
-}
+.btn:hover { background: #006666; }
+.btn:focus { outline: 3px solid #008080; outline-offset: 2px; }
 
 .btn.secondary {
   background: #e0e0e0;
   color: #003c3c;
 }
+.btn.secondary:hover { background: #ccc; }
 
-.btn.secondary:hover {
-  background: #ccc;
+/* Make buttons full-width only inside forms (mobile friendly) */
+form .btn {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 8px;
 }
 
-.button-group {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+/* Non-form buttons remain compact on mobile but still large enough to tap */
+@media (max-width: 640px) {
+  .btn { width: auto; min-width: 200px; max-width: 90%; }
+  .container .btn { width: auto; min-width: 200px; max-width: 90%; }
+  #darkModeToggle,
+  .theme-toggle {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    min-width: 40px;
+  }
 }
 
-/* Retailer Card Fixes */
+
+/* ===========================
+   Retailer Cards
+   =========================== */
 .retailer-card {
   display: flex;
   justify-content: space-between;
@@ -235,7 +236,7 @@ input::placeholder {
   height: 48px;
   border-radius: 8px;
   object-fit: contain;
-  background: white;
+  background: #fff;
   padding: 4px;
 }
 
@@ -259,7 +260,14 @@ input::placeholder {
   cursor: pointer;
 }
 
-/* Logo Container */
+body.dark-mode .retailer-card { background: #475569; }
+body.dark-mode .retailer-info h4,
+body.dark-mode .retailer-info p { color: #f0f9ff; }
+
+
+/* ===========================
+   Logo / Hero
+   =========================== */
 .logo-container {
   display: flex;
   flex-direction: column;
@@ -276,43 +284,44 @@ input::placeholder {
   margin-bottom: 0.75rem;
 }
 
-/* Tablet/Desktop Enhancements */
 @media (min-width: 600px) {
-  .logo-container {
-    flex-direction: row;
-    gap: 1rem;
-  }
-
-  .logo-img {
-    width: 400px;
-    margin-bottom: 0;
-  }
-
-  .app-title {
-    font-size: 2rem;
-    text-align: left;
-  }
-
-  .tagline {
-    font-size: 1.25rem;
-  }
-
-  .intro-text {
-    font-size: 1rem;
-  }
+  .logo-container { flex-direction: row; gap: 1rem; }
+  .logo-img { width: 400px; margin-bottom: 0; }
+  .app-title { font-size: 2rem; text-align: left; }
+  .tagline { font-size: 1.25rem; }
+  .intro-text { font-size: 1rem; }
 }
 
-/* Dark Mode Retailer Card Fixes */
-body.dark-mode .retailer-card {
-  background: #475569;
+
+/* ===========================
+   Footer
+   =========================== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #00796b;
+  background: transparent;
+  margin-top: 2rem;
 }
 
-body.dark-mode .retailer-info h4,
-body.dark-mode .retailer-info p {
-  color: #f0f9ff;
+footer a {
+  text-decoration: none;
+  margin: 0 0.5rem;
+  color: #00796b;
+}
+footer a:hover {
+  text-decoration: underline;
+  color: #005f5f;
 }
 
-/* Chatbot Button */
+body.dark-mode footer a { color: #a3c9c9; }
+body.dark-mode footer a:hover { color: #7bb4b4; }
+
+
+/* ===========================
+   Chatbot
+   =========================== */
 #chatbotToggle {
   position: fixed;
   bottom: 20px;
@@ -329,12 +338,7 @@ body.dark-mode .retailer-info p {
   z-index: 1000;
   padding: 0;
 }
-
-#chatbotToggle img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
+#chatbotToggle img { width: 32px; height: 32px; object-fit: contain; }
 
 #chatbox {
   position: fixed;
@@ -342,7 +346,7 @@ body.dark-mode .retailer-info p {
   right: 20px;
   width: 320px;
   max-height: 450px;
-  background: white;
+  background: #fff;
   color: #333;
   border-radius: 10px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
@@ -352,11 +356,7 @@ body.dark-mode .retailer-info p {
   z-index: 1001;
   overflow-y: auto;
 }
-
-#chatbox h4 {
-  margin-top: 0;
-  color: #008080;
-}
+#chatbox h4 { margin-top: 0; color: #008080; }
 
 .faq-question {
   margin: 10px 0;
@@ -364,401 +364,51 @@ body.dark-mode .retailer-info p {
   cursor: pointer;
   color: #006666;
 }
-
 .faq-answer {
   font-size: 14px;
   margin-bottom: 12px;
   display: none;
 }
-
-.faq-question.open + .faq-answer {
-  display: block;
-}
+.faq-question.open + .faq-answer { display: block; }
 
 body.dark-mode #chatbox {
   background: #1e293b;
   color: #f1f5f9;
 }
+body.dark-mode .faq-question { color: #38b2ac; }
+body.dark-mode .faq-answer { color: #cbd5e1; }
 
-body.dark-mode .faq-question {
-  color: #38b2ac;
+
+/* ===========================
+   Page Enter Animations (Home only)
+   Add .animate to elements and JS will add body.enter on first visit
+   =========================== */
+@keyframes slideInUp {
+  from { transform: translateY(24px) scale(0.98); opacity: 0; }
+  to   { transform: translateY(0)     scale(1);    opacity: 1; }
 }
 
-body.dark-mode .faq-answer {
-  color: #cbd5e1;
+.animate {
+  opacity: 0;                /* hidden until body.enter is added */
+  transform: translateY(24px) scale(0.98);
 }
 
-/* Base styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f4fdfc;
-  color: #003c3c;
-  min-height: 100vh;
+body.enter .animate {
+  animation: slideInUp 600ms ease-out forwards;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+/* Stagger helpers */
+.delay-1 { animation-delay: 120ms; }
+.delay-2 { animation-delay: 240ms; }
+.delay-3 { animation-delay: 360ms; }
+.delay-4 { animation-delay: 480ms; }
 
-.page-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-}
-
-.container {
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-  background: white;
-  padding: 2.5rem 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 2rem;
-}
-
-@media (min-width: 600px) {
-  .container {
-    max-width: 600px;
-  }
-}
-
-.container.welcome {
-  padding: 3rem 2rem;
-}
-
-.container.page-content {
-  max-width: 800px;
-  width: 90%;
-  padding: 4rem 2rem 3rem;
-  margin-top: 2rem;
-  text-align: left;
-  align-items: flex-start;
-  justify-content: flex-start;
-  background: white;
-  color: #003c3c;
-  border-radius: 1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-.container.page-content h1,
-.container.page-content h2,
-.container.page-content h3,
-.container.page-content strong {
-  color: #003c3c;
-  text-align: left;
-  margin-bottom: 1rem;
-}
-
-.container.page-content p,
-.container.page-content li {
-  text-align: justify;
-  text-align-last: left;
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.container.page-content a {
-  color: #00796b;
-  text-decoration: underline;
-}
-
-.container.page-content a:hover {
-  color: #004d40;
-}
-
-/* DARK MODE */
-body.dark-mode {
-  background: #1e293b;
-  color: #f1f5f9;
-}
-
-body.dark-mode .container {
-  background: #334155;
-  color: #e2e8f0;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-}
-
-body.dark-mode .container.page-content {
-  background: #1e293b;
-  color: #e2e8f0;
-}
-
-body.dark-mode .container.page-content h1,
-body.dark-mode .container.page-content h2,
-body.dark-mode .container.page-content h3,
-body.dark-mode .container.page-content strong {
-  color: #f8fafc;
-}
-
-body.dark-mode .container.page-content p,
-body.dark-mode .container.page-content li {
-  color: #cbd5e1;
-}
-
-body.dark-mode .container.page-content a {
-  color: #38bdf8;
-}
-
-body.dark-mode .container.page-content a:hover {
-  color: #7dd3fc;
-}
-
-/* NAVIGATION */
-.nav-links {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin: 1rem 0;
-}
-
-.nav-links a {
-  background: #d6d6d6;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  color: #003c3c;
-  font-weight: 500;
-  transition: background 0.3s ease;
-}
-
-.nav-links a:hover {
-  background: #bfbfbf;
-}
-
-body.dark-mode .nav-links a {
-  background: #475569;
-  color: #f1f5f9;
-}
-
-body.dark-mode .nav-links a:hover {
-  background: #64748b;
-}
-
-/* Retailer Card Fixes */
-.retailer-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #e6f7f6;
-  border-radius: 1rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  flex-wrap: nowrap;
-}
-
-.retailer-info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex: 1;
-}
-
-.retailer-logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  object-fit: contain;
-  background: white;
-  padding: 4px;
-}
-
-.retailer-info h4 {
-  margin: 0;
-  font-size: 1rem;
-  color: #003c3c;
-}
-
-.retailer-info p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #003c3c;
-}
-
-.favourite-btn {
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  color: #008080;
-  cursor: pointer;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.875rem;
-  color: #00796b;
-  background: transparent;
-  margin-top: 2rem;
-}
-
-footer a {
-  text-decoration: none;
-  margin: 0 0.5rem;
-  color: #00796b;
-}
-
-footer a:hover {
-  text-decoration: underline;
-  color: #005f5f;
-}
-
-body.dark-mode footer a {
-  color: #a3c9c9;
-}
-
-body.dark-mode footer a:hover {
-  color: #7bb4b4;
-}
-
-/* Logo Container */
-.logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  text-align: center;
-  gap: 0.5rem;
-}
-
-.logo-img {
-  width: 400px;
-  height: auto;
-  margin-bottom: 0.75rem;
-}
-
-/* Tablet/Desktop Enhancements */
-@media (min-width: 600px) {
-  .logo-container {
-    flex-direction: row;
-    gap: 1rem;
-  }
-
-  .logo-img {
-    width: 400px;
-    margin-bottom: 0;
-  }
-
-  .app-title {
-    font-size: 2rem;
-    text-align: left;
-  }
-
-  .tagline {
-    font-size: 1.25rem;
-  }
-
-  .intro-text {
-    font-size: 1rem;
-  }
-}
-
-.input-field {
-  width: 100%;
-  max-width: 320px;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-.btn.secondary {
-  background-color: #008080;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.btn.secondary:hover {
-  background-color: #006666;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-/* keep inputs as-is */
-.input-field {
-  width: 90%;
-  max-width: 320px;
-  padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-/* only make buttons wide inside forms (e.g., login/signup) */
-form .btn {
-  width: 100%;
-  max-width: 320px;
-  padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-
-.input-field {
-  border: 1px solid #ccc;
-}
-
-.btn {
-  background-color: #008080;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-/* Mobile optimisation for homepage + profile buttons */
-@media (max-width: 640px) {
-  .btn {
-    width: auto;
-    min-width: 200px;      /* still big enough for a tap target */
-    max-width: 90%;
-    display: inline-block;
-  }
-}
-/* Mobile: shrink non-form buttons (Home/Profile menu + dark mode toggle if it uses .btn) */
-@media (max-width: 640px) {
-  .container .btn {
-    width: auto;
-    max-width: 90%;
-    min-width: 200px;
-    display: inline-block;
-  }
-}
-/* Mobile: shrink dark mode toggle */
-@media (max-width: 640px) {
-  #darkModeToggle, 
-  .theme-toggle { /* keep both in case of different names */
-    padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
-    border-radius: 20px;
-    width: auto;
-    min-width: 40px;
-    height: auto;
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate,
+  body.enter .animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
