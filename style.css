@@ -23,19 +23,14 @@ body {
   min-height: 100vh;
 }
 
-/* Page structure wrapper you already use */
-.page-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+.page-wrapper { display: flex; flex-direction: column; min-height: 100vh; }
 
-/* main wrapper to center the hero card safely */
+/* Center main content safely */
 .main {
   flex: 1;
   display: flex;
-  align-items: center;        /* vertical centering */
-  justify-content: center;    /* horizontal centering */
+  align-items: center;
+  justify-content: center;
   padding: 2rem 1rem;
 }
 
@@ -48,21 +43,19 @@ body {
   background: var(--panel);
   padding: 2.5rem 2rem;
   border-radius: 1rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2rem auto; /* safe horizontal centering */
+  margin: 2rem auto;
 }
 
 .container.welcome { padding: 3rem 2rem; }
 
-@media (min-width: 600px) {
-  .container { max-width: 600px; }
-}
+@media (min-width: 600px) { .container { max-width: 600px; } }
 
-/* Page-content variant (FAQ/Privacy/Terms) */
+/* Page-content (FAQ/Privacy/Terms) */
 .container.page-content {
   max-width: 800px;
   width: 90%;
@@ -74,7 +67,7 @@ body {
   background: var(--panel);
   color: var(--text);
   border-radius: 1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
 .container.page-content h1,
@@ -104,21 +97,18 @@ body {
 /* ===========================
    Dark Mode
    =========================== */
-body.dark-mode {
-  background: #1e293b;
-  color: #f1f5f9;
-}
+body.dark-mode { background: #1e293b; color: #f1f5f9; }
 
 body.dark-mode .container {
   background: #334155;
   color: #e2e8f0;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
 body.dark-mode .container.page-content {
   background: #1e293b;
   color: #e2e8f0;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }
 
 body.dark-mode .container.page-content h1,
@@ -155,10 +145,7 @@ body.dark-mode .container.page-content a:hover { color: var(--brand-600); }
 }
 .nav-links a:hover { background: #bfbfbf; }
 
-body.dark-mode .nav-links a {
-  background: #475569;
-  color: #f1f5f9;
-}
+body.dark-mode .nav-links a { background: #475569; color: #f1f5f9; }
 body.dark-mode .nav-links a:hover { background: #64748b; }
 
 /* ===========================
@@ -173,8 +160,7 @@ form {
   align-items: center;
 }
 
-.input-field,
-input {
+.input-field, input {
   width: 100%;
   max-width: 320px;
   padding: 0.75rem 1rem;
@@ -204,25 +190,17 @@ input::placeholder { color: #888; }
 .btn:focus { outline: 3px solid var(--brand); outline-offset: 2px; }
 
 /* Secondary button stays neutral */
-.btn.secondary {
-  background: #e0e0e0;
-  color: var(--text);
-}
+.btn.secondary { background: #e0e0e0; color: var(--text); }
 .btn.secondary:hover { background: #ccc; }
 
-/* Make buttons full-width only inside forms (mobile friendly) */
-form .btn {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 8px;
-}
+/* Full-width only inside forms */
+form .btn { width: 100%; max-width: 320px; border-radius: 8px; }
 
-/* Non-form buttons remain compact on mobile but still large enough to tap */
+/* Mobile tap targets */
 @media (max-width: 640px) {
   .btn { width: auto; min-width: 200px; max-width: 90%; }
   .container .btn { width: auto; min-width: 200px; max-width: 90%; }
-  #darkModeToggle,
-  .theme-toggle {
+  #darkModeToggle, .theme-toggle {
     padding: 0.25rem 0.5rem;
     font-size: 0.8rem;
     border-radius: 20px;
@@ -245,40 +223,22 @@ form .btn {
   flex-wrap: nowrap;
 }
 
-.retailer-info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex: 1;
-}
+.retailer-info { display: flex; align-items: center; gap: 1rem; flex: 1; }
 
 .retailer-logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  object-fit: contain;
-  background: #fff;
-  padding: 4px;
+  width: 48px; height: 48px; border-radius: 8px; object-fit: contain;
+  background: #fff; padding: 4px;
 }
 
-.retailer-info h4 {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--text);
+.retailer-info h4, .retailer-info p {
+  margin: 0; color: var(--text);
 }
-
-.retailer-info p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--text);
-}
+.retailer-info h4 { font-size: 1rem; }
+.retailer-info p  { font-size: 0.9rem; }
 
 .favourite-btn {
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--brand);
-  cursor: pointer;
+  background: transparent; border: none; font-size: 1.5rem;
+  color: var(--brand); cursor: pointer;
 }
 
 body.dark-mode .retailer-card { background: #475569; }
@@ -289,20 +249,10 @@ body.dark-mode .retailer-info p { color: #f0f9ff; }
    Logo / Hero
    =========================== */
 .logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  text-align: center;
-  gap: 0.5rem;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  margin-bottom: 1rem; text-align: center; gap: 0.5rem;
 }
-
-.logo-img {
-  width: 400px;
-  height: auto;
-  margin-bottom: 0.75rem;
-}
+.logo-img { width: 400px; height: auto; margin-bottom: 0.75rem; }
 
 @media (min-width: 600px) {
   .logo-container { flex-direction: row; gap: 1rem; }
@@ -323,16 +273,8 @@ footer {
   background: transparent;
   margin-top: 2rem;
 }
-
-footer a {
-  text-decoration: none;
-  margin: 0 0.5rem;
-  color: var(--brand);
-}
-footer a:hover {
-  text-decoration: underline;
-  color: var(--brand-700);
-}
+footer a { text-decoration: none; margin: 0 0.5rem; color: var(--brand); }
+footer a:hover { text-decoration: underline; color: var(--brand-700); }
 
 body.dark-mode footer a { color: var(--brand); }
 body.dark-mode footer a:hover { color: var(--brand-600); }
@@ -344,7 +286,7 @@ body.dark-mode footer a:hover { color: var(--brand-600); }
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: var(--brand);
+  background-color: var(--brand) !important; /* override page-local styles */
   border: none;
   border-radius: 50%;
   width: 60px;
@@ -367,7 +309,7 @@ body.dark-mode footer a:hover { color: var(--brand-600); }
   background: #fff;
   color: #333;
   border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
   padding: 16px;
   display: none;
   flex-direction: column;
@@ -376,27 +318,15 @@ body.dark-mode footer a:hover { color: var(--brand-600); }
 }
 #chatbox h4 { margin-top: 0; color: var(--brand); }
 
-.faq-question {
-  margin: 10px 0;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--brand-600);
-}
-.faq-answer {
-  font-size: 14px;
-  margin-bottom: 12px;
-  display: none;
-}
+.faq-question { margin: 10px 0; font-weight: 600; cursor: pointer; color: var(--brand-600); }
+.faq-answer   { font-size: 14px; margin-bottom: 12px; display: none; }
 .faq-question.open + .faq-answer { display: block; }
 
-body.dark-mode #chatbox {
-  background: #1e293b;
-  color: #f1f5f9;
-}
+body.dark-mode #chatbox { background: #1e293b; color: #f1f5f9; }
 body.dark-mode .faq-question { color: var(--brand); }
 body.dark-mode .faq-answer { color: #cbd5e1; }
 
-/* Cookie banner (override any inline styles) */
+/* Cookie banner (override inline/page-local styles) */
 #cookieConsent { background: var(--brand) !important; }
 #cookieConsent a { color: #d1eaea; text-decoration: underline; }
 #acceptCookies { background: var(--brand-700) !important; }
@@ -423,8 +353,7 @@ body.enter .animate { animation: slideInUp 600ms ease-out forwards; }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .animate,
-  body.enter .animate {
+  .animate, body.enter .animate {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
