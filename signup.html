@@ -1,119 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- ✅ Page Title -->
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sign Up - Cashtraq</title>
-
-  <!-- ✅ Robots (auth pages shouldn't index) -->
-  <meta name="robots" content="noindex,follow">
-
-  <!-- ✅ Canonical -->
-  <link rel="canonical" href="https://cashtraq.co.uk/signup.html" />
-
-  <!-- ✅ Theme color -->
-  <meta name="theme-color" content="#008080">
-
-  <!-- ✅ Supabase performance hints -->
-  <link rel="preconnect" href="https://xyxfqdpotxoaptwdhbfp.supabase.co" crossorigin>
-  <link rel="dns-prefetch" href="https://xyxfqdpotxoaptwdhbfp.supabase.co">
-
-  <!-- ✅ Favicon & Styles -->
+  <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- ✅ Supabase client -->
-  <script src="https://unpkg.com/@supabase/supabase-js@2" defer></script>
-
-  <!-- ✅ Chatbot Styles -->
-  <style>
-    #chatbotToggle{
-      position:fixed; bottom:20px; right:20px; background:#008080; color:#fff;
-      border:none; border-radius:50%; width:60px; height:60px; font-size:28px;
-      cursor:pointer; z-index:1000; display:flex; align-items:center; justify-content:center;
-    }
-    #chatbotToggle img{ width:28px; height:28px; }
-    #chatbox{
-      position:fixed; bottom:90px; right:20px; width:320px; max-height:450px;
-      background:#fff; color:#333; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.2);
-      padding:16px; display:none; flex-direction:column; z-index:1001; overflow-y:auto;
-    }
-    #chatbox h4{ margin-top:0; color:#008080; }
-    .faq-question{ margin:10px 0; font-weight:600; cursor:pointer; color:#006666; }
-    .faq-answer{ font-size:14px; margin-bottom:12px; display:none; }
-    .faq-question.open + .faq-answer{ display:block; }
-
-    body.dark-mode #chatbox{ background:#1e293b; color:#f1f5f9; }
-    body.dark-mode .faq-question{ color:#38b2ac; }
-    body.dark-mode .faq-answer{ color:#cbd5e1; }
-
-    /* Page-local auth card polish */
-    .auth-card { max-width:540px; margin:0 auto; background:#f0fdfa; padding:2rem; border-radius:1rem; }
-    .auth-card h2 { margin-top:0; }
-    .help { font-size:.9rem; color:#555; margin-top:.25rem; }
-  </style>
+  <link rel="stylesheet" href="style.css?v=10" />
 </head>
 <body>
-  <!-- ♿ Skip to main content -->
-  <a href="#main" class="sr-only sr-only-focusable" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">Skip to content</a>
-
   <div class="page-wrapper">
-    <!-- 🌙 Dark mode toggle -->
-    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
+    <button id="darkModeToggle" class="btn secondary" style="position:absolute;top:1rem;right:1rem">🌓</button>
 
-    <main id="main" class="main">
-      <div class="container page-content" style="max-width:720px;">
-        <div class="logo-container" style="text-align:center;">
-          <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" width="400" height="120" decoding="async" />
-          <h1 class="app-title" style="margin:.25rem 0 0;">Cashtraq</h1>
-        </div>
-
-        <!-- ✅ Nav -->
-        <nav class="nav-links" style="margin:1rem 0 1.25rem;">
-          <a href="dashboard.html" class="btn secondary">Dashboard</a>
-          <a href="retailers.html" class="btn secondary">Retailers</a>
-          <a href="profile.html" class="btn secondary">Profile</a>
-          <a href="contact.html" class="btn secondary">Contact</a>
-        </nav>
-
-        <div class="auth-card">
-          <h2>Create Your Account</h2>
-          <form id="signupForm" novalidate>
-            <!-- Honeypot (spam trap) -->
-            <div style="position:absolute;left:-5000px;" aria-hidden="true">
-              <label>Leave this empty</label>
-              <input type="text" name="website" tabindex="-1">
-            </div>
-
-            <label for="fullName">Full Name</label>
-            <input id="fullName" name="fullName" type="text" placeholder="Full Name" autocomplete="name" required />
-
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Email" autocomplete="email" required />
-
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" placeholder="Password" autocomplete="new-password" minlength="6" required />
-            <div class="help" id="pwHelp">Use 8+ characters with a mix of letters and numbers.</div>
-
-            <label style="font-size: 0.9rem; margin-top: 1rem; display: block; text-align: left;">
-              <input type="checkbox" id="agreeTerms" required />
-              I agree to the <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a> and
-              <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.
-            </label>
-
-            <button type="submit" class="btn" style="width:100%; margin-top:1rem;">Create Account</button>
-            <p id="signupMsg" class="help" role="status" style="margin-top:1rem;"></p>
-          </form>
-
-          <p style="margin-top:1rem">Already have an account? <a href="login.html">Log In</a></p>
-        </div>
+    <main class="main">
+      <div class="container">
+        <div class="logo-container"><img src="assets/cashtraq_logo.svg" class="logo-img" alt="Cashtraq Logo" /></div>
+        <h2>Create Your Account</h2>
+        <form id="signupForm">
+          <input type="text" placeholder="Full Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <label style="font-size:.9rem;display:block;text-align:left">
+            <input type="checkbox" id="agreeTerms" required />
+            I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a> and <a href="terms.html" target="_blank">Terms &amp; Conditions</a>.
+          </label>
+          <button type="submit" class="btn">Create Account</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Log In</a></p>
       </div>
     </main>
 
-    <!-- ✅ Footer -->
-    <footer style="text-align:center; margin-top:2rem;">
+    <footer>
       <a href="privacy.html">Privacy Policy</a> |
       <a href="terms.html">Terms &amp; Conditions</a> |
       <a href="faq.html">Help / FAQ</a> |
@@ -121,119 +37,24 @@
     </footer>
   </div>
 
-  <!-- ✅ Cookie Consent Banner -->
-  <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our 
-      <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.
-    </span>
-    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
+  <!-- shared widgets + cookies -->
+  <button id="chatbotToggle" aria-label="Open Chatbot"><img src="assets/chatbot-icon.svg" alt="Chatbot" /></button>
+  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant"><h4>Cashtraq Help Assistant</h4></div>
+  <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position:fixed;bottom:1rem;left:1rem;right:1rem;padding:1rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;z-index:1000;">
+    <span>We use cookies to improve your experience. See our <a href="privacy.html">Privacy Policy</a>.</span>
+    <button id="acceptCookies" class="btn" style="margin:0">Accept</button>
   </div>
 
-  <!-- 💬 Chatbot Button -->
-  <button id="chatbotToggle" aria-label="Open Chatbot">
-    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
-  </button>
-
-  <!-- 💬 Chatbox -->
-  <div id="chatbox">
-    <h4>Cashtraq Help Assistant</h4>
-    <div class="faq-item"><div class="faq-question">Where is my cashback?</div><div class="faq-answer">Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</div></div>
-    <div class="faq-item"><div class="faq-question">Why hasn’t my cashback tracked?</div><div class="faq-answer">Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer. This is normal for some merchants.</div></div>
-    <div class="faq-item"><div class="faq-question">How long does cashback take to confirm?</div><div class="faq-answer">Retailers confirm cashback within a few days to 3 months, depending on return policies and transaction types.</div></div>
-    <div class="faq-item"><div class="faq-question">How do loyalty tiers work?</div><div class="faq-answer">We offer Bronze, Silver, and Gold tiers based on total cashback earned. More cashback = higher tier and better perks in the future.</div></div>
-    <div class="faq-item"><div class="faq-question">Why is there a fee to use Cashtraq?</div><div class="faq-answer">We charge a small fee to consolidate cashback from multiple platforms into one app, saving you time and avoiding missed earnings.</div></div>
-    <div class="faq-item"><div class="faq-question">Why consolidate cashback in one app?</div><div class="faq-answer">Studies show users lose cashback by forgetting logins or not checking multiple apps. Cashtraq keeps it all in one place.</div></div>
-    <div class="faq-item"><div class="faq-question">How do I sign up?</div><div class="faq-answer">Just enter your email and a password. Use a valid email so we can send updates and help you recover your account.</div></div>
-    <div class="faq-item"><div class="faq-question">I can’t log in – what should I do?</div><div class="faq-answer">Reset your password. Still stuck? Contact us at <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</div></div>
-    <div class="faq-item"><div class="faq-question">Why is profile info important?</div><div class="faq-answer">Your profile lets us match cashback and keep your details up to date. You can update these in the app any time.</div></div>
-    <div class="faq-item"><div class="faq-question">Is my data secure?</div><div class="faq-answer">Yes. We use secure storage, encryption, and never sell your data to third parties.</div></div>
-  </div>
-
-  <!-- ✅ Scripts -->
+  <script src="app.js?v=1" defer></script>
   <script>
-    // 🌙 Dark mode
-    document.getElementById('darkModeToggle').addEventListener('click', function () {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    });
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
-    }
-
-    // 🍪 Cookie banner
-    (function () {
-      const cookieConsent = document.getElementById('cookieConsent');
-      const acceptBtn = document.getElementById('acceptCookies');
-      if (localStorage.getItem('cookiesAccepted') === 'true') {
-        cookieConsent.style.display = 'none';
+    document.getElementById('signupForm').addEventListener('submit', e => {
+      e.preventDefault();
+      if (!document.getElementById('agreeTerms').checked) {
+        alert('Please agree to the Privacy Policy and Terms & Conditions.');
+        return;
       }
-      acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookieConsent.style.display = 'none';
-      });
-    })();
-
-    // 💬 Chatbot toggle
-    document.getElementById('chatbotToggle').addEventListener('click', function () {
-      const chatbox = document.getElementById('chatbox');
-      chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
-    });
-
-    // ❓ FAQ toggles
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => q.classList.toggle('open'));
-    });
-
-    // 📝 Supabase signup
-    window.addEventListener('DOMContentLoaded', () => {
-      const SUPABASE_URL = "https://xyxfqdpotxoaptwdhbfp.supabase.co";
-      const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5eGZxZHBvdHhvYXB0d2RoYmZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5ODg3MTcsImV4cCI6MjA3MDU2NDcxN30.j_tkI5CMb_vtOx_LEtj0Odo7b4GiahTGsbFCHSbNxcM";
-      const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
-      window.supabaseClient = sb; // optional global
-
-      const form = document.getElementById('signupForm');
-      const msg  = document.getElementById('signupMsg');
-
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        // honeypot check
-        if (form.website && form.website.value) return;
-
-        // consent check
-        if (!document.getElementById('agreeTerms').checked) {
-          msg.style.color = 'crimson';
-          msg.textContent = 'Please agree to the Privacy Policy and Terms to continue.';
-          return;
-        }
-
-        const fullName = document.getElementById('fullName').value.trim();
-        const email    = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
-
-        msg.style.color = '';
-        msg.textContent = 'Creating your account…';
-
-        const { data, error } = await sb.auth.signUp({
-          email,
-          password,
-          options: {
-            data: { full_name: fullName },
-            emailRedirectTo: window.location.origin + '/login.html'
-          }
-        });
-
-        if (error) {
-          msg.style.color = 'crimson';
-          msg.textContent = error.message;
-          return;
-        }
-
-        // If email confirmations are ON, Supabase will send a confirmation email.
-        msg.style.color = 'green';
-        msg.textContent = 'Check your inbox to confirm your email. After confirming, you can log in.';
-        form.reset();
-      });
+      localStorage.setItem('isLoggedIn','true');
+      location.href = 'dashboard.html';
     });
   </script>
 </body>
