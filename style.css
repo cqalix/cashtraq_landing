@@ -20,8 +20,10 @@ body {
   min-height: 100vh;
 }
 
+/* Centered card/panel */
 .container {
-  flex: 1;
+  /* removed: flex: 1;  */
+  flex: 0 1 auto;
   text-align: center;
   max-width: 400px;
   width: 90%;
@@ -33,9 +35,17 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  /* center horizontally on all pages */
+  margin: 2rem auto;
 }
 
-.container.welcome { padding: 3rem 2rem; }
+/* Home/welcome card: perfect center on the page */
+.container.welcome {
+  padding: 3rem 2rem;
+  /* equal free space above & below inside flex column parent => vertical center */
+  margin: auto;
+}
 
 @media (min-width: 600px) {
   .container { max-width: 600px; }
@@ -46,7 +56,8 @@ body {
   max-width: 800px;
   width: 90%;
   padding: 4rem 2rem 3rem;
-  margin-top: 2rem;
+  /* horizontally centered, but not vertically */
+  margin: 2rem auto;
   text-align: left;
   align-items: flex-start;
   justify-content: flex-start;
@@ -303,6 +314,8 @@ footer {
   color: #00796b;
   background: transparent;
   margin-top: 2rem;
+  /* keep footer at the bottom of the page-wrapper */
+  margin-bottom: 0;
 }
 
 footer a {
