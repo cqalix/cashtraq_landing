@@ -13,6 +13,9 @@
   <!-- ✅ Canonical -->
   <link rel="canonical" href="https://cashtraq.co.uk/terms.html" />
 
+  <!-- ✅ Theme color (mobile UI tint) -->
+  <meta name="theme-color" content="#008080">
+
   <!-- ✅ Favicon & Styles -->
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="stylesheet" href="style.css" />
@@ -54,15 +57,18 @@
   </style>
 </head>
 <body>
+  <!-- ♿ Skip to main content -->
+  <a href="#main" class="sr-only sr-only-focusable" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+
   <div class="page-wrapper">
     <!-- 🌙 Dark mode toggle -->
     <button id="darkModeToggle" class="btn secondary" style="position:absolute; top:1rem; right:1rem;">🌓</button>
 
-    <main class="main">
+    <main id="main" class="main">
       <div class="container page-content">
         <!-- ✅ Logo -->
         <div class="logo-container" style="text-align:center; margin-bottom:1rem;">
-          <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+          <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" width="400" height="120" decoding="async" />
         </div>
 
         <!-- ✅ Nav -->
@@ -132,7 +138,7 @@
   </div>
 
   <!-- ✅ Cookie Consent Banner -->
-  <div id="cookieConsent" style="position:fixed; bottom:1rem; left:1rem; right:1rem; background:#008080; color:#fff; padding:1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; z-index:1000;">
+  <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position:fixed; bottom:1rem; left:1rem; right:1rem; background:#008080; color:#fff; padding:1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; z-index:1000;">
     <span>We use cookies to improve your experience. By using our site, you accept our 
       <a href="privacy.html" style="color:#d1eaea; text-decoration:underline;">Privacy Policy</a>.
     </span>
@@ -145,7 +151,7 @@
   </button>
 
   <!-- 💬 Chatbox -->
-  <div id="chatbox">
+  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant">
     <h4>Cashtraq Help Assistant</h4>
     <div class="faq-item"><div class="faq-question">Where is my cashback?</div><div class="faq-answer">Cashback can take time to appear depending on the retailer. Most track within 72 hours, but some retailers take several weeks — even up to 90 days — to confirm transactions.</div></div>
     <div class="faq-item"><div class="faq-question">Why hasn’t my cashback tracked?</div><div class="faq-answer">Tracking may fail due to ad blockers, cookies being disabled, or if you didn’t click directly through Cashtraq to the retailer.</div></div>
