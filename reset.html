@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Set New Password – Cashtraq</title>
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <style>
+    .auth-card{max-width:540px;margin:0 auto;background:#f0fdfa;padding:2rem;border-radius:1rem}
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <button id="darkModeToggle" class="btn secondary" style="position:absolute;top:1rem;right:1rem">🌓</button>
+    <main class="main">
+      <div class="container page-content" style="max-width:720px;">
+        <div class="logo-container" style="text-align:center;margin-bottom:1rem">
+          <img src="assets/cashtraq_logo.svg" alt="Cashtraq" class="logo-img" width="340" height="100">
+        </div>
+
+        <div class="auth-card">
+          <h1>Choose a new password</h1>
+          <form id="resetForm" novalidate>
+            <label for="password">New password</label>
+            <input id="password" name="password" type="password" required autocomplete="new-password">
+            <label for="password2">Confirm password</label>
+            <input id="password2" name="password2" type="password" required autocomplete="new-password">
+            <button type="submit" class="btn" style="width:100%;margin-top:1rem">Update password</button>
+            <p id="msg" role="status" style="margin-top:1rem"></p>
+          </form>
+          <p style="margin-top:1rem"><a href="login.html">Back to log in</a></p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // dark mode
+    document.getElementById('darkModeToggle').addEventListener('click', ()=> {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+    if(localStorage.getItem('darkMode')==='true'){ document.body.classList.add('dark-mode'); }
+
+    // Supabase
+    const SUPABASE_URL = "https://xyxfqdpotxoaptwdhbfp.supabase.co";
+    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5eGZxZHBvdHhvYXB0d2RoYmZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5ODg3MTcsImV4cCI6MjA3MDU2NDcxN30.j_tkI5CMb_vtOx_LEtj0Odo7b4GiahTGsbFCHSbNxcM";
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+    // If the link arrived with a code, exchange for a session (covers all email link flows)
+    (async () => {
+      try { await sb.auth.exchangeCodeForSession(window.location.href); } catch(_) {}
+    })();
+
+    document.getElementById('resetForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const p1 = document.getElementById('password').value;
+      const p2 = document.getElementById('password2').value;
+      const msg = document.getElementById('msg');
+      if (p1 !== p2) { msg.style.color='crimson'; msg.textContent='Passwords do not match.'; return; }
+
+      msg.style.color=''; msg.textContent='Updating…';
+      const { error } = await sb.auth.updateUser({ password: p1 });
+
+      if (error){ msg.style.color='crimson'; msg.textContent=error.message; return; }
+      msg.style.color='green';
+      msg.textContent='Password updated. Redirecting to login…';
+      setTimeout(()=> window.location.replace('login.html'), 1000);
+    });
+  </script>
+</body>
+</html>
