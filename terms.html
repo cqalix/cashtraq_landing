@@ -5,15 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <!-- ✅ Page Title -->
-  <title>Terms & Conditions - Cashtraq</title>
+  <title>Terms &amp; Conditions - Cashtraq</title>
 
-  <!-- ✅ Favicon -->
+  <!-- ✅ Meta Description -->
+  <meta name="description" content="The terms and conditions for using Cashtraq, including account rules, limitations, fees, acceptable use, and contact information." />
+
+  <!-- ✅ Canonical -->
+  <link rel="canonical" href="https://cashtraq.co.uk/terms.html" />
+
+  <!-- ✅ Favicon & Styles -->
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-
-  <!-- ✅ Styles -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- ✅ Chatbot Styles -->
+  <!-- ✅ JSON-LD: Terms of Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TermsOfService",
+    "name": "Cashtraq Terms & Conditions",
+    "url": "https://cashtraq.co.uk/terms.html",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://cashtraq.co.uk/"
+    }
+  }
+  </script>
+
+  <!-- (Keeps your page-local chatbot styles) -->
   <style>
     #chatbotToggle{
       position:fixed; bottom:20px; right:20px; background:#008080; color:#fff;
@@ -40,72 +58,74 @@
     <!-- 🌙 Dark mode toggle -->
     <button id="darkModeToggle" class="btn secondary" style="position:absolute; top:1rem; right:1rem;">🌓</button>
 
-    <div class="container page-content">
-      <!-- ✅ Logo -->
-      <div class="logo-container" style="text-align:center; margin-bottom:1rem;">
-        <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+    <main class="main">
+      <div class="container page-content">
+        <!-- ✅ Logo -->
+        <div class="logo-container" style="text-align:center; margin-bottom:1rem;">
+          <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+        </div>
+
+        <!-- ✅ Nav -->
+        <nav class="nav-links" style="text-align:center; margin-bottom:1rem;">
+          <a href="dashboard.html" class="btn secondary">Dashboard</a>
+          <a href="retailers.html" class="btn secondary">Retailers</a>
+          <a href="profile.html" class="btn secondary">Profile</a>
+          <a href="contact.html" class="btn secondary">Contact</a>
+        </nav>
+
+        <h1>Terms &amp; Conditions</h1>
+        <p><em>Last updated: August 2025</em></p>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing or using Cashtraq, you agree to these Terms &amp; Conditions and our Privacy Policy.</p>
+
+        <h2>2. Service Description</h2>
+        <p>Cashtraq helps you track cashback across participating retailers and programs. Cashback rates and eligibility are subject to change by retailers at any time.</p>
+
+        <h2>3. Accounts</h2>
+        <ul>
+          <li>You are responsible for maintaining the confidentiality of your login credentials.</li>
+          <li>You must provide accurate information and notify us of any changes.</li>
+          <li>We may suspend or terminate accounts for misuse or policy violations.</li>
+        </ul>
+
+        <h2>4. Cashback Tracking &amp; Limitations</h2>
+        <ul>
+          <li>Tracking depends on retailer systems, cookies, and third-party attribution.</li>
+          <li>Some transactions may not track due to ad blockers, cookie settings, or retailer exclusions.</li>
+          <li>Confirmation times vary (often from a few days up to 90 days or more).</li>
+        </ul>
+
+        <h2>5. Fees</h2>
+        <p>We may charge a small fee for consolidating and maintaining your cashback data. Any changes to fees will be communicated in advance where required.</p>
+
+        <h2>6. Acceptable Use</h2>
+        <ul>
+          <li>Do not attempt to manipulate tracking, abuse promotional offers, or engage in fraud.</li>
+          <li>Do not reverse-engineer, scrape, or disrupt our services.</li>
+        </ul>
+
+        <h2>7. Intellectual Property</h2>
+        <p>All trademarks, logos, and content are the property of their respective owners. You receive a limited, non-transferable license to use the service.</p>
+
+        <h2>8. Third-Party Links</h2>
+        <p>We are not responsible for third-party websites, content, or policies. Review retailer terms before purchasing.</p>
+
+        <h2>9. Disclaimers &amp; Liability</h2>
+        <p>Cashtraq is provided “as is” without warranties. We are not liable for indirect or consequential losses to the fullest extent permitted by law.</p>
+
+        <h2>10. Changes to These Terms</h2>
+        <p>We may update these terms from time to time. Continued use after changes means you accept the updated terms.</p>
+
+        <h2>11. Contact</h2>
+        <p>Questions? Email <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</p>
       </div>
-
-      <!-- ✅ Nav (includes Contact) -->
-      <nav class="nav-links" style="text-align:center; margin-bottom:1rem;">
-        <a href="dashboard.html" class="btn secondary">Dashboard</a>
-        <a href="retailers.html" class="btn secondary">Retailers</a>
-        <a href="profile.html" class="btn secondary">Profile</a>
-        <a href="contact.html" class="btn secondary">Contact</a>
-      </nav>
-
-      <h1>Terms & Conditions</h1>
-      <p><em>Last updated: August 2025</em></p>
-
-      <h2>1. Acceptance of Terms</h2>
-      <p>By accessing or using Cashtraq, you agree to these Terms & Conditions and our Privacy Policy.</p>
-
-      <h2>2. Service Description</h2>
-      <p>Cashtraq helps you track cashback across participating retailers and programs. Cashback rates and eligibility are subject to change by retailers at any time.</p>
-
-      <h2>3. Accounts</h2>
-      <ul>
-        <li>You are responsible for maintaining the confidentiality of your login credentials.</li>
-        <li>You must provide accurate information and notify us of any changes.</li>
-        <li>We may suspend or terminate accounts for misuse or policy violations.</li>
-      </ul>
-
-      <h2>4. Cashback Tracking & Limitations</h2>
-      <ul>
-        <li>Tracking depends on retailer systems, cookies, and third-party attribution.</li>
-        <li>Some transactions may not track due to ad blockers, cookie settings, or retailer exclusions.</li>
-        <li>Confirmation times vary (often from a few days up to 90 days or more).</li>
-      </ul>
-
-      <h2>5. Fees</h2>
-      <p>We may charge a small fee for consolidating and maintaining your cashback data. Any changes to fees will be communicated in advance where required.</p>
-
-      <h2>6. Acceptable Use</h2>
-      <ul>
-        <li>Do not attempt to manipulate tracking, abuse promotional offers, or engage in fraud.</li>
-        <li>Do not reverse-engineer, scrape, or disrupt our services.</li>
-      </ul>
-
-      <h2>7. Intellectual Property</h2>
-      <p>All trademarks, logos, and content are the property of their respective owners. You receive a limited, non-transferable license to use the service.</p>
-
-      <h2>8. Third-Party Links</h2>
-      <p>We are not responsible for third-party websites, content, or policies. Review retailer terms before purchasing.</p>
-
-      <h2>9. Disclaimers & Liability</h2>
-      <p>Cashtraq is provided “as is” without warranties. We are not liable for indirect or consequential losses to the fullest extent permitted by law.</p>
-
-      <h2>10. Changes to These Terms</h2>
-      <p>We may update these terms from time to time. Continued use after changes means you accept the updated terms.</p>
-
-      <h2>11. Contact</h2>
-      <p>Questions? Email <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.</p>
-    </div>
+    </main>
 
     <!-- ✅ Footer -->
     <footer style="text-align:center; margin-top:2rem;">
       <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms &amp; Conditions</a> |
+      <a href="terms.html" aria-current="page">Terms &amp; Conditions</a> |
       <a href="faq.html">Help / FAQ</a> |
       <a href="contact.html">Contact</a>
     </footer>
