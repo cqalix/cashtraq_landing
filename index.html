@@ -3,86 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <!-- ✅ Page Title -->
+  <title>Cashtraq – Track it. Stack it. Cashtraq it.</title>
 
-  <!-- ===========================
-       Primary Meta / SEO
-       =========================== -->
-  <title>Cashtraq – Track your cashback. Maximise your savings.</title>
-  <meta name="title" content="Cashtraq – Track your cashback. Maximise your savings.">
-  <meta name="description" content="Track it. Stack it. Cashtraq it. Maximise your cashback savings in one place with Cashtraq.">
+  <!-- ✅ Meta Description -->
+  <meta name="description" content="Track your cashback, maximise your savings, and manage all your rewards in one place with Cashtraq." />
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://cashtraq.co.uk/">
+  <!-- ✅ Canonical -->
+  <link rel="canonical" href="https://cashtraq.co.uk/" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://cashtraq.co.uk/">
-  <meta property="og:title" content="Cashtraq – Track your cashback. Maximise your savings.">
-  <meta property="og:description" content="Track it. Stack it. Cashtraq it. Maximise your cashback savings in one place with Cashtraq.">
-  <meta property="og:image" content="https://cashtraq.co.uk/assets/og-image.png">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://cashtraq.co.uk/">
-  <meta name="twitter:title" content="Cashtraq – Track your cashback. Maximise your savings.">
-  <meta name="twitter:description" content="Track it. Stack it. Cashtraq it. Maximise your cashback savings in one place with Cashtraq.">
-  <meta name="twitter:image" content="https://cashtraq.co.uk/assets/og-image.png">
-
-  <!-- Theme color (browser UI tint) -->
-  <meta name="theme-color" content="#008080">
-
-  <!-- Favicon -->
+  <!-- ✅ Favicon -->
   <link rel="icon" type="image/png" href="assets/favicon.png" />
 
-  <!-- Styles -->
+  <!-- ✅ Open Graph / Social -->
+  <meta property="og:title" content="Cashtraq – Track it. Stack it. Cashtraq it." />
+  <meta property="og:description" content="Track your cashback. Maximise your savings. All in one place." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cashtraq.co.uk/" />
+  <meta property="og:image" content="https://cashtraq.co.uk/assets/og-image.png" />
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cashtraq – Track it. Stack it. Cashtraq it." />
+  <meta name="twitter:description" content="Track your cashback. Maximise your savings. All in one place." />
+  <meta name="twitter:image" content="https://cashtraq.co.uk/assets/og-image.png" />
+
+  <!-- ✅ Styles -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Chatbot Styles (page-local) -->
-  <style>
-    #chatbotToggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #008080;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
-      cursor: pointer;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-    }
-    #chatbotToggle img { width: 28px; height: 28px; }
-    #chatbox {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 320px;
-      max-height: 450px;
-      background: #fff;
-      color: #333;
-      border-radius: 10px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.2);
-      padding: 16px;
-      display: none;
-      flex-direction: column;
-      z-index: 1001;
-      overflow-y: auto;
-    }
-    #chatbox h4 { margin-top:0; color:#008080 }
-    .faq-question { margin:10px 0; font-weight:600; cursor:pointer; color:#006666 }
-    .faq-answer { font-size:14px; margin-bottom:12px; display:none }
-    .faq-question.open + .faq-answer { display:block }
-    body.dark-mode #chatbox { background:#1e293b; color:#f1f5f9 }
-    body.dark-mode .faq-question { color:#38b2ac }
-    body.dark-mode .faq-answer { color:#cbd5e1 }
-  </style>
+  <!-- ✅ JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Cashtraq",
+    "url":"https://cashtraq.co.uk/",
+    "logo":"https://cashtraq.co.uk/assets/og-image.png"
+  }
+  </script>
 </head>
+
 <body>
   <!-- First-visit animation gate: adds .enter on first ever visit only -->
   <script>
