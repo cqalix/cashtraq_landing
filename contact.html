@@ -2,209 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- ✅ Page Title -->
-  <title>Contact Cashtraq</title>
-
-  <!-- ✅ Meta Description -->
-  <meta name="description" content="Contact the Cashtraq team for support, feedback, or partnership enquiries. We’ll get back to you as soon as possible." />
-
-  <!-- ✅ Canonical -->
-  <link rel="canonical" href="https://cashtraq.co.uk/contact.html" />
-
-  <!-- ✅ Favicon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - Cashtraq</title>
+  <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-
-  <!-- ✅ Open Graph / Social -->
-  <meta property="og:title" content="Contact Cashtraq" />
-  <meta property="og:description" content="Need help with cashback or your account? Contact the Cashtraq team." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://cashtraq.co.uk/contact.html" />
-  <meta property="og:image" content="https://cashtraq.co.uk/assets/og-image.png" />
-
-  <!-- ✅ Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact Cashtraq" />
-  <meta name="twitter:description" content="Need help with cashback or your account? Contact the Cashtraq team." />
-  <meta name="twitter:image" content="https://cashtraq.co.uk/assets/og-image.png" />
-
-  <!-- ✅ Styles -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- ✅ JSON-LD Schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"ContactPage",
-    "name":"Contact Cashtraq",
-    "url":"https://cashtraq.co.uk/contact.html",
-    "isPartOf": {
-      "@type":"WebSite",
-      "url":"https://cashtraq.co.uk/"
-    },
-    "mainEntity": {
-      "@type":"Organization",
-      "name":"Cashtraq",
-      "url":"https://cashtraq.co.uk/",
-      "contactPoint": [{
-        "@type":"ContactPoint",
-        "contactType":"customer support",
-        "email":"support@cashtraq.co.uk"
-      }]
-    }
-  }
-  </script>
-
-  <!-- ✅ Page + Chatbot Styles -->
-  <style>
-    form {
-      background: #f0fdfa;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      max-width: 640px;
-      margin: 0 auto;
-    }
-    form label { display: block; margin-top: 1rem; font-weight: bold; }
-    form input, form textarea {
-      width: 100%; padding: 0.75rem; margin-top: 0.5rem;
-      border-radius: 0.5rem; border: 1px solid #ccc; font-size: 1rem;
-    }
-    form button {
-      margin-top: 1.5rem; background: #008080; color: white;
-      border: none; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer;
-    }
-    body.dark-mode form { background: #1e293b; color: #f1f5f9; }
-    body.dark-mode input, body.dark-mode textarea {
-      background: #334155; color: #f1f5f9; border: 1px solid #475569;
-    }
-
-    /* Chatbot */
-    #chatbotToggle{
-      position:fixed; bottom:20px; right:20px; background:#008080; color:#fff;
-      border:none; border-radius:50%; width:60px; height:60px; font-size:28px;
-      cursor:pointer; z-index:1000; display:flex; align-items:center; justify-content:center;
-    }
-    #chatbotToggle img{ width:28px; height:28px; }
-    #chatbox{
-      position:fixed; bottom:90px; right:20px; width:320px; max-height:450px;
-      background:#fff; color:#333; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.2);
-      padding:16px; display:none; flex-direction:column; z-index:1001; overflow-y:auto;
-    }
-    #chatbox h4{ margin-top:0; color:#008080; }
-    .faq-question{ margin:10px 0; font-weight:600; cursor:pointer; color:#006666; }
-    .faq-answer{ font-size:14px; margin-bottom:12px; display:none; }
-    .faq-question.open + .faq-answer{ display:block; }
-    body.dark-mode #chatbox{ background:#1e293b; color:#f1f5f9; }
-    body.dark-mode .faq-question{ color:#38b2ac; }
-    body.dark-mode .faq-answer{ color:#cbd5e1; }
-  </style>
+  <link rel="stylesheet" href="style.css?v=10" />
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- 🌙 Dark mode toggle -->
-    <button id="darkModeToggle" class="btn secondary" style="position: absolute; top: 1rem; right: 1rem;">🌓</button>
+    <button id="darkModeToggle" class="btn secondary" style="position:absolute;top:1rem;right:1rem">🌓</button>
 
     <main class="main">
-      <div class="container page-content" style="text-align:center;">
+      <div class="container page-content" style="max-width:800px">
         <h1>Contact Us</h1>
-        <p>If you have any questions or need support, use the form below or email us at
-          <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.
-        </p>
+        <p>Questions? Email <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a> or use the form.</p>
 
-        <form id="contactForm" action="#" method="POST" novalidate>
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" />
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" />
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
-
-          <button type="submit">Send Message</button>
-          <p id="formSuccess" style="color: green; display: none; margin-top: 1rem;">Thank you! We'll be in touch soon.</p>
+        <form id="contactForm" action="#" method="POST" style="background:#f0fdfa;padding:2rem;border-radius:1rem;box-shadow:0 4px 15px rgba(0,0,0,.05)">
+          <label>Name</label><input type="text" required />
+          <label>Email</label><input type="email" required />
+          <label>Message</label><textarea rows="5" required></textarea>
+          <button type="submit" class="btn">Send Message</button>
+          <p id="formSuccess" style="display:none;color:green;margin-top:1rem">Thank you! We'll be in touch soon.</p>
         </form>
       </div>
     </main>
 
-    <!-- ✅ Footer -->
-    <footer style="margin-top: 3rem; text-align:center;">
+    <footer>
       <a href="privacy.html">Privacy Policy</a> |
       <a href="terms.html">Terms &amp; Conditions</a> |
-      <a href="faq.html">Help / FAQ</a> |
-      <a href="contact.html" aria-current="page">Contact</a>
+      <a href="faq.html">Help / FAQ</a>
     </footer>
   </div>
 
-  <!-- 💬 Chatbot Button -->
-  <button id="chatbotToggle" aria-label="Open Chatbot">
-    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
-  </button>
-
-  <!-- 💬 Chatbox -->
-  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant">
-    <h4>Cashtraq Help Assistant</h4>
-    <div class="faq-item"><div class="faq-question">How do I sign up?</div><div class="faq-answer">Just enter your email and password. Easy!</div></div>
-    <div class="faq-item"><div class="faq-question">Where is my cashback?</div><div class="faq-answer">Some retailers take up to 90 days to confirm.</div></div>
-    <div class="faq-item"><div class="faq-question">Can I change my profile info?</div><div class="faq-answer">Yes! Just go to your profile page and edit your details.</div></div>
-    <div class="faq-item"><div class="faq-question">Is my data secure?</div><div class="faq-answer">We use encryption and never sell your data.</div></div>
+  <!-- shared widgets -->
+  <button id="chatbotToggle" aria-label="Open Chatbot"><img src="assets/chatbot-icon.svg" alt="Chatbot" /></button>
+  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant"><h4>Cashtraq Help Assistant</h4></div>
+  <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position:fixed;bottom:1rem;left:1rem;right:1rem;padding:1rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;z-index:1000;">
+    <span>We use cookies to improve your experience. See our <a href="privacy.html">Privacy Policy</a>.</span>
+    <button id="acceptCookies" class="btn" style="margin:0">Accept</button>
   </div>
 
-  <!-- 🍪 Cookie Consent -->
-  <div id="cookieConsent" style="position: fixed; bottom: 1rem; left: 1rem; right: 1rem; background: #008080; color: white; padding: 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our 
-      <a href="privacy.html" style="color: #d1eaea; text-decoration: underline;">Privacy Policy</a>.
-    </span>
-    <button id="acceptCookies" style="background: #004d40; border: none; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">Accept</button>
-  </div>
-
-  <!-- Scripts -->
+  <script src="app.js?v=1" defer></script>
   <script>
-    // 🌙 Dark Mode
-    document.getElementById('darkModeToggle').addEventListener('click', function () {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    });
-    if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark-mode');
-    }
-
-    // 🍪 Cookie Consent
-    document.addEventListener("DOMContentLoaded", function () {
-      const cookieConsent = document.getElementById('cookieConsent');
-      const acceptBtn = document.getElementById('acceptCookies');
-      if (localStorage.getItem('cookiesAccepted') === 'true') {
-        cookieConsent.style.display = 'none';
-      }
-      acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookieConsent.style.display = 'none';
-      });
-    });
-
-    // 💬 Chatbot toggle
-    document.getElementById('chatbotToggle').addEventListener('click', function () {
-      const chatbox = document.getElementById('chatbox');
-      chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
-    });
-
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => q.classList.toggle('open'));
-    });
-
-    // ✅ Fake submit for now
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
+    document.getElementById('contactForm').addEventListener('submit', e => {
       e.preventDefault();
-      const name = document.getElementById('name');
-      const email = document.getElementById('email');
-      const message = document.getElementById('message');
-
-      if (!name.value.trim() || !email.value.trim() || !message.value.trim()) return;
-
       document.getElementById('formSuccess').style.display = 'block';
-      this.reset();
+      e.target.reset();
     });
   </script>
 </body>
