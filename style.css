@@ -1,16 +1,25 @@
 /* ===========================
+   Brand variables (one source of truth)
+   =========================== */
+:root{
+  --brand: #008080;      /* main teal */
+  --brand-600: #006666;  /* hover */
+  --brand-700: #005f5f;  /* darker */
+  --text: #003c3c;
+
+  --panel: #ffffff;
+  --panel-soft: #e6f7f6;
+}
+
+/* ===========================
    Base / Layout
    =========================== */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+html, body { height: 100%; margin: 0; padding: 0; }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f4fdfc;
-  color: #003c3c;
+  color: var(--text);
   min-height: 100vh;
 }
 
@@ -21,7 +30,7 @@ body {
   min-height: 100vh;
 }
 
-/* NEW: main wrapper to center the hero card safely */
+/* main wrapper to center the hero card safely */
 .main {
   flex: 1;
   display: flex;
@@ -30,14 +39,13 @@ body {
   padding: 2rem 1rem;
 }
 
-/* Your card/panel */
+/* Card/panel */
 .container {
-  /* CHANGED earlier: was flex: 1; */
   flex: 0 1 auto;
   text-align: center;
   max-width: 400px;
   width: 90%;
-  background: #fff;
+  background: var(--panel);
   padding: 2.5rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
@@ -45,12 +53,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  /* Safe horizontal centering */
-  margin: 2rem auto;
+  margin: 2rem auto; /* safe horizontal centering */
 }
 
-/* Optional extra space for home card */
 .container.welcome { padding: 3rem 2rem; }
 
 @media (min-width: 600px) {
@@ -62,12 +67,12 @@ body {
   max-width: 800px;
   width: 90%;
   padding: 4rem 2rem 3rem;
-  margin: 2rem auto;               /* horizontally centered */
+  margin: 2rem auto;
   text-align: left;
   align-items: flex-start;
   justify-content: flex-start;
-  background: #fff;
-  color: #003c3c;
+  background: var(--panel);
+  color: var(--text);
   border-radius: 1rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
@@ -76,7 +81,7 @@ body {
 .container.page-content h2,
 .container.page-content h3,
 .container.page-content strong {
-  color: #003c3c;
+  color: var(--text);
   margin-bottom: 1rem;
 }
 
@@ -89,12 +94,12 @@ body {
   text-align-last: left;
 }
 
+/* Links (page content) use brand */
 .container.page-content a {
-  color: #00796b;
+  color: var(--brand);
   text-decoration: underline;
 }
-.container.page-content a:hover { color: #004d40; }
-
+.container.page-content a:hover { color: var(--brand-700); }
 
 /* ===========================
    Dark Mode
@@ -124,9 +129,9 @@ body.dark-mode .container.page-content strong { color: #f8fafc; }
 body.dark-mode .container.page-content p,
 body.dark-mode .container.page-content li { color: #cbd5e1; }
 
-body.dark-mode .container.page-content a { color: #38bdf8; }
-body.dark-mode .container.page-content a:hover { color: #7dd3fc; }
-
+/* Keep brand green in dark mode too */
+body.dark-mode .container.page-content a { color: var(--brand); }
+body.dark-mode .container.page-content a:hover { color: var(--brand-600); }
 
 /* ===========================
    Navigation
@@ -144,7 +149,7 @@ body.dark-mode .container.page-content a:hover { color: #7dd3fc; }
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   text-decoration: none;
-  color: #003c3c;
+  color: var(--text);
   font-weight: 500;
   transition: background 0.3s ease;
 }
@@ -155,7 +160,6 @@ body.dark-mode .nav-links a {
   color: #f1f5f9;
 }
 body.dark-mode .nav-links a:hover { background: #64748b; }
-
 
 /* ===========================
    Forms & Buttons
@@ -182,8 +186,9 @@ input {
 }
 input::placeholder { color: #888; }
 
+/* Primary button = brand */
 .btn {
-  background: #008080;
+  background: var(--brand);
   color: #fff;
   padding: 0.75rem 1.5rem;
   border: none;
@@ -195,12 +200,13 @@ input::placeholder { color: #888; }
   cursor: pointer;
   transition: background 0.2s ease;
 }
-.btn:hover { background: #006666; }
-.btn:focus { outline: 3px solid #008080; outline-offset: 2px; }
+.btn:hover { background: var(--brand-600); }
+.btn:focus { outline: 3px solid var(--brand); outline-offset: 2px; }
 
+/* Secondary button stays neutral */
 .btn.secondary {
   background: #e0e0e0;
-  color: #003c3c;
+  color: var(--text);
 }
 .btn.secondary:hover { background: #ccc; }
 
@@ -224,7 +230,6 @@ form .btn {
   }
 }
 
-
 /* ===========================
    Retailer Cards
    =========================== */
@@ -232,7 +237,7 @@ form .btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #e6f7f6;
+  background: var(--panel-soft);
   border-radius: 1rem;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -259,27 +264,26 @@ form .btn {
 .retailer-info h4 {
   margin: 0;
   font-size: 1rem;
-  color: #003c3c;
+  color: var(--text);
 }
 
 .retailer-info p {
   margin: 0;
   font-size: 0.9rem;
-  color: #003c3c;
+  color: var(--text);
 }
 
 .favourite-btn {
   background: transparent;
   border: none;
   font-size: 1.5rem;
-  color: #008080;
+  color: var(--brand);
   cursor: pointer;
 }
 
 body.dark-mode .retailer-card { background: #475569; }
 body.dark-mode .retailer-info h4,
 body.dark-mode .retailer-info p { color: #f0f9ff; }
-
 
 /* ===========================
    Logo / Hero
@@ -308,7 +312,6 @@ body.dark-mode .retailer-info p { color: #f0f9ff; }
   .intro-text { font-size: 1rem; }
 }
 
-
 /* ===========================
    Footer
    =========================== */
@@ -316,7 +319,7 @@ footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.875rem;
-  color: #00796b;
+  color: var(--brand);
   background: transparent;
   margin-top: 2rem;
 }
@@ -324,16 +327,15 @@ footer {
 footer a {
   text-decoration: none;
   margin: 0 0.5rem;
-  color: #00796b;
+  color: var(--brand);
 }
 footer a:hover {
   text-decoration: underline;
-  color: #005f5f;
+  color: var(--brand-700);
 }
 
-body.dark-mode footer a { color: #a3c9c9; }
-body.dark-mode footer a:hover { color: #7bb4b4; }
-
+body.dark-mode footer a { color: var(--brand); }
+body.dark-mode footer a:hover { color: var(--brand-600); }
 
 /* ===========================
    Chatbot
@@ -342,7 +344,7 @@ body.dark-mode footer a:hover { color: #7bb4b4; }
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #008080;
+  background-color: var(--brand);
   border: none;
   border-radius: 50%;
   width: 60px;
@@ -372,13 +374,13 @@ body.dark-mode footer a:hover { color: #7bb4b4; }
   z-index: 1001;
   overflow-y: auto;
 }
-#chatbox h4 { margin-top: 0; color: #008080; }
+#chatbox h4 { margin-top: 0; color: var(--brand); }
 
 .faq-question {
   margin: 10px 0;
   font-weight: 600;
   cursor: pointer;
-  color: #006666;
+  color: var(--brand-600);
 }
 .faq-answer {
   font-size: 14px;
@@ -391,9 +393,13 @@ body.dark-mode #chatbox {
   background: #1e293b;
   color: #f1f5f9;
 }
-body.dark-mode .faq-question { color: #38b2ac; }
+body.dark-mode .faq-question { color: var(--brand); }
 body.dark-mode .faq-answer { color: #cbd5e1; }
 
+/* Cookie banner (override any inline styles) */
+#cookieConsent { background: var(--brand) !important; }
+#cookieConsent a { color: #d1eaea; text-decoration: underline; }
+#acceptCookies { background: var(--brand-700) !important; }
 
 /* ===========================
    Page Enter Animations (Home only)
@@ -403,16 +409,11 @@ body.dark-mode .faq-answer { color: #cbd5e1; }
   to   { transform: translateY(0)     scale(1);    opacity: 1; }
 }
 
-/* CHANGED: visible by default so site never looks blank if JS doesn't run */
-.animate {
-  opacity: 1;
-  transform: none;
-}
+/* Visible by default so site never looks blank if JS doesn't run */
+.animate { opacity: 1; transform: none; }
 
 /* If JS adds .enter to <body>, play the animation */
-body.enter .animate {
-  animation: slideInUp 600ms ease-out forwards;
-}
+body.enter .animate { animation: slideInUp 600ms ease-out forwards; }
 
 /* Stagger helpers */
 .delay-1 { animation-delay: 120ms; }
