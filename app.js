@@ -1,109 +1,135 @@
-// Cashtraq site helpers (dark mode, cookies, chatbot)
 document.addEventListener("DOMContentLoaded", () => {
-  // ----------------------
-  // DARK MODE
-  // ----------------------
+  // ======================
+  // DARK MODE (persist)
+  // ======================
   const darkToggle = document.getElementById("darkModeToggle");
-  const THEME_KEY = "cashtraq_theme"; // "dark" | "light"
+  const savedTheme = localStorage.getItem("theme");
 
-  const applyTheme = (theme) => {
-    const isDark = theme === "dark";
-    document.body.classList.toggle("dark-mode", isDark);
+  if (savedTheme === "dark") document.body.classList.add("dark-mode");
 
-    // Optional: change the icon so user knows what will happen next
-    if (darkToggle) darkToggle.textContent = isDark ? "☀️" : "🌓";
-  };
-
-  // Apply saved theme on load
-  const savedTheme = localStorage.getItem(THEME_KEY);
-  applyTheme(savedTheme === "dark" ? "dark" : "light");
-
-  // Toggle theme on click
   if (darkToggle) {
     darkToggle.addEventListener("click", () => {
-      const nextTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
-      localStorage.setItem(THEME_KEY, nextTheme);
-      applyTheme(nextTheme);
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem(
+        "theme",
+        document.body.classList.contains("dark-mode") ? "dark" : "light"
+      );
     });
   }
 
-  // ----------------------
+  // ======================
   // COOKIE CONSENT
-  // ----------------------
+  // ======================
   const cookieBanner = document.getElementById("cookieConsent");
-  const acceptCookiesBtn = document.getElementById("acceptCookies");
-  const COOKIE_KEY = "cashtraq_cookie_accepted"; // "true"
+  const acceptCookies = document.getElementById("acceptCookies");
 
-  const hideCookieBanner = () => {
-    if (!cookieBanner) return;
-    cookieBanner.style.display = "none";
-  };
+  if (cookieBanner) {
+    const accepted = localStorage.getItem("cookiesAccepted") === "true";
+    if (accepted) cookieBanner.classList.add("is-hidden");
+  }
 
-  if (cookieBanner && acceptCookiesBtn) {
-    // Hide if previously accepted
-    if (localStorage.getItem(COOKIE_KEY) === "true") {
-      hideCookieBanner();
-    }
-
-    acceptCookiesBtn.addEventListener("click", () => {
-      localStorage.setItem(COOKIE_KEY, "true");
-      hideCookieBanner();
+  if (acceptCookies && cookieBanner) {
+    acceptCookies.addEventListener("click", () => {
+      localStorage.setItem("cookiesAccepted", "true");
+      cookieBanner.classList.add("is-hidden");
     });
   }
 
-  // ----------------------
-  // CHATBOT
-  // ----------------------
+  // ======================
+  // CHATBOT + FAQ PROMPTS
+  // ======================
   const chatbotToggle = document.getElementById("chatbotToggle");
   const chatbox = document.getElementById("chatbox");
-  const chatbotClose = document.getElementById("chatbotClose"); // only if your HTML includes it
+  const chatbotClose = document.getElementById("chatbotClose");
 
-  const isChatOpen = () => chatbox && chatbox.classList.contains("open");
-
-  const openChat = () => {
-    if (!chatbox) return;
-    chatbox.classList.add("open");
-    // If your HTML uses hidden attribute, support it too
-    if (typeof chatbox.hidden !== "undefined") chatbox.hidden = false;
-  };
-
-  const closeChat = () => {
-    if (!chatbox) return;
-    chatbox.classList.remove("open");
-    if (typeof chatbox.hidden !== "undefined") chatbox.hidden = true;
-  };
-
-  if (chatbotToggle && chatbox) {
-    chatbotToggle.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (isChatOpen()) closeChat();
-      else openChat();
-    });
-
-    // Close button (optional)
-    if (chatbotClose) {
-      chatbotClose.addEventListener("click", (e) => {
-        e.stopPropagation();
-        closeChat();
-      });
+  const FAQ = [
+    {
+      q: "Where is my cashback?",
+      a: "Cashback can take time to track and confirm. Some retailers take up to 90 days (sometimes longer) to confirm."
+    },
+    {
+      q: "Why hasn’t my cashback tracked?",
+      a: "Tracking can fail if cookies are blocked, an ad blocker is running, you used private browsing, you clicked another site in-between, or the retailer rejected attribution."
+    },
+    {
+      q: "How long does cashback take to confirm?",
+      a: "It varies by retailer and purchase type. Some confirm in weeks, others can take a few months."
+    },
+    {
+      q: "What should I do if cashback is missing?",
+      a: "Wait 24–48 hours first (some tracking is delayed). If it still doesn’t appear, keep your confirmation and contact support with the retailer name and order date."
+    },
+    {
+      q: "What are the loyalty tiers?",
+      a: "Your tier is based on tracked cashback earned. Bronze, Silver, and Gold recognise progress and may unlock features later."
+    },
+    {
+      q: "Why might there be a fee later?",
+      a: "If we add premium features (automation, alerts, advanced tools), those may be optional paid features. We’ll always be clear before charging."
     }
+  ];
 
-    // Clicking inside chat should not close it
-    chatbox.addEventListener("click", (e) => e.stopPropagation());
+  function renderFaq() {
+    if (!chatbox) return;
+    const body = chatbox.querySelector(".chatbox-body");
+    if (!body) return;
 
-    // Click outside to close
-    document.addEventListener("click", () => {
-      if (isChatOpen()) closeChat();
-    });
+    body.innerHTML = "";
 
-    // Esc to close
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && isChatOpen()) closeChat();
+    FAQ.forEach(item => {
+      const wrap = document.createElement("div");
+      wrap.className = "faq-item";
+
+      const q = document.createElement("button");
+      q.type = "button";
+      q.className = "faq-question";
+      q.textContent = item.q;
+
+      const a = document.createElement("div");
+      a.className = "faq-answer";
+      a.textContent = item.a;
+
+      q.addEventListener("click", () => {
+        const isOpen = q.classList.contains("open");
+        body.querySelectorAll(".faq-question").forEach(btn => btn.classList.remove("open"));
+        body.querySelectorAll(".faq-answer").forEach(ans => ans.classList.remove("open"));
+
+        if (!isOpen) {
+          q.classList.add("open");
+          a.classList.add("open");
+        }
+      });
+
+      wrap.appendChild(q);
+      wrap.appendChild(a);
+      body.appendChild(wrap);
     });
   }
 
-  // ----------------------
-  // Optional: entrance animations hook (only affects .animate elements)
-  // ----------------------
-  document.body.classList.add("enter");
+  function openChat() {
+    if (!chatbox) return;
+    chatbox.hidden = false;
+    chatbox.classList.add("is-open");
+  }
+
+  function closeChat() {
+    if (!chatbox) return;
+    chatbox.classList.remove("is-open");
+    chatbox.hidden = true;
+  }
+
+  if (chatbox) renderFaq();
+
+  if (chatbotToggle && chatbox) {
+    chatbotToggle.addEventListener("click", () => {
+      if (chatbox.hidden) openChat();
+      else closeChat();
+    });
+  }
+
+  if (chatbotClose) chatbotClose.addEventListener("click", closeChat);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && chatbox && !chatbox.hidden) closeChat();
+  });
 });
