@@ -4,29 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cashtraq – Track it. Stack it. Cashtraq it.</title>
+
   <meta name="description" content="Track your cashback, maximise your savings, and manage all your rewards in one place with Cashtraq." />
   <link rel="canonical" href="https://cashtraq.co.uk/" />
   <meta name="theme-color" content="#008080" />
+
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=10" />
+  <link rel="stylesheet" href="style.css?v=11" />
 </head>
 
 <body>
   <div class="page-wrapper">
+
     <!-- Dark Mode Toggle -->
     <button
       id="darkModeToggle"
-      class="btn secondary"
-      style="position:absolute;top:1rem;right:1rem"
+      class="btn secondary dark-toggle"
       type="button"
       aria-label="Toggle dark mode"
+      title="Toggle dark mode"
     >🌓</button>
 
     <main class="main">
       <section class="container welcome">
         <div class="logo-container">
-          <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img animate delay-1" />
+          <img
+            src="assets/cashtraq_logo.svg"
+            alt="Cashtraq Logo"
+            class="logo-img animate delay-1"
+            loading="eager"
+            decoding="async"
+          />
         </div>
+
         <h3 class="tagline animate delay-2">Track it. Stack it. Cashtraq it.</h3>
         <p class="intro-text animate delay-3">Track your cashback. Maximise your savings. All in one place.</p>
 
@@ -52,39 +62,59 @@
     </footer>
   </div>
 
-  <!-- Chatbot -->
-  <button id="chatbotToggle" type="button" aria-label="Open Chatbot">
-    <img src="assets/chatbot-icon.svg" alt="Chatbot" />
+  <!-- Chatbot floating button -->
+  <button
+    id="chatbotToggle"
+    class="chatbot-toggle"
+    type="button"
+    aria-label="Open Cashtraq Help Assistant"
+    title="Help"
+  >
+    <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
   </button>
 
-  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant" hidden>
-    <h4>Cashtraq Help Assistant</h4>
-    <div class="faq-item">
-      <div class="faq-question">Where is my cashback?</div>
-      <div class="faq-answer">Cashback can take up to 90 days to confirm with some retailers.</div>
+  <!-- Chatbot panel -->
+  <div
+    id="chatbox"
+    class="chatbox"
+    role="dialog"
+    aria-modal="false"
+    aria-label="Cashtraq Help Assistant"
+    hidden
+  >
+    <div class="chatbox-header">
+      <h4>Cashtraq Help Assistant</h4>
+      <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
     </div>
-    <div class="faq-item">
-      <div class="faq-question">Why hasn’t my cashback tracked?</div>
-      <div class="faq-answer">Ad blockers/cookies/attribution can affect tracking. Always click through Cashtraq before buying.</div>
+
+    <div class="chatbox-body">
+      <div class="faq-item">
+        <div class="faq-question">Where is my cashback?</div>
+        <div class="faq-answer">Cashback can take up to 90 days to confirm with some retailers.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Why hasn’t my cashback tracked?</div>
+        <div class="faq-answer">Ad blockers, cookie settings, or attribution rules can affect tracking. Always click through Cashtraq before buying.</div>
+      </div>
     </div>
   </div>
 
-  <!-- Cookies -->
+  <!-- Cookie banner -->
   <div
     id="cookieConsent"
+    class="cookie-banner"
     role="region"
     aria-label="Cookie consent"
-    style="position:fixed;bottom:1rem;left:1rem;right:1rem;padding:1rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;z-index:1000;"
   >
     <span>
       We use cookies to improve your experience. By using our site, you accept our
       <a href="privacy.html">Privacy Policy</a>.
     </span>
-    <button id="acceptCookies" class="btn" style="margin:0" type="button">Accept</button>
+    <button id="acceptCookies" class="btn" type="button">Accept</button>
   </div>
 
-  <!-- IMPORTANT: remove defer from app.js and place it at end OR keep defer but ensure DOMContentLoaded handlers exist.
-       We'll keep defer and use DOMContentLoaded safely in the JS below. -->
-  <script src="app.js?v=2" defer></script>
+  <!-- JS (shared across pages) -->
+  <script src="app.js?v=3" defer></script>
 </body>
 </html>
