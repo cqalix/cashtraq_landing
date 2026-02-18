@@ -3,20 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy - Cashtraq</title>
+  <title>Cashtraq – Privacy Policy</title>
+  <meta name="description" content="Cashtraq Privacy Policy" />
+  <link rel="canonical" href="https://cashtraq.co.uk/privacy.html" />
   <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=10" />
+  <link rel="stylesheet" href="style.css?v=99" />
 </head>
+
 <body>
   <div class="page-wrapper">
-    <button id="darkModeToggle" class="btn secondary" style="position:absolute;top:1rem;right:1rem">🌓</button>
+    <button id="darkModeToggle" class="btn secondary dark-toggle" type="button" aria-label="Toggle dark mode">🌓</button>
 
     <main class="main">
-      <div class="container page-content">
-        <div class="logo-container" style="text-align:center;margin-bottom:1rem">
+      <section class="container page-content">
+        <div class="logo-container">
           <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
         </div>
+
         <nav class="nav-links" aria-label="Primary">
           <a href="dashboard.html" class="btn secondary">Dashboard</a>
           <a href="retailers.html" class="btn secondary">Retailers</a>
@@ -26,27 +30,69 @@
 
         <h1>Privacy Policy</h1>
         <p><em>Last updated: August 2025</em></p>
-        <!-- your privacy content here -->
-        <p>We value your privacy…</p>
-      </div>
+
+        <p>
+          This Privacy Policy explains how Cashtraq (“we”, “us”) collects and uses information when you use our website and services.
+        </p>
+
+        <h2>Information we may collect</h2>
+        <ul>
+          <li>Account details you provide (such as name and email).</li>
+          <li>Basic usage data (such as pages visited) to improve the site.</li>
+          <li>Cookie preferences (to remember your settings).</li>
+        </ul>
+
+        <h2>How we use your information</h2>
+        <ul>
+          <li>To provide and improve the service.</li>
+          <li>To respond to support requests.</li>
+          <li>To keep the site secure and prevent abuse.</li>
+        </ul>
+
+        <h2>Cookies</h2>
+        <p>
+          We use cookies to help the site work properly and to remember your preferences. You can control cookies via your browser settings.
+        </p>
+
+        <h2>Affiliate links and tracking</h2>
+        <p>
+          When we use affiliate partners, clicking a retailer link may involve tracking to attribute referrals. This may use cookies or similar technology set by the retailer or partner network.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          If you have questions, contact <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.
+        </p>
+
+        <p><strong>Note:</strong> This is a template page and should be reviewed for full UK compliance before launch.</p>
+      </section>
     </main>
 
     <footer>
-      <a href="privacy.html" aria-current="page">Privacy Policy</a> |
+      <a href="privacy.html">Privacy Policy</a> |
       <a href="terms.html">Terms &amp; Conditions</a> |
       <a href="faq.html">Help / FAQ</a> |
       <a href="contact.html">Contact</a>
     </footer>
   </div>
 
-  <!-- shared widgets -->
-  <button id="chatbotToggle" aria-label="Open Chatbot"><img src="assets/chatbot-icon.svg" alt="Chatbot" /></button>
-  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant"><h4>Cashtraq Help Assistant</h4></div>
-  <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position:fixed;bottom:1rem;left:1rem;right:1rem;padding:1rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;z-index:1000;">
-    <span>We use cookies to improve your experience. See our <a href="privacy.html">Privacy Policy</a>.</span>
-    <button id="acceptCookies" class="btn" style="margin:0">Accept</button>
+  <button id="chatbotToggle" class="chatbot-toggle" type="button" aria-label="Open Cashtraq Help Assistant" title="Help">
+    <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
+  </button>
+
+  <div id="chatbox" class="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant" hidden>
+    <div class="chatbox-header">
+      <h4>Cashtraq Help Assistant</h4>
+      <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
+    </div>
+    <div class="chatbox-body"></div>
   </div>
 
-  <script src="app.js?v=1" defer></script>
+  <div id="cookieConsent" class="cookie-banner" role="region" aria-label="Cookie consent">
+    <span>We use cookies to improve your experience. By using our site, you accept our <a href="privacy.html">Privacy Policy</a>.</span>
+    <button id="acceptCookies" class="btn" type="button">Accept</button>
+  </div>
+
+  <script src="app.js?v=99" defer></script>
 </body>
 </html>
