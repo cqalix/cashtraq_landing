@@ -8,15 +8,22 @@
   <link rel="canonical" href="https://cashtraq.co.uk/privacy.html" />
   <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=99" />
+  <link rel="stylesheet" href="style.css?v=102" />
 </head>
 
 <body>
   <div class="page-wrapper">
-    <button id="darkModeToggle" class="btn secondary dark-toggle" type="button" aria-label="Toggle dark mode">🌓</button>
+    <!-- Dark Mode Toggle -->
+    <button
+      id="darkModeToggle"
+      class="btn secondary dark-toggle"
+      type="button"
+      aria-label="Toggle dark mode"
+      title="Toggle dark mode"
+    >🌓</button>
 
     <main class="main">
-      <section class="container page-content">
+      <section class="container page-content" aria-labelledby="privacyTitle">
         <div class="logo-container">
           <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
         </div>
@@ -28,18 +35,26 @@
           <a href="contact.html" class="btn secondary">Contact</a>
         </nav>
 
-        <h1>Privacy Policy</h1>
+        <h1 id="privacyTitle">Privacy Policy</h1>
         <p><em>Last updated: August 2025</em></p>
 
         <p>
-          This Privacy Policy explains how Cashtraq (“we”, “us”) collects and uses information when you use our website and services.
+          This Privacy Policy explains how Cashtraq (“we”, “us”, “our”) collects, uses, and protects information
+          when you use our website and services.
+        </p>
+
+        <h2>Who we are</h2>
+        <p>
+          Cashtraq is a cashback tracking and savings dashboard concept. We may use affiliate networks (such as Awin)
+          in future to route you to retailers and track referrals.
         </p>
 
         <h2>Information we may collect</h2>
         <ul>
-          <li>Account details you provide (such as name and email).</li>
-          <li>Basic usage data (such as pages visited) to improve the site.</li>
-          <li>Cookie preferences (to remember your settings).</li>
+          <li><strong>Account details</strong> you provide (such as name and email) when signing up.</li>
+          <li><strong>Support messages</strong> you send us (for example, via the contact form or email).</li>
+          <li><strong>Basic usage data</strong> (for example, pages visited) to help improve the site.</li>
+          <li><strong>Cookie preferences</strong> (to remember settings like cookie consent and dark mode).</li>
         </ul>
 
         <h2>How we use your information</h2>
@@ -47,26 +62,51 @@
           <li>To provide and improve the service.</li>
           <li>To respond to support requests.</li>
           <li>To keep the site secure and prevent abuse.</li>
+          <li>To remember your preferences (like cookie consent and theme).</li>
         </ul>
 
         <h2>Cookies</h2>
         <p>
-          We use cookies to help the site work properly and to remember your preferences. You can control cookies via your browser settings.
+          We use cookies (and similar technologies) to help the site work properly and to remember your preferences.
+          You can control cookies via your browser settings. Some cookies may be set by third parties if we use
+          embedded tools or affiliate links.
         </p>
 
         <h2>Affiliate links and tracking</h2>
         <p>
-          When we use affiliate partners, clicking a retailer link may involve tracking to attribute referrals. This may use cookies or similar technology set by the retailer or partner network.
+          If we use affiliate partners, clicking a retailer link may involve tracking to attribute referrals.
+          This may use cookies or similar technology set by the retailer or partner network. This helps us understand
+          which referrals came from Cashtraq.
+        </p>
+
+        <h2>Sharing your data</h2>
+        <p>
+          We do not sell your personal data. We may share limited information with service providers who help us run
+          the site (for example hosting), and with affiliate/retailer partners if you click through their links.
+        </p>
+
+        <h2>Data retention</h2>
+        <p>
+          We keep information only for as long as needed to provide the service, comply with legal obligations,
+          and resolve disputes.
+        </p>
+
+        <h2>Your rights</h2>
+        <p>
+          Depending on where you live, you may have rights to access, correct, or delete your personal data.
+          To request this, contact us using the details below.
         </p>
 
         <h2>Contact</h2>
         <p>
-          If you have questions, contact <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.
+          If you have questions, contact
+          <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.
         </p>
 
-        <!-- TODO (Legal): Review for UK GDPR + PECR compliance before launch.
-     Confirm cookies/analytics/affiliate tracking, lawful basis, data retention, and business details. -->
-
+        <!-- Internal note (hidden in HTML comment only):
+             Before launch, review for UK GDPR + PECR compliance, cookie categories, lawful basis,
+             affiliate tracking disclosure, retention, and business details. -->
+      </section>
     </main>
 
     <footer>
@@ -77,6 +117,7 @@
     </footer>
   </div>
 
+  <!-- Chatbot -->
   <button id="chatbotToggle" class="chatbot-toggle" type="button" aria-label="Open Cashtraq Help Assistant" title="Help">
     <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
   </button>
@@ -89,11 +130,16 @@
     <div class="chatbox-body"></div>
   </div>
 
+  <!-- Cookies -->
   <div id="cookieConsent" class="cookie-banner" role="region" aria-label="Cookie consent">
-    <span>We use cookies to improve your experience. By using our site, you accept our <a href="privacy.html">Privacy Policy</a>.</span>
+    <span>
+      We use cookies to improve your experience. See our
+      <a href="privacy.html">Privacy Policy</a>.
+    </span>
     <button id="acceptCookies" class="btn" type="button">Accept</button>
   </div>
 
-  <script src="app.js?v=99" defer></script>
+  <!-- JS (no defer – matches your working index fix) -->
+  <script src="app.js?v=102"></script>
 </body>
 </html>
