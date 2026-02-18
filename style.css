@@ -7,8 +7,13 @@
   --brand-700: #005f5f;  /* darker */
   --text: #003c3c;
 
+  --bg: #f4fdfc;
   --panel: #ffffff;
   --panel-soft: #e6f7f6;
+  --border: rgba(0,0,0,0.08);
+
+  --shadow: 0 8px 30px rgba(0,0,0,0.08);
+  --shadow-strong: 0 8px 30px rgba(0,0,0,0.4);
 }
 
 /* ===========================
@@ -18,7 +23,7 @@ html, body { height: 100%; margin: 0; padding: 0; }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f4fdfc;
+  background: var(--bg);
   color: var(--text);
   min-height: 100vh;
 }
@@ -43,7 +48,7 @@ body {
   background: var(--panel);
   padding: 2.5rem 2rem;
   border-radius: 1rem;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,28 +92,29 @@ body {
   text-align-last: left;
 }
 
-/* Links (page content) use brand */
-.container.page-content a {
-  color: var(--brand);
-  text-decoration: underline;
-}
-.container.page-content a:hover { color: var(--brand-700); }
+/* Links */
+a { color: var(--brand); }
+a:hover { color: var(--brand-700); }
+.container.page-content a { text-decoration: underline; }
 
 /* ===========================
-   Dark Mode
+   Dark Mode (use body.dark-mode)
    =========================== */
-body.dark-mode { background: #1e293b; color: #f1f5f9; }
+body.dark-mode{
+  background: #0b1220;
+  color: #f1f5f9;
+}
 
 body.dark-mode .container {
-  background: #334155;
+  background: #111b2e;
   color: #e2e8f0;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  box-shadow: var(--shadow-strong);
 }
 
 body.dark-mode .container.page-content {
-  background: #1e293b;
+  background: #0b1220;
   color: #e2e8f0;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
 }
 
 body.dark-mode .container.page-content h1,
@@ -119,8 +125,18 @@ body.dark-mode .container.page-content strong { color: #f8fafc; }
 body.dark-mode .container.page-content p,
 body.dark-mode .container.page-content li { color: #cbd5e1; }
 
-body.dark-mode .container.page-content a { color: var(--brand); }
-body.dark-mode .container.page-content a:hover { color: var(--brand-600); }
+body.dark-mode a { color: #7ff3e5; }
+body.dark-mode a:hover { color: #b6fff5; }
+
+/* ===========================
+   Dark Mode Toggle button placement (top right)
+   =========================== */
+#darkModeToggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  min-width: 44px;
+}
 
 /* ===========================
    Navigation
@@ -133,22 +149,11 @@ body.dark-mode .container.page-content a:hover { color: var(--brand-600); }
   margin: 1.5rem 0;
 }
 
-.nav-links a {
-  background: #d6d6d6;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 500;
-  transition: background 0.3s ease;
-}
-.nav-links a:hover { background: #bfbfbf; }
-
-body.dark-mode .nav-links a { background: #475569; color: #f1f5f9; }
-body.dark-mode .nav-links a:hover { background: #64748b; }
+/* IMPORTANT: nav-links are already "btn secondary" in your HTML,
+   so we don't style .nav-links a separately here to avoid conflicts. */
 
 /* ===========================
-   Forms & Buttons
+   Forms & Inputs
    =========================== */
 form {
   display: flex;
@@ -168,11 +173,27 @@ form {
   border-radius: 0.5rem;
   font-size: 1rem;
   box-sizing: border-box;
+  background: #fff;
+  color: var(--text);
 }
+
 input::placeholder, textarea::placeholder { color: #888; }
 
-/* Primary button = brand */
-.btn {
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background: #0f172a;
+  border-color: rgba(255,255,255,0.15);
+  color: #e2e8f0;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder { color: rgba(226,232,240,0.65); }
+
+/* ===========================
+   Buttons
+   =========================== */
+.btn{
   background: var(--brand);
   color: #fff;
   padding: 0.75rem 1.5rem;
@@ -180,17 +201,37 @@ input::placeholder, textarea::placeholder { color: #888; }
   border-radius: 0.5rem;
   font-size: 1rem;
   text-decoration: none;
-  display: inline-block;
-  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.05s ease;
+  user-select: none;
 }
-.btn:hover { background: var(--brand-600); }
-.btn:focus { outline: 3px solid var(--brand); outline-offset: 2px; }
 
-/* Secondary button stays neutral */
-.btn.secondary { background: #e0e0e0; color: var(--text); }
-.btn.secondary:hover { background: #ccc; }
+.btn:hover { background: var(--brand-600); }
+.btn:active { transform: translateY(1px); }
+
+.btn:focus{
+  outline: 3px solid rgba(0,128,128,0.35);
+  outline-offset: 2px;
+}
+
+/* Secondary stays neutral */
+.btn.secondary{
+  background: #e0e0e0;
+  color: var(--text);
+}
+.btn.secondary:hover{ background: #ccc; }
+
+body.dark-mode .btn.secondary{
+  background: rgba(255,255,255,0.10);
+  color: #e2e8f0;
+}
+body.dark-mode .btn.secondary:hover{
+  background: rgba(255,255,255,0.18);
+}
 
 /* Full-width only inside forms */
 form .btn { width: 100%; max-width: 320px; border-radius: 8px; }
@@ -199,11 +240,12 @@ form .btn { width: 100%; max-width: 320px; border-radius: 8px; }
 @media (max-width: 640px) {
   .btn { width: auto; min-width: 200px; max-width: 90%; }
   .container .btn { width: auto; min-width: 200px; max-width: 90%; }
-  #darkModeToggle, .theme-toggle {
+
+  #darkModeToggle{
     padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     border-radius: 20px;
-    min-width: 40px;
+    min-width: 44px;
   }
 }
 
@@ -220,6 +262,7 @@ form .btn { width: 100%; max-width: 320px; border-radius: 8px; }
   margin-bottom: 1rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   flex-wrap: nowrap;
+  border: 1px solid var(--border);
 }
 
 .retailer-info { display: flex; align-items: center; gap: 1rem; flex: 1; }
@@ -229,34 +272,48 @@ form .btn { width: 100%; max-width: 320px; border-radius: 8px; }
   background: #fff; padding: 4px;
 }
 
-.retailer-info h4, .retailer-info p {
-  margin: 0; color: var(--text);
-}
+.retailer-info h4, .retailer-info p { margin: 0; color: var(--text); }
 .retailer-info h4 { font-size: 1rem; }
-.retailer-info p  { font-size: 0.9rem; }
+.retailer-info p  { font-size: 0.9rem; opacity: 0.9; }
 
-.favourite-btn {
-  background: transparent; border: none; font-size: 1.5rem;
-  color: var(--brand); cursor: pointer;
+.favourite-btn{
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--brand);
+  cursor: pointer;
 }
 
-body.dark-mode .retailer-card { background: #475569; }
+body.dark-mode .retailer-card{
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.08);
+}
 body.dark-mode .retailer-info h4,
 body.dark-mode .retailer-info p { color: #f0f9ff; }
+body.dark-mode .retailer-logo { background: rgba(255,255,255,0.08); }
 
 /* ===========================
    Logo / Hero
    =========================== */
 .logo-container {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  margin-bottom: 1rem; text-align: center; gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  text-align: center;
+  gap: 0.5rem;
 }
-.logo-img { width: 400px; height: auto; margin-bottom: 0.75rem; }
+
+.logo-img{
+  width: min(420px, 90%);
+  height: auto;
+  margin-bottom: 0.75rem;
+}
 
 @media (min-width: 600px) {
   .logo-container { flex-direction: row; gap: 1rem; }
-  .logo-img { width: 400px; margin-bottom: 0; }
-  .app-title { font-size: 2rem; text-align: left; }
+  .logo-img { margin-bottom: 0; }
   .tagline { font-size: 1.25rem; }
   .intro-text { font-size: 1rem; }
 }
@@ -272,11 +329,12 @@ footer {
   background: transparent;
   margin-top: 2rem;
 }
+
 footer a { text-decoration: none; margin: 0 0.5rem; color: var(--brand); }
 footer a:hover { text-decoration: underline; color: var(--brand-700); }
 
-body.dark-mode footer a { color: var(--brand); }
-body.dark-mode footer a:hover { color: var(--brand-600); }
+body.dark-mode footer a { color: #7ff3e5; }
+body.dark-mode footer a:hover { color: #b6fff5; }
 
 /* ===========================
    Chatbot
@@ -285,7 +343,7 @@ body.dark-mode footer a:hover { color: var(--brand-600); }
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: var(--brand) !important; /* override page-local styles */
+  background-color: var(--brand);
   border: none;
   border-radius: 50%;
   width: 60px;
@@ -296,7 +354,9 @@ body.dark-mode footer a:hover { color: var(--brand-600); }
   cursor: pointer;
   z-index: 1000;
   padding: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
 }
+#chatbotToggle:hover { background: var(--brand-600); }
 #chatbotToggle img { width: 32px; height: 32px; object-fit: contain; }
 
 #chatbox {
@@ -307,30 +367,70 @@ body.dark-mode footer a:hover { color: var(--brand-600); }
   max-height: 450px;
   background: #fff;
   color: #333;
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
   padding: 16px;
   display: none;
   flex-direction: column;
   z-index: 1001;
   overflow-y: auto;
+  border: 1px solid rgba(0,0,0,0.08);
 }
+
+/* When JS toggles .open */
+#chatbox.open { display: flex; }
+
 #chatbox h4 { margin-top: 0; color: var(--brand); }
 
 .faq-question { margin: 10px 0; font-weight: 600; cursor: pointer; color: var(--brand-600); }
 .faq-answer   { font-size: 14px; margin-bottom: 12px; display: none; }
 .faq-question.open + .faq-answer { display: block; }
 
-body.dark-mode #chatbox { background: #1e293b; color: #f1f5f9; }
-body.dark-mode .faq-question { color: var(--brand); }
+body.dark-mode #chatbox{
+  background: #0f172a;
+  color: #f1f5f9;
+  border-color: rgba(255,255,255,0.10);
+}
+body.dark-mode #chatbox h4 { color: #7ff3e5; }
+body.dark-mode .faq-question { color: #7ff3e5; }
 body.dark-mode .faq-answer { color: #cbd5e1; }
 
 /* ===========================
-   Cookie banner (global, override inline)
+   Cookie banner
    =========================== */
-#cookieConsent { background: var(--brand) !important; color: #fff; }
+#cookieConsent {
+  background: var(--brand);
+  color: #fff;
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  gap: 1rem;
+}
+
 #cookieConsent a { color: #d1eaea; text-decoration: underline; }
-#acceptCookies { background: var(--brand-700) !important; color: #fff; }
+#cookieConsent a:hover { color: #ffffff; }
+
+#acceptCookies { background: var(--brand-700); color: #fff; }
+#acceptCookies:hover { background: #004f4f; }
+
+/* Make cookie banner wrap nicely on mobile */
+@media (max-width: 520px){
+  #cookieConsent{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #acceptCookies{
+    width: 100%;
+    max-width: 320px;
+  }
+}
 
 /* ===========================
    Page Enter Animations (Home only)
@@ -360,15 +460,3 @@ body.enter .animate { animation: slideInUp 600ms ease-out forwards; }
     transform: none !important;
   }
 }
-
-/* ===== FINAL SAFETY NET: force brand where needed ===== */
-button,
-.btn,
-.nav-links a,
-#chatbotToggle,
-#acceptCookies { background: var(--brand) !important; color: #fff !important; border-color: transparent !important; }
-button:hover,
-.btn:hover,
-.nav-links a:hover { background: var(--brand-600) !important; }
-a, footer a, .container.page-content a, .faq-question { color: var(--brand) !important; }
-a:hover, footer a:hover, .container.page-content a:hover { color: var(--brand-600) !important; }
