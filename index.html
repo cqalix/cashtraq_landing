@@ -10,7 +10,7 @@
   <meta name="theme-color" content="#008080" />
 
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=11" />
+  <link rel="stylesheet" href="style.css?v=12" />
 </head>
 
 <body>
@@ -114,7 +114,13 @@
     <button id="acceptCookies" class="btn" type="button">Accept</button>
   </div>
 
-  <!-- JS (shared across pages) -->
-  <script src="app.js?v=3" defer></script>
+  <!-- Tiny proof JS is loading (safe; delete later) -->
+  <script>
+    // If you open DevTools Console you should see this.
+    console.log("[Cashtraq] index.html loaded");
+  </script>
+
+  <!-- JS (shared across pages) - NO defer (most reliable) -->
+  <script src="app.js?v=4"></script>
 </body>
 </html>
