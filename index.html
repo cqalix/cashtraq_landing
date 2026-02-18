@@ -10,9 +10,17 @@
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="stylesheet" href="style.css?v=10" />
 </head>
+
 <body>
   <div class="page-wrapper">
-    <button id="darkModeToggle" class="btn secondary" style="position:absolute;top:1rem;right:1rem">🌓</button>
+    <!-- Dark Mode Toggle -->
+    <button
+      id="darkModeToggle"
+      class="btn secondary"
+      style="position:absolute;top:1rem;right:1rem"
+      type="button"
+      aria-label="Toggle dark mode"
+    >🌓</button>
 
     <main class="main">
       <section class="container welcome">
@@ -45,19 +53,38 @@
   </div>
 
   <!-- Chatbot -->
-  <button id="chatbotToggle" aria-label="Open Chatbot"><img src="assets/chatbot-icon.svg" alt="Chatbot" /></button>
-  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant">
+  <button id="chatbotToggle" type="button" aria-label="Open Chatbot">
+    <img src="assets/chatbot-icon.svg" alt="Chatbot" />
+  </button>
+
+  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant" hidden>
     <h4>Cashtraq Help Assistant</h4>
-    <div class="faq-item"><div class="faq-question">Where is my cashback?</div><div class="faq-answer">Cashback can take up to 90 days to confirm with some retailers.</div></div>
-    <div class="faq-item"><div class="faq-question">Why hasn’t my cashback tracked?</div><div class="faq-answer">Ad blockers/cookies/attribution can affect tracking. Always click through Cashtraq before buying.</div></div>
+    <div class="faq-item">
+      <div class="faq-question">Where is my cashback?</div>
+      <div class="faq-answer">Cashback can take up to 90 days to confirm with some retailers.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Why hasn’t my cashback tracked?</div>
+      <div class="faq-answer">Ad blockers/cookies/attribution can affect tracking. Always click through Cashtraq before buying.</div>
+    </div>
   </div>
 
   <!-- Cookies -->
-  <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position:fixed;bottom:1rem;left:1rem;right:1rem;padding:1rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;z-index:1000;">
-    <span>We use cookies to improve your experience. By using our site, you accept our <a href="privacy.html">Privacy Policy</a>.</span>
-    <button id="acceptCookies" class="btn" style="margin:0">Accept</button>
+  <div
+    id="cookieConsent"
+    role="region"
+    aria-label="Cookie consent"
+    style="position:fixed;bottom:1rem;left:1rem;right:1rem;padding:1rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;z-index:1000;"
+  >
+    <span>
+      We use cookies to improve your experience. By using our site, you accept our
+      <a href="privacy.html">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies" class="btn" style="margin:0" type="button">Accept</button>
   </div>
 
-  <script src="app.js?v=1" defer></script>
+  <!-- IMPORTANT: remove defer from app.js and place it at end OR keep defer but ensure DOMContentLoaded handlers exist.
+       We'll keep defer and use DOMContentLoaded safely in the JS below. -->
+  <script src="app.js?v=2" defer></script>
 </body>
 </html>
