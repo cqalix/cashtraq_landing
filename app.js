@@ -58,20 +58,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     return parts.length ? parts[parts.length - 1] : "index.html";
   }
 
+  function revealPageNow() {
+    document.documentElement.style.visibility = "visible";
+  }
+
   async function protectPages() {
     const session = await waitForInitialSession();
     const page = currentPageName();
 
-    // ✅ Add retailers.html here if you want it locked behind login
     const protectedPages = ["dashboard.html", "profile.html", "retailers.html"];
     const authPages = ["login.html", "signup.html"];
 
     if (protectedPages.includes(page) && !session) {
+      revealPageNow(); // important: don't leave it hidden
       window.location.href = "./login.html";
       return false;
     }
 
     if (authPages.includes(page) && session) {
+      revealPageNow(); // important: don't leave it hidden
       window.location.href = "./dashboard.html";
       return false;
     }
@@ -83,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!canContinue) return;
 
   // Show page once auth check is done
-  document.documentElement.style.visibility = "visible";
+  revealPageNow();
 
   // ======================
   // CLICKOUT REDIRECT
@@ -91,7 +96,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function handleRedirect() {
     const path = window.location.pathname;
 
-    // Works if you are routing /go/slug (custom routing) - fine to keep
     if (path.includes("/go/")) {
       const slug = path.split("/go/")[1];
       if (!slug) return;
@@ -157,7 +161,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // ======================
-  // LOGIN
+  // LOGIN (overlay + nice transition)
   // ======================
   const loginForm = document.getElementById("loginForm");
 
@@ -165,22 +169,51 @@ document.addEventListener("DOMContentLoaded", async () => {
     loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
+      const overlay = document.getElementById("loginOverlay");
+      const statusEl = document.getElementById("loginStatus");
+      const errorEl = document.getElementById("loginError");
+
       const email = document.getElementById("email")?.value?.trim();
       const password = document.getElementById("password")?.value;
 
+      // show overlay immediately
+      if (overlay) overlay.hidden = false;
+      if (statusEl) {
+        statusEl.style.display = "block";
+        statusEl.textContent = "Signing in…";
+      }
+      if (errorEl) errorEl.style.display = "none";
+
       if (!email || !password) {
-        alert("Please enter email and password.");
+        if (overlay) overlay.hidden = true;
+        if (statusEl) statusEl.style.display = "none";
+        if (errorEl) {
+          errorEl.textContent = "Please enter email and password.";
+          errorEl.style.display = "block";
+        } else {
+          alert("Please enter email and password.");
+        }
         return;
       }
 
       const { error } = await supabase.auth.signInWithPassword({ email, password });
 
       if (error) {
-        alert(error.message);
+        if (overlay) overlay.hidden = true;
+        if (statusEl) statusEl.style.display = "none";
+        if (errorEl) {
+          errorEl.textContent = error.message;
+          errorEl.style.display = "block";
+        } else {
+          alert(error.message);
+        }
         return;
       }
 
-      window.location.href = "./dashboard.html";
+      // let the animation land
+      setTimeout(() => {
+        window.location.href = "./dashboard.html";
+      }, 650);
     });
   }
 
