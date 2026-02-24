@@ -6,20 +6,27 @@
   <title>Profile - Cashtraq</title>
   <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=10" />
-  <script>
-    if (localStorage.getItem("isLoggedIn") !== "true") {
-      window.location.replace("login.html");
-    }
-  </script>
+  <link rel="stylesheet" href="style.css?v=103" />
 </head>
+
 <body>
   <div class="page-wrapper">
-    <button id="darkModeToggle" class="btn secondary" style="position:absolute;top:1rem;right:1rem">🌓</button>
+
+    <!-- Dark Mode Toggle -->
+    <button
+      id="darkModeToggle"
+      class="btn secondary dark-toggle"
+      type="button"
+      aria-label="Toggle dark mode"
+      title="Toggle dark mode"
+      style="position:absolute;top:1rem;right:1rem"
+    >🌓</button>
 
     <main class="main">
       <div class="container">
-        <div class="logo-container centered"><img src="assets/cashtraq_logo.svg" class="logo-img" alt="Cashtraq Logo" /></div>
+        <div class="logo-container centered">
+          <img src="assets/cashtraq_logo.svg" class="logo-img" alt="Cashtraq Logo" />
+        </div>
 
         <nav class="nav-links" aria-label="Primary">
           <a href="dashboard.html" class="btn secondary">Dashboard</a>
@@ -29,14 +36,17 @@
         </nav>
 
         <h2>Your Profile</h2>
+
+        <!-- These values will be dynamic later -->
         <div class="container" style="max-width:520px;padding:1.25rem">
-          <p><strong>Name:</strong> Alex</p>
-          <p><strong>Email:</strong> alex@example.com</p>
-          <p><strong>Total Cashback Earned:</strong> £12.40</p>
-          <p><strong>Loyalty Tier:</strong> Bronze</p>
+          <p><strong>Name:</strong> <span id="profileName">—</span></p>
+          <p><strong>Email:</strong> <span id="profileEmail">—</span></p>
+          <p><strong>Total Cashback Earned:</strong> <span id="profileCashback">£0.00</span></p>
+          <p><strong>Loyalty Tier:</strong> <span id="profileTier">Bronze</span></p>
         </div>
 
-        <button class="btn secondary" onclick="localStorage.removeItem('isLoggedIn');location.href='login.html'">Log Out</button>
+        <!-- Logout handled by app.js -->
+        <button id="logoutBtn" class="btn secondary" type="button">Log Out</button>
       </div>
     </main>
 
@@ -48,14 +58,44 @@
     </footer>
   </div>
 
-  <!-- shared widgets -->
-  <button id="chatbotToggle" aria-label="Open Chatbot"><img src="assets/chatbot-icon.svg" alt="Chatbot" /></button>
-  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant"><h4>Cashtraq Help Assistant</h4></div>
-  <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position:fixed;bottom:1rem;left:1rem;right:1rem;padding:1rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;z-index:1000;">
-    <span>We use cookies to improve your experience. See our <a href="privacy.html">Privacy Policy</a>.</span>
-    <button id="acceptCookies" class="btn" style="margin:0">Accept</button>
+  <!-- Chatbot floating button -->
+  <button
+    id="chatbotToggle"
+    class="chatbot-toggle"
+    type="button"
+    aria-label="Open Cashtraq Help Assistant"
+    title="Help"
+  >
+    <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
+  </button>
+
+  <!-- Chatbot panel -->
+  <div
+    id="chatbox"
+    class="chatbox"
+    role="dialog"
+    aria-modal="false"
+    aria-label="Cashtraq Help Assistant"
+    hidden
+  >
+    <div class="chatbox-header">
+      <h4>Cashtraq Help Assistant</h4>
+      <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
+    </div>
+    <div class="chatbox-body"></div>
   </div>
 
-  <script src="app.js?v=1" defer></script>
+  <!-- Cookie banner -->
+  <div id="cookieConsent" class="cookie-banner" role="region" aria-label="Cookie consent">
+    <span>
+      We use cookies to improve your experience. See our
+      <a href="privacy.html">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies" class="btn" type="button">Accept</button>
+  </div>
+
+  <!-- Shared JS -->
+  <script type="module" src="app.js?v=103"></script>
+
 </body>
 </html>
