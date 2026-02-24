@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://cashtraq.co.uk/contact.html" />
   <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=101" />
+  <link rel="stylesheet" href="style.css?v=103" />
 </head>
 
 <body>
@@ -130,15 +130,20 @@
     <button id="acceptCookies" class="btn" type="button">Accept</button>
   </div>
 
-  <!-- JS (shared across pages) - no defer -->
-  <script src="app.js?v=101"></script>
+  <!-- JS (shared across pages) -->
+  <script type="module" src="app.js?v=103"></script>
 
-  <!-- Demo submit handler -->
+  <!-- Demo submit handler (kept separate and module-safe) -->
   <script>
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Thanks! This is a demo form for now — we’ll wire it up later.');
-      e.target.reset();
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contactForm");
+      if (!form) return;
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Thanks! This is a demo form for now — we’ll wire it up later.");
+        form.reset();
+      });
     });
   </script>
 </body>
