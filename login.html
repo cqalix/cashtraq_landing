@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Log In - Cashtraq</title>
 
+  <meta name="description" content="Log in to Cashtraq to view your dashboard, retailers and cashback activity." />
   <meta name="theme-color" content="#008080" />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="canonical" href="https://cashtraq.co.uk/login.html" />
 
-  <link rel="stylesheet" href="style.css?v=103" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="stylesheet" href="style.css?v=104" />
 </head>
 
 <body>
@@ -20,31 +22,50 @@
       type="button"
       aria-label="Toggle dark mode"
       title="Toggle dark mode"
-      style="position:absolute; top:1rem; right:1rem;"
     >🌓</button>
 
     <main class="main">
       <div class="container" style="max-width:520px;">
         <div class="logo-container">
-          <img src="assets/cashtraq_logo.svg" class="logo-img" alt="Cashtraq Logo" />
+          <img
+            src="assets/cashtraq_logo.svg"
+            class="logo-img"
+            alt="Cashtraq Logo"
+            loading="eager"
+            decoding="async"
+          />
         </div>
 
         <h2>Log In</h2>
 
         <!-- Status / error messages -->
-        <p id="loginStatus" style="display:none; margin:0.5rem 0 0; color:#008080;">Signing in…</p>
-        <p id="loginError"  style="display:none; margin:0.5rem 0 0; color:#b00020;">&nbsp;</p>
+        <p id="loginStatus" class="muted" style="display:none; margin:0.5rem 0 0;">Signing in…</p>
+        <p id="loginError" style="display:none; margin:0.5rem 0 0; color:#b00020;">&nbsp;</p>
 
         <!-- Login form -->
         <!-- IMPORTANT: app.js expects #loginForm and inputs #email + #password -->
         <form id="loginForm" autocomplete="on" style="margin-top:1rem;">
           <label for="email">Email</label>
-          <input id="email" type="email" placeholder="Email" autocomplete="email" required />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          />
 
           <label for="password">Password</label>
-          <input id="password" type="password" placeholder="Password" autocomplete="current-password" required />
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Your password"
+            autocomplete="current-password"
+            required
+          />
 
-          <div style="width:100%; max-width:320px; text-align:left; margin-top:-0.5rem;">
+          <div style="width:100%; max-width:360px; text-align:left; margin-top:-0.5rem;">
             <label style="font-size:.9rem; display:flex; align-items:center; gap:.5rem; cursor:pointer;">
               <input type="checkbox" id="showPass" />
               Show password
@@ -56,9 +77,6 @@
 
         <p style="margin-top:1rem;"><a href="forgot.html">Forgot your password?</a></p>
 
-        <!-- Guest mode removed for now: with proper accounts + RLS, guest sessions complicate everything.
-             If you want it back later, we’ll add anonymous auth properly with clear UX. -->
-
         <p style="margin-top:1rem;">New here? <a href="signup.html">Create an account</a></p>
       </div>
     </main>
@@ -69,6 +87,17 @@
       <a href="faq.html">Help / FAQ</a> |
       <a href="contact.html">Contact</a>
     </footer>
+  </div>
+
+  <!-- LOGIN ANIMATION OVERLAY -->
+  <div id="loginOverlay" class="login-overlay" hidden>
+    <div class="login-overlay-inner" aria-label="Signing you in">
+      <img src="assets/cashtraq_logo.svg" class="logo-form" alt="Cashtraq" />
+      <div class="loading-dots" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <p class="loading-text">Signing you in…</p>
+    </div>
   </div>
 
   <!-- Chatbot floating button -->
@@ -108,18 +137,36 @@
   </div>
 
   <!-- Shared JS (must be module for Supabase import in app.js) -->
-  <script type="module" src="app.js?v=103"></script>
+  <script type="module" src="app.js?v=104"></script>
 
-  <!-- Optional: show/hide password (kept page-local) -->
+  <!-- Page-local helpers: show/hide password + trigger overlay on submit -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const showPass = document.getElementById("showPass");
       const pass = document.getElementById("password");
-      if (!showPass || !pass) return;
+      const form = document.getElementById("loginForm");
+      const overlay = document.getElementById("loginOverlay");
+      const status = document.getElementById("loginStatus");
+      const err = document.getElementById("loginError");
 
-      showPass.addEventListener("change", (e) => {
-        pass.type = e.target.checked ? "text" : "password";
-      });
+      if (showPass && pass) {
+        showPass.addEventListener("change", (e) => {
+          pass.type = e.target.checked ? "text" : "password";
+        });
+      }
+
+      // Show the "banking app" overlay immediately on submit
+      // (app.js still performs the real login + redirect)
+      if (form && overlay) {
+        form.addEventListener("submit", () => {
+          if (status) {
+            status.style.display = "block";
+            status.textContent = "Signing in…";
+          }
+          if (err) err.style.display = "none";
+          overlay.hidden = false;
+        });
+      }
     });
   </script>
 </body>
