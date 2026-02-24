@@ -8,15 +8,23 @@
   <link rel="canonical" href="https://cashtraq.co.uk/terms.html" />
   <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=99" />
+  <link rel="stylesheet" href="style.css?v=103" />
 </head>
 
 <body>
   <div class="page-wrapper">
-    <button id="darkModeToggle" class="btn secondary dark-toggle" type="button" aria-label="Toggle dark mode">🌓</button>
+
+    <!-- Dark Mode Toggle -->
+    <button
+      id="darkModeToggle"
+      class="btn secondary dark-toggle"
+      type="button"
+      aria-label="Toggle dark mode"
+      title="Toggle dark mode"
+    >🌓</button>
 
     <main class="main">
-      <section class="container page-content">
+      <section class="container page-content" aria-labelledby="termsTitle">
         <div class="logo-container">
           <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
         </div>
@@ -28,23 +36,25 @@
           <a href="contact.html" class="btn secondary">Contact</a>
         </nav>
 
-        <h1>Terms &amp; Conditions</h1>
+        <h1 id="termsTitle">Terms &amp; Conditions</h1>
         <p><em>Last updated: August 2025</em></p>
 
         <h2>About Cashtraq</h2>
         <p>
-          Cashtraq helps users track cashback activity and organise offers. We do not guarantee cashback amounts, tracking, or confirmation times.
+          Cashtraq helps users track cashback activity and organise offers. We do not guarantee cashback amounts,
+          tracking, or confirmation times.
         </p>
 
         <h2>Third-party retailers and tracking</h2>
         <p>
-          Retailers and affiliate partners may use their own tracking and approval processes. Cashback can be declined or adjusted by retailers.
+          Retailers and affiliate partners may use their own tracking and approval processes. Cashback can be
+          declined or adjusted by retailers.
         </p>
 
         <h2>User responsibility</h2>
         <ul>
           <li>Keep your account details secure.</li>
-          <li>Ensure cookies/ad blockers do not block tracking if you want attribution.</li>
+          <li>Ensure cookies or ad blockers do not block tracking if you want attribution.</li>
           <li>Check retailer terms before purchasing.</li>
         </ul>
 
@@ -55,7 +65,8 @@
 
         <h2>Limitation of liability</h2>
         <p>
-          To the extent permitted by law, Cashtraq is not liable for losses arising from declined cashback, tracking failures, or third-party issues.
+          To the extent permitted by law, Cashtraq is not liable for losses arising from declined cashback, tracking failures,
+          or third-party issues.
         </p>
 
         <h2>Contact</h2>
@@ -63,24 +74,39 @@
           Questions? Email <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.
         </p>
 
-       <!-- TODO (Legal): Review for UK GDPR + PECR compliance before launch.
-     Confirm cookies/analytics/affiliate tracking, lawful basis, data retention, and business details. -->
-
+        <!-- TODO (Legal): Review for UK GDPR + PECR compliance before launch.
+             Confirm cookies/analytics/affiliate tracking, lawful basis, data retention, and business details. -->
+      </section>
     </main>
 
     <footer>
       <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms &amp; Conditions</a> |
+      <a href="terms.html" aria-current="page">Terms &amp; Conditions</a> |
       <a href="faq.html">Help / FAQ</a> |
       <a href="contact.html">Contact</a>
     </footer>
   </div>
 
-  <button id="chatbotToggle" class="chatbot-toggle" type="button" aria-label="Open Cashtraq Help Assistant" title="Help">
+  <!-- Chatbot floating button -->
+  <button
+    id="chatbotToggle"
+    class="chatbot-toggle"
+    type="button"
+    aria-label="Open Cashtraq Help Assistant"
+    title="Help"
+  >
     <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
   </button>
 
-  <div id="chatbox" class="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant" hidden>
+  <!-- Chatbot panel -->
+  <div
+    id="chatbox"
+    class="chatbox"
+    role="dialog"
+    aria-modal="false"
+    aria-label="Cashtraq Help Assistant"
+    hidden
+  >
     <div class="chatbox-header">
       <h4>Cashtraq Help Assistant</h4>
       <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
@@ -88,11 +114,16 @@
     <div class="chatbox-body"></div>
   </div>
 
+  <!-- Cookie banner -->
   <div id="cookieConsent" class="cookie-banner" role="region" aria-label="Cookie consent">
-    <span>We use cookies to improve your experience. By using our site, you accept our <a href="privacy.html">Privacy Policy</a>.</span>
+    <span>
+      We use cookies to improve your experience. See our
+      <a href="privacy.html">Privacy Policy</a>.
+    </span>
     <button id="acceptCookies" class="btn" type="button">Accept</button>
   </div>
 
-  <script src="app.js?v=99" defer></script>
+  <!-- Shared JS -->
+  <script type="module" src="app.js?v=103"></script>
 </body>
 </html>
