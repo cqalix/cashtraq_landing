@@ -3,16 +3,24 @@
 // ======================
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-const supabaseUrl = "YOUR_SUPABASE_URL";
-const supabaseAnonKey = "YOUR_PUBLIC_ANON_KEY";
+// ✅ REPLACE placeholders with your real project values
+const supabaseUrl = "https://xyxfqdpotxoaptwdhbfp.supabase.co";
+const supabaseAnonKey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5eGZxZHBvdHhvYXB0d2RoYmZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5ODg3MTcsImV4cCI6MjA3MDU2NDcxN30.j_tkI5CMb_vtOx_LEtj0Odo7b4GiahTGsbFCHSbNxcM";
 
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// ✅ Important: persist session + handle reset links properly
+const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: true
+  }
+});
 
 // ======================
 // DOM READY
 // ======================
 document.addEventListener("DOMContentLoaded", async () => {
-
   // ======================
   // AUTH HELPERS
   // ======================
@@ -30,10 +38,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (protectedPages.includes(path) && !session) {
       window.location.href = "/login.html";
+      return;
     }
 
     if (authPages.includes(path) && session) {
       window.location.href = "/dashboard.html";
+      return;
     }
   }
 
@@ -72,7 +82,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         window.location.href = retailer.destination_url;
-
       } catch (err) {
         console.error("Redirect error:", err);
         window.location.href = "/";
@@ -99,16 +108,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
 
-      const { error } = await supabase.auth.signUp({
-        email,
-        password
-      });
+      const { error } = await supabase.auth.signUp({ email, password });
 
       if (error) {
         alert(error.message);
         return;
       }
 
+      // If email confirmations are ON, user may need to confirm first.
+      // We still send them to dashboard for now.
       window.location.href = "/dashboard.html";
     });
   }
@@ -236,7 +244,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     body.innerHTML = "";
 
-    FAQ.forEach(item => {
+    FAQ.forEach((item) => {
       const wrap = document.createElement("div");
       wrap.className = "faq-item";
 
@@ -252,8 +260,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       q.addEventListener("click", () => {
         const isOpen = q.classList.contains("open");
 
-        body.querySelectorAll(".faq-question").forEach(btn => btn.classList.remove("open"));
-        body.querySelectorAll(".faq-answer").forEach(ans => ans.classList.remove("open"));
+        body.querySelectorAll(".faq-question").forEach((btn) => btn.classList.remove("open"));
+        body.querySelectorAll(".faq-answer").forEach((ans) => ans.classList.remove("open"));
 
         if (!isOpen) {
           q.classList.add("open");
@@ -297,5 +305,4 @@ document.addEventListener("DOMContentLoaded", async () => {
       closeChat();
     }
   });
-
 });
