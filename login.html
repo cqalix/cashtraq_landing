@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Log In - Cashtraq</title>
 
-  <!-- Brand / PWA bits -->
   <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
 
-  <!-- Global styles -->
-  <link rel="stylesheet" href="style.css?v=10" />
-
-  <!-- Supabase SDK (v2) -->
-  <script src="https://unpkg.com/@supabase/supabase-js@2" defer></script>
-
-  <!-- Shared global behaviours (dark mode, cookies, chatbot, etc.) -->
-  <script src="app.js?v=1" defer></script>
+  <link rel="stylesheet" href="style.css?v=103" />
 </head>
+
 <body>
   <div class="page-wrapper">
     <!-- Dark mode -->
-    <button id="darkModeToggle" class="btn secondary" style="position:absolute; top:1rem; right:1rem;">🌓</button>
+    <button
+      id="darkModeToggle"
+      class="btn secondary dark-toggle"
+      type="button"
+      aria-label="Toggle dark mode"
+      title="Toggle dark mode"
+      style="position:absolute; top:1rem; right:1rem;"
+    >🌓</button>
 
     <main class="main">
       <div class="container" style="max-width:520px;">
@@ -36,9 +36,13 @@
         <p id="loginError"  style="display:none; margin:0.5rem 0 0; color:#b00020;">&nbsp;</p>
 
         <!-- Login form -->
+        <!-- IMPORTANT: app.js expects #loginForm and inputs #email + #password -->
         <form id="loginForm" autocomplete="on" style="margin-top:1rem;">
-          <input id="loginEmail" type="email" placeholder="Email" autocomplete="email" required />
-          <input id="loginPass"  type="password" placeholder="Password" autocomplete="current-password" required />
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Email" autocomplete="email" required />
+
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Password" autocomplete="current-password" required />
 
           <div style="width:100%; max-width:320px; text-align:left; margin-top:-0.5rem;">
             <label style="font-size:.9rem; display:flex; align-items:center; gap:.5rem; cursor:pointer;">
@@ -52,11 +56,8 @@
 
         <p style="margin-top:1rem;"><a href="forgot.html">Forgot your password?</a></p>
 
-        <div style="margin-top:1rem;">
-          <button id="guestBtn" class="btn secondary" type="button" title="Use a temporary anonymous session">
-            Continue as Guest
-          </button>
-        </div>
+        <!-- Guest mode removed for now: with proper accounts + RLS, guest sessions complicate everything.
+             If you want it back later, we’ll add anonymous auth properly with clear UX. -->
 
         <p style="margin-top:1rem;">New here? <a href="signup.html">Create an account</a></p>
       </div>
@@ -70,135 +71,55 @@
     </footer>
   </div>
 
-  <!-- Chatbot (shared UI) -->
-  <button id="chatbotToggle" aria-label="Open Chatbot">
-    <img src="assets/chatbot-icon.svg" alt="Chatbot Icon" />
+  <!-- Chatbot floating button -->
+  <button
+    id="chatbotToggle"
+    class="chatbot-toggle"
+    type="button"
+    aria-label="Open Cashtraq Help Assistant"
+    title="Help"
+  >
+    <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
   </button>
-  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant">
-    <h4>Cashtraq Help Assistant</h4>
-    <div class="faq-item"><div class="faq-question">I can’t log in – what should I do?</div><div class="faq-answer">Use “Forgot your password?” to reset. If you still can’t access, email support@cashtraq.co.uk.</div></div>
-    <div class="faq-item"><div class="faq-question">Do I need an account?</div><div class="faq-answer">You can browse as a guest, but you’ll need an account to save favourites and sync devices.</div></div>
+
+  <!-- Chatbot panel -->
+  <div
+    id="chatbox"
+    class="chatbox"
+    role="dialog"
+    aria-modal="false"
+    aria-label="Cashtraq Help Assistant"
+    hidden
+  >
+    <div class="chatbox-header">
+      <h4>Cashtraq Help Assistant</h4>
+      <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
+    </div>
+    <div class="chatbox-body"></div>
   </div>
 
-  <!-- Cookie banner (shared UI) -->
-  <div id="cookieConsent" role="region" aria-label="Cookie consent"
-       style="position:fixed; bottom:1rem; left:1rem; right:1rem; padding:1rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; z-index:1000;">
-    <span>We use cookies to improve your experience. See our <a href="privacy.html">Privacy Policy</a>.</span>
-    <button id="acceptCookies" class="btn" style="margin:0;">Accept</button>
+  <!-- Cookie banner -->
+  <div id="cookieConsent" class="cookie-banner" role="region" aria-label="Cookie consent">
+    <span>
+      We use cookies to improve your experience. See our
+      <a href="privacy.html">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies" class="btn" type="button">Accept</button>
   </div>
 
-  <!-- Page-specific login logic -->
+  <!-- Shared JS (must be module for Supabase import in app.js) -->
+  <script type="module" src="app.js?v=103"></script>
+
+  <!-- Optional: show/hide password (kept page-local) -->
   <script>
-    // ---- Supabase init (uses your existing project + anon key) ----
-    const SUPABASE_URL  = "https://xyxfqdpotxoaptwdhbfp.supabase.co";
-    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5eGZxZHBvdHhvYXB0d2RoYmZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5ODg3MTcsImV4cCI6MjA3MDU2NDcxN30.j_tkI5CMb_vtOx_LEtj0Odo7b4GiahTGsbFCHSbNxcM";
-    // Persist sessions so page reload keeps user logged in
-    const supabaseClient = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON, {
-      auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
-    });
+    document.addEventListener("DOMContentLoaded", () => {
+      const showPass = document.getElementById("showPass");
+      const pass = document.getElementById("password");
+      if (!showPass || !pass) return;
 
-    // If a session already exists, go straight to dashboard
-    (async () => {
-      try {
-        if (!supabaseClient) return;
-        const { data: { session } } = await supabaseClient.auth.getSession();
-        if (session) {
-          localStorage.setItem("isLoggedIn", "true");
-          window.location.replace("dashboard.html");
-        }
-      } catch (e) {
-        console.warn("Session check failed", e);
-      }
-    })();
-
-    // Helpers
-    const $ = (sel) => document.querySelector(sel);
-    const show = (el) => (el.style.display = "block");
-    const hide = (el) => (el.style.display = "none");
-    const setBtnBusy = (btn, busy) => {
-      btn.disabled = !!busy;
-      btn.textContent = busy ? "Please wait…" : btn.dataset.label || btn.textContent;
-    };
-
-    // Show/hide password
-    $("#showPass").addEventListener("change", (e) => {
-      $("#loginPass").type = e.target.checked ? "text" : "password";
-    });
-
-    // Email/password sign-in
-    $("#loginBtn").dataset.label = "Log In";
-    $("#loginForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      hide($("#loginError"));
-      show($("#loginStatus"));
-      $("#loginStatus").textContent = "Signing in…";
-      setBtnBusy($("#loginBtn"), true);
-
-      const email = $("#loginEmail").value.trim();
-      const password = $("#loginPass").value;
-
-      try {
-        if (!supabaseClient) throw new Error("Supabase not loaded.");
-        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-
-        // Optional: ensure profile row exists (safe to leave in)
-        try {
-          const user = data.user;
-          if (user) {
-            await supabaseClient
-              .from("profiles")
-              .upsert({ id: user.id, email: user.email }, { onConflict: "id" });
-          }
-        } catch (e) {
-          console.warn("Profile upsert skipped/failed:", e?.message || e);
-        }
-
-        localStorage.setItem("isLoggedIn", "true");
-        window.location.replace("dashboard.html");
-      } catch (err) {
-        $("#loginError").textContent = (err && err.message) ? err.message : "Login failed. Please try again.";
-        hide($("#loginStatus"));
-        show($("#loginError"));
-      } finally {
-        setBtnBusy($("#loginBtn"), false);
-      }
-    });
-
-    // Anonymous (guest) sign-in
-    $("#guestBtn").dataset.label = "Continue as Guest";
-    $("#guestBtn").addEventListener("click", async () => {
-      hide($("#loginError"));
-      show($("#loginStatus"));
-      $("#loginStatus").textContent = "Creating guest session…";
-      setBtnBusy($("#guestBtn"), true);
-
-      try {
-        if (!supabaseClient) throw new Error("Supabase not loaded.");
-        const { data, error } = await supabaseClient.auth.signInAnonymously();
-        if (error) throw error;
-
-        // Optionally create a lightweight profile
-        try {
-          const user = data.user;
-          if (user) {
-            await supabaseClient
-              .from("profiles")
-              .upsert({ id: user.id, email: null }, { onConflict: "id" });
-          }
-        } catch (e) {
-          console.warn("Guest profile upsert skipped/failed:", e?.message || e);
-        }
-
-        localStorage.setItem("isLoggedIn", "true");
-        window.location.replace("dashboard.html");
-      } catch (err) {
-        $("#loginError").textContent = (err && err.message) ? err.message : "Could not start guest session.";
-        hide($("#loginStatus"));
-        show($("#loginError"));
-      } finally {
-        setBtnBusy($("#guestBtn"), false);
-      }
+      showPass.addEventListener("change", (e) => {
+        pass.type = e.target.checked ? "text" : "password";
+      });
     });
   </script>
 </body>
