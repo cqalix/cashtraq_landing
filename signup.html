@@ -6,27 +6,65 @@
   <title>Sign Up - Cashtraq</title>
   <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=13" />
+  <link rel="stylesheet" href="style.css?v=103" />
 </head>
 
 <body>
   <div class="page-wrapper">
-    <button id="darkModeToggle" class="btn secondary dark-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">🌓</button>
+
+    <!-- Dark Mode Toggle -->
+    <button
+      id="darkModeToggle"
+      class="btn secondary dark-toggle"
+      type="button"
+      aria-label="Toggle dark mode"
+      title="Toggle dark mode"
+    >🌓</button>
 
     <main class="main">
       <section class="container">
         <div class="logo-container">
-          <img src="assets/cashtraq_logo.svg" class="logo-img" alt="Cashtraq Logo" loading="eager" decoding="async" />
+          <img
+            src="assets/cashtraq_logo.svg"
+            class="logo-img"
+            alt="Cashtraq Logo"
+            loading="eager"
+            decoding="async"
+          />
         </div>
 
         <h2>Create Your Account</h2>
 
+        <!-- IMPORTANT: app.js expects #signupForm and inputs #email + #password -->
         <form id="signupForm" novalidate>
-          <input id="fullName" type="text" placeholder="Full Name" autocomplete="name" required />
-          <input id="email" type="email" placeholder="Email" autocomplete="email" required />
-          <input id="password" type="password" placeholder="Password" autocomplete="new-password" required />
 
-          <!-- FIXED: checkbox + text on ONE line -->
+          <label for="fullName">Full Name</label>
+          <input
+            id="fullName"
+            type="text"
+            placeholder="Full Name"
+            autocomplete="name"
+            required
+          />
+
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="Email"
+            autocomplete="email"
+            required
+          />
+
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            autocomplete="new-password"
+            required
+          />
+
           <div class="terms-checkbox">
             <label for="agreeTerms">
               <input type="checkbox" id="agreeTerms" required />
@@ -54,12 +92,25 @@
     </footer>
   </div>
 
-  <!-- Shared widgets -->
-  <button id="chatbotToggle" class="chatbot-toggle" type="button" aria-label="Open Cashtraq Help Assistant" title="Help">
+  <!-- Chatbot -->
+  <button
+    id="chatbotToggle"
+    class="chatbot-toggle"
+    type="button"
+    aria-label="Open Cashtraq Help Assistant"
+    title="Help"
+  >
     <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
   </button>
 
-  <div id="chatbox" class="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant" hidden>
+  <div
+    id="chatbox"
+    class="chatbox"
+    role="dialog"
+    aria-modal="false"
+    aria-label="Cashtraq Help Assistant"
+    hidden
+  >
     <div class="chatbox-header">
       <h4>Cashtraq Help Assistant</h4>
       <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
@@ -67,26 +118,34 @@
     <div class="chatbox-body"></div>
   </div>
 
+  <!-- Cookie Banner -->
   <div id="cookieConsent" class="cookie-banner" role="region" aria-label="Cookie consent">
-    <span>We use cookies to improve your experience. See our <a href="privacy.html">Privacy Policy</a>.</span>
+    <span>
+      We use cookies to improve your experience. See our
+      <a href="privacy.html">Privacy Policy</a>.
+    </span>
     <button id="acceptCookies" class="btn" type="button">Accept</button>
   </div>
 
-  <script src="app.js?v=6"></script>
+  <!-- Shared JS (must be module for Supabase import) -->
+  <script type="module" src="app.js?v=103"></script>
+
+  <!-- Terms validation (kept separate from auth logic) -->
   <script>
-    document.getElementById('signupForm').addEventListener('submit', (e) => {
-      e.preventDefault();
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("signupForm");
+      const agree = document.getElementById("agreeTerms");
 
-      const agree = document.getElementById('agreeTerms');
-      if (!agree.checked) {
-        alert('Please agree to the Privacy Policy and Terms & Conditions.');
-        return;
-      }
+      if (!form) return;
 
-      // Demo login (no backend)
-      localStorage.setItem('isLoggedIn', 'true');
-      location.href = 'dashboard.html';
+      form.addEventListener("submit", (e) => {
+        if (!agree.checked) {
+          e.preventDefault();
+          alert("Please agree to the Privacy Policy and Terms & Conditions.");
+        }
+      });
     });
   </script>
+
 </body>
 </html>
