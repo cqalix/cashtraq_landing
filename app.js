@@ -3,12 +3,10 @@
 // ======================
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-// ✅ REPLACE placeholders with your real project values
 const supabaseUrl = "https://xyxfqdpotxoaptwdhbfp.supabase.co";
 const supabaseAnonKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5eGZxZHBvdHhvYXB0d2RoYmZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5ODg3MTcsImV4cCI6MjA3MDU2NDcxN30.j_tkI5CMb_vtOx_LEtj0Odo7b4GiahTGsbFCHSbNxcM";
 
-// ✅ Important: persist session + handle reset links properly
 const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     persistSession: true,
@@ -29,25 +27,63 @@ document.addEventListener("DOMContentLoaded", async () => {
     return data.session;
   }
 
-  async function protectPages() {
-    const session = await getSession();
-    const path = window.location.pathname;
+  // Stops the "page flashes then redirects" glitch
+  document.documentElement.style.visibility = "hidden";
 
-    const protectedPages = ["/dashboard.html", "/profile.html"];
-    const authPages = ["/login.html", "/signup.html"];
+  // Wait until Supabase finishes restoring session from storage
+  async function waitForInitialSession() {
+    const s1 = await getSession();
+    if (s1) return s1;
 
-    if (protectedPages.includes(path) && !session) {
-      window.location.href = "/login.html";
-      return;
-    }
+    return await new Promise((resolve) => {
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+        if (event === "INITIAL_SESSION" || event === "SIGNED_IN") {
+          subscription.unsubscribe();
+          resolve(session);
+        }
+      });
 
-    if (authPages.includes(path) && session) {
-      window.location.href = "/dashboard.html";
-      return;
-    }
+      // Safety fallback so we never hang forever
+      setTimeout(async () => {
+        subscription.unsubscribe();
+        const s2 = await getSession();
+        resolve(s2);
+      }, 1200);
+    });
   }
 
-  await protectPages();
+  function currentPageName() {
+    // Works on GitHub Pages where pathname includes "/REPO/..."
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    return parts.length ? parts[parts.length - 1] : "index.html";
+  }
+
+  async function protectPages() {
+    const session = await waitForInitialSession();
+    const page = currentPageName();
+
+    // ✅ Add retailers.html here if you want it locked behind login
+    const protectedPages = ["dashboard.html", "profile.html", "retailers.html"];
+    const authPages = ["login.html", "signup.html"];
+
+    if (protectedPages.includes(page) && !session) {
+      window.location.href = "./login.html";
+      return false;
+    }
+
+    if (authPages.includes(page) && session) {
+      window.location.href = "./dashboard.html";
+      return false;
+    }
+
+    return true;
+  }
+
+  const canContinue = await protectPages();
+  if (!canContinue) return;
+
+  // Show page once auth check is done
+  document.documentElement.style.visibility = "visible";
 
   // ======================
   // CLICKOUT REDIRECT
@@ -55,7 +91,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function handleRedirect() {
     const path = window.location.pathname;
 
-    if (path.startsWith("/go/")) {
+    // Works if you are routing /go/slug (custom routing) - fine to keep
+    if (path.includes("/go/")) {
       const slug = path.split("/go/")[1];
       if (!slug) return;
 
@@ -67,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           .single();
 
         if (error || !retailer) {
-          window.location.href = "/404.html";
+          window.location.href = "./404.html";
           return;
         }
 
@@ -84,7 +121,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         window.location.href = retailer.destination_url;
       } catch (err) {
         console.error("Redirect error:", err);
-        window.location.href = "/";
+        window.location.href = "./index.html";
       }
     }
   }
@@ -115,9 +152,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
 
-      // If email confirmations are ON, user may need to confirm first.
-      // We still send them to dashboard for now.
-      window.location.href = "/dashboard.html";
+      window.location.href = "./dashboard.html";
     });
   }
 
@@ -138,17 +173,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
 
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password
-      });
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
 
       if (error) {
         alert(error.message);
         return;
       }
 
-      window.location.href = "/dashboard.html";
+      window.location.href = "./dashboard.html";
     });
   }
 
@@ -160,7 +192,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (logoutBtn) {
     logoutBtn.addEventListener("click", async () => {
       await supabase.auth.signOut();
-      window.location.href = "/login.html";
+      window.location.href = "./login.html";
     });
   }
 
@@ -170,9 +202,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const darkToggle = document.getElementById("darkModeToggle");
   const savedTheme = localStorage.getItem("theme");
 
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-  }
+  if (savedTheme === "dark") document.body.classList.add("dark-mode");
 
   if (darkToggle) {
     darkToggle.addEventListener("click", () => {
@@ -210,35 +240,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   const chatbotClose = document.getElementById("chatbotClose");
 
   const FAQ = [
-    {
-      q: "Where is my cashback?",
-      a: "Cashback can take time to track and confirm. Some retailers take up to 90 days (sometimes longer) to confirm."
-    },
-    {
-      q: "Why hasn’t my cashback tracked?",
-      a: "Tracking can fail if cookies are blocked, an ad blocker is running, private browsing was used, or attribution was rejected by the retailer."
-    },
-    {
-      q: "How long does cashback take to confirm?",
-      a: "It varies by retailer and purchase type. Some confirm in weeks, others may take a few months."
-    },
-    {
-      q: "What should I do if cashback is missing?",
-      a: "Wait 24–48 hours first. If it still doesn’t appear, keep your confirmation and contact support with the retailer name and order date."
-    },
-    {
-      q: "What are the loyalty tiers?",
-      a: "Your tier is based on tracked cashback earned. Bronze, Silver, and Gold recognise progress and may unlock features later."
-    },
-    {
-      q: "Why might there be a fee later?",
-      a: "If premium automation or advanced tools are introduced, those may be optional paid features. We will always be clear before charging."
-    }
+    { q: "Where is my cashback?", a: "Cashback can take time to track and confirm. Some retailers take up to 90 days (sometimes longer) to confirm." },
+    { q: "Why hasn’t my cashback tracked?", a: "Tracking can fail if cookies are blocked, an ad blocker is running, private browsing was used, or attribution was rejected by the retailer." },
+    { q: "How long does cashback take to confirm?", a: "It varies by retailer and purchase type. Some confirm in weeks, others may take a few months." },
+    { q: "What should I do if cashback is missing?", a: "Wait 24–48 hours first. If it still doesn’t appear, keep your confirmation and contact support with the retailer name and order date." },
+    { q: "What are the loyalty tiers?", a: "Your tier is based on tracked cashback earned. Bronze, Silver, and Gold recognise progress and may unlock features later." },
+    { q: "Why might there be a fee later?", a: "If premium automation or advanced tools are introduced, those may be optional paid features. We will always be clear before charging." }
   ];
 
   function renderFaq() {
     if (!chatbox) return;
-
     const body = chatbox.querySelector(".chatbox-body");
     if (!body) return;
 
@@ -259,7 +270,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       q.addEventListener("click", () => {
         const isOpen = q.classList.contains("open");
-
         body.querySelectorAll(".faq-question").forEach((btn) => btn.classList.remove("open"));
         body.querySelectorAll(".faq-answer").forEach((ans) => ans.classList.remove("open"));
 
@@ -296,13 +306,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  if (chatbotClose) {
-    chatbotClose.addEventListener("click", closeChat);
-  }
+  if (chatbotClose) chatbotClose.addEventListener("click", closeChat);
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && chatbox && !chatbox.hidden) {
-      closeChat();
-    }
+    if (e.key === "Escape" && chatbox && !chatbox.hidden) closeChat();
   });
 });
