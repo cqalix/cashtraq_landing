@@ -1,11 +1,66 @@
+// ======================
+// SUPABASE CLIENT
+// ======================
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabaseUrl = "YOUR_SUPABASE_URL";
+const supabaseAnonKey = "YOUR_PUBLIC_ANON_KEY";
+
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// ======================
+// DOM READY
+// ======================
 document.addEventListener("DOMContentLoaded", () => {
+
+  // ======================
+  // CLICKOUT REDIRECT
+  // ======================
+  async function handleRedirect() {
+    const path = window.location.pathname;
+
+    if (path.startsWith("/go/")) {
+      const slug = path.split("/go/")[1];
+      if (!slug) return;
+
+      try {
+        const { data: retailer, error } = await supabase
+          .from("retailers")
+          .select("*")
+          .eq("slug", slug)
+          .single();
+
+        if (error || !retailer) {
+          window.location.href = "/404.html";
+          return;
+        }
+
+        await supabase.from("clickouts").insert({
+          retailer_id: retailer.id,
+          out_url: retailer.destination_url,
+          platform: "web"
+        });
+
+        window.location.href = retailer.destination_url;
+
+      } catch (err) {
+        console.error("Redirect error:", err);
+        window.location.href = "/";
+      }
+    }
+  }
+
+  handleRedirect();
+
   // ======================
   // DARK MODE (persist)
   // ======================
   const darkToggle = document.getElementById("darkModeToggle");
   const savedTheme = localStorage.getItem("theme");
 
-  if (savedTheme === "dark") document.body.classList.add("dark-mode");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+  }
 
   if (darkToggle) {
     darkToggle.addEventListener("click", () => {
@@ -36,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================
-  // CHATBOT + FAQ PROMPTS
+  // CHATBOT + FAQ
   // ======================
   const chatbotToggle = document.getElementById("chatbotToggle");
   const chatbox = document.getElementById("chatbox");
@@ -71,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderFaq() {
     if (!chatbox) return;
+
     const body = chatbox.querySelector(".chatbox-body");
     if (!body) return;
 
@@ -91,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       q.addEventListener("click", () => {
         const isOpen = q.classList.contains("open");
+
         body.querySelectorAll(".faq-question").forEach(btn => btn.classList.remove("open"));
         body.querySelectorAll(".faq-answer").forEach(ans => ans.classList.remove("open"));
 
@@ -127,9 +184,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  if (chatbotClose) chatbotClose.addEventListener("click", closeChat);
+  if (chatbotClose) {
+    chatbotClose.addEventListener("click", closeChat);
+  }
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && chatbox && !chatbox.hidden) closeChat();
+    if (e.key === "Escape" && chatbox && !chatbox.hidden) {
+      closeChat();
+    }
   });
+
 });
