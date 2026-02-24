@@ -4,71 +4,123 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Set New Password – Cashtraq</title>
-  <meta name="robots" content="noindex,follow">
+  <meta name="robots" content="noindex,follow" />
+  <meta name="theme-color" content="#008080" />
+
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="style.css?v=103" />
+
   <style>
-    .auth-card{max-width:540px;margin:0 auto;background:#f0fdfa;padding:2rem;border-radius:1rem}
+    .auth-card{
+      max-width:540px;
+      margin:0 auto;
+      background:#f0fdfa;
+      padding:2rem;
+      border-radius:1rem
+    }
+    body.dark-mode .auth-card{
+      background: rgba(255,255,255,0.06);
+    }
   </style>
 </head>
+
 <body>
   <div class="page-wrapper">
-    <button id="darkModeToggle" class="btn secondary" style="position:absolute;top:1rem;right:1rem">🌓</button>
+    <button
+      id="darkModeToggle"
+      class="btn secondary dark-toggle"
+      type="button"
+      aria-label="Toggle dark mode"
+      title="Toggle dark mode"
+      style="position:absolute;top:1rem;right:1rem"
+    >🌓</button>
+
     <main class="main">
       <div class="container page-content" style="max-width:720px;">
         <div class="logo-container" style="text-align:center;margin-bottom:1rem">
-          <img src="assets/cashtraq_logo.svg" alt="Cashtraq" class="logo-img" width="340" height="100">
+          <img src="assets/cashtraq_logo.svg" alt="Cashtraq" class="logo-img" width="340" height="100" />
         </div>
 
         <div class="auth-card">
           <h1>Choose a new password</h1>
+
           <form id="resetForm" novalidate>
-            <label for="password">New password</label>
-            <input id="password" name="password" type="password" required autocomplete="new-password">
-            <label for="password2">Confirm password</label>
-            <input id="password2" name="password2" type="password" required autocomplete="new-password">
+            <label for="newPassword">New password</label>
+            <input id="newPassword" name="newPassword" type="password" required autocomplete="new-password" />
+
+            <label for="confirmPassword">Confirm password</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" required autocomplete="new-password" />
+
             <button type="submit" class="btn" style="width:100%;margin-top:1rem">Update password</button>
             <p id="msg" role="status" style="margin-top:1rem"></p>
           </form>
+
           <p style="margin-top:1rem"><a href="login.html">Back to log in</a></p>
         </div>
       </div>
     </main>
   </div>
 
-  <script>
-    // dark mode
-    document.getElementById('darkModeToggle').addEventListener('click', ()=> {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    });
-    if(localStorage.getItem('darkMode')==='true'){ document.body.classList.add('dark-mode'); }
+  <!-- Shared JS (includes dark mode + Supabase client) -->
+  <script type="module" src="app.js?v=103"></script>
 
-    // Supabase
-    const SUPABASE_URL = "https://xyxfqdpotxoaptwdhbfp.supabase.co";
-    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5eGZxZHBvdHhvYXB0d2RoYmZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5ODg3MTcsImV4cCI6MjA3MDU2NDcxN30.j_tkI5CMb_vtOx_LEtj0Odo7b4GiahTGsbFCHSbNxcM";
-    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+  <!-- Reset flow (module, uses the supabase instance created in app.js) -->
+  <script type="module">
+    // Uses the global `supabase` client created in app.js
+    // IMPORTANT: In app.js, ensure supabaseUrl + supabaseAnonKey are filled with real values.
 
-    // If the link arrived with a code, exchange for a session (covers all email link flows)
-    (async () => {
-      try { await sb.auth.exchangeCodeForSession(window.location.href); } catch(_) {}
-    })();
+    async function exchangeCodeForSessionIfPresent() {
+      try {
+        // Handles Supabase email link flows (password reset / magic link, etc.)
+        await supabase.auth.exchangeCodeForSession(window.location.href);
+      } catch (e) {
+        // If there's no code in the URL or it was already exchanged, ignore.
+      }
+    }
 
-    document.getElementById('resetForm').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const p1 = document.getElementById('password').value;
-      const p2 = document.getElementById('password2').value;
-      const msg = document.getElementById('msg');
-      if (p1 !== p2) { msg.style.color='crimson'; msg.textContent='Passwords do not match.'; return; }
+    function setMessage(msgEl, text, color) {
+      msgEl.textContent = text;
+      msgEl.style.color = color || "";
+    }
 
-      msg.style.color=''; msg.textContent='Updating…';
-      const { error } = await sb.auth.updateUser({ password: p1 });
+    document.addEventListener("DOMContentLoaded", async () => {
+      const form = document.getElementById("resetForm");
+      const msg = document.getElementById("msg");
+      const p1 = document.getElementById("newPassword");
+      const p2 = document.getElementById("confirmPassword");
 
-      if (error){ msg.style.color='crimson'; msg.textContent=error.message; return; }
-      msg.style.color='green';
-      msg.textContent='Password updated. Redirecting to login…';
-      setTimeout(()=> window.location.replace('login.html'), 1000);
+      if (!form || !msg || !p1 || !p2) return;
+
+      await exchangeCodeForSessionIfPresent();
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const pass1 = p1.value;
+        const pass2 = p2.value;
+
+        if (!pass1 || pass1.length < 8) {
+          setMessage(msg, "Please choose a password of at least 8 characters.", "crimson");
+          return;
+        }
+
+        if (pass1 !== pass2) {
+          setMessage(msg, "Passwords do not match.", "crimson");
+          return;
+        }
+
+        setMessage(msg, "Updating…");
+
+        const { error } = await supabase.auth.updateUser({ password: pass1 });
+
+        if (error) {
+          setMessage(msg, error.message || "Could not update password.", "crimson");
+          return;
+        }
+
+        setMessage(msg, "Password updated. Redirecting to login…", "green");
+        setTimeout(() => window.location.replace("login.html"), 1000);
+      });
     });
   </script>
 </body>
