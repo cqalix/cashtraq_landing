@@ -44,6 +44,10 @@ body{
   padding: 2rem 1rem;
 }
 
+/* helpers */
+.centered{ text-align: center; }
+.muted{ opacity: 0.8; font-size: 0.95rem; }
+
 /* ===========================
    Card / Panel
    =========================== */
@@ -137,7 +141,8 @@ body.dark-mode a:hover{ color: #b6fff5; }
 /* ===========================
    Dark Mode Toggle button (top right)
    =========================== */
-#darkModeToggle{
+#darkModeToggle,
+.dark-toggle{
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -168,6 +173,15 @@ form{
   margin-top: 1rem;
   width: 100%;
   align-items: center;
+}
+
+label{
+  width: 100%;
+  max-width: 360px;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: -0.35rem;
 }
 
 input, textarea, select{
@@ -254,7 +268,8 @@ form .btn{
 /* Mobile tap targets */
 @media (max-width: 640px){
   .btn{ min-width: 190px; max-width: 92%; }
-  #darkModeToggle{
+  #darkModeToggle,
+  .dark-toggle{
     padding: 0.25rem 0.5rem;
     font-size: 0.85rem;
     border-radius: 999px;
@@ -413,7 +428,8 @@ body.dark-mode footer a:hover{ color: #b6fff5; }
 /* ===========================
    Chatbot (ONE unified implementation)
    =========================== */
-#chatbotToggle{
+#chatbotToggle,
+.chatbot-toggle{
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -430,9 +446,11 @@ body.dark-mode footer a:hover{ color: #b6fff5; }
   box-shadow: 0 10px 30px rgba(0,0,0,0.18);
 }
 
-#chatbotToggle:hover{ background: var(--brand-600); }
+#chatbotToggle:hover,
+.chatbot-toggle:hover{ background: var(--brand-600); }
 
-#chatbotToggle img{
+#chatbotToggle img,
+.chatbot-toggle img{
   width: 32px;
   height: 32px;
   object-fit: contain;
@@ -440,6 +458,7 @@ body.dark-mode footer a:hover{ color: #b6fff5; }
 
 /* Your HTML uses: <div id="chatbox" class="chatbox" hidden> */
 .chatbox[hidden]{ display: none !important; }
+.chatbox{ display: none; }
 .chatbox.is-open{ display: block; }
 
 .chatbox{
@@ -539,7 +558,6 @@ body.dark-mode .faq-item{ border-bottom-color: rgba(226,232,240,0.12); }
 /* ===========================
    CONTACT PAGE - layout & dark mode
    =========================== */
-/* Add class="contact-card" to your contact container */
 .container.contact-card{
   max-width: 820px;
   width: min(92vw, 820px);
