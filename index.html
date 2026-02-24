@@ -10,7 +10,7 @@
   <meta name="theme-color" content="#008080" />
 
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=200" />
+  <link rel="stylesheet" href="style.css?v=103" />
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <!-- Dark Mode Toggle -->
     <button
       id="darkModeToggle"
-      class="btn secondary"
+      class="btn secondary dark-toggle"
       type="button"
       aria-label="Toggle dark mode"
       title="Toggle dark mode"
@@ -27,7 +27,6 @@
 
     <main class="main">
       <section class="container welcome">
-
         <div class="logo-container">
           <img
             src="assets/cashtraq_logo.svg"
@@ -57,7 +56,6 @@
           <a href="login.html" class="btn">Log In</a>
           <a href="signup.html" class="btn secondary">Sign Up</a>
         </div>
-
       </section>
     </main>
 
@@ -70,9 +68,10 @@
 
   </div>
 
-  <!-- Chatbot Button -->
+  <!-- Chatbot floating button -->
   <button
     id="chatbotToggle"
+    class="chatbot-toggle"
     type="button"
     aria-label="Open Cashtraq Help Assistant"
     title="Help"
@@ -80,7 +79,7 @@
     <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
   </button>
 
-  <!-- Chatbot Panel -->
+  <!-- Chatbot panel -->
   <div
     id="chatbox"
     class="chatbox"
@@ -94,26 +93,8 @@
       <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
     </div>
 
-    <div class="chatbox-body">
-      <div class="faq-item">
-        <button class="faq-question" type="button">
-          Where is my cashback?
-        </button>
-        <div class="faq-answer">
-          Cashback can take up to 90 days to confirm with some retailers.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" type="button">
-          Why hasn’t my cashback tracked?
-        </button>
-        <div class="faq-answer">
-          Ad blockers, cookie settings, or attribution rules can affect tracking.
-          Always click through Cashtraq before buying.
-        </div>
-      </div>
-    </div>
+    <!-- app.js will render the FAQ into this -->
+    <div class="chatbox-body"></div>
   </div>
 
   <!-- Cookie Banner -->
@@ -124,22 +105,19 @@
     aria-label="Cookie consent"
   >
     <span>
-      We use cookies to improve your experience.
-      By using our site, you accept our
+      We use cookies to improve your experience. See our
       <a href="privacy.html">Privacy Policy</a>.
     </span>
-    <button id="acceptCookies" class="btn" type="button">
-      Accept
-    </button>
+    <button id="acceptCookies" class="btn" type="button">Accept</button>
   </div>
 
-  <!-- Debug: proves page loaded -->
+  <!-- Optional debug -->
   <script>
     console.log("[Cashtraq] index.html loaded ✅");
   </script>
 
-  <!-- Main JS -->
-  <script src="app.js?v=200"></script>
+  <!-- Main JS (must be module for Supabase import) -->
+  <script type="module" src="app.js?v=103"></script>
 
 </body>
 </html>
