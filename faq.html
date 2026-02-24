@@ -6,17 +6,28 @@
   <title>Help / FAQ - Cashtraq</title>
   <meta name="theme-color" content="#008080" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=10" />
+  <link rel="stylesheet" href="style.css?v=103" />
 </head>
+
 <body>
   <div class="page-wrapper">
-    <button id="darkModeToggle" class="btn secondary" style="position:absolute;top:1rem;right:1rem">🌓</button>
+
+    <!-- Dark Mode Toggle -->
+    <button
+      id="darkModeToggle"
+      class="btn secondary dark-toggle"
+      type="button"
+      aria-label="Toggle dark mode"
+      title="Toggle dark mode"
+      style="position:absolute;top:1rem;right:1rem"
+    >🌓</button>
 
     <main class="main">
       <div class="container page-content">
         <div class="logo-container" style="text-align:center;margin-bottom:1rem">
           <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
         </div>
+
         <nav class="nav-links" aria-label="Primary">
           <a href="dashboard.html" class="btn secondary">Dashboard</a>
           <a href="retailers.html" class="btn secondary">Retailers</a>
@@ -25,11 +36,31 @@
         </nav>
 
         <h1>Cashtraq Help / FAQ</h1>
-        <h2>Where is my cashback?</h2><p>Most track within 72 hours; some confirm up to 90 days.</p>
-        <h2>Why hasn’t my cashback tracked?</h2><p>Ad blockers/cookies/attribution can interfere; click through Cashtraq.</p>
-        <h2>How long does confirmation take?</h2><p>A few days to a few months depending on retailer & returns policy.</p>
-        <h2>How do loyalty tiers work?</h2><p>Bronze, Silver, Gold based on lifetime cashback.</p>
-        <h2>Is my data secure?</h2><p>We use encryption and never sell your data.</p>
+
+        <h2>Where is my cashback?</h2>
+        <p>
+          Cashback can take time to track and confirm. Some retailers may take up to 90 days or longer to confirm transactions.
+        </p>
+
+        <h2>Why hasn’t my cashback tracked?</h2>
+        <p>
+          Tracking may fail if cookies are blocked, ad blockers are enabled, private browsing was used, or attribution was rejected by the retailer.
+        </p>
+
+        <h2>How long does confirmation take?</h2>
+        <p>
+          Confirmation timing varies by retailer and purchase type. Some confirm within weeks, others may take several months.
+        </p>
+
+        <h2>How do loyalty tiers work?</h2>
+        <p>
+          Loyalty tiers are based on your confirmed lifetime cashback. Bronze, Silver, and Gold reflect your progress and may unlock features over time.
+        </p>
+
+        <h2>Is my data secure?</h2>
+        <p>
+          We use secure infrastructure and encryption to protect your data. We do not sell personal information.
+        </p>
       </div>
     </main>
 
@@ -41,14 +72,44 @@
     </footer>
   </div>
 
-  <!-- shared widgets -->
-  <button id="chatbotToggle" aria-label="Open Chatbot"><img src="assets/chatbot-icon.svg" alt="Chatbot" /></button>
-  <div id="chatbox" role="dialog" aria-modal="false" aria-label="Cashtraq Help Assistant"><h4>Cashtraq Help Assistant</h4></div>
-  <div id="cookieConsent" role="region" aria-label="Cookie consent" style="position:fixed;bottom:1rem;left:1rem;right:1rem;padding:1rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;z-index:1000;">
-    <span>We use cookies to improve your experience. See our <a href="privacy.html">Privacy Policy</a>.</span>
-    <button id="acceptCookies" class="btn" style="margin:0">Accept</button>
+  <!-- Chatbot floating button -->
+  <button
+    id="chatbotToggle"
+    class="chatbot-toggle"
+    type="button"
+    aria-label="Open Cashtraq Help Assistant"
+    title="Help"
+  >
+    <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
+  </button>
+
+  <!-- Chatbot panel -->
+  <div
+    id="chatbox"
+    class="chatbox"
+    role="dialog"
+    aria-modal="false"
+    aria-label="Cashtraq Help Assistant"
+    hidden
+  >
+    <div class="chatbox-header">
+      <h4>Cashtraq Help Assistant</h4>
+      <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
+    </div>
+    <div class="chatbox-body"></div>
   </div>
 
-  <script src="app.js?v=1" defer></script>
+  <!-- Cookie banner -->
+  <div id="cookieConsent" class="cookie-banner" role="region" aria-label="Cookie consent">
+    <span>
+      We use cookies to improve your experience. See our
+      <a href="privacy.html">Privacy Policy</a>.
+    </span>
+    <button id="acceptCookies" class="btn" type="button">Accept</button>
+  </div>
+
+  <!-- Shared JS -->
+  <script type="module" src="app.js?v=103"></script>
+
 </body>
 </html>
