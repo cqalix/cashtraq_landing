@@ -11,7 +11,33 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 // ======================
 // DOM READY
 // ======================
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+
+  // ======================
+  // AUTH HELPERS
+  // ======================
+  async function getSession() {
+    const { data } = await supabase.auth.getSession();
+    return data.session;
+  }
+
+  async function protectPages() {
+    const session = await getSession();
+    const path = window.location.pathname;
+
+    const protectedPages = ["/dashboard.html", "/profile.html"];
+    const authPages = ["/login.html", "/signup.html"];
+
+    if (protectedPages.includes(path) && !session) {
+      window.location.href = "/login.html";
+    }
+
+    if (authPages.includes(path) && session) {
+      window.location.href = "/dashboard.html";
+    }
+  }
+
+  await protectPages();
 
   // ======================
   // CLICKOUT REDIRECT
@@ -35,7 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
+        const session = await getSession();
+        const userId = session?.user?.id ?? null;
+
         await supabase.from("clickouts").insert({
+          user_id: userId,
           retailer_id: retailer.id,
           out_url: retailer.destination_url,
           platform: "web"
@@ -51,6 +81,80 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   handleRedirect();
+
+  // ======================
+  // SIGNUP
+  // ======================
+  const signupForm = document.getElementById("signupForm");
+
+  if (signupForm) {
+    signupForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email")?.value?.trim();
+      const password = document.getElementById("password")?.value;
+
+      if (!email || !password) {
+        alert("Please enter email and password.");
+        return;
+      }
+
+      const { error } = await supabase.auth.signUp({
+        email,
+        password
+      });
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      window.location.href = "/dashboard.html";
+    });
+  }
+
+  // ======================
+  // LOGIN
+  // ======================
+  const loginForm = document.getElementById("loginForm");
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email")?.value?.trim();
+      const password = document.getElementById("password")?.value;
+
+      if (!email || !password) {
+        alert("Please enter email and password.");
+        return;
+      }
+
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) {
+        alert(error.message);
+        return;
+      }
+
+      window.location.href = "/dashboard.html";
+    });
+  }
+
+  // ======================
+  // LOGOUT
+  // ======================
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", async () => {
+      await supabase.auth.signOut();
+      window.location.href = "/login.html";
+    });
+  }
 
   // ======================
   // DARK MODE (persist)
@@ -104,15 +208,15 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       q: "Why hasn’t my cashback tracked?",
-      a: "Tracking can fail if cookies are blocked, an ad blocker is running, you used private browsing, you clicked another site in-between, or the retailer rejected attribution."
+      a: "Tracking can fail if cookies are blocked, an ad blocker is running, private browsing was used, or attribution was rejected by the retailer."
     },
     {
       q: "How long does cashback take to confirm?",
-      a: "It varies by retailer and purchase type. Some confirm in weeks, others can take a few months."
+      a: "It varies by retailer and purchase type. Some confirm in weeks, others may take a few months."
     },
     {
       q: "What should I do if cashback is missing?",
-      a: "Wait 24–48 hours first (some tracking is delayed). If it still doesn’t appear, keep your confirmation and contact support with the retailer name and order date."
+      a: "Wait 24–48 hours first. If it still doesn’t appear, keep your confirmation and contact support with the retailer name and order date."
     },
     {
       q: "What are the loyalty tiers?",
@@ -120,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       q: "Why might there be a fee later?",
-      a: "If we add premium features (automation, alerts, advanced tools), those may be optional paid features. We’ll always be clear before charging."
+      a: "If premium automation or advanced tools are introduced, those may be optional paid features. We will always be clear before charging."
     }
   ];
 
