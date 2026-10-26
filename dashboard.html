@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>My Dashboard | Cashtraq</title>
-  <meta name="description" content="Your Cashtraq dashboard. Keep cashback organised in one place.">
+  <meta name="description"
+        content="Track and organise your cashback in one place.">
   <meta name="theme-color" content="#132C35">
 
   <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="style.css?v=103">
+  <link rel="stylesheet" href="style.css?v=104">
 
   <style>
     body.dashboard-refresh {
@@ -19,6 +20,7 @@
       --champagne: #D7BE91;
       --ivory: #FAF8F4;
       --mint: #EAF4F0;
+      --muted: #60757a;
       background: var(--ivory);
       color: var(--navy);
     }
@@ -29,47 +31,47 @@
       box-sizing: border-box;
     }
 
-    .dashboard-refresh .db-header {
+    .db-header {
       background: #fffdfa;
       border-bottom: 1px solid #e5ebe7;
     }
 
-    .dashboard-refresh .db-header-inner {
+    .db-header-inner {
       max-width: 1180px;
       min-height: 88px;
-      padding: 15px 24px;
       margin: auto;
+      padding: 15px 24px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 24px;
     }
 
-    .dashboard-refresh .db-logo {
+    .db-logo {
       display: block;
       width: 164px;
       height: auto;
     }
 
-    .dashboard-refresh .db-nav,
-    .dashboard-refresh .db-actions {
+    .db-nav,
+    .db-actions {
       display: flex;
       align-items: center;
       gap: 24px;
     }
 
-    .dashboard-refresh .db-nav a {
+    .db-nav a {
       text-decoration: none;
       color: var(--navy);
       font-size: .93rem;
       font-weight: 650;
     }
 
-    .dashboard-refresh .db-nav a[aria-current="page"] {
+    .db-nav a[aria-current="page"] {
       color: var(--teal);
     }
 
-    .dashboard-refresh .db-theme {
+    .db-theme {
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -80,60 +82,54 @@
       font-size: 1.15rem;
     }
 
-    .dashboard-refresh .db-button {
+    .db-button {
       display: inline-flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       gap: 9px;
       min-height: 45px;
       padding: 12px 22px;
       border: 1px solid var(--teal);
       border-radius: 100px;
       background: var(--teal);
-      color: #fff;
+      color: white;
+      text-decoration: none;
       font-size: .9rem;
       font-weight: 700;
-      text-decoration: none;
       cursor: pointer;
     }
 
-    .dashboard-refresh .db-button:hover {
+    .db-button:hover {
       background: #006b6b;
-      color: #fff;
+      color: white;
     }
 
-    .dashboard-refresh .db-outline {
-      background: transparent;
+    .db-outline {
       color: var(--navy);
+      background: transparent;
       border-color: #c7d6d2;
     }
 
-    .dashboard-refresh .db-outline:hover {
+    .db-outline:hover {
       background: var(--mint);
       color: var(--teal);
     }
 
-    .dashboard-refresh .db-main {
-      width: 100%;
-      flex: 1;
-    }
-
-    .dashboard-refresh .db-content {
+    .db-content {
       max-width: 1180px;
       margin: auto;
       padding: 65px 24px 95px;
     }
 
-    .dashboard-refresh .db-eyebrow {
+    .db-eyebrow {
       display: inline-block;
       color: var(--teal);
       font-size: .73rem;
       font-weight: 800;
       letter-spacing: .17em;
-      text-transform: uppercase;
     }
 
-    .dashboard-refresh .db-intro h1 {
+    .db-intro h1 {
       margin: 15px 0;
       color: var(--navy);
       font-size: clamp(2.8rem, 5vw, 4.6rem);
@@ -141,41 +137,41 @@
       line-height: 1.1;
     }
 
-    .dashboard-refresh .db-intro h1 em,
-    .dashboard-refresh .db-section-heading h2 em {
+    .db-intro h1 em,
+    .db-section-heading h2 em {
       color: var(--teal);
       font-family: Georgia, serif;
       font-weight: 400;
     }
 
-    .dashboard-refresh .db-intro p {
+    .db-intro p {
       max-width: 610px;
-      color: #60757a;
+      color: var(--muted);
       line-height: 1.75;
       font-size: 1.05rem;
       margin: 0 0 35px;
     }
 
-    .dashboard-refresh .db-hero {
+    .db-hero {
       background: var(--navy);
       color: white;
       border-radius: 26px;
       padding: 35px 40px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 30px;
       box-shadow: 0 20px 45px rgba(19,44,53,.12);
     }
 
-    .dashboard-refresh .db-hero-label {
+    .db-hero-label {
       color: var(--champagne);
       font-size: .72rem;
       font-weight: 800;
       letter-spacing: .15em;
     }
 
-    .dashboard-refresh .db-hero h2 {
+    .db-hero h2 {
       color: white;
       font-size: clamp(1.8rem, 3vw, 2.7rem);
       letter-spacing: -.045em;
@@ -183,15 +179,14 @@
       margin: 14px 0;
     }
 
-    .dashboard-refresh .db-hero p {
+    .db-hero p {
       color: #c4d9d6;
       line-height: 1.65;
       max-width: 490px;
       margin: 0;
-      font-size: .96rem;
     }
 
-    .dashboard-refresh .db-hero-symbol {
+    .db-hero-symbol {
       flex-shrink: 0;
       display: grid;
       place-items: center;
@@ -204,30 +199,30 @@
       font-size: 3.3rem;
     }
 
-    .dashboard-refresh .db-section-heading {
+    .db-section-heading {
       margin: 55px 0 25px;
     }
 
-    .dashboard-refresh .db-section-heading h2 {
+    .db-section-heading h2 {
       color: var(--navy);
       font-size: clamp(2rem, 3.6vw, 3rem);
       letter-spacing: -.045em;
       margin: 12px 0;
     }
 
-    .dashboard-refresh .db-section-heading p {
-      color: #60757a;
+    .db-section-heading p {
+      color: var(--muted);
       line-height: 1.7;
       margin: 0;
     }
 
-    .dashboard-refresh .db-stats {
+    .db-stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
-    .dashboard-refresh .db-stat {
+    .db-stat {
       background: #fffdfa;
       border: 1px solid #e4eae5;
       border-radius: 22px;
@@ -236,7 +231,7 @@
       box-shadow: 0 12px 28px rgba(19,44,53,.04);
     }
 
-    .dashboard-refresh .db-stat-icon {
+    .db-stat-icon {
       width: 45px;
       height: 45px;
       border-radius: 13px;
@@ -245,23 +240,32 @@
       background: var(--mint);
       color: var(--teal);
       font-size: 1.35rem;
-      margin-bottom: 22px;
+      margin-bottom: 19px;
     }
 
-    .dashboard-refresh .db-stat h3 {
+    .db-stat h3 {
       color: var(--navy);
-      font-size: 1.25rem;
-      margin: 0 0 9px;
+      font-size: 1.2rem;
+      margin: 0 0 12px;
     }
 
-    .dashboard-refresh .db-stat p {
-      color: #60757a;
-      line-height: 1.6;
+    .db-amount {
+      color: var(--teal);
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      margin-bottom: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .db-stat p {
+      color: var(--muted);
       font-size: .92rem;
+      line-height: 1.6;
       margin: 0;
     }
 
-    .dashboard-refresh .db-notice {
+    .db-notice {
       margin-top: 23px;
       border: 1px solid #dbe8e3;
       border-radius: 17px;
@@ -272,7 +276,94 @@
       line-height: 1.65;
     }
 
-    .dashboard-refresh .db-actions-section {
+    .db-recent {
+      margin-top: 55px;
+    }
+
+    .db-recent h2 {
+      color: var(--navy);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: -.04em;
+      margin: 12px 0 9px;
+    }
+
+    .db-recent-description {
+      color: var(--muted);
+      margin: 0 0 23px;
+      line-height: 1.65;
+    }
+
+    .db-records {
+      display: grid;
+      gap: 12px;
+    }
+
+    .db-record {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 23px;
+      background: #fffdfa;
+      border: 1px solid #e4eae5;
+      border-radius: 18px;
+    }
+
+    .db-record-name {
+      color: var(--navy);
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin: 0 0 5px;
+      overflow-wrap: anywhere;
+    }
+
+    .db-record-meta {
+      color: var(--muted);
+      font-size: .85rem;
+      margin: 0;
+    }
+
+    .db-record-right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .db-record-value {
+      color: var(--teal);
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .db-status {
+      display: inline-block;
+      border-radius: 30px;
+      background: var(--mint);
+      color: #006f6f;
+      padding: 5px 11px;
+      font-size: .76rem;
+      font-weight: 700;
+      text-transform: capitalize;
+    }
+
+    .db-empty {
+      text-align: center;
+      background: #fffdfa;
+      border: 1px solid #e4eae5;
+      border-radius: 22px;
+      padding: 35px 25px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .db-empty strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .db-actions-section {
       margin-top: 60px;
       padding: 38px;
       background: #e9f2ec;
@@ -284,27 +375,27 @@
       gap: 25px;
     }
 
-    .dashboard-refresh .db-actions-section h2 {
+    .db-actions-section h2 {
       margin: 0 0 12px;
       color: var(--navy);
       font-size: clamp(1.7rem, 2.8vw, 2.3rem);
       letter-spacing: -.04em;
     }
 
-    .dashboard-refresh .db-actions-section p {
+    .db-actions-section p {
       color: #587276;
       line-height: 1.65;
       margin: 0;
       max-width: 480px;
     }
 
-    .dashboard-refresh .db-footer {
+    .db-footer {
       padding: 35px 24px;
       background: var(--navy);
       color: #d6e4e0;
     }
 
-    .dashboard-refresh .db-footer-inner {
+    .db-footer-inner {
       max-width: 1132px;
       margin: auto;
       display: flex;
@@ -313,7 +404,7 @@
       gap: 25px;
     }
 
-    .dashboard-refresh .db-footer-logo {
+    .db-footer-logo {
       width: 140px;
       height: auto;
       background: #fffdfa;
@@ -321,133 +412,150 @@
       border-radius: 9px;
     }
 
-    .dashboard-refresh .db-footer p {
+    .db-footer p {
       font-size: .82rem;
       color: #bdd0ce;
       margin: 9px 0 0;
     }
 
-    .dashboard-refresh .db-footer-links {
+    .db-footer-links {
       display: flex;
       flex-wrap: wrap;
       gap: 18px;
     }
 
-    .dashboard-refresh .db-footer-links a {
+    .db-footer-links a {
       color: #e2eeea;
       font-size: .88rem;
       text-decoration: none;
     }
 
-    /* Existing app.js adds this class when dark mode is on */
+    /* Dark mode */
+
     body.dashboard-refresh.dark-mode {
       background: #0c1d24;
       color: #edf5f1;
     }
 
-    .dashboard-refresh.dark-mode .db-header,
-    .dashboard-refresh.dark-mode .db-stat {
+    .dark-mode .db-header,
+    .dark-mode .db-stat,
+    .dark-mode .db-record,
+    .dark-mode .db-empty {
       background: #18343c;
       border-color: #34535b;
     }
 
-    .dashboard-refresh.dark-mode .db-nav a,
-    .dashboard-refresh.dark-mode .db-intro h1,
-    .dashboard-refresh.dark-mode .db-section-heading h2,
-    .dashboard-refresh.dark-mode .db-stat h3,
-    .dashboard-refresh.dark-mode .db-actions-section h2 {
+    .dark-mode .db-nav a,
+    .dark-mode .db-intro h1,
+    .dark-mode .db-section-heading h2,
+    .dark-mode .db-stat h3,
+    .dark-mode .db-recent h2,
+    .dark-mode .db-record-name,
+    .dark-mode .db-empty strong,
+    .dark-mode .db-actions-section h2 {
       color: #f2f7f4;
     }
 
-    .dashboard-refresh.dark-mode .db-intro p,
-    .dashboard-refresh.dark-mode .db-section-heading p,
-    .dashboard-refresh.dark-mode .db-stat p,
-    .dashboard-refresh.dark-mode .db-actions-section p {
+    .dark-mode .db-intro p,
+    .dark-mode .db-section-heading p,
+    .dark-mode .db-stat p,
+    .dark-mode .db-recent-description,
+    .dark-mode .db-record-meta,
+    .dark-mode .db-actions-section p {
       color: #bdd1d0;
     }
 
-    .dashboard-refresh.dark-mode .db-notice,
-    .dashboard-refresh.dark-mode .db-actions-section {
+    .dark-mode .db-notice,
+    .dark-mode .db-actions-section {
       background: #163239;
       border-color: #365860;
       color: #d3e4df;
     }
 
-    .dashboard-refresh.dark-mode .db-outline {
+    .dark-mode .db-outline {
       color: #f2f7f4;
       border-color: #69868b;
     }
 
-    .dashboard-refresh.dark-mode .db-theme {
+    .dark-mode .db-theme {
       background: #264650;
       color: white;
       border-color: #48656b;
     }
 
+    .dark-mode .db-empty {
+      color: #bdd1d0;
+    }
+
     @media (max-width: 800px) {
-      .dashboard-refresh .db-header-inner {
+      .db-header-inner {
         flex-wrap: wrap;
       }
 
-      .dashboard-refresh .db-nav {
+      .db-nav {
         width: 100%;
         order: 3;
         justify-content: center;
       }
 
-      .dashboard-refresh .db-stats {
+      .db-stats {
         grid-template-columns: 1fr;
       }
 
-      .dashboard-refresh .db-actions-section,
-      .dashboard-refresh .db-hero {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .dashboard-refresh .db-footer-inner {
+      .db-hero,
+      .db-actions-section,
+      .db-footer-inner {
         flex-direction: column;
         align-items: flex-start;
       }
     }
 
     @media (max-width: 520px) {
-      .dashboard-refresh .db-header-inner {
+      .db-header-inner {
         gap: 15px;
       }
 
-      .dashboard-refresh .db-logo {
+      .db-logo {
         width: 135px;
       }
 
-      .dashboard-refresh .db-nav {
-        gap: 18px;
+      .db-nav {
+        gap: 16px;
       }
 
-      .dashboard-refresh .db-actions {
+      .db-actions {
         gap: 9px;
       }
 
-      .dashboard-refresh .db-actions .db-button {
+      .db-actions .db-button {
         padding: 10px 13px;
       }
 
-      .dashboard-refresh .db-content {
+      .db-content {
         padding: 45px 20px 65px;
       }
 
-      .dashboard-refresh .db-hero {
+      .db-hero {
         padding: 27px;
       }
 
-      .dashboard-refresh .db-hero-symbol {
+      .db-hero-symbol {
         width: 70px;
         height: 70px;
         font-size: 2rem;
       }
 
-      .dashboard-refresh .db-actions-section {
+      .db-actions-section {
         padding: 27px;
+      }
+
+      .db-record {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .db-record-right {
+        text-align: left;
       }
     }
   </style>
@@ -456,7 +564,6 @@
 <body class="dashboard-refresh">
 <div class="page-wrapper">
 
-  <!-- Site navigation -->
   <header class="db-header">
     <div class="db-header-inner">
 
@@ -467,7 +574,9 @@
       </a>
 
       <nav class="db-nav" aria-label="Main navigation">
-        <a href="dashboard.html" aria-current="page">Dashboard</a>
+        <a href="dashboard.html" aria-current="page">
+          Dashboard
+        </a>
         <a href="retailers.html">Retailers</a>
         <a href="profile.html">Profile</a>
       </nav>
@@ -476,8 +585,7 @@
         <button id="darkModeToggle"
                 class="db-theme"
                 type="button"
-                aria-label="Toggle dark mode"
-                title="Toggle dark mode">◐</button>
+                aria-label="Toggle dark mode">◐</button>
 
         <button id="logoutBtn"
                 class="db-button db-outline"
@@ -490,13 +598,13 @@
   <main class="db-main">
     <div class="db-content">
 
-      <!-- Dashboard heading -->
       <section class="db-intro">
-        <span class="db-eyebrow">YOUR CASHTRAQ SPACE</span>
+        <span class="db-eyebrow">
+          YOUR CASHTRAQ SPACE
+        </span>
 
         <h1>
-          A home for the
-          <em>little wins.</em>
+          A home for the <em>little wins.</em>
         </h1>
 
         <p>
@@ -505,11 +613,12 @@
         </p>
       </section>
 
-      <!-- Premium navy feature -->
       <section class="db-hero"
                aria-label="Your cashback overview">
         <div>
-          <span class="db-hero-label">YOUR CASHBACK OVERVIEW</span>
+          <span class="db-hero-label">
+            YOUR CASHBACK OVERVIEW
+          </span>
 
           <h2>
             All your cashback.<br>
@@ -517,113 +626,138 @@
           </h2>
 
           <p>
-            Keep the cashback you've earned through other
-            providers organised in Cashtraq.
+            Your own cashback records, brought together
+            from the providers you use.
           </p>
         </div>
 
-        <div class="db-hero-symbol" aria-hidden="true">✦</div>
+        <div class="db-hero-symbol"
+             aria-hidden="true">✦</div>
       </section>
 
-      <!-- Status cards -->
       <section aria-labelledby="db-status-title">
         <div class="db-section-heading">
-          <span class="db-eyebrow">THE BIG PICTURE</span>
+          <span class="db-eyebrow">
+            THE BIG PICTURE
+          </span>
 
           <h2 id="db-status-title">
-            Know where your <em>cashback stands.</em>
+            Know where your
+            <em>cashback stands.</em>
           </h2>
 
           <p>
-            Three simple stages to help you stay organised.
+            Your recorded cashback, organised into
+            three simple stages.
           </p>
         </div>
 
         <div class="db-stats">
 
           <article class="db-stat">
-            <div class="db-stat-icon" aria-hidden="true">◷</div>
-
+            <div class="db-stat-icon"
+                 aria-hidden="true">◷</div>
             <h3>Pending</h3>
-
+            <div class="db-amount"
+                 id="pendingAmount">—</div>
             <p>
-              Cashback you're waiting to be confirmed
-              by your existing provider.
+              Cashback you're waiting to be
+              confirmed by your provider.
             </p>
           </article>
 
           <article class="db-stat">
-            <div class="db-stat-icon" aria-hidden="true">✓</div>
-
+            <div class="db-stat-icon"
+                 aria-hidden="true">✓</div>
             <h3>Available</h3>
-
+            <div class="db-amount"
+                 id="availableAmount">—</div>
             <p>
-              Cashback your provider has confirmed
-              is ready to withdraw.
+              Cashback you've recorded as
+              available to withdraw.
             </p>
           </article>
 
           <article class="db-stat">
-            <div class="db-stat-icon" aria-hidden="true">£</div>
-
+            <div class="db-stat-icon"
+                 aria-hidden="true">£</div>
             <h3>Paid</h3>
-
+            <div class="db-amount"
+                 id="paidAmount">—</div>
             <p>
-              Cashback you've already received
-              and want to keep a record of.
+              Cashback you've recorded
+              as already received.
             </p>
           </article>
 
         </div>
 
-        <div class="db-notice" role="note">
-          <strong>Cashback balances are not connected on this website yet.</strong>
-          The cards above explain the tracking stages rather than
-          displaying live amounts. Automatic provider updates are
-          not currently available.
+        <div id="cashbackNotice"
+             class="db-notice"
+             role="status"
+             aria-live="polite">
+          Loading your cashback records…
         </div>
       </section>
 
-      <!-- Actions -->
+      <section class="db-recent"
+               aria-labelledby="recentTitle">
+        <span class="db-eyebrow">
+          YOUR CASHBACK ACTIVITY
+        </span>
+
+        <h2 id="recentTitle">
+          Your recent records.
+        </h2>
+
+        <p class="db-recent-description">
+          Cashback entries you've added in the
+          Cashtraq app.
+        </p>
+
+        <div id="cashbackRecords"
+             class="db-records"
+             aria-live="polite">
+          <div class="db-empty">
+            Loading your records…
+          </div>
+        </div>
+      </section>
+
       <section class="db-actions-section">
         <div>
           <h2>Keep your cashback on track.</h2>
           <p>
-            Explore retailers or learn more about how
-            Cashtraq works.
+            Add or update cashback in the Cashtraq app,
+            then return here to see your records.
           </p>
         </div>
 
-        <div>
-          <a class="db-button" href="retailers.html">
-            Explore retailers
-            <span aria-hidden="true">↗</span>
-          </a>
-        </div>
+        <a class="db-button" href="retailers.html">
+          Explore retailers
+          <span aria-hidden="true">↗</span>
+        </a>
       </section>
 
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="db-footer">
     <div class="db-footer-inner">
-
       <div>
         <img class="db-footer-logo"
              src="assets/cashtraq_logo.svg"
              alt="Cashtraq">
-
         <p>Track it. Stack it. Cashtraq it.</p>
       </div>
 
-      <nav class="db-footer-links" aria-label="Footer links">
+      <nav class="db-footer-links"
+           aria-label="Footer links">
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
         <a href="faq.html">Help / FAQ</a>
         <a href="contact.html">Contact</a>
       </nav>
-
     </div>
   </footer>
 
@@ -636,8 +770,7 @@
         aria-label="Open Cashtraq Help Assistant"
         title="Help">
   <img src="assets/chatbot-icon.svg"
-       alt=""
-       aria-hidden="true">
+       alt="" aria-hidden="true">
 </button>
 
 <div id="chatbox"
@@ -648,13 +781,11 @@
      hidden>
   <div class="chatbox-header">
     <h4>Cashtraq Help Assistant</h4>
-
     <button id="chatbotClose"
             class="chatbox-close"
             type="button"
             aria-label="Close chatbot">✕</button>
   </div>
-
   <div class="chatbox-body"></div>
 </div>
 
@@ -665,7 +796,8 @@
      aria-label="Cookie consent">
   <span>
     We use cookies to improve your experience.
-    Read our <a href="privacy.html">Privacy Policy</a>.
+    Read our
+    <a href="privacy.html">Privacy Policy</a>.
   </span>
 
   <button id="acceptCookies"
@@ -673,8 +805,216 @@
           type="button">Accept</button>
 </div>
 
-<!-- Existing Supabase auth, logout, theme and chatbot logic -->
-<script type="module" src="app.js?v=103"></script>
+<!-- Existing authentication, logout, theme and chatbot -->
+<script type="module" src="app.js?v=104"></script>
+
+<!-- Read the SAME cashback records as the Flutter app -->
+<script type="module">
+  import { createClient } from
+    "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+  const supabase = createClient(
+    "https://qdwptrhxvlinmricgzoc.supabase.co",
+    "sb_publishable_RtzPUsuXomHqQ5ZAUyW9VQ_deAkaETa",
+    {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true
+      }
+    }
+  );
+
+  const pendingEl =
+    document.getElementById("pendingAmount");
+
+  const availableEl =
+    document.getElementById("availableAmount");
+
+  const paidEl =
+    document.getElementById("paidAmount");
+
+  const noticeEl =
+    document.getElementById("cashbackNotice");
+
+  const recordsEl =
+    document.getElementById("cashbackRecords");
+
+  const money = new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "GBP"
+  });
+
+  function showMessage(message) {
+    noticeEl.textContent = message;
+  }
+
+  function emptyRecords(title, description) {
+    recordsEl.replaceChildren();
+
+    const box = document.createElement("div");
+    box.className = "db-empty";
+
+    const heading = document.createElement("strong");
+    heading.textContent = title;
+
+    const details = document.createElement("span");
+    details.textContent = description;
+
+    box.append(heading, details);
+    recordsEl.appendChild(box);
+  }
+
+  function renderRecord(entry) {
+    const record = document.createElement("article");
+    record.className = "db-record";
+
+    const left = document.createElement("div");
+    const right = document.createElement("div");
+    right.className = "db-record-right";
+
+    const retailer = document.createElement("p");
+    retailer.className = "db-record-name";
+    retailer.textContent = entry.retailer || "Retailer";
+
+    const provider = document.createElement("p");
+    provider.className = "db-record-meta";
+    provider.textContent =
+      entry.provider || "Cashback record";
+
+    left.append(retailer, provider);
+
+    const value = document.createElement("div");
+    value.className = "db-record-value";
+
+    const amount = Number(entry.amount);
+
+    value.textContent = Number.isFinite(amount)
+      ? money.format(amount)
+      : "Amount unavailable";
+
+    const status = document.createElement("span");
+    status.className = "db-status";
+    status.textContent = entry.status || "Unknown";
+
+    right.append(value, status);
+    record.append(left, right);
+
+    return record;
+  }
+
+  async function loadCashback() {
+    try {
+      const { data: authData, error: authError } =
+        await supabase.auth.getUser();
+
+      if (authError || !authData.user) {
+        showMessage(
+          "Please sign in to see your cashback records."
+        );
+
+        emptyRecords(
+          "Sign in required",
+          "Your cashback records are only shown " +
+          "when you're signed in."
+        );
+
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("external_cashback_entries")
+        .select(
+          "id, retailer, provider, amount, status, created_at"
+        )
+        .eq("user_id", authData.user.id)
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+
+      const entries = data || [];
+
+      const totals = {
+        pending: 0,
+        available: 0,
+        paid: 0
+      };
+
+      for (const entry of entries) {
+        const status = String(
+          entry.status || ""
+        ).toLowerCase();
+
+        const amount = Number(entry.amount);
+
+        if (
+          Object.prototype.hasOwnProperty.call(
+            totals, status
+          ) &&
+          entry.amount !== null &&
+          Number.isFinite(amount)
+        ) {
+          totals[status] += amount;
+        }
+      }
+
+      pendingEl.textContent =
+        money.format(totals.pending);
+
+      availableEl.textContent =
+        money.format(totals.available);
+
+      paidEl.textContent =
+        money.format(totals.paid);
+
+      if (entries.length === 0) {
+        showMessage(
+          "No cashback records yet. Add your first " +
+          "entry in the Cashtraq app to get started."
+        );
+
+        emptyRecords(
+          "Your first little win starts here.",
+          "Add a cashback record in the app and " +
+          "it'll appear here when you next visit."
+        );
+
+        return;
+      }
+
+      showMessage(
+        "Showing your saved Cashtraq records. " +
+        "Amounts and statuses are entered by you, " +
+        "not verified live provider balances."
+      );
+
+      recordsEl.replaceChildren();
+
+      for (const entry of entries.slice(0, 10)) {
+        recordsEl.appendChild(renderRecord(entry));
+      }
+
+    } catch (error) {
+      console.error(
+        "Could not load Cashtraq cashback:",
+        error
+      );
+
+      showMessage(
+        "We couldn't load your cashback records. " +
+        "Please refresh the page to try again."
+      );
+
+      emptyRecords(
+        "Records unavailable",
+        "Your records have not been deleted. " +
+        "We just couldn't retrieve them."
+      );
+    }
+  }
+
+  loadCashback();
+</script>
 
 </body>
 </html>
