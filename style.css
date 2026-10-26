@@ -1,10 +1,11 @@
+
 /* ===========================
    Brand variables (one source of truth)
    =========================== */
 :root{
-  --brand: #008080;      /* preserve existing brand teal */
-  --brand-600: #006a6a;  /* hover */
-  --brand-700: #004e55;  /* darker */
+  --brand: #008080;
+  --brand-600: #006a6a;
+  --brand-700: #004e55;
 
   --text: #152d34;
   --bg: #f8faf8;
@@ -69,7 +70,7 @@ body{
   align-items: center;
   justify-content: center;
   margin: 2rem auto;
-  overflow: visible; /* IMPORTANT: don't clip form shadows/inputs */
+  overflow: visible;
 }
 
 .container.welcome{ padding: 3rem 2rem; }
@@ -144,7 +145,7 @@ body.dark-mode a{ color: #7ff3e5; }
 body.dark-mode a:hover{ color: #b6fff5; }
 
 /* ===========================
-   Dark Mode Toggle button (top right)
+   Dark Mode Toggle button
    =========================== */
 #darkModeToggle,
 .dark-toggle{
@@ -202,7 +203,6 @@ input, textarea, select{
 }
 
 textarea{ min-height: 140px; resize: vertical; }
-
 input::placeholder, textarea::placeholder{ color: #7b7b7b; }
 
 body.dark-mode input,
@@ -792,7 +792,21 @@ img { max-width: 100%; }
 .landing-page .hero-note { color: #8a8275; font-size: .86rem; font-weight: 650; margin-top: 22px; }
 .landing-page .hero-visual { position: relative; min-width: 0; display: grid; place-items: center; min-height: 475px; }
 .landing-page .visual-glow { position: absolute; inset: 4% 0; background: radial-gradient(circle, #d9eee8 0%, #ebf5ef 48%, transparent 72%); border-radius: 50%; }
-.landing-page .preview-card { position: relative; z-index: 1; width: min(100%, 455px); padding: clamp(23px,3vw,38px); background: #132c35; border: 1px solid #294952; color: white; border-radius: 28px; box-shadow: 0 34px 70px rgba(18,44,53,.22); transform: rotate(-2deg); }
+
+/* Homepage preview card - straightened */
+.landing-page .preview-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 455px);
+  padding: clamp(23px,3vw,38px);
+  background: #132c35;
+  border: 1px solid #294952;
+  color: white;
+  border-radius: 28px;
+  box-shadow: 0 34px 70px rgba(18,44,53,.22);
+  transform: none;
+}
+
 .landing-page .preview-top { display: flex; align-items: center; justify-content: space-between; color: #d6dcd6; }
 .landing-page .preview-kicker { font-size: .67rem; letter-spacing: .16em; font-weight: 800; }
 .landing-page .preview-symbol { color: #d5b77f; font-size: 1.8rem; }
@@ -831,6 +845,7 @@ img { max-width: 100%; }
 .landing-page .landing-footer a:hover { color: #81f2de; }
 .landing-page .cookie-banner { background: #132c35; }
 .landing-page .chatbot-toggle { background: #008080; }
+
 @media (max-width: 950px) {
   .landing-page .site-header-inner { width: min(100% - 32px,1180px); gap: 14px; }
   .landing-page .header-nav { gap: 13px; }
@@ -839,6 +854,7 @@ img { max-width: 100%; }
   .landing-page .float-pill-one { right: 0; }
   .landing-page .float-pill-two { left: 0; }
 }
+
 @media (max-width: 740px) {
   .landing-page .site-header-inner { min-height: 74px; flex-wrap: wrap; justify-content: space-between; padding: 10px 0; }
   .landing-page .site-brand { flex-basis: 155px; }
@@ -857,6 +873,7 @@ img { max-width: 100%; }
   .landing-page .closing-section { flex-direction: column; align-items: flex-start; padding: 75px 0; }
   .landing-page .footer-inner { flex-direction: column; align-items: flex-start; }
 }
+
 @media (max-width: 440px) {
   .landing-page .hero-section { width: calc(100% - 32px); }
   .landing-page h1 { font-size: 2.75rem; }
@@ -868,6 +885,7 @@ img { max-width: 100%; }
   .landing-page .preview-mini-card { padding: 11px; }
   .landing-page .theme-button { width: 36px; height: 36px; }
 }
+
 /* Existing JavaScript toggles body.dark-mode. Keep landing theme legible. */
 body.dark-mode.landing-page { background: #0c1d24; color: #ecf7f4; }
 body.dark-mode.landing-page .site-header { background: #122c35; border-color: #294952; }
