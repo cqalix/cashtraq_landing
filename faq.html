@@ -1,115 +1,679 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Help / FAQ - Cashtraq</title>
-  <meta name="theme-color" content="#008080" />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=103" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help & FAQ | Cashtraq</title>
+  <meta name="description" content="Find out how Cashtraq helps you organise cashback from different providers.">
+  <meta name="theme-color" content="#132C35">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css?v=104">
+
+  <style>
+    body.faq-refresh {
+      --navy: #132C35;
+      --teal: #008080;
+      --gold: #D7BE91;
+      --ivory: #FAF8F4;
+      --mint: #EAF4F0;
+      margin: 0;
+      background: var(--ivory);
+      color: var(--navy);
+    }
+
+    .faq-refresh *,
+    .faq-refresh *::before,
+    .faq-refresh *::after {
+      box-sizing: border-box;
+    }
+
+    .faq-refresh .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-refresh .fq-header {
+      background: #fffdfa;
+      border-bottom: 1px solid #e5ebe7;
+    }
+
+    .faq-refresh .fq-header-inner {
+      max-width: 1180px;
+      min-height: 86px;
+      padding: 15px 24px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .faq-refresh .fq-logo {
+      width: 165px;
+      height: auto;
+      display: block;
+    }
+
+    .faq-refresh .fq-nav,
+    .faq-refresh .fq-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .faq-refresh .fq-nav a {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 650;
+    }
+
+    .faq-refresh .fq-nav a[aria-current="page"] {
+      color: var(--teal);
+    }
+
+    .faq-refresh .fq-theme {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: 1px solid #d8e5e0;
+      border-radius: 50%;
+      background: #edf5f0;
+      color: var(--navy);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .faq-refresh .fq-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 22px;
+      border: 1px solid var(--teal);
+      border-radius: 100px;
+      background: var(--teal);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .91rem;
+    }
+
+    .faq-refresh .fq-main {
+      flex: 1;
+      width: 100%;
+    }
+
+    .faq-refresh .fq-content {
+      max-width: 1160px;
+      margin: auto;
+      padding: 75px 24px 95px;
+    }
+
+    .faq-refresh .fq-eyebrow {
+      display: inline-block;
+      color: var(--teal);
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .faq-refresh .fq-intro h1 {
+      color: var(--navy);
+      font-size: clamp(2.8rem, 5vw, 4.6rem);
+      line-height: 1.1;
+      letter-spacing: -.055em;
+      margin: 18px 0;
+    }
+
+    .faq-refresh .fq-intro h1 em {
+      color: var(--teal);
+      font-family: Georgia, serif;
+      font-weight: 400;
+    }
+
+    .faq-refresh .fq-intro p {
+      max-width: 650px;
+      margin: 0 0 42px;
+      color: #607579;
+      font-size: 1.04rem;
+      line-height: 1.75;
+    }
+
+    .faq-refresh .fq-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, .75fr);
+      gap: 25px;
+      align-items: start;
+    }
+
+    .faq-refresh .fq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .faq-refresh .fq-item {
+      background: #fffdfa;
+      border: 1px solid #e1e9e3;
+      border-radius: 17px;
+      overflow: hidden;
+    }
+
+    .faq-refresh .fq-item summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 25px;
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq-refresh .fq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-refresh .fq-item summary::after {
+      content: "+";
+      flex-shrink: 0;
+      color: var(--teal);
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+
+    .faq-refresh .fq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-refresh .fq-answer {
+      padding: 0 25px 24px;
+      color: #607579;
+      line-height: 1.75;
+      font-size: .95rem;
+    }
+
+    .faq-refresh .fq-answer p {
+      margin: 0;
+    }
+
+    .faq-refresh .fq-answer a {
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .faq-refresh .fq-side {
+      padding: 34px;
+      border-radius: 24px;
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .faq-refresh .fq-side-label {
+      color: var(--gold);
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .faq-refresh .fq-side h2 {
+      color: white;
+      font-size: clamp(1.7rem, 2.7vw, 2.4rem);
+      line-height: 1.2;
+      letter-spacing: -.04em;
+      margin: 21px 0 14px;
+    }
+
+    .faq-refresh .fq-side p {
+      color: #c4d9d6;
+      line-height: 1.75;
+      font-size: .95rem;
+      margin: 0 0 26px;
+    }
+
+    .faq-refresh .fq-stages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .faq-refresh .fq-stages span {
+      border: 1px solid rgba(255,255,255,.17);
+      background: rgba(255,255,255,.07);
+      color: #e5f1ec;
+      border-radius: 100px;
+      padding: 9px 12px;
+      font-size: .83rem;
+      font-weight: 650;
+    }
+
+    .faq-refresh .fq-bottom {
+      margin-top: 45px;
+      padding: 34px;
+      border-radius: 22px;
+      border: 1px solid #dce9e1;
+      background: #edf5ef;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .faq-refresh .fq-bottom h2 {
+      color: var(--navy);
+      font-size: 1.7rem;
+      letter-spacing: -.035em;
+      margin: 0 0 10px;
+    }
+
+    .faq-refresh .fq-bottom p {
+      color: #607579;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .faq-refresh .fq-footer {
+      background: var(--navy);
+      padding: 35px 24px;
+    }
+
+    .faq-refresh .fq-footer-inner {
+      max-width: 1120px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .faq-refresh .fq-footer-logo {
+      width: 140px;
+      height: auto;
+      display: block;
+      padding: 7px 10px;
+      background: #fffdfa;
+      border-radius: 9px;
+    }
+
+    .faq-refresh .fq-footer p {
+      color: #c1d4d0;
+      font-size: .82rem;
+      margin: 9px 0 0;
+    }
+
+    .faq-refresh .fq-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .faq-refresh .fq-footer-links a {
+      color: #e3eeea;
+      text-decoration: none;
+      font-size: .88rem;
+    }
+
+    /* Uses existing app.js dark-mode class */
+    body.faq-refresh.dark-mode {
+      background: #0c1d24;
+      color: #eef5f2;
+    }
+
+    .faq-refresh.dark-mode .fq-header,
+    .faq-refresh.dark-mode .fq-item {
+      background: #18343c;
+      border-color: #34535b;
+    }
+
+    .faq-refresh.dark-mode .fq-nav a,
+    .faq-refresh.dark-mode .fq-intro h1,
+    .faq-refresh.dark-mode .fq-item summary,
+    .faq-refresh.dark-mode .fq-bottom h2 {
+      color: #f2f7f4;
+    }
+
+    .faq-refresh.dark-mode .fq-intro p,
+    .faq-refresh.dark-mode .fq-answer,
+    .faq-refresh.dark-mode .fq-bottom p {
+      color: #bdd1d0;
+    }
+
+    .faq-refresh.dark-mode .fq-bottom {
+      background: #163239;
+      border-color: #365860;
+    }
+
+    .faq-refresh.dark-mode .fq-theme {
+      background: #264650;
+      color: white;
+      border-color: #48656b;
+    }
+
+    @media (max-width: 850px) {
+      .faq-refresh .fq-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-refresh .fq-header-inner {
+        flex-wrap: wrap;
+      }
+
+      .faq-refresh .fq-nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .faq-refresh .fq-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .faq-refresh .fq-header-inner {
+        padding: 14px 18px;
+        gap: 14px;
+      }
+
+      .faq-refresh .fq-logo {
+        width: 135px;
+      }
+
+      .faq-refresh .fq-nav {
+        gap: 16px;
+      }
+
+      .faq-refresh .fq-actions {
+        gap: 10px;
+      }
+
+      .faq-refresh .fq-actions .fq-button {
+        padding: 10px 14px;
+      }
+
+      .faq-refresh .fq-content {
+        padding: 47px 20px 68px;
+      }
+
+      .faq-refresh .fq-item summary {
+        padding: 19px;
+      }
+
+      .faq-refresh .fq-answer {
+        padding: 0 19px 20px;
+      }
+
+      .faq-refresh .fq-side,
+      .faq-refresh .fq-bottom {
+        padding: 26px;
+      }
+
+      .faq-refresh .fq-footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 
-<body>
-  <div class="page-wrapper">
+<body class="faq-refresh">
+<div class="page-wrapper">
 
-    <!-- Dark Mode Toggle -->
-    <button
-      id="darkModeToggle"
-      class="btn secondary dark-toggle"
-      type="button"
-      aria-label="Toggle dark mode"
-      title="Toggle dark mode"
-      style="position:absolute;top:1rem;right:1rem"
-    >🌓</button>
+  <header class="fq-header">
+    <div class="fq-header-inner">
+      <a href="index.html" aria-label="Cashtraq home">
+        <img class="fq-logo" src="assets/cashtraq_logo.svg" alt="Cashtraq">
+      </a>
 
-    <main class="main">
-      <div class="container page-content">
-        <div class="logo-container" style="text-align:center;margin-bottom:1rem">
-          <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+      <nav class="fq-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="retailers.html">Retailers</a>
+        <a href="faq.html" aria-current="page">How it works</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="fq-actions">
+        <button id="darkModeToggle"
+                class="fq-theme"
+                type="button"
+                aria-label="Toggle dark mode"
+                title="Toggle dark mode">◐</button>
+
+        <a href="login.html" class="fq-button">
+          Log in
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="fq-main">
+    <div class="fq-content">
+
+      <section class="fq-intro">
+        <span class="fq-eyebrow">HERE TO HELP</span>
+
+        <h1>
+          Questions?
+          <em>We've got answers.</em>
+        </h1>
+
+        <p>
+          A quick guide to tracking cashback, understanding
+          your records and getting started with Cashtraq.
+        </p>
+      </section>
+
+      <div class="fq-layout">
+
+        <section class="fq-list" aria-label="Frequently asked questions">
+
+          <details class="fq-item" open>
+            <summary>What does Cashtraq do?</summary>
+            <div class="fq-answer">
+              <p>
+                Cashtraq helps you organise cashback earned
+                through other providers, such as Quidco and
+                TopCashback. It's a place to keep track of
+                cashback rather than another cashback provider.
+              </p>
+            </div>
+          </details>
+
+          <details class="fq-item">
+            <summary>Does Cashtraq pay my cashback?</summary>
+            <div class="fq-answer">
+              <p>
+                No. Your original cashback provider handles
+                tracking, approval and payment. Cashtraq helps
+                you keep a separate record of it.
+              </p>
+            </div>
+          </details>
+
+          <details class="fq-item">
+            <summary>What do Pending, Available and Paid mean?</summary>
+            <div class="fq-answer">
+              <p>
+                Pending means you're waiting for confirmation.
+                Available means your cashback provider says it
+                can be withdrawn. Paid means you've received
+                the money. Your Cashtraq record should reflect
+                the status shown by your provider.
+              </p>
+            </div>
+          </details>
+
+          <details class="fq-item">
+            <summary>Why hasn't my cashback appeared?</summary>
+            <div class="fq-answer">
+              <p>
+                Cashtraq doesn't automatically receive all
+                transactions from cashback providers. If you
+                don't see a record, check your original
+                provider account. Automatic imports are a
+                feature we're working towards.
+              </p>
+            </div>
+          </details>
+
+          <details class="fq-item">
+            <summary>Why is my cashback still pending?</summary>
+            <div class="fq-answer">
+              <p>
+                Your provider or retailer may need time to
+                confirm a qualifying purchase. Check the
+                original provider for the latest status and
+                expected timescales.
+              </p>
+            </div>
+          </details>
+
+          <details class="fq-item">
+            <summary>Can I connect Quidco or TopCashback automatically?</summary>
+            <div class="fq-answer">
+              <p>
+                Not currently. We're exploring secure import
+                options, but you should never share your
+                cashback provider passwords with Cashtraq.
+              </p>
+            </div>
+          </details>
+
+          <details class="fq-item">
+            <summary>Can I change a cashback status?</summary>
+            <div class="fq-answer">
+              <p>
+                Cashtraq's app tracker allows you to update
+                saved entries as their status changes.
+                Always verify the status with your original
+                provider before updating it.
+              </p>
+            </div>
+          </details>
+
+          <details class="fq-item">
+            <summary>Where can I get more help?</summary>
+            <div class="fq-answer">
+              <p>
+                Visit our <a href="contact.html">Contact page</a>
+                for support. For missing or rejected cashback,
+                your original cashback provider will normally
+                need to investigate the transaction.
+              </p>
+            </div>
+          </details>
+
+        </section>
+
+        <aside class="fq-side">
+          <span class="fq-side-label">
+            A HOME FOR THE LITTLE WINS
+          </span>
+
+          <h2>
+            All your cashback.
+            One place.
+          </h2>
+
+          <p>
+            Keep your cashback records together
+            so the little wins don't get lost.
+          </p>
+
+          <div class="fq-stages">
+            <span>Pending</span>
+            <span>Available</span>
+            <span>Paid</span>
+          </div>
+        </aside>
+
+      </div>
+
+      <section class="fq-bottom">
+        <div>
+          <h2>Need a hand?</h2>
+          <p>
+            Get in touch if you have questions about Cashtraq.
+          </p>
         </div>
 
-        <nav class="nav-links" aria-label="Primary">
-          <a href="dashboard.html" class="btn secondary">Dashboard</a>
-          <a href="retailers.html" class="btn secondary">Retailers</a>
-          <a href="profile.html" class="btn secondary">Profile</a>
-          <a href="contact.html" class="btn secondary">Contact</a>
-        </nav>
+        <a href="contact.html" class="fq-button">
+          Contact us ↗
+        </a>
+      </section>
 
-        <h1>Cashtraq Help / FAQ</h1>
-
-        <h2>Where is my cashback?</h2>
-        <p>
-          Cashback can take time to track and confirm. Some retailers may take up to 90 days or longer to confirm transactions.
-        </p>
-
-        <h2>Why hasn’t my cashback tracked?</h2>
-        <p>
-          Tracking may fail if cookies are blocked, ad blockers are enabled, private browsing was used, or attribution was rejected by the retailer.
-        </p>
-
-        <h2>How long does confirmation take?</h2>
-        <p>
-          Confirmation timing varies by retailer and purchase type. Some confirm within weeks, others may take several months.
-        </p>
-
-        <h2>How do loyalty tiers work?</h2>
-        <p>
-          Loyalty tiers are based on your confirmed lifetime cashback. Bronze, Silver, and Gold reflect your progress and may unlock features over time.
-        </p>
-
-        <h2>Is my data secure?</h2>
-        <p>
-          We use secure infrastructure and encryption to protect your data. We do not sell personal information.
-        </p>
-      </div>
-    </main>
-
-    <footer>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms &amp; Conditions</a> |
-      <a href="faq.html" aria-current="page">Help / FAQ</a> |
-      <a href="contact.html">Contact</a>
-    </footer>
-  </div>
-
-  <!-- Chatbot floating button -->
-  <button
-    id="chatbotToggle"
-    class="chatbot-toggle"
-    type="button"
-    aria-label="Open Cashtraq Help Assistant"
-    title="Help"
-  >
-    <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
-  </button>
-
-  <!-- Chatbot panel -->
-  <div
-    id="chatbox"
-    class="chatbox"
-    role="dialog"
-    aria-modal="false"
-    aria-label="Cashtraq Help Assistant"
-    hidden
-  >
-    <div class="chatbox-header">
-      <h4>Cashtraq Help Assistant</h4>
-      <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
     </div>
-    <div class="chatbox-body"></div>
-  </div>
+  </main>
 
-  <!-- Cookie banner -->
-  <div id="cookieConsent" class="cookie-banner" role="region" aria-label="Cookie consent">
-    <span>
-      We use cookies to improve your experience. See our
-      <a href="privacy.html">Privacy Policy</a>.
-    </span>
-    <button id="acceptCookies" class="btn" type="button">Accept</button>
-  </div>
+  <footer class="fq-footer">
+    <div class="fq-footer-inner">
+      <div>
+        <img class="fq-footer-logo"
+             src="assets/cashtraq_logo.svg"
+             alt="Cashtraq">
+        <p>Track it. Stack it. Cashtraq it.</p>
+      </div>
 
-  <!-- Shared JS -->
-  <script type="module" src="app.js?v=103"></script>
+      <nav class="fq-footer-links" aria-label="Footer links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="faq.html" aria-current="page">Help / FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Existing Cashtraq help assistant -->
+<button id="chatbotToggle"
+        class="chatbot-toggle"
+        type="button"
+        aria-label="Open Cashtraq Help Assistant"
+        title="Help">
+  <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true">
+</button>
+
+<div id="chatbox"
+     class="chatbox"
+     role="dialog"
+     aria-modal="false"
+     aria-label="Cashtraq Help Assistant"
+     hidden>
+  <div class="chatbox-header">
+    <h4>Cashtraq Help Assistant</h4>
+    <button id="chatbotClose"
+            class="chatbox-close"
+            type="button"
+            aria-label="Close chatbot">✕</button>
+  </div>
+  <div class="chatbox-body"></div>
+</div>
+
+<!-- Existing cookie banner -->
+<div id="cookieConsent"
+     class="cookie-banner"
+     role="region"
+     aria-label="Cookie consent">
+  <span>
+    We use cookies to improve your experience.
+    Read our <a href="privacy.html">Privacy Policy</a>.
+  </span>
+  <button id="acceptCookies"
+          class="btn"
+          type="button">Accept</button>
+</div>
+
+<!-- Shared functionality -->
+<script type="module" src="app.js?v=104"></script>
 
 </body>
 </html>
