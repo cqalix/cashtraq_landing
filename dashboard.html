@@ -4,14 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>My Dashboard | Cashtraq</title>
-  <meta name="description"
-        content="Track your cashback in one place.">
+  <meta name="description" content="Track your cashback in one place.">
   <meta name="theme-color" content="#132C35">
-
   <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="style.css?v=105">
+  <link rel="stylesheet" href="style.css?v=106">
 
   <style>
     body.dashboard-refresh {
@@ -48,24 +45,19 @@
       gap: 24px;
     }
 
-    .db-logo {
-      display: block;
-      width: 164px;
-      height: auto;
-    }
+    .db-logo { width: 164px; display: block; }
 
-    .db-nav,
-    .db-actions {
+    .db-nav, .db-actions {
       display: flex;
       align-items: center;
       gap: 24px;
     }
 
     .db-nav a {
-      text-decoration: none;
       color: var(--navy);
       font-size: .93rem;
       font-weight: 650;
+      text-decoration: none;
     }
 
     .db-nav a[aria-current="page"] {
@@ -105,7 +97,8 @@
       color: white;
     }
 
-    .db-button:disabled {
+    .db-button:disabled,
+    .db-small-button:disabled {
       opacity: .55;
       cursor: wait;
     }
@@ -205,9 +198,7 @@
       font-size: 3.3rem;
     }
 
-    .db-heading {
-      margin: 55px 0 25px;
-    }
+    .db-heading { margin: 55px 0 25px; }
 
     .db-heading h2 {
       color: var(--navy);
@@ -356,6 +347,29 @@
       text-transform: capitalize;
     }
 
+    /* Reminder labels */
+    .db-reminder {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 7px 11px;
+      border-radius: 9px;
+      background: var(--mint);
+      color: #006969;
+      font-size: .81rem;
+      font-weight: 700;
+    }
+
+    .db-reminder-due {
+      background: #fff0df;
+      color: #925309;
+      border: 1px solid #edceaa;
+    }
+
+    .db-reminder-done {
+      background: #edf1f2;
+      color: #5a6d70;
+    }
+
     .db-record-buttons {
       display: flex;
       justify-content: flex-end;
@@ -374,9 +388,7 @@
       cursor: pointer;
     }
 
-    .db-delete {
-      color: #b64255;
-    }
+    .db-delete { color: #b64255; }
 
     .db-empty {
       text-align: center;
@@ -420,8 +432,6 @@
       margin: 0;
       max-width: 480px;
     }
-
-    /* Add / edit popup */
 
     .db-dialog {
       width: min(520px, calc(100vw - 30px));
@@ -489,6 +499,13 @@
       outline-offset: 1px;
     }
 
+    .db-field-help {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: .79rem;
+      line-height: 1.5;
+    }
+
     .db-form-actions {
       display: flex;
       justify-content: flex-end;
@@ -545,7 +562,6 @@
     }
 
     /* Dark mode */
-
     body.dashboard-refresh.dark-mode {
       background: #0c1d24;
       color: #edf5f1;
@@ -579,7 +595,8 @@
     .dark-mode .db-toolbar p,
     .dark-mode .db-record-meta,
     .dark-mode .db-actions-section p,
-    .dark-mode .db-dialog-intro {
+    .dark-mode .db-dialog-intro,
+    .dark-mode .db-field-help {
       color: #bdd1d0;
     }
 
@@ -611,6 +628,7 @@
       background: #102630;
       color: white;
       border-color: #48656b;
+      color-scheme: dark;
     }
 
     .dark-mode .db-small-button {
@@ -622,10 +640,24 @@
       color: #ff9faf;
     }
 
+    .dark-mode .db-reminder {
+      background: #28565a;
+      color: #b9f5e9;
+    }
+
+    .dark-mode .db-reminder-due {
+      background: #503b24;
+      color: #ffe0a8;
+      border-color: #81603a;
+    }
+
+    .dark-mode .db-reminder-done {
+      background: #30414a;
+      color: #d1dce0;
+    }
+
     @media (max-width: 800px) {
-      .db-header-inner {
-        flex-wrap: wrap;
-      }
+      .db-header-inner { flex-wrap: wrap; }
 
       .db-nav {
         width: 100%;
@@ -633,9 +665,7 @@
         justify-content: center;
       }
 
-      .db-stats {
-        grid-template-columns: 1fr;
-      }
+      .db-stats { grid-template-columns: 1fr; }
 
       .db-hero,
       .db-actions-section,
@@ -646,21 +676,10 @@
     }
 
     @media (max-width: 520px) {
-      .db-header-inner {
-        gap: 15px;
-      }
-
-      .db-logo {
-        width: 135px;
-      }
-
-      .db-nav {
-        gap: 16px;
-      }
-
-      .db-actions {
-        gap: 9px;
-      }
+      .db-header-inner { gap: 15px; }
+      .db-logo { width: 135px; }
+      .db-nav { gap: 16px; }
+      .db-actions { gap: 9px; }
 
       .db-actions .db-button {
         padding: 10px 13px;
@@ -670,9 +689,7 @@
         padding: 45px 20px 65px;
       }
 
-      .db-hero {
-        padding: 27px;
-      }
+      .db-hero { padding: 27px; }
 
       .db-hero-symbol {
         width: 70px;
@@ -680,9 +697,7 @@
         font-size: 2rem;
       }
 
-      .db-actions-section {
-        padding: 27px;
-      }
+      .db-actions-section { padding: 27px; }
 
       .db-toolbar {
         align-items: stretch;
@@ -694,9 +709,7 @@
         flex-wrap: wrap;
       }
 
-      .db-record-right {
-        text-align: left;
-      }
+      .db-record-right { text-align: left; }
 
       .db-record-buttons {
         justify-content: flex-start;
@@ -708,10 +721,8 @@
 <body class="dashboard-refresh">
 <div class="page-wrapper">
 
-  <!-- Header -->
   <header class="db-header">
     <div class="db-header-inner">
-
       <a href="index.html" aria-label="Cashtraq home">
         <img class="db-logo"
              src="assets/cashtraq_logo.svg"
@@ -719,9 +730,8 @@
       </a>
 
       <nav class="db-nav" aria-label="Main navigation">
-        <a href="dashboard.html" aria-current="page">
-          Dashboard
-        </a>
+        <a href="dashboard.html"
+           aria-current="page">Dashboard</a>
         <a href="retailers.html">Retailers</a>
         <a href="profile.html">Profile</a>
       </nav>
@@ -736,36 +746,27 @@
                 class="db-button db-outline"
                 type="button">Log out</button>
       </div>
-
     </div>
   </header>
 
   <main class="db-main">
     <div class="db-content">
 
-      <!-- Intro -->
       <section class="db-intro">
-        <span class="db-eyebrow">
-          YOUR CASHTRAQ SPACE
-        </span>
-
+        <span class="db-eyebrow">YOUR CASHTRAQ SPACE</span>
         <h1>A home for the <em>little wins.</em></h1>
-
         <p>
           Your cashback, organised. Keep track of what's
           pending, what's available and what's already paid.
         </p>
       </section>
 
-      <!-- Hero -->
       <section class="db-hero">
         <div>
           <span class="db-hero-label">
             YOUR CASHBACK OVERVIEW
           </span>
-
           <h2>All your cashback.<br>One place.</h2>
-
           <p>
             Your own cashback records, brought together
             from the providers you use.
@@ -775,15 +776,12 @@
         <div class="db-hero-symbol" aria-hidden="true">✦</div>
       </section>
 
-      <!-- Totals -->
       <section aria-labelledby="db-status-title">
         <div class="db-heading">
           <span class="db-eyebrow">THE BIG PICTURE</span>
-
           <h2 id="db-status-title">
             Know where your <em>cashback stands.</em>
           </h2>
-
           <p>
             Your recorded cashback, organised into
             three simple stages.
@@ -791,7 +789,6 @@
         </div>
 
         <div class="db-stats">
-
           <article class="db-stat">
             <div class="db-stat-icon" aria-hidden="true">◷</div>
             <h3>Pending</h3>
@@ -812,7 +809,6 @@
             <div class="db-amount" id="paidAmount">—</div>
             <p>Cashback recorded as received.</p>
           </article>
-
         </div>
 
         <div id="cashbackNotice"
@@ -823,7 +819,6 @@
         </div>
       </section>
 
-      <!-- Activity -->
       <section aria-labelledby="activityTitle">
         <div class="db-toolbar">
           <div>
@@ -832,7 +827,8 @@
             </span>
             <h2 id="activityTitle">Your cashback records.</h2>
             <p>
-              Add, edit and manage cashback from your providers.
+              Add, edit and manage cashback and
+              set dates to check on pending rewards.
             </p>
           </div>
 
@@ -846,19 +842,16 @@
         <div id="cashbackRecords"
              class="db-records"
              aria-live="polite">
-          <div class="db-empty">
-            Loading your records…
-          </div>
+          <div class="db-empty">Loading your records…</div>
         </div>
       </section>
 
-      <!-- Bottom CTA -->
       <section class="db-actions-section">
         <div>
           <h2>Keep your cashback on track.</h2>
           <p>
-            Your records are saved to your Cashtraq account,
-            so you can manage them on the website or app.
+            Save your cashback and check-back dates
+            in your Cashtraq account.
           </p>
         </div>
 
@@ -870,10 +863,8 @@
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="db-footer">
     <div class="db-footer-inner">
-
       <div>
         <img class="db-footer-logo"
              src="assets/cashtraq_logo.svg"
@@ -881,18 +872,18 @@
         <p>Track it. Stack it. Cashtraq it.</p>
       </div>
 
-      <nav class="db-footer-links" aria-label="Footer links">
+      <nav class="db-footer-links"
+           aria-label="Footer links">
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
         <a href="faq.html">Help / FAQ</a>
         <a href="contact.html">Contact</a>
       </nav>
-
     </div>
   </footer>
 </div>
 
-<!-- Add / edit modal -->
+<!-- Cashback add/edit window -->
 <dialog id="cashbackDialog" class="db-dialog">
   <form id="cashbackForm">
     <h2 id="dialogTitle">Add cashback</h2>
@@ -903,7 +894,6 @@
     </p>
 
     <div class="db-form-grid">
-
       <div class="db-field">
         <label for="cbProvider">Cashback provider</label>
         <select id="cbProvider" required>
@@ -947,12 +937,22 @@
       </div>
 
       <div class="db-field">
+        <label for="cbReminder">Check again on (optional)</label>
+        <input id="cbReminder"
+               type="date">
+        <p class="db-field-help">
+          Choose when to check your cashback status.
+          Due dates will appear on your dashboard.
+          Automatic notifications are not enabled yet.
+        </p>
+      </div>
+
+      <div class="db-field">
         <label for="cbNotes">Notes (optional)</label>
         <textarea id="cbNotes"
                   maxlength="1000"
                   placeholder="Anything you'd like to remember"></textarea>
       </div>
-
     </div>
 
     <p id="formError"
@@ -1021,9 +1021,9 @@
 </div>
 
 <!-- Shared login, logout, theme and chatbot -->
-<script type="module" src="app.js?v=105"></script>
+<script type="module" src="app.js?v=106"></script>
 
-<!-- Cashback tracker -->
+<!-- Cashback tracker and reminder dates -->
 <script type="module">
   import { createClient } from
     "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
@@ -1041,7 +1041,6 @@
   );
 
   const table = "external_cashback_entries";
-
   const $ = (id) => document.getElementById(id);
 
   const money = new Intl.NumberFormat("en-GB", {
@@ -1049,10 +1048,12 @@
     currency: "GBP"
   });
 
-  let currentUser = null;
-  let entries = [];
-  let editingId = null;
-  let saving = false;
+  const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC"
+  });
 
   const allowedStatuses = [
     "pending",
@@ -1070,6 +1071,10 @@
     "Other"
   ];
 
+  let entries = [];
+  let editingId = null;
+  let saving = false;
+
   function notice(message) {
     $("cashbackNotice").textContent = message;
   }
@@ -1085,7 +1090,6 @@
     description.textContent = detail;
 
     box.append(heading, description);
-
     $("cashbackRecords").replaceChildren(box);
   }
 
@@ -1097,6 +1101,68 @@
   function clearError() {
     $("formError").textContent = "";
     $("formError").hidden = true;
+  }
+
+  function todayLocal() {
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const month = String(
+      now.getMonth() + 1
+    ).padStart(2, "0");
+
+    const day = String(
+      now.getDate()
+    ).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  }
+
+  function validReminderDate(value) {
+    if (!value) return true;
+
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+      return false;
+    }
+
+    const parsed = new Date(`${value}T00:00:00Z`);
+
+    return !Number.isNaN(parsed.getTime()) &&
+      parsed.toISOString().slice(0, 10) === value;
+  }
+
+  function formattedDate(date) {
+    return dateFormatter.format(
+      new Date(`${date}T00:00:00Z`)
+    );
+  }
+
+  function reminderLabel(entry) {
+    const date = entry.reminder_date;
+
+    if (!date || !validReminderDate(date)) {
+      return null;
+    }
+
+    const complete =
+      entry.status === "paid" ||
+      entry.status === "declined";
+
+    const due =
+      !complete && date <= todayLocal();
+
+    return {
+      text: complete
+        ? `Check-back date: ${formattedDate(date)}`
+        : due
+          ? `Due to check · ${formattedDate(date)}`
+          : `Check on ${formattedDate(date)}`,
+      className: complete
+        ? "db-reminder db-reminder-done"
+        : due
+          ? "db-reminder db-reminder-due"
+          : "db-reminder"
+    };
   }
 
   function refreshTotals() {
@@ -1115,8 +1181,7 @@
 
       if (
         Object.prototype.hasOwnProperty.call(
-          totals,
-          status
+          totals, status
         ) &&
         entry.amount !== null &&
         Number.isFinite(amount)
@@ -1141,7 +1206,6 @@
     button.type = "button";
     button.className = className;
     button.textContent = label;
-
     button.addEventListener("click", callback);
 
     return button;
@@ -1163,6 +1227,15 @@
       entry.provider || "Cashback record";
 
     left.append(retailer, provider);
+
+    const reminder = reminderLabel(entry);
+
+    if (reminder) {
+      const reminderElement = document.createElement("div");
+      reminderElement.className = reminder.className;
+      reminderElement.textContent = reminder.text;
+      left.appendChild(reminderElement);
+    }
 
     const right = document.createElement("div");
     right.className = "db-record-right";
@@ -1208,8 +1281,7 @@
 
     if (entries.length === 0) {
       notice(
-        "No cashback records yet. Add your first " +
-        "entry above to get started."
+        "No cashback records yet. Add your first entry to get started."
       );
 
       emptyState(
@@ -1220,10 +1292,26 @@
       return;
     }
 
+    const dueCount = entries.filter((entry) => {
+      const reminder = entry.reminder_date;
+
+      return reminder &&
+        validReminderDate(reminder) &&
+        reminder <= todayLocal() &&
+        entry.status !== "paid" &&
+        entry.status !== "declined";
+    }).length;
+
+    const baseMessage =
+      "These amounts are your own records, " +
+      "not verified live provider balances.";
+
     notice(
-      "Showing your saved Cashtraq records. " +
-      "These amounts are entered by you, " +
-      "not verified live provider balances."
+      dueCount > 0
+        ? `${dueCount} cashback ${dueCount === 1
+            ? "record is"
+            : "records are"} due for checking. ${baseMessage}`
+        : baseMessage
     );
 
     const container = $("cashbackRecords");
@@ -1235,7 +1323,8 @@
   }
 
   async function getSignedInUser() {
-    const { data, error } = await supabase.auth.getUser();
+    const { data, error } =
+      await supabase.auth.getUser();
 
     if (error || !data.user) {
       throw new Error(
@@ -1243,8 +1332,7 @@
       );
     }
 
-    currentUser = data.user;
-    return currentUser;
+    return data.user;
   }
 
   async function loadCashback() {
@@ -1254,8 +1342,8 @@
       const { data, error } = await supabase
         .from(table)
         .select(
-          "id, retailer, provider, amount, " +
-          "status, notes, created_at"
+          "id, retailer, provider, amount, status, " +
+          "notes, reminder_date, created_at"
         )
         .eq("user_id", user.id)
         .order("created_at", { ascending: false });
@@ -1263,8 +1351,8 @@
       if (error) throw error;
 
       entries = data || [];
-
       renderRecords();
+
     } catch (error) {
       console.error("Cashback loading failed:", error);
 
@@ -1315,10 +1403,16 @@
         ? entry.status
         : "pending";
 
+    $("cbReminder").value =
+      entry?.reminder_date ?? "";
+
     $("cbNotes").value =
       entry?.notes ?? "";
 
-    if (entry && !allowedProviders.includes(entry.provider)) {
+    if (
+      entry &&
+      !allowedProviders.includes(entry.provider)
+    ) {
       $("cbProvider").value = "Other";
     }
 
@@ -1344,6 +1438,7 @@
     const amount = Number(amountString);
     const status = $("cbStatus").value;
     const notes = $("cbNotes").value.trim();
+    const reminderDate = $("cbReminder").value;
 
     if (!allowedProviders.includes(provider)) {
       showError("Please select a cashback provider.");
@@ -1365,7 +1460,9 @@
       return;
     }
 
-    if (Math.round(amount * 100) !== amount * 100) {
+    const amountInPennies = Math.round(amount * 100);
+
+    if (Math.abs(amount * 100 - amountInPennies) > 0.000001) {
       showError("Please use no more than two decimal places.");
       return;
     }
@@ -1375,11 +1472,19 @@
       return;
     }
 
+    if (!validReminderDate(reminderDate)) {
+      showError("Please choose a valid reminder date.");
+      return;
+    }
+
     saving = true;
+
     $("saveCashbackBtn").disabled = true;
     $("cancelCashbackBtn").disabled = true;
     $("saveCashbackBtn").textContent = "Saving...";
     clearError();
+
+    let savedSuccessfully = false;
 
     try {
       const user = await getSignedInUser();
@@ -1389,7 +1494,8 @@
         retailer,
         amount,
         status,
-        notes: notes || null
+        notes: notes || null,
+        reminder_date: reminderDate || null
       };
 
       let error;
@@ -1412,19 +1518,16 @@
             user_id: user.id,
             currency: "GBP",
             source: "manual"
-          });
+          })
+          .select("id")
+          .single();
 
         error = result.error;
       }
 
       if (error) throw error;
 
-      saving = false;
-      $("saveCashbackBtn").disabled = false;
-      $("cancelCashbackBtn").disabled = false;
-
-      closeEditor();
-      await loadCashback();
+      savedSuccessfully = true;
 
     } catch (error) {
       console.error("Could not save cashback:", error);
@@ -1433,12 +1536,20 @@
         "Couldn't save this record. " +
         (error?.message || "Please try again.")
       );
+
     } finally {
       saving = false;
+
       $("saveCashbackBtn").disabled = false;
       $("cancelCashbackBtn").disabled = false;
+
       $("saveCashbackBtn").textContent =
         editingId ? "Save changes" : "Save cashback";
+    }
+
+    if (savedSuccessfully) {
+      closeEditor();
+      await loadCashback();
     }
   }
 
@@ -1474,6 +1585,7 @@
       }
 
       await loadCashback();
+
     } catch (error) {
       console.error("Deletion failed:", error);
 
@@ -1481,6 +1593,7 @@
         "Couldn't delete the record. " +
         (error?.message || "Please try again.")
       );
+
     } finally {
       saving = false;
     }
