@@ -7,11 +7,11 @@
 
   <title>My Dashboard | Cashtraq</title>
   <meta name="description"
-        content="Track and organise your cashback in one place.">
+        content="Track your cashback in one place.">
   <meta name="theme-color" content="#132C35">
 
   <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="style.css?v=104">
+  <link rel="stylesheet" href="style.css?v=105">
 
   <style>
     body.dashboard-refresh {
@@ -23,6 +23,7 @@
       --muted: #60757a;
       background: var(--ivory);
       color: var(--navy);
+      margin: 0;
     }
 
     .dashboard-refresh *,
@@ -84,8 +85,8 @@
 
     .db-button {
       display: inline-flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       gap: 9px;
       min-height: 45px;
       padding: 12px 22px;
@@ -93,9 +94,9 @@
       border-radius: 100px;
       background: var(--teal);
       color: white;
-      text-decoration: none;
       font-size: .9rem;
       font-weight: 700;
+      text-decoration: none;
       cursor: pointer;
     }
 
@@ -104,9 +105,14 @@
       color: white;
     }
 
+    .db-button:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
     .db-outline {
-      color: var(--navy);
       background: transparent;
+      color: var(--navy);
       border-color: #c7d6d2;
     }
 
@@ -138,7 +144,7 @@
     }
 
     .db-intro h1 em,
-    .db-section-heading h2 em {
+    .db-heading h2 em {
       color: var(--teal);
       font-family: Georgia, serif;
       font-weight: 400;
@@ -158,8 +164,8 @@
       border-radius: 26px;
       padding: 35px 40px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 30px;
       box-shadow: 0 20px 45px rgba(19,44,53,.12);
     }
@@ -199,18 +205,18 @@
       font-size: 3.3rem;
     }
 
-    .db-section-heading {
+    .db-heading {
       margin: 55px 0 25px;
     }
 
-    .db-section-heading h2 {
+    .db-heading h2 {
       color: var(--navy);
       font-size: clamp(2rem, 3.6vw, 3rem);
       letter-spacing: -.045em;
       margin: 12px 0;
     }
 
-    .db-section-heading p {
+    .db-heading p {
       color: var(--muted);
       line-height: 1.7;
       margin: 0;
@@ -276,21 +282,25 @@
       line-height: 1.65;
     }
 
-    .db-recent {
-      margin-top: 55px;
+    .db-toolbar {
+      margin: 55px 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
     }
 
-    .db-recent h2 {
-      color: var(--navy);
+    .db-toolbar h2 {
       font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--navy);
       letter-spacing: -.04em;
-      margin: 12px 0 9px;
+      margin: 10px 0;
     }
 
-    .db-recent-description {
+    .db-toolbar p {
       color: var(--muted);
-      margin: 0 0 23px;
-      line-height: 1.65;
+      line-height: 1.6;
+      margin: 0;
     }
 
     .db-records {
@@ -313,7 +323,7 @@
       color: var(--navy);
       font-size: 1.05rem;
       font-weight: 800;
-      margin: 0 0 5px;
+      margin: 0 0 6px;
       overflow-wrap: anywhere;
     }
 
@@ -330,9 +340,9 @@
 
     .db-record-value {
       color: var(--teal);
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 800;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .db-status {
@@ -344,6 +354,28 @@
       font-size: .76rem;
       font-weight: 700;
       text-transform: capitalize;
+    }
+
+    .db-record-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .db-small-button {
+      border: 1px solid #cbdcd7;
+      background: transparent;
+      border-radius: 9px;
+      padding: 7px 11px;
+      color: var(--teal);
+      font-size: .8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .db-delete {
+      color: #b64255;
     }
 
     .db-empty {
@@ -358,8 +390,8 @@
 
     .db-empty strong {
       display: block;
-      font-size: 1.2rem;
       color: var(--navy);
+      font-size: 1.2rem;
       margin-bottom: 10px;
     }
 
@@ -370,8 +402,8 @@
       border: 1px solid #dfeae3;
       border-radius: 24px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 25px;
     }
 
@@ -387,6 +419,88 @@
       line-height: 1.65;
       margin: 0;
       max-width: 480px;
+    }
+
+    /* Add / edit popup */
+
+    .db-dialog {
+      width: min(520px, calc(100vw - 30px));
+      max-height: calc(100vh - 30px);
+      overflow-y: auto;
+      border: 1px solid #dfe9e5;
+      border-radius: 23px;
+      background: #fffdfa;
+      color: var(--navy);
+      padding: 27px;
+      box-shadow: 0 20px 70px rgba(0,0,0,.25);
+    }
+
+    .db-dialog::backdrop {
+      background: rgba(7,27,34,.7);
+    }
+
+    .db-dialog h2 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 1.65rem;
+    }
+
+    .db-dialog-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: .9rem;
+    }
+
+    .db-form-grid {
+      display: grid;
+      gap: 15px;
+    }
+
+    .db-field label {
+      display: block;
+      color: var(--navy);
+      font-size: .84rem;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .db-field input,
+    .db-field select,
+    .db-field textarea {
+      width: 100%;
+      border: 1px solid #cfdcd8;
+      border-radius: 12px;
+      background: white;
+      color: var(--navy);
+      padding: 13px;
+      font: inherit;
+    }
+
+    .db-field textarea {
+      resize: vertical;
+      min-height: 75px;
+    }
+
+    .db-field input:focus,
+    .db-field select:focus,
+    .db-field textarea:focus {
+      outline: 2px solid var(--teal);
+      outline-offset: 1px;
+    }
+
+    .db-form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 23px;
+      flex-wrap: wrap;
+    }
+
+    .db-form-error {
+      color: #b64255;
+      font-size: .88rem;
+      margin: 14px 0 0;
     }
 
     .db-footer {
@@ -440,28 +554,32 @@
     .dark-mode .db-header,
     .dark-mode .db-stat,
     .dark-mode .db-record,
-    .dark-mode .db-empty {
+    .dark-mode .db-empty,
+    .dark-mode .db-dialog {
       background: #18343c;
       border-color: #34535b;
     }
 
     .dark-mode .db-nav a,
     .dark-mode .db-intro h1,
-    .dark-mode .db-section-heading h2,
+    .dark-mode .db-heading h2,
     .dark-mode .db-stat h3,
-    .dark-mode .db-recent h2,
+    .dark-mode .db-toolbar h2,
     .dark-mode .db-record-name,
     .dark-mode .db-empty strong,
-    .dark-mode .db-actions-section h2 {
+    .dark-mode .db-actions-section h2,
+    .dark-mode .db-dialog h2,
+    .dark-mode .db-field label {
       color: #f2f7f4;
     }
 
     .dark-mode .db-intro p,
-    .dark-mode .db-section-heading p,
+    .dark-mode .db-heading p,
     .dark-mode .db-stat p,
-    .dark-mode .db-recent-description,
+    .dark-mode .db-toolbar p,
     .dark-mode .db-record-meta,
-    .dark-mode .db-actions-section p {
+    .dark-mode .db-actions-section p,
+    .dark-mode .db-dialog-intro {
       color: #bdd1d0;
     }
 
@@ -485,6 +603,23 @@
 
     .dark-mode .db-empty {
       color: #bdd1d0;
+    }
+
+    .dark-mode .db-field input,
+    .dark-mode .db-field select,
+    .dark-mode .db-field textarea {
+      background: #102630;
+      color: white;
+      border-color: #48656b;
+    }
+
+    .dark-mode .db-small-button {
+      border-color: #48656b;
+      color: #6bded0;
+    }
+
+    .dark-mode .db-delete {
+      color: #ff9faf;
     }
 
     @media (max-width: 800px) {
@@ -549,6 +684,11 @@
         padding: 27px;
       }
 
+      .db-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
       .db-record {
         align-items: flex-start;
         flex-wrap: wrap;
@@ -557,6 +697,10 @@
       .db-record-right {
         text-align: left;
       }
+
+      .db-record-buttons {
+        justify-content: flex-start;
+      }
     }
   </style>
 </head>
@@ -564,6 +708,7 @@
 <body class="dashboard-refresh">
 <div class="page-wrapper">
 
+  <!-- Header -->
   <header class="db-header">
     <div class="db-header-inner">
 
@@ -598,14 +743,13 @@
   <main class="db-main">
     <div class="db-content">
 
+      <!-- Intro -->
       <section class="db-intro">
         <span class="db-eyebrow">
           YOUR CASHTRAQ SPACE
         </span>
 
-        <h1>
-          A home for the <em>little wins.</em>
-        </h1>
+        <h1>A home for the <em>little wins.</em></h1>
 
         <p>
           Your cashback, organised. Keep track of what's
@@ -613,17 +757,14 @@
         </p>
       </section>
 
-      <section class="db-hero"
-               aria-label="Your cashback overview">
+      <!-- Hero -->
+      <section class="db-hero">
         <div>
           <span class="db-hero-label">
             YOUR CASHBACK OVERVIEW
           </span>
 
-          <h2>
-            All your cashback.<br>
-            One place.
-          </h2>
+          <h2>All your cashback.<br>One place.</h2>
 
           <p>
             Your own cashback records, brought together
@@ -631,19 +772,16 @@
           </p>
         </div>
 
-        <div class="db-hero-symbol"
-             aria-hidden="true">✦</div>
+        <div class="db-hero-symbol" aria-hidden="true">✦</div>
       </section>
 
+      <!-- Totals -->
       <section aria-labelledby="db-status-title">
-        <div class="db-section-heading">
-          <span class="db-eyebrow">
-            THE BIG PICTURE
-          </span>
+        <div class="db-heading">
+          <span class="db-eyebrow">THE BIG PICTURE</span>
 
           <h2 id="db-status-title">
-            Know where your
-            <em>cashback stands.</em>
+            Know where your <em>cashback stands.</em>
           </h2>
 
           <p>
@@ -655,39 +793,24 @@
         <div class="db-stats">
 
           <article class="db-stat">
-            <div class="db-stat-icon"
-                 aria-hidden="true">◷</div>
+            <div class="db-stat-icon" aria-hidden="true">◷</div>
             <h3>Pending</h3>
-            <div class="db-amount"
-                 id="pendingAmount">—</div>
-            <p>
-              Cashback you're waiting to be
-              confirmed by your provider.
-            </p>
+            <div class="db-amount" id="pendingAmount">—</div>
+            <p>Cashback waiting for confirmation.</p>
           </article>
 
           <article class="db-stat">
-            <div class="db-stat-icon"
-                 aria-hidden="true">✓</div>
+            <div class="db-stat-icon" aria-hidden="true">✓</div>
             <h3>Available</h3>
-            <div class="db-amount"
-                 id="availableAmount">—</div>
-            <p>
-              Cashback you've recorded as
-              available to withdraw.
-            </p>
+            <div class="db-amount" id="availableAmount">—</div>
+            <p>Cashback recorded as ready to withdraw.</p>
           </article>
 
           <article class="db-stat">
-            <div class="db-stat-icon"
-                 aria-hidden="true">£</div>
+            <div class="db-stat-icon" aria-hidden="true">£</div>
             <h3>Paid</h3>
-            <div class="db-amount"
-                 id="paidAmount">—</div>
-            <p>
-              Cashback you've recorded
-              as already received.
-            </p>
+            <div class="db-amount" id="paidAmount">—</div>
+            <p>Cashback recorded as received.</p>
           </article>
 
         </div>
@@ -700,20 +823,25 @@
         </div>
       </section>
 
-      <section class="db-recent"
-               aria-labelledby="recentTitle">
-        <span class="db-eyebrow">
-          YOUR CASHBACK ACTIVITY
-        </span>
+      <!-- Activity -->
+      <section aria-labelledby="activityTitle">
+        <div class="db-toolbar">
+          <div>
+            <span class="db-eyebrow">
+              YOUR CASHBACK ACTIVITY
+            </span>
+            <h2 id="activityTitle">Your cashback records.</h2>
+            <p>
+              Add, edit and manage cashback from your providers.
+            </p>
+          </div>
 
-        <h2 id="recentTitle">
-          Your recent records.
-        </h2>
-
-        <p class="db-recent-description">
-          Cashback entries you've added in the
-          Cashtraq app.
-        </p>
+          <button id="addCashbackBtn"
+                  class="db-button"
+                  type="button">
+            + Add cashback
+          </button>
+        </div>
 
         <div id="cashbackRecords"
              class="db-records"
@@ -724,26 +852,28 @@
         </div>
       </section>
 
+      <!-- Bottom CTA -->
       <section class="db-actions-section">
         <div>
           <h2>Keep your cashback on track.</h2>
           <p>
-            Add or update cashback in the Cashtraq app,
-            then return here to see your records.
+            Your records are saved to your Cashtraq account,
+            so you can manage them on the website or app.
           </p>
         </div>
 
         <a class="db-button" href="retailers.html">
-          Explore retailers
-          <span aria-hidden="true">↗</span>
+          Explore retailers ↗
         </a>
       </section>
 
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="db-footer">
     <div class="db-footer-inner">
+
       <div>
         <img class="db-footer-logo"
              src="assets/cashtraq_logo.svg"
@@ -751,17 +881,100 @@
         <p>Track it. Stack it. Cashtraq it.</p>
       </div>
 
-      <nav class="db-footer-links"
-           aria-label="Footer links">
+      <nav class="db-footer-links" aria-label="Footer links">
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
         <a href="faq.html">Help / FAQ</a>
         <a href="contact.html">Contact</a>
       </nav>
+
     </div>
   </footer>
-
 </div>
+
+<!-- Add / edit modal -->
+<dialog id="cashbackDialog" class="db-dialog">
+  <form id="cashbackForm">
+    <h2 id="dialogTitle">Add cashback</h2>
+
+    <p class="db-dialog-intro">
+      Record cashback from another provider.
+      These are your own records, not verified balances.
+    </p>
+
+    <div class="db-form-grid">
+
+      <div class="db-field">
+        <label for="cbProvider">Cashback provider</label>
+        <select id="cbProvider" required>
+          <option value="TopCashback">TopCashback</option>
+          <option value="Quidco">Quidco</option>
+          <option value="Airtime Rewards">Airtime Rewards</option>
+          <option value="JamDoughnut">JamDoughnut</option>
+          <option value="Cheddar">Cheddar</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="db-field">
+        <label for="cbRetailer">Retailer</label>
+        <input id="cbRetailer"
+               type="text"
+               maxlength="120"
+               placeholder="e.g. M&S"
+               required>
+      </div>
+
+      <div class="db-field">
+        <label for="cbAmount">Cashback amount (£)</label>
+        <input id="cbAmount"
+               type="number"
+               min="0"
+               max="9999999"
+               step="0.01"
+               placeholder="e.g. 12.50"
+               required>
+      </div>
+
+      <div class="db-field">
+        <label for="cbStatus">Status</label>
+        <select id="cbStatus" required>
+          <option value="pending">Pending</option>
+          <option value="available">Available</option>
+          <option value="paid">Paid</option>
+          <option value="declined">Declined</option>
+        </select>
+      </div>
+
+      <div class="db-field">
+        <label for="cbNotes">Notes (optional)</label>
+        <textarea id="cbNotes"
+                  maxlength="1000"
+                  placeholder="Anything you'd like to remember"></textarea>
+      </div>
+
+    </div>
+
+    <p id="formError"
+       class="db-form-error"
+       role="alert"
+       hidden></p>
+
+    <div class="db-form-actions">
+      <button id="cancelCashbackBtn"
+              type="button"
+              class="db-button db-outline">
+        Cancel
+      </button>
+
+      <button id="saveCashbackBtn"
+              type="submit"
+              class="db-button">
+        Save cashback
+      </button>
+    </div>
+  </form>
+</dialog>
 
 <!-- Chatbot -->
 <button id="chatbotToggle"
@@ -770,7 +983,8 @@
         aria-label="Open Cashtraq Help Assistant"
         title="Help">
   <img src="assets/chatbot-icon.svg"
-       alt="" aria-hidden="true">
+       alt=""
+       aria-hidden="true">
 </button>
 
 <div id="chatbox"
@@ -796,19 +1010,20 @@
      aria-label="Cookie consent">
   <span>
     We use cookies to improve your experience.
-    Read our
-    <a href="privacy.html">Privacy Policy</a>.
+    Read our <a href="privacy.html">Privacy Policy</a>.
   </span>
 
   <button id="acceptCookies"
           class="btn"
-          type="button">Accept</button>
+          type="button">
+    Accept
+  </button>
 </div>
 
-<!-- Existing authentication, logout, theme and chatbot -->
-<script type="module" src="app.js?v=104"></script>
+<!-- Shared login, logout, theme and chatbot -->
+<script type="module" src="app.js?v=105"></script>
 
-<!-- Read the SAME cashback records as the Flutter app -->
+<!-- Cashback tracker -->
 <script type="module">
   import { createClient } from
     "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
@@ -825,44 +1040,111 @@
     }
   );
 
-  const pendingEl =
-    document.getElementById("pendingAmount");
+  const table = "external_cashback_entries";
 
-  const availableEl =
-    document.getElementById("availableAmount");
-
-  const paidEl =
-    document.getElementById("paidAmount");
-
-  const noticeEl =
-    document.getElementById("cashbackNotice");
-
-  const recordsEl =
-    document.getElementById("cashbackRecords");
+  const $ = (id) => document.getElementById(id);
 
   const money = new Intl.NumberFormat("en-GB", {
     style: "currency",
     currency: "GBP"
   });
 
-  function showMessage(message) {
-    noticeEl.textContent = message;
+  let currentUser = null;
+  let entries = [];
+  let editingId = null;
+  let saving = false;
+
+  const allowedStatuses = [
+    "pending",
+    "available",
+    "paid",
+    "declined"
+  ];
+
+  const allowedProviders = [
+    "TopCashback",
+    "Quidco",
+    "Airtime Rewards",
+    "JamDoughnut",
+    "Cheddar",
+    "Other"
+  ];
+
+  function notice(message) {
+    $("cashbackNotice").textContent = message;
   }
 
-  function emptyRecords(title, description) {
-    recordsEl.replaceChildren();
-
+  function emptyState(title, detail) {
     const box = document.createElement("div");
     box.className = "db-empty";
 
     const heading = document.createElement("strong");
     heading.textContent = title;
 
-    const details = document.createElement("span");
-    details.textContent = description;
+    const description = document.createElement("span");
+    description.textContent = detail;
 
-    box.append(heading, details);
-    recordsEl.appendChild(box);
+    box.append(heading, description);
+
+    $("cashbackRecords").replaceChildren(box);
+  }
+
+  function showError(message) {
+    $("formError").textContent = message;
+    $("formError").hidden = false;
+  }
+
+  function clearError() {
+    $("formError").textContent = "";
+    $("formError").hidden = true;
+  }
+
+  function refreshTotals() {
+    const totals = {
+      pending: 0,
+      available: 0,
+      paid: 0
+    };
+
+    for (const entry of entries) {
+      const status = String(
+        entry.status ?? ""
+      ).toLowerCase();
+
+      const amount = Number(entry.amount);
+
+      if (
+        Object.prototype.hasOwnProperty.call(
+          totals,
+          status
+        ) &&
+        entry.amount !== null &&
+        Number.isFinite(amount)
+      ) {
+        totals[status] += amount;
+      }
+    }
+
+    $("pendingAmount").textContent =
+      money.format(totals.pending);
+
+    $("availableAmount").textContent =
+      money.format(totals.available);
+
+    $("paidAmount").textContent =
+      money.format(totals.paid);
+  }
+
+  function makeButton(label, className, callback) {
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = className;
+    button.textContent = label;
+
+    button.addEventListener("click", callback);
+
+    return button;
   }
 
   function renderRecord(entry) {
@@ -870,8 +1152,6 @@
     record.className = "db-record";
 
     const left = document.createElement("div");
-    const right = document.createElement("div");
-    right.className = "db-record-right";
 
     const retailer = document.createElement("p");
     retailer.className = "db-record-name";
@@ -884,134 +1164,349 @@
 
     left.append(retailer, provider);
 
+    const right = document.createElement("div");
+    right.className = "db-record-right";
+
     const value = document.createElement("div");
     value.className = "db-record-value";
 
     const amount = Number(entry.amount);
 
-    value.textContent = Number.isFinite(amount)
-      ? money.format(amount)
-      : "Amount unavailable";
+    value.textContent =
+      entry.amount !== null && Number.isFinite(amount)
+        ? money.format(amount)
+        : "Amount unavailable";
 
     const status = document.createElement("span");
     status.className = "db-status";
     status.textContent = entry.status || "Unknown";
 
-    right.append(value, status);
+    const buttons = document.createElement("div");
+    buttons.className = "db-record-buttons";
+
+    const editButton = makeButton(
+      "Edit",
+      "db-small-button",
+      () => openEditor(entry)
+    );
+
+    const deleteButton = makeButton(
+      "Delete",
+      "db-small-button db-delete",
+      () => deleteCashback(entry)
+    );
+
+    buttons.append(editButton, deleteButton);
+    right.append(value, status, buttons);
     record.append(left, right);
 
     return record;
   }
 
+  function renderRecords() {
+    refreshTotals();
+
+    if (entries.length === 0) {
+      notice(
+        "No cashback records yet. Add your first " +
+        "entry above to get started."
+      );
+
+      emptyState(
+        "Your first little win starts here.",
+        "Click Add cashback to create your first record."
+      );
+
+      return;
+    }
+
+    notice(
+      "Showing your saved Cashtraq records. " +
+      "These amounts are entered by you, " +
+      "not verified live provider balances."
+    );
+
+    const container = $("cashbackRecords");
+    container.replaceChildren();
+
+    for (const entry of entries) {
+      container.appendChild(renderRecord(entry));
+    }
+  }
+
+  async function getSignedInUser() {
+    const { data, error } = await supabase.auth.getUser();
+
+    if (error || !data.user) {
+      throw new Error(
+        "Please sign in again to manage your cashback."
+      );
+    }
+
+    currentUser = data.user;
+    return currentUser;
+  }
+
   async function loadCashback() {
     try {
-      const { data: authData, error: authError } =
-        await supabase.auth.getUser();
-
-      if (authError || !authData.user) {
-        showMessage(
-          "Please sign in to see your cashback records."
-        );
-
-        emptyRecords(
-          "Sign in required",
-          "Your cashback records are only shown " +
-          "when you're signed in."
-        );
-
-        return;
-      }
+      const user = await getSignedInUser();
 
       const { data, error } = await supabase
-        .from("external_cashback_entries")
+        .from(table)
         .select(
-          "id, retailer, provider, amount, status, created_at"
+          "id, retailer, provider, amount, " +
+          "status, notes, created_at"
         )
-        .eq("user_id", authData.user.id)
+        .eq("user_id", user.id)
         .order("created_at", { ascending: false });
 
       if (error) throw error;
 
-      const entries = data || [];
+      entries = data || [];
 
-      const totals = {
-        pending: 0,
-        available: 0,
-        paid: 0
-      };
-
-      for (const entry of entries) {
-        const status = String(
-          entry.status || ""
-        ).toLowerCase();
-
-        const amount = Number(entry.amount);
-
-        if (
-          Object.prototype.hasOwnProperty.call(
-            totals, status
-          ) &&
-          entry.amount !== null &&
-          Number.isFinite(amount)
-        ) {
-          totals[status] += amount;
-        }
-      }
-
-      pendingEl.textContent =
-        money.format(totals.pending);
-
-      availableEl.textContent =
-        money.format(totals.available);
-
-      paidEl.textContent =
-        money.format(totals.paid);
-
-      if (entries.length === 0) {
-        showMessage(
-          "No cashback records yet. Add your first " +
-          "entry in the Cashtraq app to get started."
-        );
-
-        emptyRecords(
-          "Your first little win starts here.",
-          "Add a cashback record in the app and " +
-          "it'll appear here when you next visit."
-        );
-
-        return;
-      }
-
-      showMessage(
-        "Showing your saved Cashtraq records. " +
-        "Amounts and statuses are entered by you, " +
-        "not verified live provider balances."
-      );
-
-      recordsEl.replaceChildren();
-
-      for (const entry of entries.slice(0, 10)) {
-        recordsEl.appendChild(renderRecord(entry));
-      }
-
+      renderRecords();
     } catch (error) {
-      console.error(
-        "Could not load Cashtraq cashback:",
-        error
-      );
+      console.error("Cashback loading failed:", error);
 
-      showMessage(
-        "We couldn't load your cashback records. " +
+      $("pendingAmount").textContent = "—";
+      $("availableAmount").textContent = "—";
+      $("paidAmount").textContent = "—";
+
+      notice(
+        "We couldn't load your cashback. " +
         "Please refresh the page to try again."
       );
 
-      emptyRecords(
+      emptyState(
         "Records unavailable",
-        "Your records have not been deleted. " +
-        "We just couldn't retrieve them."
+        "Your data has not been deleted. " +
+        "We couldn't retrieve it."
       );
     }
   }
+
+  function openEditor(entry = null) {
+    if (saving) return;
+
+    editingId = entry?.id ?? null;
+
+    $("cashbackForm").reset();
+    clearError();
+
+    $("dialogTitle").textContent =
+      entry ? "Edit cashback" : "Add cashback";
+
+    $("saveCashbackBtn").textContent =
+      entry ? "Save changes" : "Save cashback";
+
+    $("cbProvider").value =
+      entry && allowedProviders.includes(entry.provider)
+        ? entry.provider
+        : "TopCashback";
+
+    $("cbRetailer").value =
+      entry?.retailer ?? "";
+
+    $("cbAmount").value =
+      entry?.amount ?? "";
+
+    $("cbStatus").value =
+      entry && allowedStatuses.includes(entry.status)
+        ? entry.status
+        : "pending";
+
+    $("cbNotes").value =
+      entry?.notes ?? "";
+
+    if (entry && !allowedProviders.includes(entry.provider)) {
+      $("cbProvider").value = "Other";
+    }
+
+    $("cashbackDialog").showModal();
+  }
+
+  function closeEditor() {
+    if (saving) return;
+
+    $("cashbackDialog").close();
+    editingId = null;
+    clearError();
+  }
+
+  async function saveCashback(event) {
+    event.preventDefault();
+
+    if (saving) return;
+
+    const provider = $("cbProvider").value;
+    const retailer = $("cbRetailer").value.trim();
+    const amountString = $("cbAmount").value.trim();
+    const amount = Number(amountString);
+    const status = $("cbStatus").value;
+    const notes = $("cbNotes").value.trim();
+
+    if (!allowedProviders.includes(provider)) {
+      showError("Please select a cashback provider.");
+      return;
+    }
+
+    if (!retailer) {
+      showError("Please enter a retailer.");
+      return;
+    }
+
+    if (
+      amountString === "" ||
+      !Number.isFinite(amount) ||
+      amount < 0 ||
+      amount > 9999999
+    ) {
+      showError("Enter a valid cashback amount.");
+      return;
+    }
+
+    if (Math.round(amount * 100) !== amount * 100) {
+      showError("Please use no more than two decimal places.");
+      return;
+    }
+
+    if (!allowedStatuses.includes(status)) {
+      showError("Please select a valid status.");
+      return;
+    }
+
+    saving = true;
+    $("saveCashbackBtn").disabled = true;
+    $("cancelCashbackBtn").disabled = true;
+    $("saveCashbackBtn").textContent = "Saving...";
+    clearError();
+
+    try {
+      const user = await getSignedInUser();
+
+      const payload = {
+        provider,
+        retailer,
+        amount,
+        status,
+        notes: notes || null
+      };
+
+      let error;
+
+      if (editingId) {
+        const result = await supabase
+          .from(table)
+          .update(payload)
+          .eq("id", editingId)
+          .eq("user_id", user.id)
+          .select("id")
+          .single();
+
+        error = result.error;
+      } else {
+        const result = await supabase
+          .from(table)
+          .insert({
+            ...payload,
+            user_id: user.id,
+            currency: "GBP",
+            source: "manual"
+          });
+
+        error = result.error;
+      }
+
+      if (error) throw error;
+
+      saving = false;
+      $("saveCashbackBtn").disabled = false;
+      $("cancelCashbackBtn").disabled = false;
+
+      closeEditor();
+      await loadCashback();
+
+    } catch (error) {
+      console.error("Could not save cashback:", error);
+
+      showError(
+        "Couldn't save this record. " +
+        (error?.message || "Please try again.")
+      );
+    } finally {
+      saving = false;
+      $("saveCashbackBtn").disabled = false;
+      $("cancelCashbackBtn").disabled = false;
+      $("saveCashbackBtn").textContent =
+        editingId ? "Save changes" : "Save cashback";
+    }
+  }
+
+  async function deleteCashback(entry) {
+    if (saving) return;
+
+    const confirmed = window.confirm(
+      "Delete the cashback record for " +
+      entry.retailer +
+      "? This cannot be undone."
+    );
+
+    if (!confirmed) return;
+
+    saving = true;
+
+    try {
+      const user = await getSignedInUser();
+
+      const { data, error } = await supabase
+        .from(table)
+        .delete()
+        .eq("id", entry.id)
+        .eq("user_id", user.id)
+        .select("id");
+
+      if (error) throw error;
+
+      if (!data || data.length === 0) {
+        throw new Error(
+          "The record could not be found or deleted."
+        );
+      }
+
+      await loadCashback();
+    } catch (error) {
+      console.error("Deletion failed:", error);
+
+      window.alert(
+        "Couldn't delete the record. " +
+        (error?.message || "Please try again.")
+      );
+    } finally {
+      saving = false;
+    }
+  }
+
+  $("addCashbackBtn").addEventListener(
+    "click",
+    () => openEditor()
+  );
+
+  $("cancelCashbackBtn").addEventListener(
+    "click",
+    closeEditor
+  );
+
+  $("cashbackForm").addEventListener(
+    "submit",
+    saveCashback
+  );
+
+  $("cashbackDialog").addEventListener(
+    "cancel",
+    (event) => {
+      if (saving) event.preventDefault();
+    }
+  );
 
   loadCashback();
 </script>
