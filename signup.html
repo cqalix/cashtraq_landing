@@ -1,151 +1,677 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sign Up - Cashtraq</title>
-  <meta name="theme-color" content="#008080" />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=103" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Create an account | Cashtraq</title>
+  <meta name="description" content="Join Cashtraq and keep your cashback organised in one place.">
+  <meta name="theme-color" content="#132C35">
+  <link rel="canonical" href="https://cashtraq.co.uk/signup.html">
+
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css?v=104">
+
+  <style>
+    body.signup-refresh {
+      --navy: #132C35;
+      --teal: #008080;
+      --gold: #D7BE91;
+      --ivory: #FAF8F4;
+      --mint: #EAF4F0;
+      margin: 0;
+      background: var(--ivory);
+      color: var(--navy);
+    }
+
+    .signup-refresh *,
+    .signup-refresh *::before,
+    .signup-refresh *::after {
+      box-sizing: border-box;
+    }
+
+    .signup-refresh .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .signup-refresh .su-header {
+      background: #fffdfa;
+      border-bottom: 1px solid #e5ebe7;
+    }
+
+    .signup-refresh .su-header-inner {
+      max-width: 1180px;
+      min-height: 84px;
+      margin: auto;
+      padding: 15px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .signup-refresh .su-logo {
+      width: 165px;
+      height: auto;
+      display: block;
+    }
+
+    .signup-refresh .su-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .signup-refresh .su-header-link {
+      color: var(--navy);
+      font-size: .92rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .signup-refresh .su-theme {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #d8e5e0;
+      border-radius: 50%;
+      background: #edf5f0;
+      color: var(--navy);
+      cursor: pointer;
+      padding: 0;
+      font-size: 1.2rem;
+    }
+
+    .signup-refresh .su-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 13px 23px;
+      border: 1px solid var(--teal);
+      border-radius: 100px;
+      background: var(--teal);
+      color: white;
+      font-size: .93rem;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .signup-refresh .su-btn:hover {
+      background: #006b6b;
+      color: white;
+    }
+
+    .signup-refresh .su-main {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .signup-refresh .su-layout {
+      width: min(1120px, calc(100% - 48px));
+      margin: 65px auto 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .signup-refresh .su-eyebrow {
+      color: var(--teal);
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .signup-refresh .su-intro h1 {
+      color: var(--navy);
+      font-size: clamp(2.8rem, 5vw, 4.7rem);
+      line-height: 1.1;
+      letter-spacing: -.055em;
+      margin: 20px 0;
+    }
+
+    .signup-refresh .su-intro h1 em {
+      color: var(--teal);
+      font-family: Georgia, serif;
+      font-weight: 400;
+    }
+
+    .signup-refresh .su-intro > p {
+      color: #62777a;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      max-width: 430px;
+      margin: 0 0 32px;
+    }
+
+    .signup-refresh .su-feature {
+      max-width: 450px;
+      padding: 30px;
+      border-radius: 24px;
+      background: var(--navy);
+      color: white;
+    }
+
+    .signup-refresh .su-feature-label {
+      display: block;
+      margin-bottom: 17px;
+      color: var(--gold);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .signup-refresh .su-feature strong {
+      display: block;
+      margin-bottom: 22px;
+      color: white;
+      font-size: 1.8rem;
+      letter-spacing: -.035em;
+      line-height: 1.25;
+    }
+
+    .signup-refresh .su-stages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .signup-refresh .su-stages span {
+      padding: 9px 13px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 100px;
+      background: rgba(255,255,255,.07);
+      color: #dfefea;
+      font-size: .83rem;
+      font-weight: 650;
+    }
+
+    .signup-refresh .su-card {
+      width: 100%;
+      padding: 44px;
+      border: 1px solid #e0e9e4;
+      border-radius: 26px;
+      background: #fffdfa;
+      box-shadow: 0 22px 65px rgba(19,44,53,.08);
+      text-align: left;
+    }
+
+    .signup-refresh .su-card h2 {
+      margin: 0 0 9px;
+      color: var(--navy);
+      font-size: clamp(1.9rem, 3vw, 2.35rem);
+      letter-spacing: -.04em;
+    }
+
+    .signup-refresh .su-card > p {
+      margin: 0 0 28px;
+      color: #607579;
+      line-height: 1.6;
+    }
+
+    .signup-refresh #signupForm {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      margin: 0;
+    }
+
+    .signup-refresh .su-label {
+      display: block;
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: .9rem;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .signup-refresh .su-input {
+      display: block;
+      width: 100%;
+      max-width: none;
+      min-height: 52px;
+      margin: 0 0 21px;
+      padding: 13px 16px;
+      border: 1px solid #cbd9d6;
+      border-radius: 12px;
+      background: white;
+      color: var(--navy);
+      font: inherit;
+      font-size: 1rem;
+      text-align: left;
+      box-shadow: none;
+    }
+
+    .signup-refresh .su-input:focus {
+      outline: 2px solid var(--teal);
+      outline-offset: 1px;
+      border-color: var(--teal);
+    }
+
+    .signup-refresh .su-hint {
+      display: block;
+      margin: -12px 0 21px;
+      color: #607579;
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+
+    .signup-refresh .su-checkline {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 2px 0 25px;
+      text-align: left;
+      color: #526c70;
+      font-size: .87rem;
+      font-weight: 400;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .signup-refresh .su-checkline input {
+      flex: 0 0 17px;
+      width: 17px;
+      height: 17px;
+      min-height: 0;
+      margin: 4px 0 0;
+      padding: 0;
+      accent-color: var(--teal);
+    }
+
+    .signup-refresh .su-checkline a,
+    .signup-refresh .su-login a {
+      color: var(--teal);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .signup-refresh .su-checkline a:hover,
+    .signup-refresh .su-login a:hover {
+      text-decoration: underline;
+    }
+
+    .signup-refresh .su-submit {
+      width: 100%;
+      margin: 0;
+      font-size: .97rem;
+    }
+
+    .signup-refresh .su-login {
+      margin: 25px 0 0 !important;
+      color: #607579;
+      font-size: .92rem;
+      text-align: center;
+    }
+
+    .signup-refresh .su-footer {
+      padding: 34px 24px;
+      background: var(--navy);
+      color: #d7e6e2;
+    }
+
+    .signup-refresh .su-footer-inner {
+      max-width: 1120px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .signup-refresh .su-footer-brand img {
+      display: block;
+      width: 140px;
+      height: auto;
+      padding: 7px 10px;
+      border-radius: 9px;
+      background: #fffdfa;
+    }
+
+    .signup-refresh .su-footer-brand p {
+      margin: 9px 0 0;
+      color: #c1d4d0;
+      font-size: .82rem;
+    }
+
+    .signup-refresh .su-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 19px;
+    }
+
+    .signup-refresh .su-footer-links a {
+      color: #e3eeea;
+      font-size: .88rem;
+      text-decoration: none;
+    }
+
+    /* Dark mode, using the class from app.js */
+    body.signup-refresh.dark-mode {
+      background: #0c1d24;
+      color: #eef5f2;
+    }
+
+    .signup-refresh.dark-mode .su-header,
+    .signup-refresh.dark-mode .su-card {
+      background: #18343c;
+      border-color: #34535b;
+    }
+
+    .signup-refresh.dark-mode .su-header-link,
+    .signup-refresh.dark-mode .su-intro h1,
+    .signup-refresh.dark-mode .su-card h2,
+    .signup-refresh.dark-mode .su-label {
+      color: #f2f7f4;
+    }
+
+    .signup-refresh.dark-mode .su-intro > p,
+    .signup-refresh.dark-mode .su-card > p,
+    .signup-refresh.dark-mode .su-checkline,
+    .signup-refresh.dark-mode .su-login,
+    .signup-refresh.dark-mode .su-hint {
+      color: #bed1d0;
+    }
+
+    .signup-refresh.dark-mode .su-input {
+      background: #102831;
+      border-color: #496770;
+      color: white;
+    }
+
+    .signup-refresh.dark-mode .su-input::placeholder {
+      color: #a9bfbe;
+    }
+
+    .signup-refresh.dark-mode .su-theme {
+      background: #264650;
+      color: white;
+      border-color: #48656b;
+    }
+
+    @media (max-width: 850px) {
+      .signup-refresh .su-layout {
+        max-width: 550px;
+        grid-template-columns: 1fr;
+        gap: 35px;
+        margin-top: 45px;
+      }
+
+      .signup-refresh .su-feature {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .signup-refresh .su-header-inner {
+        padding: 14px 18px;
+      }
+
+      .signup-refresh .su-logo {
+        width: 135px;
+      }
+
+      .signup-refresh .su-header-actions {
+        gap: 10px;
+      }
+
+      .signup-refresh .su-header-actions .su-btn {
+        padding: 10px 14px;
+        font-size: .82rem;
+      }
+
+      .signup-refresh .su-layout {
+        width: calc(100% - 32px);
+        margin-bottom: 55px;
+      }
+
+      .signup-refresh .su-card {
+        padding: 27px 22px;
+      }
+
+      .signup-refresh .su-feature {
+        padding: 25px;
+      }
+
+      .signup-refresh .su-footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
-<body>
-  <div class="page-wrapper">
+<body class="signup-refresh">
+<div class="page-wrapper">
 
-    <!-- Dark Mode Toggle -->
-    <button
-      id="darkModeToggle"
-      class="btn secondary dark-toggle"
-      type="button"
-      aria-label="Toggle dark mode"
-      title="Toggle dark mode"
-    >🌓</button>
+  <!-- Header -->
+  <header class="su-header">
+    <div class="su-header-inner">
 
-    <main class="main">
-      <section class="container">
-        <div class="logo-container">
-          <img
-            src="assets/cashtraq_logo.svg"
-            class="logo-img"
-            alt="Cashtraq Logo"
-            loading="eager"
-            decoding="async"
-          />
-        </div>
+      <a href="index.html" aria-label="Cashtraq home">
+        <img class="su-logo"
+             src="assets/cashtraq_logo.svg"
+             alt="Cashtraq">
+      </a>
 
-        <h2>Create Your Account</h2>
+      <div class="su-header-actions">
+        <button id="darkModeToggle"
+                class="su-theme"
+                type="button"
+                aria-label="Toggle dark mode"
+                title="Toggle dark mode">◐</button>
 
-        <!-- IMPORTANT: app.js expects #signupForm and inputs #email + #password -->
-        <form id="signupForm" novalidate>
+        <a class="su-header-link" href="index.html">
+          Home
+        </a>
 
-          <label for="fullName">Full Name</label>
-          <input
-            id="fullName"
-            type="text"
-            placeholder="Full Name"
-            autocomplete="name"
-            required
-          />
+        <a class="su-btn" href="login.html">
+          Log in
+        </a>
+      </div>
+    </div>
+  </header>
 
-          <label for="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="Email"
-            autocomplete="email"
-            required
-          />
+  <!-- Main -->
+  <main class="su-main">
+    <div class="su-layout">
 
-          <label for="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            autocomplete="new-password"
-            required
-          />
+      <section class="su-intro">
+        <span class="su-eyebrow">WELCOME TO CASHTRAQ</span>
 
-          <div class="terms-checkbox">
-            <label for="agreeTerms">
-              <input type="checkbox" id="agreeTerms" required />
-              <span>
-                I agree to the
-                <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
-                and
-                <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.
-              </span>
-            </label>
+        <h1>
+          All your cashback.
+          <em>One place.</em>
+        </h1>
+
+        <p>
+          Keep track of your cashback from different
+          providers without the extra fuss.
+        </p>
+
+        <div class="su-feature">
+          <span class="su-feature-label">
+            A HOME FOR THE LITTLE WINS
+          </span>
+
+          <strong>
+            Pending. Available. Paid.
+          </strong>
+
+          <div class="su-stages">
+            <span>Track it.</span>
+            <span>Stack it.</span>
+            <span>Cashtraq it.</span>
           </div>
+        </div>
+      </section>
 
-          <button type="submit" class="btn">Create Account</button>
+      <!-- Signup form -->
+      <section class="su-card" aria-labelledby="signup-title">
+
+        <h2 id="signup-title">Create your account</h2>
+
+        <p>Start keeping your cashback together.</p>
+
+        <!-- These IDs must remain for app.js -->
+        <form id="signupForm" autocomplete="on">
+
+          <label class="su-label" for="fullName">
+            Full name
+          </label>
+
+          <input class="su-input"
+                 id="fullName"
+                 name="fullName"
+                 type="text"
+                 placeholder="Your name"
+                 autocomplete="name"
+                 required>
+
+          <label class="su-label" for="email">
+            Email address
+          </label>
+
+          <input class="su-input"
+                 id="email"
+                 name="email"
+                 type="email"
+                 placeholder="you@example.com"
+                 autocomplete="email"
+                 required>
+
+          <label class="su-label" for="password">
+            Password
+          </label>
+
+          <input class="su-input"
+                 id="password"
+                 name="password"
+                 type="password"
+                 placeholder="Create a password"
+                 autocomplete="new-password"
+                 minlength="6"
+                 required>
+
+          <span class="su-hint">
+            Use at least 6 characters.
+          </span>
+
+          <label class="su-checkline" for="agreeTerms">
+            <input type="checkbox"
+                   id="agreeTerms"
+                   name="agreeTerms"
+                   required>
+
+            <span>
+              I agree to the
+              <a href="terms.html"
+                 target="_blank"
+                 rel="noopener">Terms &amp; Conditions</a>
+              and
+              <a href="privacy.html"
+                 target="_blank"
+                 rel="noopener">Privacy Policy</a>.
+            </span>
+          </label>
+
+          <button type="submit"
+                  class="su-btn su-submit">
+            Create account
+            <span aria-hidden="true">↗</span>
+          </button>
+
         </form>
 
-        <p>Already have an account? <a href="login.html">Log In</a></p>
+        <p class="su-login">
+          Already have an account?
+          <a href="login.html">Log in</a>
+        </p>
+
       </section>
-    </main>
-
-    <footer>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms &amp; Conditions</a> |
-      <a href="faq.html">Help / FAQ</a> |
-      <a href="contact.html">Contact</a>
-    </footer>
-  </div>
-
-  <!-- Chatbot -->
-  <button
-    id="chatbotToggle"
-    class="chatbot-toggle"
-    type="button"
-    aria-label="Open Cashtraq Help Assistant"
-    title="Help"
-  >
-    <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
-  </button>
-
-  <div
-    id="chatbox"
-    class="chatbox"
-    role="dialog"
-    aria-modal="false"
-    aria-label="Cashtraq Help Assistant"
-    hidden
-  >
-    <div class="chatbox-header">
-      <h4>Cashtraq Help Assistant</h4>
-      <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
     </div>
-    <div class="chatbox-body"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="su-footer">
+    <div class="su-footer-inner">
+
+      <div class="su-footer-brand">
+        <img src="assets/cashtraq_logo.svg"
+             alt="Cashtraq">
+
+        <p>Track it. Stack it. Cashtraq it.</p>
+      </div>
+
+      <nav class="su-footer-links" aria-label="Footer links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="faq.html">Help / FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
+  </footer>
+
+</div>
+
+<!-- Existing help assistant -->
+<button id="chatbotToggle"
+        class="chatbot-toggle"
+        type="button"
+        aria-label="Open Cashtraq Help Assistant"
+        title="Help">
+  <img src="assets/chatbot-icon.svg"
+       alt=""
+       aria-hidden="true">
+</button>
+
+<div id="chatbox"
+     class="chatbox"
+     role="dialog"
+     aria-modal="false"
+     aria-label="Cashtraq Help Assistant"
+     hidden>
+
+  <div class="chatbox-header">
+    <h4>Cashtraq Help Assistant</h4>
+    <button id="chatbotClose"
+            class="chatbox-close"
+            type="button"
+            aria-label="Close chatbot">✕</button>
   </div>
 
-  <!-- Cookie Banner -->
-  <div id="cookieConsent" class="cookie-banner" role="region" aria-label="Cookie consent">
-    <span>
-      We use cookies to improve your experience. See our
-      <a href="privacy.html">Privacy Policy</a>.
-    </span>
-    <button id="acceptCookies" class="btn" type="button">Accept</button>
-  </div>
+  <div class="chatbox-body"></div>
+</div>
 
-  <!-- Shared JS (must be module for Supabase import) -->
-  <script type="module" src="app.js?v=103"></script>
+<!-- Existing cookie consent -->
+<div id="cookieConsent"
+     class="cookie-banner"
+     role="region"
+     aria-label="Cookie consent">
 
-  <!-- Terms validation (kept separate from auth logic) -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById("signupForm");
-      const agree = document.getElementById("agreeTerms");
+  <span>
+    We use cookies to improve your experience.
+    Read our <a href="privacy.html">Privacy Policy</a>.
+  </span>
 
-      if (!form) return;
+  <button id="acceptCookies"
+          class="btn"
+          type="button">Accept</button>
+</div>
 
-      form.addEventListener("submit", (e) => {
-        if (!agree.checked) {
-          e.preventDefault();
-          alert("Please agree to the Privacy Policy and Terms & Conditions.");
-        }
-      });
-    });
-  </script>
+<!-- Existing signup, theme, cookies and chatbot logic -->
+<script type="module" src="app.js?v=104"></script>
 
 </body>
 </html>
