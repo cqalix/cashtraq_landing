@@ -1,74 +1,288 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cashtraq – Track it. Stack it. Cashtraq it.</title>
+  <meta name="description" content="Track your cashback, explore retailers and keep your rewards organised with Cashtraq." />
+  <meta name="theme-color" content="#132c35" />
+  <meta name="color-scheme" content="light dark" />
 
-  <meta name="description" content="Track your cashback, maximise your savings, and manage all your rewards in one place with Cashtraq." />
   <link rel="canonical" href="https://cashtraq.co.uk/" />
-  <meta name="theme-color" content="#008080" />
-
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=103" />
+  <link rel="stylesheet" href="style.css?v=20261026-2" />
+
+  <title>Cashtraq | Track it. Stack it. Cashtraq it.</title>
 </head>
 
-<body>
+<body class="landing-page">
   <div class="page-wrapper">
 
-    <!-- Dark Mode Toggle -->
-    <button
-      id="darkModeToggle"
-      class="btn secondary dark-toggle"
-      type="button"
-      aria-label="Toggle dark mode"
-      title="Toggle dark mode"
-    >🌓</button>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="site-header-inner">
 
-    <main class="main">
-      <section class="container welcome">
-        <div class="logo-container">
+        <a class="site-brand" href="index.html" aria-label="Cashtraq home">
           <img
             src="assets/cashtraq_logo.svg"
-            alt="Cashtraq Logo"
-            class="logo-img animate delay-1"
-            loading="eager"
-            decoding="async"
+            alt="Cashtraq"
+            width="180"
+            height="55"
           />
-        </div>
+        </a>
 
-        <h3 class="tagline animate delay-2">
-          Track it. Stack it. Cashtraq it.
-        </h3>
-
-        <p class="intro-text animate delay-3">
-          Track your cashback. Maximise your savings. All in one place.
-        </p>
-
-        <nav class="nav-links animate delay-4" aria-label="Primary">
-          <a href="dashboard.html" class="btn secondary">Dashboard</a>
-          <a href="retailers.html" class="btn secondary">Retailers</a>
-          <a href="profile.html" class="btn secondary">Profile</a>
-          <a href="contact.html" class="btn secondary">Contact</a>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="retailers.html">Retailers</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="faq.html">How it works</a>
         </nav>
 
-        <div class="button-group animate delay-4">
-          <a href="login.html" class="btn">Log In</a>
-          <a href="signup.html" class="btn secondary">Sign Up</a>
+        <div class="header-actions">
+          <button
+            id="darkModeToggle"
+            class="theme-button"
+            type="button"
+            aria-label="Toggle dark mode"
+            title="Toggle dark mode"
+          >◐</button>
+
+          <a class="header-login" href="login.html">Log in</a>
+
+          <a class="btn" href="signup.html">
+            Get started <span aria-hidden="true">↗</span>
+          </a>
         </div>
+
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" class="landing-main">
+
+      <!-- HERO -->
+      <section class="hero-section" aria-labelledby="hero-title">
+
+        <div class="hero-copy">
+
+          <span class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            SMARTER SAVINGS, BEAUTIFULLY SIMPLE
+          </span>
+
+          <h1 id="hero-title">
+            Every little saving <em>adds up.</em>
+          </h1>
+
+          <p class="hero-subtitle">
+            Track your cashback, discover retailers and keep your
+            rewards in one elegant place. Less chasing. More enjoying.
+          </p>
+
+          <div class="hero-actions">
+
+            <a class="btn btn-large" href="signup.html">
+              Start tracking <span aria-hidden="true">↗</span>
+            </a>
+
+            <a class="btn secondary btn-large" href="retailers.html">
+              Explore retailers
+            </a>
+
+          </div>
+
+          <p class="hero-note">
+            Track it. Stack it. Cashtraq it.
+          </p>
+
+        </div>
+
+        <!-- DASHBOARD PREVIEW -->
+        <div
+          class="hero-visual"
+          aria-label="Illustrative Cashtraq dashboard preview"
+        >
+
+          <div class="visual-glow"></div>
+
+          <div class="preview-card">
+
+            <div class="preview-top">
+              <span class="preview-kicker">YOUR CASHBACK SPACE</span>
+              <span class="preview-symbol">✦</span>
+            </div>
+
+            <div class="preview-heading">
+              A clearer view of your rewards.
+            </div>
+
+            <p class="preview-description">
+              A home for the little wins.
+            </p>
+
+            <div class="preview-total">
+
+              <span class="preview-total-label">
+                Your cashback journey
+              </span>
+
+              <strong>Track. Save. Smile.</strong>
+
+            </div>
+
+            <div class="preview-mini-grid">
+
+              <div class="preview-mini-card">
+                <span class="preview-mini-icon">↗</span>
+                <strong>Track activity</strong>
+                <small>Keep things together</small>
+              </div>
+
+              <div class="preview-mini-card">
+                <span class="preview-mini-icon">♡</span>
+                <strong>Save favourites</strong>
+                <small>Your go-to retailers</small>
+              </div>
+
+            </div>
+
+            <div class="preview-bottom">
+              <span class="preview-status-dot"></span>
+              Designed to make saving feel effortless
+            </div>
+
+          </div>
+
+          <span class="float-pill float-pill-one">
+            ✧ A little more rewarding
+          </span>
+
+          <span class="float-pill float-pill-two">
+            Your money, your moments
+          </span>
+
+        </div>
+
       </section>
+
+      <!-- BENEFITS -->
+      <section class="benefits-section" aria-labelledby="benefits-title">
+
+        <div class="section-heading">
+
+          <span class="eyebrow">THE CASHTRAQ WAY</span>
+
+          <h2 id="benefits-title">
+            The little things,
+            <em>beautifully organised.</em>
+          </h2>
+
+          <p>
+            Everything you need to get a clearer picture
+            of your cashback journey.
+          </p>
+
+        </div>
+
+        <div class="benefit-grid">
+
+          <article class="benefit-card">
+
+            <div class="benefit-icon" aria-hidden="true">◎</div>
+
+            <h3>See your cashback</h3>
+
+            <p>
+              A dedicated space for your rewards
+              and cashback activity.
+            </p>
+
+          </article>
+
+          <article class="benefit-card">
+
+            <div class="benefit-icon" aria-hidden="true">♡</div>
+
+            <h3>Keep your favourites</h3>
+
+            <p>
+              Find the retailers you love without
+              all the extra searching.
+            </p>
+
+          </article>
+
+          <article class="benefit-card">
+
+            <div class="benefit-icon" aria-hidden="true">✦</div>
+
+            <h3>Make saving a habit</h3>
+
+            <p>
+              A calmer, more enjoyable way to stay
+              on top of your rewards.
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="closing-section">
+
+        <div>
+
+          <span class="eyebrow">READY WHEN YOU ARE</span>
+
+          <h2>
+            Good things come to those who <em>track.</em>
+          </h2>
+
+          <p>Make every little saving count.</p>
+
+        </div>
+
+        <a class="btn btn-large" href="signup.html">
+          Join Cashtraq <span aria-hidden="true">↗</span>
+        </a>
+
+      </section>
+
     </main>
 
-    <footer>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms &amp; Conditions</a> |
-      <a href="faq.html">Help / FAQ</a> |
-      <a href="contact.html">Contact</a>
+    <!-- FOOTER -->
+    <footer class="landing-footer">
+
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+
+          <img
+            src="assets/cashtraq_logo.svg"
+            alt="Cashtraq"
+            width="145"
+            height="45"
+          />
+
+          <p>Track it. Stack it. Cashtraq it.</p>
+
+        </div>
+
+        <nav aria-label="Footer links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="faq.html">Help / FAQ</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+      </div>
+
     </footer>
 
   </div>
 
-  <!-- Chatbot floating button -->
+  <!-- CHATBOT -->
   <button
     id="chatbotToggle"
     class="chatbot-toggle"
@@ -76,10 +290,13 @@
     aria-label="Open Cashtraq Help Assistant"
     title="Help"
   >
-    <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
+    <img
+      src="assets/chatbot-icon.svg"
+      alt=""
+      aria-hidden="true"
+    />
   </button>
 
-  <!-- Chatbot panel -->
   <div
     id="chatbox"
     class="chatbox"
@@ -88,35 +305,46 @@
     aria-label="Cashtraq Help Assistant"
     hidden
   >
+
     <div class="chatbox-header">
+
       <h4>Cashtraq Help Assistant</h4>
-      <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
+
+      <button
+        id="chatbotClose"
+        class="chatbox-close"
+        type="button"
+        aria-label="Close chatbot"
+      >✕</button>
+
     </div>
 
-    <!-- app.js will render the FAQ into this -->
     <div class="chatbox-body"></div>
+
   </div>
 
-  <!-- Cookie Banner -->
+  <!-- COOKIE NOTICE -->
   <div
     id="cookieConsent"
     class="cookie-banner"
     role="region"
-    aria-label="Cookie consent"
+    aria-label="Cookie notice"
   >
+
     <span>
-      We use cookies to improve your experience. See our
-      <a href="privacy.html">Privacy Policy</a>.
+      We use cookies to improve your experience.
+      Read our <a href="privacy.html">Privacy Policy</a>.
     </span>
-    <button id="acceptCookies" class="btn" type="button">Accept</button>
+
+    <button
+      id="acceptCookies"
+      class="btn"
+      type="button"
+    >Accept</button>
+
   </div>
 
-  <!-- Optional debug -->
-  <script>
-    console.log("[Cashtraq] index.html loaded ✅");
-  </script>
-
-  <!-- Main JS (must be module for Supabase import) -->
+  <!-- EXISTING WEBSITE FUNCTIONALITY -->
   <script type="module" src="app.js?v=103"></script>
 
 </body>
