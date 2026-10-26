@@ -1,124 +1,727 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Retailers & Offers – Cashtraq</title>
-  <meta name="description" content="Browse retailers and current cashback offers on Cashtraq." />
-  <meta name="theme-color" content="#008080" />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=103" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Retailers | Cashtraq</title>
+  <meta name="description" content="Keep your cashback organised across the retailers you shop with.">
+  <meta name="theme-color" content="#132C35">
+
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css?v=103">
+
+  <style>
+    /* Retailers page: Cashtraq premium design */
+    body.retailers-refresh {
+      --rt-navy: #132C35;
+      --rt-teal: #008080;
+      --rt-gold: #D7BE91;
+      --rt-ivory: #FAF8F4;
+      --rt-mint: #EAF4F0;
+      background: var(--rt-ivory);
+      color: var(--rt-navy);
+    }
+
+    .retailers-refresh *,
+    .retailers-refresh *::before,
+    .retailers-refresh *::after {
+      box-sizing: border-box;
+    }
+
+    .retailers-refresh .site-header {
+      position: relative;
+      background: #fffdfa;
+      border-bottom: 1px solid #e8ebe6;
+    }
+
+    .retailers-refresh .site-header-inner {
+      width: min(1180px, calc(100% - 48px));
+      min-height: 88px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .retailers-refresh .site-brand img {
+      width: 165px;
+      height: auto;
+      display: block;
+    }
+
+    .retailers-refresh .header-nav,
+    .retailers-refresh .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .retailers-refresh .header-nav a,
+    .retailers-refresh .header-login {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--rt-navy);
+      text-decoration: none;
+    }
+
+    .retailers-refresh .header-nav a[aria-current="page"] {
+      color: var(--rt-teal);
+    }
+
+    .retailers-refresh .theme-button {
+      width: 39px;
+      height: 39px;
+      border-radius: 50%;
+      border: 1px solid #e0e8e4;
+      background: #f2f7f3;
+      color: var(--rt-navy);
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .retailers-refresh .rt-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 45px;
+      padding: 12px 23px;
+      border-radius: 100px;
+      background: var(--rt-teal);
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--rt-teal);
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .retailers-refresh .rt-btn:hover {
+      background: #006b6b;
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .retailers-refresh .rt-btn-outline {
+      background: transparent;
+      color: var(--rt-navy);
+      border-color: #cbd9d6;
+    }
+
+    .retailers-refresh .rt-btn-outline:hover {
+      color: var(--rt-teal);
+      background: var(--rt-mint);
+    }
+
+    .retailers-refresh .rt-main {
+      flex: 1;
+      width: 100%;
+    }
+
+    .retailers-refresh .rt-hero {
+      max-width: 1180px;
+      margin: auto;
+      padding: 85px 24px 65px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .retailers-refresh .rt-eyebrow {
+      display: inline-block;
+      color: var(--rt-teal);
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .retailers-refresh .rt-hero h1 {
+      color: var(--rt-navy);
+      font-size: clamp(2.8rem, 5vw, 4.9rem);
+      letter-spacing: -0.055em;
+      line-height: 1.08;
+      margin: 20px 0 24px;
+      font-weight: 750;
+    }
+
+    .retailers-refresh .rt-hero h1 em,
+    .retailers-refresh .rt-section-title em {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      color: var(--rt-teal);
+    }
+
+    .retailers-refresh .rt-hero p {
+      max-width: 530px;
+      color: #60757a;
+      font-size: 1.07rem;
+      line-height: 1.75;
+      margin: 0 0 28px;
+    }
+
+    .retailers-refresh .rt-hero-actions {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+    }
+
+    .retailers-refresh .rt-feature {
+      position: relative;
+      padding: 37px;
+      border-radius: 27px;
+      background: var(--rt-navy);
+      color: #ffffff;
+      box-shadow: 0 25px 60px rgba(19,44,53,.16);
+      overflow: hidden;
+    }
+
+    .retailers-refresh .rt-feature::after {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      background: rgba(0,128,128,.22);
+      border-radius: 50%;
+      top: -95px;
+      right: -75px;
+      pointer-events: none;
+    }
+
+    .retailers-refresh .rt-feature-label {
+      font-size: .7rem;
+      letter-spacing: .17em;
+      color: var(--rt-gold);
+      font-weight: 800;
+    }
+
+    .retailers-refresh .rt-feature h2 {
+      color: #fff;
+      font-size: clamp(1.8rem,3vw,2.7rem);
+      letter-spacing: -.045em;
+      line-height: 1.2;
+      margin: 28px 0 15px;
+    }
+
+    .retailers-refresh .rt-feature > p {
+      color: #c5d9d8;
+      line-height: 1.7;
+      font-size: 0.98rem;
+      margin: 0 0 28px;
+    }
+
+    .retailers-refresh .rt-statuses {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .retailers-refresh .rt-status {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 17px 10px;
+      border-radius: 14px;
+      text-align: center;
+      color: #e7f2ef;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    .retailers-refresh .rt-status span {
+      display: block;
+      width: 8px;
+      height: 8px;
+      margin: 0 auto 13px;
+      border-radius: 50%;
+      background: var(--rt-gold);
+    }
+
+    .retailers-refresh .rt-status:nth-child(2) span {
+      background: #7ce0c8;
+    }
+
+    .retailers-refresh .rt-status:nth-child(3) span {
+      background: #c9e2d7;
+    }
+
+    .retailers-refresh .rt-directory {
+      padding: 72px 24px 90px;
+      background: #eff5f0;
+    }
+
+    .retailers-refresh .rt-directory-inner {
+      max-width: 1132px;
+      margin: auto;
+    }
+
+    .retailers-refresh .rt-section-title {
+      max-width: 650px;
+      margin-bottom: 35px;
+    }
+
+    .retailers-refresh .rt-section-title h2 {
+      color: var(--rt-navy);
+      font-size: clamp(2rem, 3.6vw, 3.1rem);
+      line-height: 1.15;
+      letter-spacing: -.045em;
+      margin: 15px 0;
+    }
+
+    .retailers-refresh .rt-section-title p {
+      color: #60757a;
+      line-height: 1.7;
+    }
+
+    .retailers-refresh .rt-retailer-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 20px;
+    }
+
+    .retailers-refresh .rt-retailer {
+      background: #fffdfa;
+      border: 1px solid #e2e9e4;
+      border-radius: 22px;
+      padding: 28px;
+      min-height: 220px;
+      box-shadow: 0 12px 30px rgba(19,44,53,.04);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .retailers-refresh .rt-retailer-mark {
+      display: grid;
+      place-items: center;
+      width: 53px;
+      height: 53px;
+      border-radius: 15px;
+      background: var(--rt-mint);
+      color: var(--rt-teal);
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -.035em;
+      margin-bottom: 20px;
+    }
+
+    .retailers-refresh .rt-retailer h3 {
+      margin: 0 0 10px;
+      color: var(--rt-navy);
+      font-size: 1.3rem;
+    }
+
+    .retailers-refresh .rt-retailer p {
+      color: #60757a;
+      line-height: 1.6;
+      font-size: .91rem;
+      margin: 0;
+    }
+
+    .retailers-refresh .rt-disclaimer {
+      color: #63787c;
+      font-size: .84rem;
+      margin-top: 24px;
+      line-height: 1.65;
+    }
+
+    .retailers-refresh .rt-bottom {
+      padding: 75px 24px;
+      text-align: center;
+    }
+
+    .retailers-refresh .rt-bottom h2 {
+      color: var(--rt-navy);
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      letter-spacing: -.04em;
+      margin: 0 0 14px;
+    }
+
+    .retailers-refresh .rt-bottom p {
+      color: #60757a;
+      margin: 0 0 26px;
+      line-height: 1.6;
+    }
+
+    .retailers-refresh .landing-footer {
+      background: var(--rt-navy);
+      padding: 37px 24px;
+      color: #d6e4e0;
+    }
+
+    .retailers-refresh .footer-inner {
+      width: min(1132px,100%);
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .retailers-refresh .footer-brand img {
+      width: 140px;
+      height: auto;
+      padding: 7px 10px;
+      background: #fffdfa;
+      border-radius: 9px;
+      display: block;
+    }
+
+    .retailers-refresh .footer-brand p {
+      color: #bdd0ce;
+      font-size: .82rem;
+      margin: 9px 0 0;
+    }
+
+    .retailers-refresh .landing-footer nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .retailers-refresh .landing-footer a {
+      color: #e2eeea;
+      text-decoration: none;
+      font-size: .88rem;
+    }
+
+    /* Dark mode - existing app.js toggles this class */
+    body.retailers-refresh.dark-mode {
+      background: #0c1d24;
+      color: #edf5f1;
+    }
+
+    .retailers-refresh.dark-mode .site-header,
+    .retailers-refresh.dark-mode .rt-retailer {
+      background: #18343c;
+      border-color: #34535b;
+    }
+
+    .retailers-refresh.dark-mode .header-nav a,
+    .retailers-refresh.dark-mode .header-login,
+    .retailers-refresh.dark-mode .rt-hero h1,
+    .retailers-refresh.dark-mode .rt-section-title h2,
+    .retailers-refresh.dark-mode .rt-retailer h3,
+    .retailers-refresh.dark-mode .rt-bottom h2 {
+      color: #f2f7f4;
+    }
+
+    .retailers-refresh.dark-mode .rt-directory {
+      background: #112b32;
+    }
+
+    .retailers-refresh.dark-mode .rt-hero p,
+    .retailers-refresh.dark-mode .rt-section-title p,
+    .retailers-refresh.dark-mode .rt-retailer p,
+    .retailers-refresh.dark-mode .rt-bottom p,
+    .retailers-refresh.dark-mode .rt-disclaimer {
+      color: #bdd1d0;
+    }
+
+    .retailers-refresh.dark-mode .rt-btn-outline {
+      color: #f3f7f5;
+      border-color: #68848a;
+    }
+
+    .retailers-refresh.dark-mode .theme-button {
+      background: #264650;
+      color: white;
+      border-color: #48656b;
+    }
+
+    @media (max-width: 900px) {
+      .retailers-refresh .rt-hero {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding-top: 55px;
+      }
+
+      .retailers-refresh .rt-retailer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .retailers-refresh .site-header-inner {
+        flex-wrap: wrap;
+        padding: 14px 0;
+      }
+
+      .retailers-refresh .header-nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .retailers-refresh .site-header-inner {
+        width: calc(100% - 28px);
+      }
+
+      .retailers-refresh .site-brand img {
+        width: 135px;
+      }
+
+      .retailers-refresh .header-actions {
+        gap: 9px;
+      }
+
+      .retailers-refresh .header-login {
+        display: none;
+      }
+
+      .retailers-refresh .header-nav {
+        gap: 15px;
+        font-size: .85rem;
+      }
+
+      .retailers-refresh .rt-hero {
+        padding: 45px 20px 55px;
+      }
+
+      .retailers-refresh .rt-feature {
+        padding: 25px 20px;
+      }
+
+      .retailers-refresh .rt-directory {
+        padding: 55px 20px 65px;
+      }
+
+      .retailers-refresh .rt-retailer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .retailers-refresh .rt-retailer {
+        min-height: 0;
+      }
+
+      .retailers-refresh .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .retailers-refresh .header-actions .rt-btn {
+        padding: 10px 13px;
+      }
+    }
+  </style>
 </head>
 
-<body>
-  <div class="page-wrapper">
+<body class="retailers-refresh">
+<div class="page-wrapper">
 
-    <!-- Dark Mode Toggle -->
-    <button
-      id="darkModeToggle"
-      class="btn secondary dark-toggle"
-      type="button"
-      aria-label="Toggle dark mode"
-      title="Toggle dark mode"
-      style="position:absolute;top:1rem;right:1rem"
-    >🌓</button>
+  <header class="site-header">
+    <div class="site-header-inner">
 
-    <main class="main">
-      <div class="container retailers" style="max-width:600px">
-        <div class="logo-container centered">
-          <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" style="height:60px" />
-        </div>
+      <a class="site-brand" href="index.html" aria-label="Cashtraq home">
+        <img src="assets/cashtraq_logo.svg" alt="Cashtraq">
+      </a>
 
-        <nav class="nav-links" aria-label="Primary">
-          <a href="dashboard.html" class="btn secondary">Dashboard</a>
-          <a href="retailers.html" class="btn secondary" aria-current="page">Retailers</a>
-          <a href="profile.html" class="btn secondary">Profile</a>
-          <a href="contact.html" class="btn secondary">Contact</a>
-        </nav>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="retailers.html" aria-current="page">Retailers</a>
+        <a href="profile.html">Profile</a>
+      </nav>
 
-        <h2 class="section-heading">Retailers & Offers</h2>
+      <div class="header-actions">
+        <button id="darkModeToggle"
+                class="theme-button"
+                type="button"
+                aria-label="Toggle dark mode"
+                title="Toggle dark mode">◐</button>
 
-        <!-- Placeholder cards for now (we'll swap to Supabase-driven list next) -->
-        <div class="retailer-list">
-          <div class="retailer-card">
-            <img src="assets/asda.png" alt="Asda Logo" class="retailer-logo" loading="lazy" width="50" height="50" />
-            <div class="retailer-info">
-              <h4>Asda</h4>
-              <p>Cashback: 5.0%</p>
-            </div>
-            <button class="favourite-btn" type="button" aria-label="Favourite Asda">❤</button>
-          </div>
+        <a class="header-login" href="contact.html">Help</a>
 
-          <div class="retailer-card">
-            <img src="assets/tesco.png" alt="Tesco Logo" class="retailer-logo" loading="lazy" width="50" height="50" />
-            <div class="retailer-info">
-              <h4>Tesco</h4>
-              <p>Cashback: 3.5%</p>
-            </div>
-            <button class="favourite-btn" type="button" aria-label="Favourite Tesco">❤</button>
-          </div>
-
-          <div class="retailer-card">
-            <img src="assets/ocado.png" alt="Ocado Logo" class="retailer-logo" loading="lazy" width="50" height="50" />
-            <div class="retailer-info">
-              <h4>Ocado</h4>
-              <p>Cashback: 2.0%</p>
-            </div>
-            <button class="favourite-btn" type="button" aria-label="Favourite Ocado">❤</button>
-          </div>
-        </div>
-
-        <!-- Logout handled by app.js -->
-        <button id="logoutBtn" class="btn secondary" type="button">Log Out</button>
+        <button id="logoutBtn"
+                class="rt-btn rt-btn-outline"
+                type="button">Log out</button>
       </div>
-    </main>
 
-    <footer>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms &amp; Conditions</a> |
-      <a href="faq.html">Help / FAQ</a> |
-      <a href="contact.html">Contact</a>
-    </footer>
-  </div>
-
-  <!-- Chatbot floating button -->
-  <button
-    id="chatbotToggle"
-    class="chatbot-toggle"
-    type="button"
-    aria-label="Open Cashtraq Help Assistant"
-    title="Help"
-  >
-    <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
-  </button>
-
-  <!-- Chatbot panel -->
-  <div
-    id="chatbox"
-    class="chatbox"
-    role="dialog"
-    aria-modal="false"
-    aria-label="Cashtraq Help Assistant"
-    hidden
-  >
-    <div class="chatbox-header">
-      <h4>Cashtraq Help Assistant</h4>
-      <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
     </div>
-    <div class="chatbox-body"></div>
-  </div>
+  </header>
 
-  <!-- Cookie banner -->
-  <div id="cookieConsent" class="cookie-banner" role="region" aria-label="Cookie consent">
-    <span>
-      We use cookies to improve your experience. See our
-      <a href="privacy.html">Privacy Policy</a>.
-    </span>
-    <button id="acceptCookies" class="btn" type="button">Accept</button>
-  </div>
+  <main class="rt-main">
 
-  <!-- Shared JS -->
-  <script type="module" src="app.js?v=103"></script>
+    <section class="rt-hero">
+      <div>
+        <span class="rt-eyebrow">YOUR CASHBACK, ORGANISED</span>
+
+        <h1>
+          Your retailers.
+          <em>One place.</em>
+        </h1>
+
+        <p>
+          Shop where you love. Keep track of your cashback
+          from the providers you use, all in one place.
+        </p>
+
+        <div class="rt-hero-actions">
+          <a class="rt-btn" href="dashboard.html">
+            My dashboard <span aria-hidden="true">↗</span>
+          </a>
+
+          <a class="rt-btn rt-btn-outline" href="faq.html">
+            How it works
+          </a>
+        </div>
+      </div>
+
+      <div class="rt-feature">
+        <span class="rt-feature-label">A HOME FOR THE LITTLE WINS</span>
+
+        <h2>
+          Every little saving counts.
+        </h2>
+
+        <p>
+          Know what's waiting, what's ready and
+          what you've already received.
+        </p>
+
+        <div class="rt-statuses">
+          <div class="rt-status"><span></span>Pending</div>
+          <div class="rt-status"><span></span>Available</div>
+          <div class="rt-status"><span></span>Paid</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rt-directory" aria-labelledby="retailers-title">
+      <div class="rt-directory-inner">
+
+        <div class="rt-section-title">
+          <span class="rt-eyebrow">FAMILIAR FAVOURITES</span>
+
+          <h2 id="retailers-title">
+            The places you shop.
+            <em>The cashback you track.</em>
+          </h2>
+
+          <p>
+            From the weekly food shop to everyday purchases,
+            keep your cashback records together.
+          </p>
+        </div>
+
+        <div class="rt-retailer-grid">
+
+          <article class="rt-retailer">
+            <div class="rt-retailer-mark" aria-hidden="true">T</div>
+            <h3>Tesco</h3>
+            <p>
+              Keep cashback from eligible purchases
+              organised in your tracker.
+            </p>
+          </article>
+
+          <article class="rt-retailer">
+            <div class="rt-retailer-mark" aria-hidden="true">A</div>
+            <h3>Asda</h3>
+            <p>
+              Record any cashback you've earned
+              through your existing providers.
+            </p>
+          </article>
+
+          <article class="rt-retailer">
+            <div class="rt-retailer-mark" aria-hidden="true">O</div>
+            <h3>Ocado</h3>
+            <p>
+              Keep your shopping cashback details
+              easy to find and follow.
+            </p>
+          </article>
+
+        </div>
+
+        <p class="rt-disclaimer">
+          These are example retailers, not live offers.
+          Cashback availability depends on the provider,
+          retailer and purchase conditions.
+        </p>
+
+      </div>
+    </section>
+
+    <section class="rt-bottom">
+      <span class="rt-eyebrow">TRACK IT. STACK IT. CASHTRAQ IT.</span>
+
+      <h2>Keep the little wins together.</h2>
+
+      <p>Your cashback, a little easier to manage.</p>
+
+      <a class="rt-btn" href="dashboard.html">
+        Go to my dashboard
+        <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="landing-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/cashtraq_logo.svg" alt="Cashtraq">
+        <p>Track it. Stack it. Cashtraq it.</p>
+      </div>
+
+      <nav aria-label="Footer links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="faq.html">Help / FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Existing Cashtraq help assistant -->
+<button id="chatbotToggle"
+        class="chatbot-toggle"
+        type="button"
+        aria-label="Open Cashtraq Help Assistant"
+        title="Help">
+  <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true">
+</button>
+
+<div id="chatbox"
+     class="chatbox"
+     role="dialog"
+     aria-modal="false"
+     aria-label="Cashtraq Help Assistant"
+     hidden>
+  <div class="chatbox-header">
+    <h4>Cashtraq Help Assistant</h4>
+    <button id="chatbotClose"
+            class="chatbox-close"
+            type="button"
+            aria-label="Close chatbot">✕</button>
+  </div>
+  <div class="chatbox-body"></div>
+</div>
+
+<!-- Existing cookie banner -->
+<div id="cookieConsent"
+     class="cookie-banner"
+     role="region"
+     aria-label="Cookie notice">
+  <span>
+    We use cookies to improve your experience.
+    Read our <a href="privacy.html">Privacy Policy</a>.
+  </span>
+  <button id="acceptCookies"
+          class="btn"
+          type="button">Accept</button>
+</div>
+
+<!-- Existing login, logout, theme and chatbot logic -->
+<script type="module" src="app.js?v=103"></script>
 
 </body>
 </html>
