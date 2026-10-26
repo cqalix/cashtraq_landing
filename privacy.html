@@ -1,159 +1,716 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cashtraq – Privacy Policy</title>
-  <meta name="description" content="Cashtraq Privacy Policy" />
-  <link rel="canonical" href="https://cashtraq.co.uk/privacy.html" />
-  <meta name="theme-color" content="#008080" />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css?v=103" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Privacy Policy | Cashtraq</title>
+  <meta name="description" content="Read how Cashtraq handles your information.">
+  <meta name="theme-color" content="#132C35">
+  <link rel="canonical" href="https://cashtraq.co.uk/privacy.html">
+
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="style.css?v=104">
+
+  <style>
+    body.privacy-refresh {
+      --navy: #132C35;
+      --teal: #008080;
+      --gold: #D7BE91;
+      --ivory: #FAF8F4;
+      --mint: #EAF4F0;
+      margin: 0;
+      background: var(--ivory);
+      color: var(--navy);
+    }
+
+    .privacy-refresh *,
+    .privacy-refresh *::before,
+    .privacy-refresh *::after {
+      box-sizing: border-box;
+    }
+
+    .privacy-refresh .page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .privacy-refresh .pr-header {
+      background: #fffdfa;
+      border-bottom: 1px solid #e5ebe7;
+    }
+
+    .privacy-refresh .pr-header-inner {
+      max-width: 1180px;
+      min-height: 86px;
+      margin: auto;
+      padding: 15px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .privacy-refresh .pr-logo {
+      display: block;
+      width: 165px;
+      height: auto;
+    }
+
+    .privacy-refresh .pr-nav,
+    .privacy-refresh .pr-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .privacy-refresh .pr-nav a {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 650;
+    }
+
+    .privacy-refresh .pr-nav a[aria-current="page"] {
+      color: var(--teal);
+    }
+
+    .privacy-refresh .pr-theme {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid #d8e5e0;
+      background: #edf5f0;
+      color: var(--navy);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .privacy-refresh .pr-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 45px;
+      padding: 12px 22px;
+      border-radius: 100px;
+      border: 1px solid var(--teal);
+      background: var(--teal);
+      color: white;
+      font-size: .91rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .privacy-refresh .pr-main {
+      width: 100%;
+      flex: 1;
+    }
+
+    .privacy-refresh .pr-content {
+      max-width: 1160px;
+      margin: auto;
+      padding: 72px 24px 95px;
+    }
+
+    .privacy-refresh .pr-eyebrow {
+      display: inline-block;
+      color: var(--teal);
+      text-transform: uppercase;
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+    }
+
+    .privacy-refresh .pr-intro h1 {
+      color: var(--navy);
+      font-size: clamp(2.8rem, 5vw, 4.6rem);
+      line-height: 1.1;
+      letter-spacing: -.055em;
+      margin: 18px 0;
+    }
+
+    .privacy-refresh .pr-intro h1 em {
+      color: var(--teal);
+      font-family: Georgia, serif;
+      font-weight: 400;
+    }
+
+    .privacy-refresh .pr-intro > p {
+      max-width: 680px;
+      margin: 0 0 35px;
+      color: #607579;
+      font-size: 1.04rem;
+      line-height: 1.75;
+    }
+
+    .privacy-refresh .pr-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap: 25px;
+      align-items: start;
+    }
+
+    .privacy-refresh .pr-policy {
+      min-width: 0;
+      padding: 42px;
+      border: 1px solid #e1e9e3;
+      border-radius: 24px;
+      background: #fffdfa;
+      box-shadow: 0 12px 35px rgba(19,44,53,.05);
+      text-align: left;
+    }
+
+    .privacy-refresh .pr-date {
+      display: inline-block;
+      margin-bottom: 25px;
+      padding: 9px 14px;
+      background: var(--mint);
+      color: var(--teal);
+      border-radius: 100px;
+      font-size: .82rem;
+      font-weight: 750;
+    }
+
+    .privacy-refresh .pr-policy h2 {
+      color: var(--navy);
+      font-size: 1.42rem;
+      letter-spacing: -.025em;
+      margin: 34px 0 12px;
+      line-height: 1.35;
+    }
+
+    .privacy-refresh .pr-policy h2:first-of-type {
+      margin-top: 22px;
+    }
+
+    .privacy-refresh .pr-policy p,
+    .privacy-refresh .pr-policy li {
+      color: #536b70;
+      font-size: .96rem;
+      line-height: 1.85;
+    }
+
+    .privacy-refresh .pr-policy p {
+      margin: 0 0 18px;
+    }
+
+    .privacy-refresh .pr-policy ul {
+      padding-left: 23px;
+      margin: 0 0 20px;
+    }
+
+    .privacy-refresh .pr-policy li {
+      padding-left: 5px;
+      margin-bottom: 9px;
+    }
+
+    .privacy-refresh .pr-policy strong {
+      color: var(--navy);
+    }
+
+    .privacy-refresh .pr-policy a {
+      color: var(--teal);
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .privacy-refresh .pr-side {
+      position: sticky;
+      top: 20px;
+      padding: 30px;
+      background: var(--navy);
+      border-radius: 23px;
+      color: white;
+    }
+
+    .privacy-refresh .pr-side-label {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .privacy-refresh .pr-side h2 {
+      color: white;
+      font-size: 1.75rem;
+      line-height: 1.25;
+      letter-spacing: -.04em;
+      margin: 20px 0 13px;
+    }
+
+    .privacy-refresh .pr-side p {
+      color: #c5d9d6;
+      font-size: .94rem;
+      line-height: 1.75;
+      margin-bottom: 23px;
+    }
+
+    .privacy-refresh .pr-side a {
+      display: inline-block;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      color: #a7ede1;
+      font-weight: 700;
+      text-underline-offset: 4px;
+    }
+
+    .privacy-refresh .pr-side-divider {
+      height: 1px;
+      background: rgba(255,255,255,.15);
+      margin: 26px 0;
+    }
+
+    .privacy-refresh .pr-bottom {
+      margin-top: 30px;
+      padding: 28px 33px;
+      border: 1px solid #dce9e1;
+      border-radius: 20px;
+      background: #edf5ef;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .privacy-refresh .pr-bottom h2 {
+      color: var(--navy);
+      margin: 0 0 8px;
+      font-size: 1.4rem;
+    }
+
+    .privacy-refresh .pr-bottom p {
+      color: #607579;
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    .privacy-refresh .pr-footer {
+      padding: 35px 24px;
+      background: var(--navy);
+    }
+
+    .privacy-refresh .pr-footer-inner {
+      max-width: 1120px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .privacy-refresh .pr-footer-logo {
+      display: block;
+      width: 140px;
+      height: auto;
+      padding: 7px 10px;
+      background: #fffdfa;
+      border-radius: 9px;
+    }
+
+    .privacy-refresh .pr-footer p {
+      margin: 9px 0 0;
+      color: #c1d4d0;
+      font-size: .82rem;
+    }
+
+    .privacy-refresh .pr-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .privacy-refresh .pr-footer-links a {
+      color: #e3eeea;
+      text-decoration: none;
+      font-size: .88rem;
+    }
+
+    /* Existing app.js dark-mode behaviour */
+    body.privacy-refresh.dark-mode {
+      background: #0c1d24;
+      color: #eef5f2;
+    }
+
+    .privacy-refresh.dark-mode .pr-header,
+    .privacy-refresh.dark-mode .pr-policy {
+      background: #18343c;
+      border-color: #34535b;
+    }
+
+    .privacy-refresh.dark-mode .pr-nav a,
+    .privacy-refresh.dark-mode .pr-intro h1,
+    .privacy-refresh.dark-mode .pr-policy h2,
+    .privacy-refresh.dark-mode .pr-policy strong,
+    .privacy-refresh.dark-mode .pr-bottom h2 {
+      color: #f2f7f4;
+    }
+
+    .privacy-refresh.dark-mode .pr-intro > p,
+    .privacy-refresh.dark-mode .pr-policy p,
+    .privacy-refresh.dark-mode .pr-policy li,
+    .privacy-refresh.dark-mode .pr-bottom p {
+      color: #bdd1d0;
+    }
+
+    .privacy-refresh.dark-mode .pr-policy a {
+      color: #8ce5d5;
+    }
+
+    .privacy-refresh.dark-mode .pr-bottom {
+      background: #163239;
+      border-color: #365860;
+    }
+
+    .privacy-refresh.dark-mode .pr-theme {
+      background: #264650;
+      color: white;
+      border-color: #48656b;
+    }
+
+    @media (max-width: 850px) {
+      .privacy-refresh .pr-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .privacy-refresh .pr-side {
+        position: static;
+      }
+
+      .privacy-refresh .pr-header-inner {
+        flex-wrap: wrap;
+      }
+
+      .privacy-refresh .pr-nav {
+        width: 100%;
+        order: 3;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .privacy-refresh .pr-header-inner {
+        padding: 14px 18px;
+        gap: 14px;
+      }
+
+      .privacy-refresh .pr-logo {
+        width: 135px;
+      }
+
+      .privacy-refresh .pr-actions {
+        gap: 10px;
+      }
+
+      .privacy-refresh .pr-actions .pr-button {
+        padding: 10px 14px;
+      }
+
+      .privacy-refresh .pr-nav {
+        gap: 15px;
+      }
+
+      .privacy-refresh .pr-content {
+        padding: 47px 20px 68px;
+      }
+
+      .privacy-refresh .pr-policy {
+        padding: 27px 23px;
+      }
+
+      .privacy-refresh .pr-side {
+        padding: 27px 23px;
+      }
+
+      .privacy-refresh .pr-bottom {
+        padding: 26px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .privacy-refresh .pr-footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 
-<body>
-  <div class="page-wrapper">
-    <!-- Dark Mode Toggle -->
-    <button
-      id="darkModeToggle"
-      class="btn secondary dark-toggle"
-      type="button"
-      aria-label="Toggle dark mode"
-      title="Toggle dark mode"
-    >🌓</button>
+<body class="privacy-refresh">
+<div class="page-wrapper">
 
-    <main class="main">
-      <section class="container page-content" aria-labelledby="privacyTitle">
-        <div class="logo-container">
-          <img src="assets/cashtraq_logo.svg" alt="Cashtraq Logo" class="logo-img" />
+  <!-- Header -->
+  <header class="pr-header">
+    <div class="pr-header-inner">
+      <a href="index.html" aria-label="Cashtraq home">
+        <img class="pr-logo"
+             src="assets/cashtraq_logo.svg"
+             alt="Cashtraq">
+      </a>
+
+      <nav class="pr-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="faq.html">How it works</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html" aria-current="page">Privacy</a>
+      </nav>
+
+      <div class="pr-actions">
+        <button id="darkModeToggle"
+                class="pr-theme"
+                type="button"
+                aria-label="Toggle dark mode"
+                title="Toggle dark mode">◐</button>
+
+        <a href="login.html" class="pr-button">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="pr-main">
+    <div class="pr-content">
+
+      <section class="pr-intro">
+        <span class="pr-eyebrow">YOUR INFORMATION</span>
+
+        <h1 id="privacyTitle">
+          Privacy <em>matters.</em>
+        </h1>
+
+        <p>
+          How Cashtraq handles information when you
+          use our website and services.
+        </p>
+      </section>
+
+      <div class="pr-layout">
+
+        <!-- Existing policy content preserved -->
+        <article class="pr-policy"
+                 aria-labelledby="policy-heading">
+
+          <span class="pr-date">Last updated: August 2025</span>
+
+          <p id="policy-heading">
+            This Privacy Policy explains how Cashtraq
+            (“we”, “us”, “our”) collects, uses, and
+            protects information when you use our
+            website and services.
+          </p>
+
+          <h2>Who we are</h2>
+          <p>
+            Cashtraq is a cashback tracking and savings
+            dashboard concept. We may use affiliate
+            networks (such as Awin) in future to route
+            you to retailers and track referrals.
+          </p>
+
+          <h2>Information we may collect</h2>
+          <ul>
+            <li>
+              <strong>Account details</strong> you provide,
+              such as your name and email when signing up.
+            </li>
+            <li>
+              <strong>Support messages</strong> you send us,
+              for example by email.
+            </li>
+            <li>
+              <strong>Basic usage data</strong>, such as
+              pages visited, to help improve the site.
+            </li>
+            <li>
+              <strong>Cookie preferences</strong>, to
+              remember choices such as cookie consent
+              and dark mode.
+            </li>
+          </ul>
+
+          <h2>How we use your information</h2>
+          <ul>
+            <li>To provide and improve the service.</li>
+            <li>To respond to support requests.</li>
+            <li>To keep the site secure and prevent abuse.</li>
+            <li>
+              To remember your preferences, such as
+              cookie consent and theme.
+            </li>
+          </ul>
+
+          <h2>Cookies</h2>
+          <p>
+            We use cookies and similar technologies to
+            help the site work properly and remember
+            your preferences. You can control cookies
+            through your browser settings. Some cookies
+            may be set by third parties if we use embedded
+            tools or affiliate links.
+          </p>
+
+          <h2>Affiliate links and tracking</h2>
+          <p>
+            If we use affiliate partners, clicking a retailer
+            link may involve tracking to attribute referrals.
+            This may use cookies or similar technology set
+            by the retailer or partner network. This helps
+            us understand which referrals came from Cashtraq.
+          </p>
+
+          <h2>Sharing your data</h2>
+          <p>
+            We do not sell your personal data. We may share
+            limited information with service providers who
+            help us run the site, such as hosting, and with
+            affiliate or retailer partners if you click
+            through their links.
+          </p>
+
+          <h2>Data retention</h2>
+          <p>
+            We keep information only for as long as needed
+            to provide the service, comply with legal
+            obligations and resolve disputes.
+          </p>
+
+          <h2>Your rights</h2>
+          <p>
+            Depending on where you live, you may have rights
+            to access, correct or delete your personal data.
+            To request this, contact us using the details below.
+          </p>
+
+          <h2>Contact</h2>
+          <p>
+            If you have questions, contact
+            <a href="mailto:support@cashtraq.co.uk">
+              support@cashtraq.co.uk
+            </a>.
+          </p>
+
+        </article>
+
+        <!-- Side panel -->
+        <aside class="pr-side">
+          <span class="pr-side-label">
+            NEED SOME HELP?
+          </span>
+
+          <h2>
+            Questions about your data?
+          </h2>
+
+          <p>
+            Get in touch if you have questions
+            about this policy or your information.
+          </p>
+
+          <a href="mailto:support@cashtraq.co.uk">
+            support@cashtraq.co.uk
+          </a>
+
+          <div class="pr-side-divider"></div>
+
+          <p>
+            For general questions about Cashtraq,
+            you can also visit our Help page.
+          </p>
+
+          <a href="faq.html">
+            Visit Help / FAQ ↗
+          </a>
+        </aside>
+
+      </div>
+
+      <section class="pr-bottom">
+        <div>
+          <h2>We're here to help.</h2>
+          <p>
+            Contact us if you have a question about
+            Cashtraq or this policy.
+          </p>
         </div>
 
-        <nav class="nav-links" aria-label="Primary">
-          <a href="dashboard.html" class="btn secondary">Dashboard</a>
-          <a href="retailers.html" class="btn secondary">Retailers</a>
-          <a href="profile.html" class="btn secondary">Profile</a>
-          <a href="contact.html" class="btn secondary">Contact</a>
-        </nav>
-
-        <h1 id="privacyTitle">Privacy Policy</h1>
-        <p><em>Last updated: August 2025</em></p>
-
-        <p>
-          This Privacy Policy explains how Cashtraq (“we”, “us”, “our”) collects, uses, and protects information
-          when you use our website and services.
-        </p>
-
-        <h2>Who we are</h2>
-        <p>
-          Cashtraq is a cashback tracking and savings dashboard concept. We may use affiliate networks (such as Awin)
-          in future to route you to retailers and track referrals.
-        </p>
-
-        <h2>Information we may collect</h2>
-        <ul>
-          <li><strong>Account details</strong> you provide (such as name and email) when signing up.</li>
-          <li><strong>Support messages</strong> you send us (for example, via the contact form or email).</li>
-          <li><strong>Basic usage data</strong> (for example, pages visited) to help improve the site.</li>
-          <li><strong>Cookie preferences</strong> (to remember settings like cookie consent and dark mode).</li>
-        </ul>
-
-        <h2>How we use your information</h2>
-        <ul>
-          <li>To provide and improve the service.</li>
-          <li>To respond to support requests.</li>
-          <li>To keep the site secure and prevent abuse.</li>
-          <li>To remember your preferences (like cookie consent and theme).</li>
-        </ul>
-
-        <h2>Cookies</h2>
-        <p>
-          We use cookies (and similar technologies) to help the site work properly and to remember your preferences.
-          You can control cookies via your browser settings. Some cookies may be set by third parties if we use
-          embedded tools or affiliate links.
-        </p>
-
-        <h2>Affiliate links and tracking</h2>
-        <p>
-          If we use affiliate partners, clicking a retailer link may involve tracking to attribute referrals.
-          This may use cookies or similar technology set by the retailer or partner network. This helps us understand
-          which referrals came from Cashtraq.
-        </p>
-
-        <h2>Sharing your data</h2>
-        <p>
-          We do not sell your personal data. We may share limited information with service providers who help us run
-          the site (for example hosting), and with affiliate/retailer partners if you click through their links.
-        </p>
-
-        <h2>Data retention</h2>
-        <p>
-          We keep information only for as long as needed to provide the service, comply with legal obligations,
-          and resolve disputes.
-        </p>
-
-        <h2>Your rights</h2>
-        <p>
-          Depending on where you live, you may have rights to access, correct, or delete your personal data.
-          To request this, contact us using the details below.
-        </p>
-
-        <h2>Contact</h2>
-        <p>
-          If you have questions, contact
-          <a href="mailto:support@cashtraq.co.uk">support@cashtraq.co.uk</a>.
-        </p>
-
-        <!-- Internal note (hidden in HTML comment only):
-             Before launch, review for UK GDPR + PECR compliance, cookie categories, lawful basis,
-             affiliate tracking disclosure, retention, and business details. -->
+        <a href="contact.html" class="pr-button">
+          Contact us ↗
+        </a>
       </section>
-    </main>
 
-    <footer>
-      <a href="privacy.html" aria-current="page">Privacy Policy</a> |
-      <a href="terms.html">Terms &amp; Conditions</a> |
-      <a href="faq.html">Help / FAQ</a> |
-      <a href="contact.html">Contact</a>
-    </footer>
-  </div>
-
-  <!-- Chatbot floating button -->
-  <button
-    id="chatbotToggle"
-    class="chatbot-toggle"
-    type="button"
-    aria-label="Open Cashtraq Help Assistant"
-    title="Help"
-  >
-    <img src="assets/chatbot-icon.svg" alt="" aria-hidden="true" />
-  </button>
-
-  <!-- Chatbot panel -->
-  <div
-    id="chatbox"
-    class="chatbox"
-    role="dialog"
-    aria-modal="false"
-    aria-label="Cashtraq Help Assistant"
-    hidden
-  >
-    <div class="chatbox-header">
-      <h4>Cashtraq Help Assistant</h4>
-      <button id="chatbotClose" class="chatbox-close" type="button" aria-label="Close chatbot">✕</button>
     </div>
-    <div class="chatbox-body"></div>
-  </div>
+  </main>
 
-  <!-- Cookie banner -->
-  <div id="cookieConsent" class="cookie-banner" role="region" aria-label="Cookie consent">
-    <span>
-      We use cookies to improve your experience. See our
-      <a href="privacy.html">Privacy Policy</a>.
-    </span>
-    <button id="acceptCookies" class="btn" type="button">Accept</button>
-  </div>
+  <!-- Footer -->
+  <footer class="pr-footer">
+    <div class="pr-footer-inner">
+      <div>
+        <img class="pr-footer-logo"
+             src="assets/cashtraq_logo.svg"
+             alt="Cashtraq">
 
-  <!-- Shared JS (must be module for Supabase import in app.js) -->
-  <script type="module" src="app.js?v=103"></script>
+        <p>Track it. Stack it. Cashtraq it.</p>
+      </div>
+
+      <nav class="pr-footer-links" aria-label="Footer links">
+        <a href="privacy.html" aria-current="page">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="faq.html">Help / FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Existing help assistant -->
+<button id="chatbotToggle"
+        class="chatbot-toggle"
+        type="button"
+        aria-label="Open Cashtraq Help Assistant"
+        title="Help">
+  <img src="assets/chatbot-icon.svg"
+       alt=""
+       aria-hidden="true">
+</button>
+
+<div id="chatbox"
+     class="chatbox"
+     role="dialog"
+     aria-modal="false"
+     aria-label="Cashtraq Help Assistant"
+     hidden>
+  <div class="chatbox-header">
+    <h4>Cashtraq Help Assistant</h4>
+
+    <button id="chatbotClose"
+            class="chatbox-close"
+            type="button"
+            aria-label="Close chatbot">✕</button>
+  </div>
+  <div class="chatbox-body"></div>
+</div>
+
+<!-- Existing cookie banner -->
+<div id="cookieConsent"
+     class="cookie-banner"
+     role="region"
+     aria-label="Cookie notice">
+  <span>
+    We use cookies to improve your experience.
+    Read our <a href="privacy.html">Privacy Policy</a>.
+  </span>
+
+  <button id="acceptCookies"
+          class="btn"
+          type="button">Accept</button>
+</div>
+
+<!-- Existing website functionality -->
+<script type="module" src="app.js?v=104"></script>
+
 </body>
 </html>
